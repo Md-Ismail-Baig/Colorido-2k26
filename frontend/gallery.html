@@ -1,0 +1,935 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>COLORIDO 2K26 — Gallery &amp; Festival Media Showcase</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#140722',
+              plum: '#220b38',
+              wine: '#3c1356',
+              gold: '#e5ab46',
+              lightGold: '#f7d37e',
+              cream: '#fbf8f2',
+              creamDark: '#f3ece0',
+              muted: '#8b8493'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'gold-glow': '0 0 25px -4px rgba(229, 171, 70, 0.45)',
+            'card-lift': '0 12px 30px -10px rgba(20, 7, 34, 0.18)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Layout Styles -->
+<style data-purpose="header-layout">
+    /* Header specific rules for zero layout shift */
+    .festival-header {
+      width: 100% !important;
+      max-width: none !important;
+      background: #18092a;
+      box-sizing: border-box;
+    }
+    @media (min-width: 1024px) {
+      .festival-header {
+        height: 80px;
+        min-height: 80px;
+        max-height: 80px;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .festival-header {
+        height: 72px;
+        min-height: 72px;
+        max-height: 72px;
+      }
+    }
+    @media (max-width: 767px) {
+      .festival-header {
+        height: 64px;
+        min-height: 64px;
+        max-height: 64px;
+      }
+    }
+    .header-container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-left: 32px;
+      padding-right: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    @media (max-width: 767px) {
+      .header-container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+<!-- Component & Background Visuals -->
+<style data-purpose="custom-decorations">
+    /* Mandala background for cultural heritage touch */
+    .mandala-bg {
+      background-image: radial-gradient(circle at center, rgba(229, 171, 70, 0.08) 0%, transparent 68%);
+    }
+    /* Subtle festival pattern overlay */
+    .pattern-texture {
+      background-image: radial-gradient(#d3a04a 0.75px, transparent 0.75px), radial-gradient(#d3a04a 0.75px, #fbf8f2 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      opacity: 0.15;
+    }
+    /* Hide scrollbars for smooth filter scrolling */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-neutral-800 font-sans antialiased overflow-x-hidden selection:bg-brand-gold selection:text-brand-dark">
+<!-- BEGIN: MainHeader -->
+<header class="festival-header sticky top-0 z-50 border-b border-brand-gold/20 shadow-md">
+<div class="header-container flex items-center justify-between h-full w-full max-w-7xl mx-auto" style="height: 80px; min-height: 80px; max-height: 80px;">
+<!-- Brand Logo Emblem -->
+<a aria-label="COLORIDO 2K26 Home" class="flex items-center gap-3.5 group flex-shrink-0" href="#">
+<div class="w-10 h-10 md:w-11 md:h-11 rounded-full border border-brand-gold/60 flex items-center justify-center relative bg-gradient-to-br from-amber-600/30 to-purple-900/60 shadow-[0_0_12px_rgba(229,171,70,0.3)] group-hover:scale-105 transition-transform duration-300">
+<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<div class="absolute inset-0 rounded-full border border-brand-gold/30 animate-pulse"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-serif tracking-wider text-white font-bold text-lg md:text-xl">COLORIDO</span>
+<span class="font-serif text-brand-gold font-bold text-lg md:text-xl">2K26</span>
+</div>
+<span class="text-[9px] md:text-[10px] tracking-[0.22em] text-neutral-300 font-medium -mt-1 uppercase">Cultural &amp; Sports Fest</span>
+</div>
+</a>
+<!-- Desktop Navigation Links (>= 1024px) -->
+<nav aria-label="Main Navigation" class="hidden lg:flex items-center gap-6 xl:gap-8 text-[14px] font-medium text-neutral-200">
+<a class="hover:text-brand-gold transition-colors duration-200" href="#home">Home</a>
+<a class="hover:text-brand-gold transition-colors duration-200" href="#about">About</a>
+<a class="hover:text-brand-gold transition-colors duration-200" href="#events">Events</a>
+<a class="hover:text-brand-gold transition-colors duration-200" href="#sports">Sports</a>
+<a class="hover:text-brand-gold transition-colors duration-200" href="#schedule">Schedule</a>
+<a class="hover:text-brand-gold transition-colors duration-200" href="#announcements">Announcements</a>
+<!-- Active Link with Golden Underline Indicator -->
+<a aria-current="page" class="text-brand-gold font-semibold relative py-1" href="#gallery">
+          Gallery
+          <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full shadow-[0_0_8px_rgba(229,171,70,0.8)]"></span>
+</a>
+<a class="hover:text-brand-gold transition-colors duration-200" href="#contact">Contact</a>
+</nav>
+<!-- Right Action CTA & Mobile Trigger -->
+<div class="flex items-center gap-3 md:gap-4 flex-shrink-0">
+<a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-gold via-amber-400 to-yellow-500 text-brand-dark font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-gold-glow hover:brightness-105 active:scale-95 transition-all duration-200" href="#register">
+          Register Now
+        </a>
+<!-- Mobile Hamburger Button -->
+<button aria-expanded="false" aria-label="Toggle navigation drawer" class="lg:hidden p-2 text-neutral-300 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold/40" id="mobileMenuBtn" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Responsive Mobile Drawer Navigation -->
+<div class="hidden lg:hidden bg-brand-plum border-b border-brand-gold/20 px-6 py-5 transition-all" id="mobileDrawer">
+<nav class="flex flex-col gap-3 text-sm font-medium text-neutral-200">
+<a class="py-1 hover:text-brand-gold" href="#home">Home</a>
+<a class="py-1 hover:text-brand-gold" href="#about">About</a>
+<a class="py-1 hover:text-brand-gold" href="#events">Events</a>
+<a class="py-1 hover:text-brand-gold" href="#sports">Sports</a>
+<a class="py-1 hover:text-brand-gold" href="#schedule">Schedule</a>
+<a class="py-1 hover:text-brand-gold" href="#announcements">Announcements</a>
+<a class="py-1 text-brand-gold font-bold" href="#gallery">Gallery (Active)</a>
+<a class="py-1 hover:text-brand-gold" href="#contact">Contact</a>
+<div class="pt-3">
+<a class="w-full inline-block text-center py-2.5 rounded-full bg-gradient-to-r from-brand-gold to-yellow-500 text-brand-dark font-bold text-xs uppercase tracking-wider" href="#register">
+            Register Now
+          </a>
+</div>
+</nav>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroGallerySection -->
+<section class="relative bg-gradient-to-b from-[#18092a] via-[#240c3a] to-brand-cream pt-10 pb-16 overflow-hidden" data-purpose="gallery-hero">
+<!-- Traditional Mandala Background Graphic -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[550px] opacity-15 pointer-events-none mandala-bg rounded-full blur-2xl"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<!-- Eyebrow & Headings -->
+<div class="text-left md:text-left mb-8">
+<span class="text-[11px] md:text-xs font-semibold tracking-[0.28em] text-brand-gold uppercase block mb-1">
+          Memories of Colorido
+        </span>
+<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight mb-2">
+          Gallery
+        </h1>
+<p class="text-neutral-300 text-sm sm:text-base max-w-xl font-normal">
+          Moments of creativity, competition, celebration and campus life.
+        </p>
+</div>
+<!-- Spotlight Showcase Hero Carousel Banner -->
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/30 bg-[#140722]" id="heroCarousel">
+<div class="relative h-[280px] sm:h-[380px] md:h-[460px] w-full overflow-hidden group">
+<!-- Slide 1 -->
+<div class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none z-0" data-slide-index="0">
+<img alt="Grand Stage &amp; Athletic Arenas" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida/AEtjO1Xg6zWZZ0Cww_i7-pPLjbs7kDVZnB5jJbW1UgUj4kKup8hQa7TTqifJElju3_PysyOPns31_Uv6wEu6kq_WZrrozDUcPjdYx3tD3gPanQCVlVLx2bIvd6HI4SQvJEB-yzqrbTQ6_OYaRD0-rcc_vf33lrgyKJKN6RdtvqCbBhPXOuCay2QkKNWtOKpqi1UH8vfcKsPWXQ_x-25-ix14O9LDVbP4VXAKpu-ixSj2IGdDKZZljABN2EXBHOQ">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-brand-dark/70 via-transparent to-brand-dark/70"></div>
+<div class="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 flex flex-col md:flex-row md:items-end justify-between gap-4 pointer-events-none">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 backdrop-blur-md mb-2">
+<span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+<span class="text-xs font-semibold text-brand-lightGold tracking-wider uppercase">Live Glimpses</span>
+</div>
+<h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white">GRAND STAGE &amp; ATHLETIC ARENAS</h2>
+<p class="text-xs sm:text-sm text-neutral-300 max-w-lg mt-1">From electrifying traditional rhythm to the adrenaline of court clashes.</p>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none z-0" data-slide-index="1">
+<img alt="Symphonic Resonance &amp; Vogue" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFb3zPu73uYau1ACTNpUUdBP4iC2q97bFJbkxAlYSvRoKrnugpgm6SG6cvu0K8ZGH1kNFMgmmg29SzNrHNrF5rCq-DHVcRS6u8l3GSqQHXyT2dbaG0TMRXLjps0sh0_VAaBYkPDKhkit3Rl62QkBtHI5sIiuJMEasAVcGE1ARvIukNufCwzV43PyaGZu8CSlUu_S_k1nmIUEskFRsEJaMK0E1soCcVkUWXWqjtDtOs5e6sMufPSWwp">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-brand-dark/70 via-transparent to-brand-dark/70"></div>
+<div class="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 flex flex-col md:flex-row md:items-end justify-between gap-4 pointer-events-none">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 backdrop-blur-md mb-2">
+<span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+<span class="text-xs font-semibold text-brand-lightGold tracking-wider uppercase">Cultural Nights</span>
+</div>
+<h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white">SYMPHONIC RESONANCE &amp; VOGUE</h2>
+<p class="text-xs sm:text-sm text-neutral-300 max-w-lg mt-1">Experience classical solo performances and the high-energy ethnic fashion runway.</p>
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-100 z-10" data-slide-index="2">
+<img alt="Championship Turfs &amp; Courts" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMmL31j10lQXuYIK4FDdC1uzkZvoE-12iBjq2zMKh14AJqQ7_Ts4v_1SS--r0TKYCff4Kgs_5ItDoYLh0Kbig3-0ufEPoIbdEnZDoxXGHgqrcXKlV8XoJbghjJRjTgNWLY9JlMm26zkcprbMu_Mp4TPZeADUTzYyREqvS2OroepqKQqF5ddSncdCzv-qDG8qOoob4n9BEVTwgkCpPp2pxYuEFCqhxxvByPXne-Dk83d0a_Cv2rLiWt">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-brand-dark/70 via-transparent to-brand-dark/70"></div>
+<div class="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 flex flex-col md:flex-row md:items-end justify-between gap-4 pointer-events-none">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 backdrop-blur-md mb-2">
+<span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+<span class="text-xs font-semibold text-brand-lightGold tracking-wider uppercase">Sports Showdown</span>
+</div>
+<h2 class="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white">CHAMPIONSHIP TURFS &amp; COURTS</h2>
+<p class="text-xs sm:text-sm text-neutral-300 max-w-lg mt-1">Fierce collegiate competition across basketball, volleyball, table tennis, and athletics.</p>
+</div>
+</div>
+</div>
+<!-- Interactive Carousel Arrows -->
+<button aria-label="Previous Slide" class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 border border-white/20 text-white flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all duration-200 cursor-pointer z-30" id="carouselPrevBtn" type="button">
+<svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<button aria-label="Next Slide" class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 border border-white/20 text-white flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all duration-200 cursor-pointer z-30" id="carouselNextBtn" type="button">
+<svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<!-- Slide Indicators -->
+<div class="carousel-indicators absolute bottom-6 right-6 md:right-10 flex items-center gap-2 z-30" id="carouselIndicators">
+<button aria-label="Go to Slide 1" class="carousel-dot transition-all duration-300 w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-gold" data-slide-to="0" type="button"></button>
+<button aria-label="Go to Slide 2" class="carousel-dot transition-all duration-300 w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-gold" data-slide-to="1" type="button"></button>
+<button aria-label="Go to Slide 3" class="carousel-dot transition-all duration-300 w-7 h-2 rounded-full bg-brand-gold cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-gold" data-slide-to="2" type="button"></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroGallerySection -->
+<!-- BEGIN: FilterBarSection -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20" data-purpose="category-filters">
+<div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-3 px-2">
+<!-- Filter Button 1 (Active) -->
+<button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-md bg-brand-dark text-white ring-2 ring-brand-gold/30 active">
+        All
+      </button>
+<!-- Filter Button 2 -->
+<button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:bg-white hover:text-brand-dark shadow-sm bg-white/80 text-neutral-700 border border-neutral-200">
+        Cultural
+      </button>
+<!-- Filter Button 3 -->
+<button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:bg-white hover:text-brand-dark shadow-sm bg-white/80 text-neutral-700 border border-neutral-200">
+        Sports
+      </button>
+<!-- Filter Button 4 -->
+<button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200 bg-white/80 hover:bg-white text-neutral-700 hover:text-brand-dark border border-neutral-200 shadow-sm">
+        Behind The Scenes
+      </button>
+<!-- Filter Button 5 -->
+<button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200 bg-white/80 hover:bg-white text-neutral-700 hover:text-brand-dark border border-neutral-200 shadow-sm">
+        Previous Editions
+      </button>
+</div>
+</section>
+<!-- END: FilterBarSection -->
+<!-- BEGIN: FestivalHighlightsBanner -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10" data-purpose="festival-highlights-banner">
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#2a0e44] via-[#3a1359] to-[#1c0730] border border-brand-gold/30 p-6 sm:p-8 md:p-10 shadow-card-lift">
+<div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-brand-gold/10 blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+<!-- Highlights Thumbnail Collage -->
+<div class="lg:col-span-7 overflow-hidden rounded-xl h-60 sm:h-72 border border-brand-gold/20 shadow-md group relative">
+<img alt="Festival Highlights Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD98Fm6TbUhV99m94oL4BnrJHwJIqk0ASz-y71ff_7dkBdLpYfr_Aev7zEMALvmu02MDDxxbbxbI3m0i1AkMj2zlbIdaPz7uoesAsqgp52-cJIVvtlgINnYUD1PHYOykNiBeP4fXCpIrjg4bT9MauJ8EJVNJwWcV0KNU2i3bbb5Aksea5gvwsH_VhLqtYXK5OjFkw3DOXNDvgbmvrQQemBo7qHJf_AD5-Zf1Laxuyf4LmlnBuEfmWXo">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent"></div>
+<span class="absolute bottom-3 left-4 text-xs font-semibold tracking-wider text-brand-lightGold uppercase bg-brand-dark/70 px-3 py-1 rounded-md backdrop-blur-sm border border-brand-gold/20">
+            Mega Opening Ceremony
+          </span>
+</div>
+<!-- Highlights Text Content -->
+<div class="lg:col-span-5 flex flex-col justify-center text-white space-y-4">
+<div class="inline-flex items-center gap-2 self-start">
+<span class="w-2.5 h-2.5 rounded-full bg-brand-gold"></span>
+<span class="text-xs uppercase tracking-[0.25em] text-brand-gold font-bold">Featured Reel</span>
+</div>
+<div>
+<h3 class="text-2xl sm:text-3xl font-serif font-bold text-white leading-tight">COLORIDO 2K26</h3>
+<h4 class="text-xl sm:text-2xl font-serif text-brand-lightGold">Festival Highlights</h4>
+</div>
+<p class="text-neutral-300 text-sm leading-relaxed">
+            Revisit the roar of victory, synchronized choreographies, and untamed festive spirits recorded across all three vibrant festival days.
+          </p>
+<div class="pt-2">
+<button class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-dark font-bold text-xs uppercase tracking-widest transition-all duration-200" onclick="openModal('COLORIDO 2K26 Festival Highlights', 'Main Stage Gala &amp; Sports Arenas', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDPNWATyh-WBiEJ6URehl4I6rawXap00GVm7KCCyt8aJ0XiC-LJAS0vzEaMj0j4T6nluoWPwABg0Of_LMqcaHsmxe_nFiLqFQMK7PfwrZEwZQwb1OWaQNEZgUO3rrcFNh6Q-w_kk5lyCvIjDM2ZlDB2p9x77MuHrHcZIIE14VSs_Y1_ec0DBEsjCS7QC4mxW4Wn3DmWwIho6hlIruNl1WDoVl27fvL7wZEMZeNpd8eW1jJWPUMHmlCT_ZcgBrWgjxMW_g')">
+<span class="">[ VIEW PHOTO ]</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FestivalHighlightsBanner -->
+<!-- BEGIN: CulturalMomentsGrid -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16" data-purpose="cultural-moments">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-neutral-300/70">
+<div>
+<h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark">Cultural Moments</h2>
+<p class="text-neutral-500 text-xs sm:text-sm mt-0.5">Expressions of tradition, harmony, dramatic depth, and visual mastery.</p>
+</div>
+<span class="hidden sm:inline-block text-xs font-semibold text-brand-wine tracking-wider uppercase bg-brand-gold/10 px-3 py-1.5 rounded-full border border-brand-gold/30">
+        6 Events Logged
+      </span>
+</div>
+<!-- Cultural Grid Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Dance (Classical Solo) -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/25 shadow-card-lift cursor-pointer" onclick="openModal('Classical Solo Dance', 'Graceful Mudras &amp; Bharatanatyam rhythms', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCFreGfgAPSKRLhGy1ZIMIJVNLdBcsOzeqTIyapDZDyEHUN3QdPocnVEqiH8DSAb8IUXU-5aunwm-k1qSVIw1v4ag5SS71g85GKT-cQ16iXbhoiG_FszDFFkDXJmXsFK5tUoLH6F1FUsAA1k2EWM7dI23kHB5JJURUWJOGejuzIGku9QDmsQTMBk2fT3m7MgCiDlbepQMu1y-wIeXjzIuaQj2d99I84uGDEoAau8KCZ-7KqIisRSYXXQqIwvJDNf_2L_Q')">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Vibrant Indian classical dance performance on grand festival stage, Bharatanatyam dancer in traditional silk costume and temple jewelry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnIjr63P2a5O0cFpi7b6Ssb4pkIoaqs0kZZgQDKQB5_KIauJ-Q4jKBbv7PtShP4Z5SOPVHQXogHcRLhWICOJeGlAGu7z6kowXf3UVATpn7OQujJc29vRRAxCuJK6zghi8vOif5pxcQ_Ow7OuiSM57Dt8fxVyoRtWKVgMic8jO92-zA9JhGU1P04H_ehfNJh9Yf1TzZbisVMllSlIVQWLe8B4i9xpqaEl4S1clfSMlpEwDbhiFAHePm">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-brand-wine/90 border border-brand-gold/40 text-brand-lightGold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+            DANCE
+          </span>
+</div>
+<div class="p-4 bg-gradient-to-b from-[#240c3a] to-[#1a082c] border-t border-brand-gold/15">
+<h3 class="text-white font-serif font-semibold text-base group-hover:text-brand-gold transition-colors">Classical Solo</h3>
+<p class="text-neutral-400 text-xs mt-1">Main Auditorium Stage • Day 1</p>
+</div>
+</div>
+<!-- Card 2: Music -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/25 shadow-card-lift cursor-pointer" onclick="openModal('Music - Classical &amp; Fusion', 'Vocal acoustics and traditional sitar notes', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRVGo44JLHaJAYmAX5SVf1CcffurvqR4_4JkeP22YjA-1fXtJsEmZN6i-BKc2HnAuPM3Q6rs1jGiepCO2ektNz4zc2rbeuE3JJZvspmQ6SvjHvDliasRS3bmpzOe4hMXUDi6FmuRMz6bOiEGgTfBclyh5sqfTo2sXW4KXGguGTnrEjCn4CzfGO0gVV837hnmsa97pGVYhR5f2gDvluTruhCK5uh_bk9-a9xxlHIVgyoQjxHBuRcgP7LGWMYZf4L733XQ')">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Symphony &amp; Acoustic Solo Live Performance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvw6lNVqdG6rd-lHBsIWuh1X3Gp9Ah8e0I_I7lX9EKm1l8fGipFBsdtHov15Asa0dyz57GxoiFjEsqVz9ttFhlm6RUSi2APyCrz8sYlB063RaRSANEuCj1_AIM0w1BjVB80imh0xkJqCJaRAeqw5UE6JwI0t4y73F4k5RDmGTC1DVwWVqJdhLHC9i-gpxVAJWvH_H9jBS4ZiSwVD4qPCAWN1akWQ58mWoYf0Mm1aruYp5qyphZdYVw">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-brand-wine/90 border border-brand-gold/40 text-brand-lightGold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+            MUSIC
+          </span>
+</div>
+<div class="p-4 bg-gradient-to-b from-[#240c3a] to-[#1a082c] border-t border-brand-gold/15">
+<h3 class="text-white font-serif font-semibold text-base group-hover:text-brand-gold transition-colors">Symphony &amp; Acoustic Solo</h3>
+<p class="text-neutral-400 text-xs mt-1">Amphitheatre • Day 2</p>
+</div>
+</div>
+<!-- Card 3: Fine Arts -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/25 shadow-card-lift cursor-pointer" onclick="openModal('Fine Arts &amp; Canvas', 'Creative strokes, charcoal sketches, and murals', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBlkcJRxr08LUsaI9te10ti0g9A4xo8wxyPUH9CKgTj5VlNOCT0TCpL-_-oC97NIkJ4tMR7xg7R4w8jSjNVnfeKbCPDX_0QmXX-N4U6ZCeoM1Hv-PMyu62iaphyyujuV3VO3Agd3hX_kx1eOsMcSHU_3mGwrMGLhTK4rF29KvrKZzPtK4s299WlKVYKePzbUarWvP0SaK6Cg8uMWwcBfR-L-uJ2eXpLsF5j5B5SXsv7cM3GO1pxn44Sv-XUMjntd1QTYg')">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Fine Arts &amp; Canvas Exhibition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqjoh3vGxgKdc3JgtCwKNyiKDUF8f6gkoqAM2e_iGEMy50yJCicYNDGyQGU5CMCyAmLHAiZN2ioOu6jaM_-K7C5S2ZECfNpxVB9RVDsWHYNFsKMAlZ-PY4-YdAsSm7tRHzaP33G4NShS6mmwHqb7JUeG2YIMSIDR5fkG46TusIEVZGC-4vB3uCUZEcUy6tbIbDBlpgMaDZEbXqmuCrbSyJcyz3r1p_rcQ6m7f9fsrn7Fvow11idL4K">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-brand-wine/90 border border-brand-gold/40 text-brand-lightGold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+            FINE ARTS
+          </span>
+</div>
+<div class="p-4 bg-gradient-to-b from-[#240c3a] to-[#1a082c] border-t border-brand-gold/15">
+<h3 class="text-white font-serif font-semibold text-base group-hover:text-brand-gold transition-colors">Live Canvas &amp; Charcoal</h3>
+<p class="text-neutral-400 text-xs mt-1">Art Pavilion • Day 1</p>
+</div>
+</div>
+<!-- Card 4: Dramatics -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/25 shadow-card-lift cursor-pointer" onclick="openModal('Dramatics (Nukkad Natak)', 'Street plays capturing socially conscious narratives', 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8OQBAzR0kD3vyq3XK-7VhaI376ucPmasLI8WIqZvdwcGGrn2jNn_gHBUZx0tfbzxlkoAiPKwx3tVTgQxEeOQ5U5nQsmheWj45Jywl6tHgfct6aXo7OX9ccM2jT5OF4Q5EHHc-wYdhJFFYjnBODrtHjZrTxhgGtyEQdKMLhhn0xhWsbpZKw_oIb_IR2H4SeCd-MhqCcfPWVJjwHVpmsVLTXItqkHQ6XBAw8pdr_ghfMcXcacbiftCW0htUfsoC8mn6QA')">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Dramatics Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8hb-0DaUIop9SXR2GNy5Y1jiapvpNnNZHbtphqI03oe2DlDEk7DwsFmMkqHVl9-MiF6GhKqgkyHZSDmV66qznS9Obf-63MFxLXUXkfz_56YEHv8qWWqSW0a6KBAstkzi75s3KQ23rVnyA2cdmB8KVwL0oChZKArUSbruzY7-VmVvDjq7fYJ9qgawweQnQiJkVcVPJ4jXvBu6KyqKlwsjNzddWmh-8MqVHHBhwQRaHn7h3phzY_yaC">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-brand-wine/90 border border-brand-gold/40 text-brand-lightGold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+            DRAMATICS
+          </span>
+</div>
+<div class="p-4 bg-gradient-to-b from-[#240c3a] to-[#1a082c] border-t border-brand-gold/15">
+<h3 class="text-white font-serif font-semibold text-base group-hover:text-brand-gold transition-colors">Nukkad Natak &amp; Skit</h3>
+<p class="text-neutral-400 text-xs mt-1">Open Courtyard • Day 2</p>
+</div>
+</div>
+<!-- Card 5: Fashion Show / Runway -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/25 shadow-card-lift cursor-pointer" onclick="openModal('Ethnic Vogue — Fashion Show', 'Haute couture meeting Indian ethnic craft', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCe6k7eW2ZlvI8tcB8yR7v1oeL4Z6OJkZ4-lVasdPUD3XhYgFb3rKaixCot3EmwQy7VzeVIWzwhYZ7-ru3gkT65qlGX6HypYabUs8NdkICBu1bEzwcpEH4LeYAcdv8xSA16s0eEvkSpIbw8i3ljcBIY9_M-OxlpzpSe7SjWl58p7iwtJRSXti8GQb-lFKxknaEyFYnU_SV9JzTudQsk3ypFsJeVGpsLZfzcnmilQi3EOcH618ei_k4VwmISRD3bfPd0Ug')">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Fashion Runway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjtMSNhgoGCbtZs2iNLjw3g1Uy2Y5_F8isn_2ILGnYcscWJr2GKyvZIRS2mJ_5TwpfIQYylzJRZwzI29JV8vTuBYUqbOOUqhUx3Da-98k692ZuYh8eWBg302GAVCE4A4Fc-JWGWdQUajY-uHsJcq_s2nR21QXyST8EBrUljiY93WryBwjcahxar39VXiKp7H4Hy7CNsqX_9kfogmWlalXuQ6BkVyIwz_6X51MPMIIL4Eu4vIeqJqrS">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-brand-wine/90 border border-brand-gold/40 text-brand-lightGold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+            FASHION
+          </span>
+</div>
+<div class="p-4 bg-gradient-to-b from-[#240c3a] to-[#1a082c] border-t border-brand-gold/15">
+<h3 class="text-white font-serif font-semibold text-base group-hover:text-brand-gold transition-colors">Ethnic Vogue Runway</h3>
+<p class="text-neutral-400 text-xs mt-1">Grand Auditorium • Day 2</p>
+</div>
+</div>
+<!-- Card 6: Tekraft / Literary -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/25 shadow-card-lift cursor-pointer" onclick="openModal('Tekraft &amp; Literary Arena', 'Debates, poetry slams, and digital installations', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBkSQCecfGmuMsqItgm6888mfHE8rdso-nMmigTO1cUlRGd6dY2p66sfktsgMfoZarCjUyt-3czEbYJRolNWByE1-hg1bcbyTPzcCyGQDLEzXN7fJbJMAgSArI_w7_mbA-UUvIiALF6QT9jMxeG_cjwN51qbK4fUy_3kuMrxURFpGr1uqOtIuPh009rPj-qnml72-_LVCMVTZOL7U3op8TnpBpARbgeaCL6fmV7HvOeL6yXITN5OPb8yiN-dQ0_wVAYiQ')">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Tekraft and Literary" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS9pUYVDYztYShjfxxgkx8vVpvTnjEssz5LKRmK32eH5vEfIsNTLuzEYQLipay6FXCMRB5iM8jHhwxyktyFI6vgY6IxPbJuHFvAWUPNBn4e7pKFd_Y5IYa-R0Dnm-Akc8cLqfos8Ar33MWW0l0Sp08d21-oeMtp0KExVDAmMUYvyCagaX1_O-9QbiKUmrpgsvjvh2zUjqkvUoiFH_jfqOfhuBenHMj_uBlCw9J1jD7uXrlXEwGgXbf">
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+<span class="absolute top-3 left-3 bg-brand-wine/90 border border-brand-gold/40 text-brand-lightGold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+            LITERARY &amp; TECH
+          </span>
+</div>
+<div class="p-4 bg-gradient-to-b from-[#240c3a] to-[#1a082c] border-t border-brand-gold/15">
+<h3 class="text-white font-serif font-semibold text-base group-hover:text-brand-gold transition-colors">Tekraft &amp; Poetry Slam</h3>
+<p class="text-neutral-400 text-xs mt-1">Seminar Hall 1 • Day 2</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CulturalMomentsGrid -->
+<!-- BEGIN: SportsInMotionSection -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16" data-purpose="sports-in-motion">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-neutral-300/70">
+<div>
+<h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark">Sports in Motion</h2>
+<p class="text-neutral-500 text-xs sm:text-sm mt-0.5">Intensity, sportsmanship, and buzzer-beaters across courts and turfs.</p>
+</div>
+<span class="hidden sm:inline-block text-xs font-semibold text-brand-wine tracking-wider uppercase bg-brand-gold/10 px-3 py-1.5 rounded-full border border-brand-gold/30">
+        Tournament Action
+      </span>
+</div>
+<!-- Sports Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Sport Item: Basketball -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/20 shadow-md cursor-pointer" onclick="openModal('Basketball Championship', 'Fast breaks and dunks at the central court', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCBDRO7vkq6x8SHBPYcN6p6GVEXsdbVCKKix3HT6XZtCZqARiJOLQTQXJtA0bLSRFyLnBsGy1ElGTZ6PrJYUKzqTtHJvTKinLuVGdG4h1AyJS_gEIOE739N39O5gt_IFP7WVY-FV6BHXLbY4Do2jU0KHuVBvd0uYANd2rVbzwxTxeYxCvBfOgOy4eCgg7r7SfZoFmI_Y1nqFtHWB86gLo5oFNDzoYbLl_wRE15VhePy8epZUJaXusiT8Jv3f645s60LTw')">
+<div class="aspect-[3/4] overflow-hidden relative">
+<img alt="Basketball Match" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIxRSIUM0iJPxTmQ9rI4hIrjnErLJKWFhaeuQ8boN4hjJE5nj3QIZ1NAzTnhENszXPoiFkQjNhv122nyuxtJpRMIwrx-iwOdM8iTmV9LDwp2hFnvNiqrRtbd9mdi3u5qWU2TFnI17XkCHb3IvKtsdEx9EI8Fw7zwMH4AlZcpT4dMmrHsbchm2R_PM8hnx_bo2Hsibve8A_H3mh9bUF9LQTL0Z8MxTwyj3CYBHuVJ-0PE5JyWnf3ZxV">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-90"></div>
+<span class="absolute bottom-3 inset-x-2 text-center text-xs font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/80 py-1.5 px-2 rounded backdrop-blur-sm border border-brand-gold/20">
+            Basketball
+          </span>
+</div>
+</div>
+<!-- Sport Item: Volleyball -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/20 shadow-md cursor-pointer" onclick="openModal('Volleyball Tournament', 'High spikes and diving saves at the sand arena', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBFxTKXPhmS7ffMUOPvAwAOXEgdF95wBRIQu_dgyarAoTRoUzbxs62pJDhI7gysZ539G87WrRSS0M-W4dYs7uO4-I8qkwu5PAWtlQXJjDKsVcEHY22-mX0yOEhUd19uxRjIm97O11EOtN1UNmZnBB1cXeheZbLsaQjzULQeQp7UYbrFCPmri5si4DdoIgeNILFy-LbYgKYWn49cfeifve_MVdGkacrVd5iRM-PKdn82UB7XHIi0EqNFkjAHTy4B1CWzJg')">
+<div class="aspect-[3/4] overflow-hidden relative">
+<img alt="Volleyball Match" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjT1Q1q3WSX_vkc-dRvwb5cbdmR7JcjVaMCDTCUKy8sz87-LrNmtB6ZaXkvrVx-G_L7Ic4e0t_7yNTI68O1arbXhcHJ1QjfrXGbrCxS7AMFrcO3jlkpF-WlCn9zXb9vc90KLBE1ic50kvJ0mvusDEHg3kAJ_sf0-1ceeNZM11rv8tCrGI2TaLiWEh3R8CLFVfcLZUPovRIBnnDywaVYrlj_3FowiypNUxYPbEgw5fDsfJGnVYusxd_">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-90"></div>
+<span class="absolute bottom-3 inset-x-2 text-center text-xs font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/80 py-1.5 px-2 rounded backdrop-blur-sm border border-brand-gold/20">
+            Volleyball
+          </span>
+</div>
+</div>
+<!-- Sport Item: Table Tennis -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/20 shadow-md cursor-pointer" onclick="openModal('Table Tennis Finals', 'Reflex battles and spin rallies', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCmFZQjlfuqvA7UCIL8PVj_0egYl8wMzGpxaplJwrCjYUv1BEGR7oNE1nfnozSX4Arnd86aGKabY_AtfBwCxXKQvsjZsDdAY_ttx20rfmRQD7Z_UO73s-Zf7Q1wYPqstb8ozC_Q_1RadmCaDaPuGTSG8kK9yKEumoPaM4KSkDQWv0evBS1j_Tr9F9ZzLCqpmjb6sXjxibJ4W3SlA8-gHiWz2uvFIdlK256syIm7Y7gsoKQRqbGcUTPocQ_X7AdkUGv30A')">
+<div class="aspect-[3/4] overflow-hidden relative">
+<img alt="Table Tennis Match" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI0RoKl_dtjqs1HAUNmta2ZhrjnFy4XW30AzrR6KoUTX9YUYpG6tmygNQ3tMD_aKn5daUADlOAP4LIAJIYsDfecS0uDoaCetBAnhZT6FgpDCZLbaxuSJLXRqU5vton3-5P1eg4b9RT1WjDI0SXovryZ3OQXOJqdtZIMUzEyDxs9wJIXR6k_sObYbATHrmIBeKQGSthGZHelGFy1iwigPWnqB6seF2ZoONxSKla3qnVh8TPdDSIZIVj">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-90"></div>
+<span class="absolute bottom-3 inset-x-2 text-center text-xs font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/80 py-1.5 px-2 rounded backdrop-blur-sm border border-brand-gold/20">
+            Table Tennis
+          </span>
+</div>
+</div>
+<!-- Sport Item: Throwball -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/20 shadow-md cursor-pointer" onclick="openModal('Throwball League', 'Tactical strikes and teamwork', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBoS3E5WEeRqlNCejQG_u-L4E6juPmwecrgctY8AS2Lk4pk1ShfTG-apIlt8ceM_-32bK8bkViFZH3BnBjVpiARkyv3YCGj0nlZDeOG2byN_dxrkEZPtRDdyM7W1CKC5ZpcOQviH0qlM8M0szfb4focPc8EVyJPJEpVdBZmkOY8Ec5UQylaSaeDqueBkBnBSDNISPStPAxsy07CiPSsB2eg64jpEBSdpgOJYTtXRwGYP719OBSdUAnkVOVF8gMAPLUq9g')">
+<div class="aspect-[3/4] overflow-hidden relative">
+<img alt="Throwball Competition" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Wy5AnAC-bt2nT1jkskEvAf8K2u2hwh8LopKTh2gItEoXnFYiu7or_2G0poQz9joFyJxCdqAAhOtftT6Mho7qNno4fx_pbbzCLYJSMyLCWkkaWVPEuRHNaPYe1yMO_MwnCtj7GSPXOa4rLm7NvPDAGIGbUE5PWNDsqmdg6Mmvf-LQ2eel-5eAOx5XkdPH43MDULmxKLtKMRtPOlufGaeT2LF3kLI2zTqJxm6SxYT_vMByK1BHbqjvUH7p0">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-90"></div>
+<span class="absolute bottom-3 inset-x-2 text-center text-xs font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/80 py-1.5 px-2 rounded backdrop-blur-sm border border-brand-gold/20">
+            Throwball
+          </span>
+</div>
+</div>
+<!-- Sport Item: Tennikoit -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/20 shadow-md cursor-pointer" onclick="openModal('Tennikoit Match', 'Precision catches and court agility', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCL-izQNByTJ9yzxE5zXRyABqJwtxyacK4a7Q_jVFfOCKsgbvl0b8YPNy3Bcn5XP7mdh3dDy6qlLesxjNqjJEYM84gIJhw4y3ztC2ntxkTYhkJHBekewnHqxjtKbS5Xd5oNvzmmaQySVVHZjysHDRrNKVIe17yowEPW2CNhU-WZCY4h-dhnyHC1H0soNnwzGEaQn-Wg881M-9AIeARWB0GEqM_wrnhMwI9CeF-l5Zb29ePa4X246lDdfMGBYJq0lKZHHg">
+<div class="aspect-[3/4] overflow-hidden relative">
+<img alt="Tennikoit Game" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjT1Q1q3WSX_vkc-dRvwb5cbdmR7JcjVaMCDTCUKy8sz87-LrNmtB6ZaXkvrVx-G_L7Ic4e0t_7yNTI68O1arbXhcHJ1QjfrXGbrCxS7AMFrcO3jlkpF-WlCn9zXb9vc90KLBE1ic50kvJ0mvusDEHg3kAJ_sf0-1ceeNZM11rv8tCrGI2TaLiWEh3R8CLFVfcLZUPovRIBnnDywaVYrlj_3FowiypNUxYPbEgw5fDsfJGnVYusxd_">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-90"></div>
+<span class="absolute bottom-3 inset-x-2 text-center text-xs font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/80 py-1.5 px-2 rounded backdrop-blur-sm border border-brand-gold/20">
+            Tennikoit
+          </span>
+</div>
+</div>
+<!-- Sport Item: Track & Field -->
+<div class="group relative rounded-xl overflow-hidden bg-brand-plum border border-brand-gold/20 shadow-md cursor-pointer" onclick="openModal('Track &amp; Field Sprints', 'Speed, relays, and finish-line glory', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNl66iJ8KtuGvf4_JybvWG0QPNpkJCHa_mPncK4GcX1ls2UBLCkTKmFVP81nnx-bi_kh1fSj4U6MUwuobtdOozGKZvCGfY8yoKU1pJR0_8XtOyQMRpnZqplTrnMZ_QYheuUCGNHh9ni3606hCSfvpJNc7uKap2fGJN470ogLJqDSSAFMKd8CycAKKBK_dkbLtJ0P2-7hxLJSFj1JfHah4a4_q6AFP0iY8GbLtF5wicjxwyWPVw8Lwamn_GnhPMS-Ys5w">
+<div class="aspect-[3/4] overflow-hidden relative">
+<img alt="Track &amp; Field Athletics" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIxRSIUM0iJPxTmQ9rI4hIrjnErLJKWFhaeuQ8boN4hjJE5nj3QIZ1NAzTnhENszXPoiFkQjNhv122nyuxtJpRMIwrx-iwOdM8iTmV9LDwp2hFnvNiqrRtbd9mdi3u5qWU2TFnI17XkCHb3IvKtsdEx9EI8Fw7zwMH4AlZcpT4dMmrHsbchm2R_PM8hnx_bo2Hsibve8A_H3mh9bUF9LQTL0Z8MxTwyj3CYBHuVJ-0PE5JyWnf3ZxV">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-90"></div>
+<span class="absolute bottom-3 inset-x-2 text-center text-xs font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/80 py-1.5 px-2 rounded backdrop-blur-sm border border-brand-gold/20">
+            Athletics
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SportsInMotionSection -->
+<!-- BEGIN: BehindTheScenesSection -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16" data-purpose="behind-the-scenes">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-neutral-300/70">
+<div>
+<h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark">Behind the Scenes</h2>
+<p class="text-neutral-500 text-xs sm:text-sm mt-0.5">The dedication, sound checks, green rooms, and heartbeat of the crew.</p>
+</div>
+<span class="hidden sm:inline-block text-xs font-semibold text-brand-wine tracking-wider uppercase bg-brand-gold/10 px-3 py-1.5 rounded-full border border-brand-gold/30">
+        Crew &amp; Backstage
+      </span>
+</div>
+<!-- 4-Column Card Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-shadow group cursor-pointer" onclick="openModal('Green Room Rituals', 'Performers applying final makeup touches before stepping into lights', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMsjtISdlrQbVhQdXzxdXhn1pBoTmA837o8vWPRGW4rIqR1MqoRa9HekzzUZBal7W4LJO_CzZ7CiG5GDpTO8C2RPzb3WIKe8JcdoTqpbHdcetPnBKa4ggee2Vxu2m5AqZ1dJjy5Ig1zer8n5E9X0lb-Y6zTDOaJcZilo-pZ-pb5ByK_DirzEkF2HWBFWME5fu_3cSLmfNFB-Jh1nhh66R04VTWSuZ5lu-ttYvTIIsvUPY-B0B9qKYJy8QHRlUz-47JtA')">
+<div class="h-44 overflow-hidden relative">
+<img alt="Participant getting ready" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XBX6lKfPCNvmJzIiDc8TYMu2AOgqaCNW2SqtIBM6aokBcr6imcAbaJI_25MRKZN2LmbgAsxMdlyWWOlYnNgp9ZlJfNECcw-Auzmj9QZeLjT1rrp9g0_zdHOz57u2RApb3GqIosjCVz9ccZ-qZoJOEfo4MeHZlaHHssF6ilGpOW3uBZ2NaRpofynBohZU04XgTTzS5QMQL1KJVLlzL07vjFxKBinjwgEIIwvSflIIfFoFmcO7lfo0ySPZk">
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[11px] text-brand-gold font-medium">
+            08:30 AM
+          </div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-brand-dark text-sm">Participant Getting Ready</h4>
+<p class="text-neutral-500 text-xs mt-1">Costume fittings &amp; makeup mirror drills.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-shadow group cursor-pointer" onclick="openModal('Control Room &amp; Walkie Talkies', 'Student organizers coordinating event schedules across 5 simultaneous tracks', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRXrPPABKQ9Zbm6oJ51gwcYDi1gKcmaxns8B2fwbzl6ccpru4qKwHpEOX7Sl9N_BHtQiX3eYmdvG3raJbEo1hCpoJ-SFfYxkLNboe9TJTbi37WOFKMAYYvd7UUdXX-9VgM3nnZZDjm3Xbff-1V88avMZlvpWBQrxElinCe3Wb3BeznQ1IkW6OneeoC-jID5DDJ-LVxOOZE6MLa1HK0jssLRXkx4IdMwyGAxJ9jJpxKFbOqO-oaqnsH9XmlB-6qU54mKg')">
+<div class="h-44 overflow-hidden relative">
+<img alt="Organizers radio contact" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABNbwXpKf_jg_fJmKBfIobwS2v4HPr_X-opMjeXYa22xLqKRKgeSmAB7IPGUiVvrx_87luWQXl3YgkyI02xfJXQpLbO8vXxHPZ0RHHzlKLryg2WUgH74kshkaotZ3pPI8NAB4saGKU6OvKxhIz-2N9mK2bxfnQvk3QYvGeaiGKY1yD7-_FnntAZ8GRV1A619Hpzpve1F3w4--J4nWsYTprJ5HreqzBUPt2YWTbKlkl2Mr2TBCSugUw">
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[11px] text-brand-gold font-medium">
+            Radio Track 4
+          </div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-brand-dark text-sm">Organizers Radio Contact</h4>
+<p class="text-neutral-500 text-xs mt-1">Real-time schedule synchronizations.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-shadow group cursor-pointer" onclick="openModal('Stage Rigging &amp; Lighting', 'Audio testing, LED panel calibrations and trusses', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDi4bslnVvk2o-sHfF0P1PjTgxDUvHAZp0CRMeZvXBryEaFwbeMSLhFmhGTYxg8PsQngQrNVMIT3mZpxwwUu3yl1mOXZR4aelWFDUzOIQgVLDB04VGQG7IaoNKzQvpInqO5I9bY0qYeJckARUPDGmxwgOCskCZcEZ0ESpaIiDEgMlcMxRMrHVgCDvjshoSxV9SsG5mHHx9zv7w4YxjvUBP9ZlG0DIu6QI1527yUAHVrj6-6JEN1Q6Ks6QpeLtsIK1brCw')">
+<div class="h-44 overflow-hidden relative">
+<img alt="Stage preparation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbkqhgYPq6a2EVx8LI-Pz2ktbUK0cSPDxvFD2dAipoVVQwnz20JRLh2DUP5TNw1xPTVyJ-zeAeoXwZFKGZHgMlEwzabyUL48K_XgPFO7Fkm4iOLvhr5LsGYUagq8Spmr-KzQCHKmCKEB8h1jfvFdI3eRr7I2Fb9tozzwx9k2JNZwyPzJF7ihe3w4AxEEXRm4NKvXLzWVqMLkQ7gFfI8Sa5UnZL-hVMJrNMdGWbczV9BCwgxszz1zZX">
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[11px] text-brand-gold font-medium">
+            Pre-Show
+          </div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-brand-dark text-sm">Stage Preparation</h4>
+<p class="text-neutral-500 text-xs mt-1">Acoustic balances and light show cues.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-shadow group cursor-pointer" onclick="openModal('Volunteer Huddle', 'Final safety checks and student committee logistics', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCmDdwKGFquZWH_rmA1rO3iuqdXZpIAapbyKS7NikwFXwTXzujLFfHPS48xOUC08Ks8syXl23gFsyFsXIuyTAnb_kgGqQI_RUuFwOlEAXndbRcsMUGak6Vhtge-1nUB3hPIkgpM9za6r9AUu2Hq2XtrvnTkbHvZAh1Zg0rb1JlUiHn_iPO25tzmENlvHhlMWDtciiMuBiQY5qH65XErWg0_Ilu4QzOgc-b995KMg9dB0qqv0die-a0-e1JPOcv930DqA')">
+<div class="h-44 overflow-hidden relative">
+<img alt="Team briefing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABNbwXpKf_jg_fJmKBfIobwS2v4HPr_X-opMjeXYa22xLqKRKgeSmAB7IPGUiVvrx_87luWQXl3YgkyI02xfJXQpLbO8vXxHPZ0RHHzlKLryg2WUgH74kshkaotZ3pPI8NAB4saGKU6OvKxhIz-2N9mK2bxfnQvk3QYvGeaiGKY1yD7-_FnntAZ8GRV1A619Hpzpve1F3w4--J4nWsYTprJ5HreqzBUPt2YWTbKlkl2Mr2TBCSugUw">
+<div class="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[11px] text-brand-gold font-medium">
+            07:00 AM
+          </div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-brand-dark text-sm">Team Briefing</h4>
+<p class="text-neutral-500 text-xs mt-1">200+ student volunteers synchronized.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: BehindTheScenesSection -->
+<!-- BEGIN: PreviousEditionsSection -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 mb-20" data-purpose="previous-editions-archive">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-neutral-300/70">
+<div>
+<h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark">From Previous Editions</h2>
+<p class="text-neutral-500 text-xs sm:text-sm mt-0.5">A nostalgic look at the legacy, former champions, and milestone nights.</p>
+</div>
+<a class="text-xs font-bold text-amber-700 hover:text-brand-dark uppercase tracking-wider flex items-center gap-1" href="#archives">
+        Browse Archive
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+<!-- 4 Archive Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Year 2025 -->
+<div class="bg-white rounded-xl p-3 border border-neutral-200 shadow-sm hover:shadow-md transition-all group">
+<div class="h-36 rounded-lg overflow-hidden bg-neutral-100 relative mb-3">
+<img alt="Colorido 2025 Retrospective" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1Xg6zWZZ0Cww_i7-pPLjbs7kDVZnB5jJbW1UgUj4kKup8hQa7TTqifJElju3_PysyOPns31_Uv6wEu6kq_WZrrozDUcPjdYx3tD3gPanQCVlVLx2bIvd6HI4SQvJEB-yzqrbTQ6_OYaRD0-rcc_vf33lrgyKJKN6RdtvqCbBhPXOuCay2QkKNWtOKpqi1UH8vfcKsPWXQ_x-25-ix14O9LDVbP4VXAKpu-ixSj2IGdDKZZljABN2EXBHOQ">
+<div class="absolute inset-0 bg-brand-dark/30"></div>
+<span class="absolute top-2 left-2 bg-brand-dark text-brand-gold text-[10px] font-bold px-2 py-0.5 rounded">
+            2025 EDITION
+          </span>
+</div>
+<h4 class="font-bold text-neutral-800 text-sm">Key Event Name 2025</h4>
+<p class="text-neutral-500 text-xs mt-0.5">Battle of the Bands &amp; Athletics</p>
+</div>
+<!-- Year 2024 -->
+<div class="bg-white rounded-xl p-3 border border-neutral-200 shadow-sm hover:shadow-md transition-all group">
+<div class="h-36 rounded-lg overflow-hidden bg-neutral-100 relative mb-3">
+<img alt="Colorido 2024 Retrospective" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XeycdbSvUOf03Wgn9AriwBmk62C_2fhBbufUB6_JrPsaEa_gulkaF7Uy7VzaWuheFw5yJ7V71TwJZvpHT4kCvz03tjZluD5RMbvfq-GxzMT9jwdxHHJFO1AjNIGRUDpsdtCIehbKHaWdyctj2tCfsQaLuLjagmcGx5GTv4i85pvnZ-fEedoBTvYqt_pIncBRa_aV8ZqDKJaFHvJm02zGI9oEB7sF01AK2ueD2aTdzac9PPK5gfBMBAEv8">
+<div class="absolute inset-0 bg-brand-dark/30"></div>
+<span class="absolute top-2 left-2 bg-brand-dark text-brand-gold text-[10px] font-bold px-2 py-0.5 rounded">
+            2024 EDITION
+          </span>
+</div>
+<h4 class="font-bold text-neutral-800 text-sm">Key Event Name 2024</h4>
+<p class="text-neutral-500 text-xs mt-0.5">Symphonic Nights &amp; Football Finals</p>
+</div>
+<!-- Year 2023 -->
+<div class="bg-white rounded-xl p-3 border border-neutral-200 shadow-sm hover:shadow-md transition-all group">
+<div class="h-36 rounded-lg overflow-hidden bg-neutral-100 relative mb-3">
+<img alt="Colorido 2023 Retrospective" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD98Fm6TbUhV99m94oL4BnrJHwJIqk0ASz-y71ff_7dkBdLpYfr_Aev7zEMALvmu02MDDxxbbxbI3m0i1AkMj2zlbIdaPz7uoesAsqgp52-cJIVvtlgINnYUD1PHYOykNiBeP4fXCpIrjg4bT9MauJ8EJVNJwWcV0KNU2i3bbb5Aksea5gvwsH_VhLqtYXK5OjFkw3DOXNDvgbmvrQQemBo7qHJf_AD5-Zf1Laxuyf4LmlnBuEfmWXo">
+<div class="absolute inset-0 bg-brand-dark/30"></div>
+<span class="absolute top-2 left-2 bg-brand-dark text-brand-gold text-[10px] font-bold px-2 py-0.5 rounded">
+            2023 EDITION
+          </span>
+</div>
+<h4 class="font-bold text-neutral-800 text-sm">Key Event Name 2023</h4>
+<p class="text-neutral-500 text-xs mt-0.5">Centennial Jubilee Celebrations</p>
+</div>
+<!-- Year 2022 -->
+<div class="bg-white rounded-xl p-3 border border-neutral-200 shadow-sm hover:shadow-md transition-all group">
+<div class="h-36 rounded-lg overflow-hidden bg-neutral-100 relative mb-3">
+<img alt="Colorido 2022 Retrospective" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XBX6lKfPCNvmJzIiDc8TYMu2AOgqaCNW2SqtIBM6aokBcr6imcAbaJI_25MRKZN2LmbgAsxMdlyWWOlYnNgp9ZlJfNECcw-Auzmj9QZeLjT1rrp9g0_zdHOz57u2RApb3GqIosjCVz9ccZ-qZoJOEfo4MeHZlaHHssF6ilGpOW3uBZ2NaRpofynBohZU04XgTTzS5QMQL1KJVLlzL07vjFxKBinjwgEIIwvSflIIfFoFmcO7lfo0ySPZk">
+<div class="absolute inset-0 bg-brand-dark/30"></div>
+<span class="absolute top-2 left-2 bg-brand-dark text-brand-gold text-[10px] font-bold px-2 py-0.5 rounded">
+            2022 EDITION
+          </span>
+</div>
+<h4 class="font-bold text-neutral-800 text-sm">Key Event Name 2022</h4>
+<p class="text-neutral-500 text-xs mt-0.5">Revival Fest Post-Pandemic</p>
+</div>
+</div>
+</section>
+<!-- END: PreviousEditionsSection -->
+<!-- BEGIN: CallToActionRibbon -->
+<section class="bg-gradient-to-r from-brand-dark via-brand-plum to-brand-dark py-12 border-t border-b border-brand-gold/30 text-white" data-purpose="story-cta-banner">
+<div class="max-w-4xl mx-auto px-4 text-center">
+<span class="text-xs uppercase tracking-[0.25em] text-brand-gold font-bold">Unforgettable Memories</span>
+<h3 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mt-2">Every Moment Has a Story.</h3>
+<p class="text-neutral-300 text-sm max-w-xl mx-auto mt-2 mb-6">
+        Explore the performances, competitions, and victories that define COLORIDO. Be part of the spectacle this season.
+      </p>
+<div class="flex flex-wrap items-center justify-center gap-4">
+<a class="px-6 py-2.5 rounded-lg border border-brand-gold text-brand-lightGold hover:bg-brand-gold hover:text-brand-dark text-xs uppercase tracking-widest font-bold transition-all duration-200" href="#events">
+          [ EXPLORE EVENTS ]
+        </a>
+<a class="px-6 py-2.5 rounded-lg bg-gradient-to-r from-brand-gold to-yellow-500 text-brand-dark hover:brightness-105 text-xs uppercase tracking-widest font-bold shadow-md transition-all duration-200" href="#results">
+          [ VIEW RESULTS ]
+        </a>
+</div>
+</div>
+</section>
+<!-- END: CallToActionRibbon -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-[#12051f] text-neutral-400 text-xs pt-12 pb-8 border-t border-brand-gold/15" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-white/10">
+<!-- Col 1: Brand Info -->
+<div class="lg:col-span-2 space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border border-brand-gold/60 flex items-center justify-center bg-brand-wine/50 text-brand-gold">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+</div>
+<span class="font-serif font-bold text-white text-base tracking-wider">COLORIDO 2K26</span>
+</div>
+<p class="text-neutral-400 text-xs max-w-sm leading-relaxed">
+            The premier annual cultural and sporting extravaganza celebrating youth brilliance, cultural diversity, and sporting fortitude.
+          </p>
+<p class="text-[11px] text-neutral-500">© 2026 COLORIDO Fest Committee. All rights reserved.</p>
+</div>
+<!-- Col 2: Quick Links -->
+<div>
+<h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Navigation</h4>
+<ul class="space-y-2">
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#home">Home</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#about">About Festival</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#events">Event Categories</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#schedule">Day Schedule</a></li>
+</ul>
+</div>
+<!-- Col 3: Competitions -->
+<div>
+<h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Fest Sectors</h4>
+<ul class="space-y-2">
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#cultural">Cultural Gala</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#sports">Sports Arenas</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#tekraft">Tekraft Workshops</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#literary">Literary Slams</a></li>
+</ul>
+</div>
+<!-- Col 4: Contacts & Socials -->
+<div>
+<h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Connect</h4>
+<p class="text-neutral-400 text-xs mb-2">Campus Ground, Central Avenue</p>
+<p class="text-neutral-400 text-xs mb-3">info@colorido2k26.org</p>
+<div class="flex items-center gap-3 text-neutral-300">
+<!-- Social Link 1 -->
+<a aria-label="Instagram" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<!-- Social Link 2 -->
+<a aria-label="YouTube" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+<!-- Social Link 3 -->
+<a aria-label="LinkedIn" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors" href="#">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-neutral-500 text-[11px] gap-2">
+<p class="">Built with pride by the Student Festival Design Guild.</p>
+<div class="flex gap-4">
+<a class="hover:underline" href="#">Privacy Policy</a>
+<a class="hover:underline" href="#">Terms of Entry</a>
+<a class="hover:underline" href="#">Media Kit</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- BEGIN: InteractiveModalLightbox -->
+<div aria-labelledby="modalTitle" aria-modal="true" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md items-center justify-center p-4 hidden" id="photoLightbox" role="dialog">
+<div class="relative max-w-4xl w-full bg-[#18092a] border border-brand-gold/40 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+<!-- Modal Header Bar -->
+<div class="px-6 py-4 border-b border-brand-gold/20 flex items-center justify-between bg-[#12051f]">
+<div>
+<span class="text-[10px] font-bold tracking-[0.2em] text-brand-gold uppercase">COLORIDO 2K26 High Res View</span>
+<h3 class="text-white font-serif font-bold text-lg" id="modalTitle">Music - Classical &amp; Fusion</h3>
+</div>
+<button aria-label="Close Lightbox" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-dark text-white flex items-center justify-center transition-colors focus:outline-none" onclick="closeModal()">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Modal Description & Navigation Controls -->
+<div class="p-4 sm:p-6 flex-1 flex items-center justify-center overflow-hidden bg-black/40">
+<img alt="Expanded Media View" class="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-lg" id="modalImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRVGo44JLHaJAYmAX5SVf1CcffurvqR4_4JkeP22YjA-1fXtJsEmZN6i-BKc2HnAuPM3Q6rs1jGiepCO2ektNz4zc2rbeuE3JJZvspmQ6SvjHvDliasRS3bmpzOe4hMXUDi6FmuRMz6bOiEGgTfBclyh5sqfTo2sXW4KXGguGTnrEjCn4CzfGO0gVV837hnmsa97pGVYhR5f2gDvluTruhCK5uh_bk9-a9xxlHIVgyoQjxHBuRcgP7LGWMYZf4L733XQ">
+</div>
+<!-- Modal Description & Navigation Controls -->
+<div class="px-6 py-4 bg-[#12051f] border-t border-brand-gold/20 flex items-center justify-between">
+<p class="text-xs sm:text-sm text-neutral-300" id="modalDesc">Vocal acoustics and traditional sitar notes</p>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-white text-xs font-semibold">Prev</button>
+<span class="text-xs text-brand-gold px-2">1 of 18</span>
+<button class="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-white text-xs font-semibold">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: InteractiveModalLightbox -->
+<!-- JavaScript Interactions -->
+<script data-purpose="hero-carousel-handler">
+    (function initHeroCarousel() {
+      const carousel = document.getElementById('heroCarousel');
+      if (!carousel) return;
+
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      const prevBtn = document.getElementById('carouselPrevBtn');
+      const nextBtn = document.getElementById('carouselNextBtn');
+      let currentSlide = 0;
+      let autoplayTimer = null;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        currentSlide = (index + totalSlides) % totalSlides;
+
+        slides.forEach((slide, i) => {
+          if (i === currentSlide) {
+            slide.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
+            slide.classList.add('opacity-100', 'z-10');
+          } else {
+            slide.classList.remove('opacity-100', 'z-10');
+            slide.classList.add('opacity-0', 'pointer-events-none', 'z-0');
+          }
+        });
+
+        dots.forEach((dot, i) => {
+          if (i === currentSlide) {
+            dot.className = 'carousel-dot transition-all duration-300 w-7 h-2 rounded-full bg-brand-gold cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-gold';
+          } else {
+            dot.className = 'carousel-dot transition-all duration-300 w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-gold';
+          }
+        });
+      }
+
+      function nextSlide() {
+        updateSlide(currentSlide + 1);
+      }
+
+      function prevSlide() {
+        updateSlide(currentSlide - 1);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(nextSlide, 5000);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          prevSlide();
+          startAutoplay();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          nextSlide();
+          startAutoplay();
+        });
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetIndex = parseInt(dot.getAttribute('data-slide-to'), 10);
+          if (!isNaN(targetIndex)) {
+            updateSlide(targetIndex);
+            startAutoplay();
+          }
+        });
+      });
+
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', startAutoplay);
+
+      // Keyboard arrow navigation when hero area is focused or active
+      window.addEventListener('keydown', (e) => {
+        const rect = carousel.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isInViewport) {
+          if (e.key === 'ArrowLeft') {
+            prevSlide();
+            startAutoplay();
+          } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            startAutoplay();
+          }
+        }
+      });
+
+      startAutoplay();
+    })();
+  </script>
+<script data-purpose="mobile-menu-toggle">
+    // Drawer menu behavior
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileDrawer.classList.contains('hidden');
+        if (isHidden) {
+          mobileDrawer.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileDrawer.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+<script data-purpose="filter-and-lightbox-handler">
+    // Category pill click active status toggle
+    const filterPills = document.querySelectorAll('.filter-pill');
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('bg-brand-dark', 'text-white', 'ring-2', 'ring-brand-gold/30', 'active');
+          p.classList.add('bg-white/80', 'text-neutral-700', 'border', 'border-neutral-200');
+        });
+        pill.classList.remove('bg-white/80', 'text-neutral-700', 'border', 'border-neutral-200');
+        pill.classList.add('bg-brand-dark', 'text-white', 'ring-2', 'ring-brand-gold/30', 'active');
+      });
+    });
+
+    // Lightbox modal toggle functions
+    const modal = document.getElementById('photoLightbox');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalImage = document.getElementById('modalImage');
+
+    function openModal(title, desc, src) {
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalDesc) modalDesc.textContent = desc;
+      if (modalImage && src) modalImage.src = src;
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // Close on click backdrop
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+
+
+</body></html>

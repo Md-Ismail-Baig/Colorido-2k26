@@ -1,0 +1,1967 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>COLORIDO 2K26 — Admin Management Console</title>
+<!-- Tailwind CSS CDN with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              deep: '#18092A',
+              sidebar: '#1E0C38',
+              cardDark: '#2B1055',
+              surface: '#240F44',
+              accent: '#D97706',
+              amberLight: '#FEF3C7',
+              magenta: '#BE185D',
+              magentaDark: '#9D174D',
+              magentaLight: '#FCE7F3'
+            },
+            status: {
+              approved: '#059669',
+              pending: '#D97706',
+              rejected: '#DC2626'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom CSS for specific component overrides & scrollbars -->
+<style data-purpose="custom-layout-styles">
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    /* Transition animations */
+    .view-panel {
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+    .view-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Chart Gradient styling */
+    .chart-poly-cultural {
+      fill: url(#culturalGradient);
+      opacity: 0.85;
+    }
+    .chart-poly-sports {
+      fill: url(#sportsGradient);
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body class="bg-[#F8F9FC] text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-magenta selection:text-white">
+<!-- BEGIN: ApplicationLayout -->
+<div class="flex-1 flex overflow-hidden min-h-screen">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-64 bg-brand-deep border-r border-purple-950/60 flex flex-col justify-between shrink-0 z-40 transition-transform duration-300 fixed inset-y-0 left-0 lg:static lg:translate-x-0 -translate-x-full" id="sidebar">
+<!-- Top Branding Section -->
+<div>
+<div class="h-16 px-6 flex items-center justify-between border-b border-purple-900/40">
+<div class="flex items-center space-x-3">
+
+<div>
+<span class="font-extrabold tracking-wide text-white text-base">COLORIDO <span class="text-amber-400">2K26</span></span>
+<span class="block text-[10px] uppercase font-semibold text-purple-300 tracking-wider">Festival Admin</span>
+</div>
+</div>
+<!-- Mobile Close Button -->
+<button class="lg:hidden text-purple-300 hover:text-white focus:outline-none" onclick="toggleMobileSidebar()">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Navigation Links Container -->
+<nav class="p-3 space-y-1 overflow-y-auto max-h-[calc(100vh-210px)]" data-purpose="sidebar-navigation">
+<!-- 1. Dashboard -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors bg-purple-900/70 text-white shadow-sm" data-nav="dashboard" onclick="switchView('dashboard')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Dashboard</span>
+</div>
+</button>
+<!-- 2. Events -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="events" onclick="switchView('events')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Events</span>
+</div>
+<span class="text-xs bg-purple-800 text-purple-200 font-semibold px-2 py-0.5 rounded-full">16</span>
+</button>
+<!-- 3. Registrations -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="registrations" onclick="switchView('registrations')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Registrations</span>
+</div>
+<span class="text-xs bg-brand-magenta text-white font-semibold px-2 py-0.5 rounded-full">842</span>
+</button>
+<!-- 4. Participants -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="participants" onclick="switchView('participants')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Participants</span>
+</div>
+</button>
+<!-- 5. Teams -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="teams" onclick="switchView('teams')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Teams</span>
+</div>
+</button>
+<!-- 6. Schedule -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="schedule" onclick="switchView('schedule')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Schedule</span>
+</div>
+</button>
+<!-- 7. Announcements -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="announcements" onclick="switchView('announcements')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Announcements</span>
+</div>
+<span class="text-xs bg-amber-500 text-purple-950 font-bold px-1.5 py-0.5 rounded-md">8</span>
+</button>
+<!-- 8. Results -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="results" onclick="switchView('results')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Results</span>
+</div>
+</button>
+<!-- 9. Gallery -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="gallery" onclick="switchView('gallery')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Gallery</span>
+</div>
+</button>
+<!-- 10. Sponsors -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="sponsors" onclick="switchView('sponsors')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Sponsors</span>
+</div>
+</button>
+<!-- 11. Contact Messages -->
+<button class="nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors hover:text-white text-purple-200 hover:bg-purple-900/40" data-nav="contacts" onclick="switchView('contacts')">
+<div class="flex items-center space-x-3">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Contact Messages</span>
+</div>
+<span class="text-xs bg-rose-600 text-white font-bold px-1.5 py-0.5 rounded-full">2</span>
+</button>
+</nav>
+</div>
+<!-- Bottom System Actions -->
+<div class="p-3 border-t border-purple-900/40 space-y-1 bg-brand-surface/40">
+<!-- Supabase Connection Badge -->
+<div class="px-3 py-2 flex items-center justify-between text-xs text-purple-300">
+<span class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="">Supabase DB</span>
+</span>
+<span class="text-[10px] bg-emerald-950 text-emerald-300 font-mono px-1.5 py-0.5 rounded border border-emerald-800">Connected</span>
+</div>
+<!-- Settings -->
+<button class="nav-item w-full flex items-center space-x-3 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors text-purple-200 hover:bg-purple-900/40 hover:text-white" data-nav="settings" onclick="switchView('settings')">
+<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Settings</span>
+</button>
+<!-- Logout button -->
+<button class="w-full flex items-center space-x-3 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors text-rose-300 hover:bg-rose-950/40 hover:text-rose-100" onclick="openLogoutModal()">
+<svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- Mobile Backdrop -->
+<div class="fixed inset-0 bg-slate-900/60 z-30 hidden lg:hidden" id="mobileBackdrop" onclick="toggleMobileSidebar()"></div>
+<!-- BEGIN: MainContentWrapper -->
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- BEGIN: GlobalTopbar -->
+<header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-20 px-4 sm:px-6 flex items-center justify-between shadow-xs">
+<div class="flex items-center space-x-3 sm:space-x-4">
+<!-- Mobile Menu trigger -->
+<button class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none" onclick="toggleMobileSidebar()">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<!-- Dynamic Breadcrumbs -->
+<div class="flex items-center text-sm font-medium">
+<span class="text-slate-400">Admin</span>
+<span class="mx-2 text-slate-300">/</span>
+<span class="text-purple-950 font-semibold" id="breadcrumbCurrent">Dashboard Overview</span>
+</div>
+</div>
+<!-- Right Section: Search & Actions -->
+<div class="flex items-center space-x-3 sm:space-x-4">
+<!-- Top Search with Cmd+K hint -->
+<div class="relative hidden md:block w-64 lg:w-72">
+<input class="w-full pl-9 pr-14 py-1.5 text-xs bg-slate-100 border border-transparent rounded-lg focus:bg-white focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-slate-700 placeholder-slate-400" id="globalSearchInput" onkeyup="handleGlobalSearch(event)" placeholder="Search events, roll no, teams..." type="text">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center pointer-events-none">
+<kbd class="text-[10px] font-mono bg-white border border-slate-200 text-slate-400 px-1.5 py-0.5 rounded">⌘K</kbd>
+</div>
+</div>
+<!-- Quick Action: Create Event modal trigger from topbar -->
+<button class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-magenta hover:bg-brand-magentaDark text-white shadow-sm transition-all transform active:scale-95" onclick="openModal('createEventModal')">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Create Event</span>
+</button>
+<!-- Notification Dropdown Pill -->
+<div class="relative">
+<button class="p-2 text-slate-500 hover:text-purple-900 rounded-lg hover:bg-slate-100 relative focus:outline-none transition-colors" onclick="showToast('No unread notifications at this time.')">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-pink-600 rounded-full ring-2 ring-white"></span>
+</button>
+</div>
+<!-- Admin Profile Pill -->
+<div class="flex items-center space-x-2 pl-2 border-l border-slate-200">
+<button class="flex items-center space-x-2 p-1 rounded-lg hover:bg-slate-100 transition-colors" onclick="switchView('settings')">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-800 to-indigo-900 text-white font-bold text-xs flex items-center justify-center ring-2 ring-amber-400">
+                AP
+              </div>
+<div class="hidden xl:block text-left text-xs">
+<p class="font-semibold text-purple-950 leading-tight">Admin Profile</p>
+<p class="text-[10px] text-slate-400">Super Admin (RBAC)</p>
+</div>
+</button>
+</div>
+</div>
+</header>
+<!-- END: GlobalTopbar -->
+<!-- BEGIN: ViewsHostArea -->
+<main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+<!-- ============================================== -->
+<!-- VIEW 1: DASHBOARD OVERVIEW                     -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewDashboard -->
+<section class="view-panel space-y-6 active" id="view-dashboard">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Dashboard Overview</h1>
+<p class="text-xs sm:text-sm text-slate-500">Live analytics, student registrations, and festival scheduling for COLORIDO 2K26.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-semibold bg-brand-magenta hover:bg-brand-magentaDark text-white shadow-sm transition-all transform active:scale-95" onclick="openModal('createEventModal')">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Create Event</span>
+</button>
+</div>
+</div>
+<!-- 6 Stat Cards Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+<!-- Card 1: Total Registrations -->
+<div class="bg-brand-cardDark text-white p-4 rounded-xl shadow-md border border-purple-900/60 relative overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-4 -bottom-4 w-16 h-16 bg-purple-700/20 rounded-full blur-xl pointer-events-none"></div>
+<span class="text-xs font-semibold text-purple-200">Total Registrations</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="text-2xl font-black tracking-tight text-white font-mono">842</span>
+<span class="text-[11px] font-bold text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded flex items-center space-x-0.5">
+<span class="">↑</span><span class="">12%</span>
+</span>
+</div>
+</div>
+<!-- Card 2: Cultural Registrations -->
+<div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-between hover:border-purple-300 transition-colors">
+<span class="text-xs font-semibold text-slate-500">Cultural Registrations</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="text-2xl font-black text-purple-950 font-mono">436</span>
+<span class="text-[10px] text-pink-600 font-semibold bg-pink-50 px-1.5 py-0.5 rounded">51.8%</span>
+</div>
+</div>
+<!-- Card 3: Sports Registrations -->
+<div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-between hover:border-purple-300 transition-colors">
+<span class="text-xs font-semibold text-slate-500">Sports Registrations</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="text-2xl font-black text-purple-950 font-mono">406</span>
+<span class="text-[10px] text-amber-600 font-semibold bg-amber-50 px-1.5 py-0.5 rounded">48.2%</span>
+</div>
+</div>
+<!-- Card 4: Total Events -->
+<div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-between hover:border-purple-300 transition-colors">
+<span class="text-xs font-semibold text-slate-500">Total Events</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="text-2xl font-black text-purple-950 font-mono">16</span>
+<div class="flex items-center space-x-1 text-[11px]">
+<span class="text-pink-600 font-bold" title="Cultural: 10">10🎨</span>
+<span class="text-amber-600 font-bold" title="Sports: 6">6🏆</span>
+</div>
+</div>
+</div>
+<!-- Card 5: Published Results -->
+<div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-between hover:border-purple-300 transition-colors">
+<span class="text-xs font-semibold text-slate-500">Published Results</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="text-2xl font-black text-slate-400 font-mono">0</span>
+<span class="text-[10px] text-slate-500 font-semibold bg-slate-100 px-1.5 py-0.5 rounded">Upcoming</span>
+</div>
+</div>
+<!-- Card 6: Announcements -->
+<div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200 flex flex-col justify-between hover:border-purple-300 transition-colors">
+<span class="text-xs font-semibold text-slate-500">Announcements</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="text-2xl font-black text-purple-950 font-mono">8</span>
+<span class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">Active</span>
+</div>
+</div>
+</div>
+<!-- 2 Column Analytics & Quick Ops Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Area Chart Card (7 cols) -->
+<div class="lg:col-span-5 bg-white p-5 rounded-2xl shadow-xs border border-slate-200 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="font-bold text-purple-950 text-sm">Registration Activity over Time</h3>
+<p class="text-xs text-slate-400">Cumulative Cultural &amp; Sports enrollment pacing</p>
+</div>
+<div class="flex items-center space-x-3 text-xs">
+<div class="flex items-center space-x-1.5">
+<span class="w-3 h-3 rounded-full bg-brand-magenta"></span>
+<span class="text-slate-600 font-medium">Cultural</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="w-3 h-3 rounded-full bg-brand-deep"></span>
+<span class="text-slate-600 font-medium">Sports</span>
+</div>
+</div>
+</div>
+<!-- SVG Area Chart -->
+<div class="w-full relative pt-2">
+<svg class="w-full h-44 overflow-visible" preserveAspectRatio="none" viewBox="0 0 450 200">
+<defs>
+<linearGradient id="sportsGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#18092A" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#18092A" stop-opacity="0.25"></stop>
+</linearGradient>
+<linearGradient id="culturalGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#BE185D" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#BE185D" stop-opacity="0.15"></stop>
+</linearGradient>
+</defs>
+<!-- Chart Grid lines -->
+<line stroke="#F1F5F9" stroke-width="1" x1="30" x2="440" y1="20" y2="20"></line>
+<line stroke="#F1F5F9" stroke-width="1" x1="30" x2="440" y1="70" y2="70"></line>
+<line stroke="#F1F5F9" stroke-width="1" x1="30" x2="440" y1="120" y2="120"></line>
+<line stroke="#E2E8F0" stroke-width="1.5" x1="30" x2="440" y1="170" y2="170"></line>
+<!-- Y-Axis labels -->
+<text class="text-[10px] fill-slate-400 font-mono" x="5" y="24">250</text>
+<text class="text-[10px] fill-slate-400 font-mono" x="5" y="74">150</text>
+<text class="text-[10px] fill-slate-400 font-mono" x="5" y="124">50</text>
+<text class="text-[10px] fill-slate-400 font-mono" x="15" y="174">0</text>
+<!-- Deep Sports Area (Back) -->
+<path class="chart-poly-sports" d="M 30,170 C 60,110 80,120 120,150 C 160,120 190,60 230,110 C 270,130 300,50 340,80 C 380,60 410,30 440,10 L 440,170 Z"></path>
+<!-- Magenta Cultural Area (Front) -->
+<path class="chart-poly-cultural" d="M 30,170 C 60,80 90,130 130,155 C 170,140 200,90 240,120 C 280,135 320,95 360,90 C 400,85 420,50 440,30 L 440,170 Z"></path>
+</svg>
+<!-- X-Axis Days Indicator -->
+<div class="flex justify-between pl-8 pr-1 pt-2 text-[10px] font-semibold text-slate-400 tracking-wider">
+<span class="">Day 1</span>
+<span class="">Day 2</span>
+<span class="">Day 3</span>
+<span class="">Day 4</span>
+<span class="">Day 5</span>
+<span class="">Day 6</span>
+<span class="">Day 7</span>
+</div>
+</div>
+</div>
+<!-- Recent Registrations Preview Table (7 cols) -->
+<div class="lg:col-span-7 bg-white p-5 rounded-2xl shadow-xs border border-slate-200 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<div>
+<h3 class="font-bold text-purple-950 text-sm">Recent Registrations</h3>
+<p class="text-xs text-slate-400">Latest students enrolled across institutions</p>
+</div>
+<button class="px-3 py-1 bg-amber-500 hover:bg-amber-600 text-purple-950 font-bold text-xs rounded-lg transition-colors shadow-xs" onclick="switchView('registrations')">
+                  View All
+                </button>
+</div>
+<!-- Compact Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap">
+<thead class="bg-amber-50/70 text-slate-600 font-semibold border-b border-amber-100">
+<tr>
+<th class="py-2.5 px-3">Reg ID</th>
+<th class="py-2.5 px-3">Participant</th>
+<th class="py-2.5 px-3">Roll Number</th>
+<th class="py-2.5 px-3">College</th>
+<th class="py-2.5 px-3">Event</th>
+<th class="py-2.5 px-3 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-slate-600">#801001</td>
+<td class="py-2.5 px-3 font-medium text-purple-950">Aarav Sharma</td>
+<td class="py-2.5 px-3 font-mono font-bold text-purple-700 bg-purple-50/80 px-2 py-0.5 rounded w-max">Y24CS187</td>
+<td class="py-2.5 px-3 text-slate-600">SRM University</td>
+<td class="py-2.5 px-3 text-slate-700">Classical Dance Solo</td>
+<td class="py-2.5 px-3 text-center">
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-emerald-100 text-emerald-800">Approved</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-slate-600">#801002</td>
+<td class="py-2.5 px-3 font-medium text-purple-950">Hansika Hanslama</td>
+<td class="py-2.5 px-3 font-mono font-bold text-purple-700 bg-purple-50/80 px-2 py-0.5 rounded w-max">Y24EC204</td>
+<td class="py-2.5 px-3 text-slate-600">Vellore Institute</td>
+<td class="py-2.5 px-3 text-slate-700">Classical Dance Solo</td>
+<td class="py-2.5 px-3 text-center">
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-amber-100 text-amber-800">Pending</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-slate-600">#801003</td>
+<td class="py-2.5 px-3 font-medium text-purple-950">Rohan Verma</td>
+<td class="py-2.5 px-3 font-mono font-bold text-purple-700 bg-purple-50/80 px-2 py-0.5 rounded w-max">Y24IT105</td>
+<td class="py-2.5 px-3 text-slate-600">Vellore Institute</td>
+<td class="py-2.5 px-3 text-slate-700">Music Solo (Vocal)</td>
+<td class="py-2.5 px-3 text-center">
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-emerald-100 text-emerald-800">Approved</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-slate-600">#801004</td>
+<td class="py-2.5 px-3 font-medium text-purple-950">Devendra Reddy</td>
+<td class="py-2.5 px-3 font-mono font-bold text-purple-700 bg-purple-50/80 px-2 py-0.5 rounded w-max">Y23ME044</td>
+<td class="py-2.5 px-3 text-slate-600">Vellore Institute</td>
+<td class="py-2.5 px-3 text-slate-700">Basketball (Boys)</td>
+<td class="py-2.5 px-3 text-center">
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-amber-100 text-amber-800">Pending</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-3 font-mono font-medium text-slate-600">#801005</td>
+<td class="py-2.5 px-3 font-medium text-purple-950">Sneha Kulkarni</td>
+<td class="py-2.5 px-3 font-mono font-bold text-purple-700 bg-purple-50/80 px-2 py-0.5 rounded w-max">Y24EE122</td>
+<td class="py-2.5 px-3 text-slate-600">Local Institute</td>
+<td class="py-2.5 px-3 text-slate-700">Fine Arts - Painting</td>
+<td class="py-2.5 px-3 text-center">
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-rose-100 text-rose-800">Rejected</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Upcoming Events Quick Row -->
+<div class="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<h3 class="font-bold text-purple-950 text-sm">Upcoming Schedule Snapshot</h3>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-3 py-1.5 bg-brand-magenta hover:bg-brand-magentaDark text-white text-xs font-semibold rounded-lg transition-colors" onclick="openModal('createEventModal')">
+                  Create Event
+                </button>
+<button class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-purple-950 text-xs font-bold rounded-lg transition-colors" onclick="switchView('schedule')">
+                  View All
+                </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap">
+<thead class="bg-amber-50/80 text-slate-600 font-semibold border-b border-amber-100">
+<tr>
+<th class="py-3 px-4">Event Name</th>
+<th class="py-3 px-4">Category</th>
+<th class="py-3 px-4">Date</th>
+<th class="py-3 px-4">Time</th>
+<th class="py-3 px-4">Venue</th>
+<th class="py-3 px-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-bold text-purple-950">Classical Dance Solo</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-pink-50 text-pink-700 font-medium rounded-full text-[10px]">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600 font-mono">28 Dec 2026</td>
+<td class="py-3 px-4 text-slate-600 font-mono">09:00 AM</td>
+<td class="py-3 px-4 text-slate-700">SRM Main Auditorium</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded">Confirmed</span></td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-bold text-purple-950">Basketball (Boys) Championship</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-amber-50 text-amber-700 font-medium rounded-full text-[10px]">Sports</span></td>
+<td class="py-3 px-4 text-slate-600 font-mono">28 Dec 2026</td>
+<td class="py-3 px-4 text-slate-600 font-mono">10:30 AM</td>
+<td class="py-3 px-4 text-slate-700">SRM Indoor Sports Arena</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded">Confirmed</span></td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-bold text-purple-950">Tekraft (Tech Challenge)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-pink-50 text-pink-700 font-medium rounded-full text-[10px]">Cultural / Tech</span></td>
+<td class="py-3 px-4 text-slate-600 font-mono">28 Dec 2026</td>
+<td class="py-3 px-4 text-slate-600 font-mono">01:30 PM</td>
+<td class="py-3 px-4 text-slate-700">Innovation Center Lab 3</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded">Venue Assigned</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: ViewDashboard -->
+<!-- ============================================== -->
+<!-- VIEW 2: EVENTS MANAGEMENT                     -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewEvents -->
+<section class="view-panel space-y-6" id="view-events">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Events Management</h1>
+<p class="text-xs sm:text-sm text-slate-500">Configure all 16 Cultural and Sports events, venues, registration rules, and categories.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-semibold bg-brand-magenta hover:bg-brand-magentaDark text-white shadow-sm transition-all" onclick="openModal('createEventModal')">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">+ Create Event</span>
+</button>
+</div>
+</div>
+<!-- Filter pill tabs -->
+<div class="flex items-center justify-between border-b border-slate-200 pb-3">
+<div class="flex items-center space-x-2">
+<button class="px-3 py-1.5 text-xs font-bold rounded-lg bg-purple-950 text-white" id="btnEventAll" onclick="filterEvents('all')">All (16)</button>
+<button class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200" id="btnEventCult" onclick="filterEvents('Cultural')">Cultural (10)</button>
+<button class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200" id="btnEventSport" onclick="filterEvents('Sports')">Sports (6)</button>
+</div>
+<span class="text-xs text-slate-400">Total 16 Live Competitions</span>
+</div>
+<!-- Complete Events Table with 16 Documented Events -->
+<div class="bg-white rounded-2xl shadow-xs border border-slate-200 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap" id="eventsMasterTable">
+<thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Event Code</th>
+<th class="py-3 px-4">Event Title</th>
+<th class="py-3 px-4">Category</th>
+<th class="py-3 px-4">Format</th>
+<th class="py-3 px-4">Team Limit</th>
+<th class="py-3 px-4">Registrations</th>
+<th class="py-3 px-4">Venue</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100" id="eventsTableBody">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-01</td>
+<td class="py-3 px-4 font-bold text-purple-950">Fine Arts &amp; Painting</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Solo (Canvas/Oil)</td>
+<td class="py-3 px-4 font-mono">1 Participant</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">64</td>
+<td class="py-3 px-4 text-slate-600">Art Studio Hall A</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Fine Arts')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-02</td>
+<td class="py-3 px-4 font-bold text-purple-950">Music Solo (Vocal &amp; Western)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Solo</td>
+<td class="py-3 px-4 font-mono">1 Participant</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">52</td>
+<td class="py-3 px-4 text-slate-600">SRM Mini Theater</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Music Solo')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-03</td>
+<td class="py-3 px-4 font-bold text-purple-950">Music Group (Battle of Bands)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Group Band</td>
+<td class="py-3 px-4 font-mono">4 - 8 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">14 Teams</td>
+<td class="py-3 px-4 text-slate-600">Open Air Amphitheatre</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Battle of Bands')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-04</td>
+<td class="py-3 px-4 font-bold text-purple-950">Classical Dance Solo</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Solo (Classical)</td>
+<td class="py-3 px-4 font-mono">1 Participant</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">38</td>
+<td class="py-3 px-4 text-slate-600">Main Auditorium Stage</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Classical Solo')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-05</td>
+<td class="py-3 px-4 font-bold text-purple-950">Dance Group (Western / Folk)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Group Crew</td>
+<td class="py-3 px-4 font-mono">6 - 16 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">22 Teams</td>
+<td class="py-3 px-4 text-slate-600">Main Auditorium Stage</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Dance Group')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-06</td>
+<td class="py-3 px-4 font-bold text-purple-950">Choreoday (Theme Dance)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Mega Group</td>
+<td class="py-3 px-4 font-mono">10 - 25 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">11 Teams</td>
+<td class="py-3 px-4 text-slate-600">Grand Lawn Pavilion</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Choreoday')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-07</td>
+<td class="py-3 px-4 font-bold text-purple-950">Dramatics &amp; Street Play (Nukkad)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Skit / Street Play</td>
+<td class="py-3 px-4 font-mono">8 - 15 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">9 Teams</td>
+<td class="py-3 px-4 text-slate-600">Central Quadrangle</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Dramatics')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-08</td>
+<td class="py-3 px-4 font-bold text-purple-950">Fashion Show (Runway Vogue)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Team Ramp Walk</td>
+<td class="py-3 px-4 font-mono">10 - 20 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">8 Teams</td>
+<td class="py-3 px-4 text-slate-600">Main Auditorium Stage</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Fashion Show')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 9 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-09</td>
+<td class="py-3 px-4 font-bold text-purple-950">Tekraft (Tech Design &amp; Art)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Solo / Pair</td>
+<td class="py-3 px-4 font-mono">1 - 2 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">48</td>
+<td class="py-3 px-4 text-slate-600">Innovation Center</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Tekraft')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 10 -->
+<tr class="hover:bg-slate-50" data-category="Cultural">
+<td class="py-3 px-4 font-mono font-bold text-purple-700">CUL-10</td>
+<td class="py-3 px-4 font-bold text-purple-950">Literary &amp; Debate Championship</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-pink-800">Cultural</span></td>
+<td class="py-3 px-4 text-slate-600">Solo / Trio</td>
+<td class="py-3 px-4 font-mono">1 - 3 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">75</td>
+<td class="py-3 px-4 text-slate-600">Seminar Hall 2</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Literary')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 11 (SPORTS) -->
+<tr class="hover:bg-slate-50" data-category="Sports">
+<td class="py-3 px-4 font-mono font-bold text-amber-700">SPT-01</td>
+<td class="py-3 px-4 font-bold text-purple-950">Basketball (Boys)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sports</span></td>
+<td class="py-3 px-4 text-slate-600">Tournament Team</td>
+<td class="py-3 px-4 font-mono">5 + 5 Substitutes</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">16 Teams</td>
+<td class="py-3 px-4 text-slate-600">Indoor Arena Court 1</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Basketball')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 12 (SPORTS) -->
+<tr class="hover:bg-slate-50" data-category="Sports">
+<td class="py-3 px-4 font-mono font-bold text-amber-700">SPT-02</td>
+<td class="py-3 px-4 font-bold text-purple-950">Basketball (Girls)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sports</span></td>
+<td class="py-3 px-4 text-slate-600">Tournament Team</td>
+<td class="py-3 px-4 font-mono">5 + 5 Substitutes</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">12 Teams</td>
+<td class="py-3 px-4 text-slate-600">Indoor Arena Court 2</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Basketball (Girls)')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 13 (SPORTS) -->
+<tr class="hover:bg-slate-50" data-category="Sports">
+<td class="py-3 px-4 font-mono font-bold text-amber-700">SPT-03</td>
+<td class="py-3 px-4 font-bold text-purple-950">Volleyball (Boys)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sports</span></td>
+<td class="py-3 px-4 text-slate-600">Team</td>
+<td class="py-3 px-4 font-mono">6 + 6 Substitutes</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">18 Teams</td>
+<td class="py-3 px-4 text-slate-600">Sports Complex Ground</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Volleyball')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 14 (SPORTS) -->
+<tr class="hover:bg-slate-50" data-category="Sports">
+<td class="py-3 px-4 font-mono font-bold text-amber-700">SPT-04</td>
+<td class="py-3 px-4 font-bold text-purple-950">Table Tennis (Men &amp; Women)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sports</span></td>
+<td class="py-3 px-4 text-slate-600">Singles &amp; Doubles</td>
+<td class="py-3 px-4 font-mono">1 - 2 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">42</td>
+<td class="py-3 px-4 text-slate-600">Recreation Center</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Table Tennis')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 15 (SPORTS) -->
+<tr class="hover:bg-slate-50" data-category="Sports">
+<td class="py-3 px-4 font-mono font-bold text-amber-700">SPT-05</td>
+<td class="py-3 px-4 font-bold text-purple-950">Throwball (Girls)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sports</span></td>
+<td class="py-3 px-4 text-slate-600">Team</td>
+<td class="py-3 px-4 font-mono">7 + 5 Substitutes</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">10 Teams</td>
+<td class="py-3 px-4 text-slate-600">Outdoor Court 3</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing Throwball')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+<!-- Row 16 (SPORTS) -->
+<tr class="hover:bg-slate-50" data-category="Sports">
+<td class="py-3 px-4 font-mono font-bold text-amber-700">SPT-06</td>
+<td class="py-3 px-4 font-bold text-purple-950">TenniKoit (Women Doubles)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sports</span></td>
+<td class="py-3 px-4 text-slate-600">Doubles Match</td>
+<td class="py-3 px-4 font-mono">2 Members</td>
+<td class="py-3 px-4 font-bold text-slate-800 font-mono">16 Pairs</td>
+<td class="py-3 px-4 text-slate-600">Outdoor Court 1</td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="p-1 hover:text-purple-700" onclick="showToast('Viewing TenniKoit')">👁</button>
+<button class="p-1 hover:text-amber-600" onclick="showToast('Edit modal opened')">✎</button>
+<button class="p-1 hover:text-rose-600" onclick="showToast('Item deleted successfully', 'rose')">✕</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: ViewEvents -->
+<!-- ============================================== -->
+<!-- VIEW 3: REGISTRATIONS MANAGEMENT               -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewRegistrations -->
+<section class="view-panel space-y-6" id="view-registrations">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Registrations Management</h1>
+<p class="text-xs sm:text-sm text-slate-500">Review student approvals, verify roll numbers, and download verification records.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="inline-flex items-center space-x-2 px-3 py-2 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-all" onclick="exportCSV()">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Status Pill Metrics -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-white p-3.5 rounded-xl border border-slate-200">
+<p class="text-slate-400 text-xs font-medium">Total Received</p>
+<p class="text-xl font-black text-purple-950 font-mono mt-1">842</p>
+</div>
+<div class="bg-white p-3.5 rounded-xl border border-slate-200">
+<p class="text-amber-600 text-xs font-medium">Pending Review</p>
+<p class="text-xl font-black text-amber-600 font-mono mt-1" id="pendingCount">142</p>
+</div>
+<div class="bg-white p-3.5 rounded-xl border border-slate-200">
+<p class="text-emerald-600 text-xs font-medium">Approved</p>
+<p class="text-xl font-black text-emerald-600 font-mono mt-1" id="approvedCount">680</p>
+</div>
+<div class="bg-white p-3.5 rounded-xl border border-slate-200">
+<p class="text-rose-600 text-xs font-medium">Rejected</p>
+<p class="text-xl font-black text-rose-600 font-mono mt-1" id="rejectedCount">20</p>
+</div>
+</div>
+<!-- Filter & Search Bar -->
+<div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="flex-1 max-w-sm relative">
+<input class="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border-slate-200 focus:border-purple-500 focus:ring-purple-500" id="regFilterInput" onkeyup="filterRegTable()" placeholder="Search by name, roll no, college..." type="text">
+<span class="absolute left-2.5 top-2 text-slate-400">🔍</span>
+</div>
+<div class="flex items-center space-x-2">
+<select class="text-xs rounded-lg border-slate-200 py-1.5 focus:border-purple-500" id="regStatusFilter" onchange="filterRegTable()">
+<option value="">All Statuses</option>
+<option value="Approved">Approved</option>
+<option value="Pending">Pending</option>
+<option value="Rejected">Rejected</option>
+</select>
+<select class="text-xs rounded-lg border-slate-200 py-1.5 focus:border-purple-500" id="regEventFilter" onchange="filterRegTable()">
+<option value="">All Events</option>
+<option value="Dance">Dance</option>
+<option value="Basketball">Basketball</option>
+<option value="Fine Arts">Fine Arts</option>
+<option value="Music">Music</option>
+</select>
+</div>
+</div>
+<!-- Master Table -->
+<div class="bg-white rounded-2xl shadow-xs border border-slate-200 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap" id="registrationsTable">
+<thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Reg ID</th>
+<th class="py-3 px-4">Participant Name</th>
+<th class="py-3 px-4">Student Roll No</th>
+<th class="py-3 px-4">Institution / College</th>
+<th class="py-3 px-4">Event Selected</th>
+<th class="py-3 px-4">Payment / Fee</th>
+<th class="py-3 px-4 text-center">Status</th>
+<th class="py-3 px-4 text-right">Quick Decision</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100" id="regTableBody">
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-medium text-slate-600">REG-801001</td>
+<td class="py-3 px-4 font-bold text-purple-950">Aarav Sharma</td>
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24CS187</span></td>
+<td class="py-3 px-4 text-slate-600">SRM University AP</td>
+<td class="py-3 px-4 text-slate-700">Classical Dance Solo</td>
+<td class="py-3 px-4 font-mono text-emerald-600 font-semibold">₹250 Paid</td>
+<td class="py-3 px-4 text-center"><span class="status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Approved</span></td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold" onclick="updateRegStatus(this, 'Approved')">Approve</button>
+<button class="px-2 py-1 rounded bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold" onclick="updateRegStatus(this, 'Rejected')">Reject</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-medium text-slate-600">REG-801002</td>
+<td class="py-3 px-4 font-bold text-purple-950">Hansika Hanslama</td>
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24EC204</span></td>
+<td class="py-3 px-4 text-slate-600">Vellore Institute of Tech</td>
+<td class="py-3 px-4 text-slate-700">Classical Dance Solo</td>
+<td class="py-3 px-4 font-mono text-amber-600 font-semibold">Verification Req</td>
+<td class="py-3 px-4 text-center"><span class="status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Pending</span></td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold" onclick="updateRegStatus(this, 'Approved')">Approve</button>
+<button class="px-2 py-1 rounded bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold" onclick="updateRegStatus(this, 'Rejected')">Reject</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-medium text-slate-600">REG-801003</td>
+<td class="py-3 px-4 font-bold text-purple-950">Rohan Verma</td>
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24IT105</span></td>
+<td class="py-3 px-4 text-slate-600">Vellore Institute of Tech</td>
+<td class="py-3 px-4 text-slate-700">Music Solo (Vocal)</td>
+<td class="py-3 px-4 font-mono text-emerald-600 font-semibold">₹250 Paid</td>
+<td class="py-3 px-4 text-center"><span class="status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Approved</span></td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold" onclick="updateRegStatus(this, 'Approved')">Approve</button>
+<button class="px-2 py-1 rounded bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold" onclick="updateRegStatus(this, 'Rejected')">Reject</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-medium text-slate-600">REG-801004</td>
+<td class="py-3 px-4 font-bold text-purple-950">Devendra Reddy</td>
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y23ME044</span></td>
+<td class="py-3 px-4 text-slate-600">KLU Vijayawada</td>
+<td class="py-3 px-4 text-slate-700">Basketball (Boys)</td>
+<td class="py-3 px-4 font-mono text-amber-600 font-semibold">Verification Req</td>
+<td class="py-3 px-4 text-center"><span class="status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Pending</span></td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold" onclick="updateRegStatus(this, 'Approved')">Approve</button>
+<button class="px-2 py-1 rounded bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold" onclick="updateRegStatus(this, 'Rejected')">Reject</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-medium text-slate-600">REG-801005</td>
+<td class="py-3 px-4 font-bold text-purple-950">Sneha Kulkarni</td>
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24EE122</span></td>
+<td class="py-3 px-4 text-slate-600">Andhra Loyola College</td>
+<td class="py-3 px-4 text-slate-700">Fine Arts - Painting</td>
+<td class="py-3 px-4 font-mono text-rose-600 font-semibold">Invalid ID Upload</td>
+<td class="py-3 px-4 text-center"><span class="status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800">Rejected</span></td>
+<td class="py-3 px-4 text-right space-x-1">
+<button class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-semibold" onclick="updateRegStatus(this, 'Approved')">Approve</button>
+<button class="px-2 py-1 rounded bg-rose-50 text-rose-700 hover:bg-rose-100 font-semibold" onclick="updateRegStatus(this, 'Rejected')">Reject</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: ViewRegistrations -->
+<!-- ============================================== -->
+<!-- VIEW 4: PARTICIPANTS MANAGEMENT               -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewParticipants -->
+<section class="view-panel space-y-6" id="view-participants">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Participants Directory</h1>
+<p class="text-xs sm:text-sm text-slate-500">Student master database with contact details, roll numbers, and department profiles.</p>
+</div>
+<button class="px-3 py-2 bg-purple-900 hover:bg-purple-950 text-white rounded-lg text-xs font-semibold shadow-xs" onclick="showToast('Participant ID card generation queue started')">
+              Batch Generate ID Cards
+            </button>
+</div>
+<div class="bg-white rounded-2xl shadow-xs border border-slate-200 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap">
+<thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Student Roll No</th>
+<th class="py-3 px-4">Full Name</th>
+<th class="py-3 px-4">College</th>
+<th class="py-3 px-4">Dept &amp; Year</th>
+<th class="py-3 px-4">Email</th>
+<th class="py-3 px-4">Mobile</th>
+<th class="py-3 px-4 text-center">Events Registered</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24CS187</span></td>
+<td class="py-3 px-4 font-bold text-slate-900">Aarav Sharma</td>
+<td class="py-3 px-4 text-slate-600">SRM University AP</td>
+<td class="py-3 px-4 text-slate-600">CSE • 2nd Year</td>
+<td class="py-3 px-4 font-mono text-slate-500">aarav.s@srm.edu</td>
+<td class="py-3 px-4 font-mono text-slate-600">+91 98765 43210</td>
+<td class="py-3 px-4 text-center font-bold text-purple-900">2</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 text-xs bg-purple-100 hover:bg-purple-200 text-purple-900 font-medium rounded" onclick="openParticipantDrawer('Aarav Sharma', 'Y24CS187', 'SRM University AP', 'CSE', 'aarav.s@srm.edu', '+91 98765 43210')">
+                        View Profile
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24EC204</span></td>
+<td class="py-3 px-4 font-bold text-slate-900">Hansika Hanslama</td>
+<td class="py-3 px-4 text-slate-600">Vellore Institute of Tech</td>
+<td class="py-3 px-4 text-slate-600">ECE • 2nd Year</td>
+<td class="py-3 px-4 font-mono text-slate-500">hansika.h@vit.edu</td>
+<td class="py-3 px-4 font-mono text-slate-600">+91 98451 90812</td>
+<td class="py-3 px-4 text-center font-bold text-purple-900">1</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 text-xs bg-purple-100 hover:bg-purple-200 text-purple-900 font-medium rounded" onclick="openParticipantDrawer('Hansika Hanslama', 'Y24EC204', 'Vellore Institute', 'ECE', 'hansika.h@vit.edu', '+91 98451 90812')">
+                        View Profile
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y24IT105</span></td>
+<td class="py-3 px-4 font-bold text-slate-900">Rohan Verma</td>
+<td class="py-3 px-4 text-slate-600">Vellore Institute of Tech</td>
+<td class="py-3 px-4 text-slate-600">IT • 2nd Year</td>
+<td class="py-3 px-4 font-mono text-slate-500">rohan.v@vit.edu</td>
+<td class="py-3 px-4 font-mono text-slate-600">+91 91234 56789</td>
+<td class="py-3 px-4 text-center font-bold text-purple-900">1</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 text-xs bg-purple-100 hover:bg-purple-200 text-purple-900 font-medium rounded" onclick="openParticipantDrawer('Rohan Verma', 'Y24IT105', 'Vellore Institute', 'IT', 'rohan.v@vit.edu', '+91 91234 56789')">
+                        View Profile
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4"><span class="font-mono font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Y23ME044</span></td>
+<td class="py-3 px-4 font-bold text-slate-900">Devendra Reddy</td>
+<td class="py-3 px-4 text-slate-600">KLU Vijayawada</td>
+<td class="py-3 px-4 text-slate-600">Mech • 3rd Year</td>
+<td class="py-3 px-4 font-mono text-slate-500">d.reddy@klu.ac.in</td>
+<td class="py-3 px-4 font-mono text-slate-600">+91 99887 76655</td>
+<td class="py-3 px-4 text-center font-bold text-purple-900">1</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 text-xs bg-purple-100 hover:bg-purple-200 text-purple-900 font-medium rounded" onclick="openParticipantDrawer('Devendra Reddy', 'Y23ME044', 'KLU Vijayawada', 'Mech', 'd.reddy@klu.ac.in', '+91 99887 76655')">
+                        View Profile
+                      </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: ViewParticipants -->
+<!-- ============================================== -->
+<!-- VIEW 5: TEAMS MANAGEMENT                       -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewTeams -->
+<section class="view-panel space-y-6" id="view-teams">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Teams Management</h1>
+<p class="text-xs sm:text-sm text-slate-500">Monitor group contingents, rosters, captain details, and squad approvals.</p>
+</div>
+<button class="px-3 py-2 bg-amber-500 hover:bg-amber-600 text-purple-950 font-bold rounded-lg text-xs shadow-xs" onclick="showToast('Team roster verification verified!')">
+              Verify All Rosters
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Team Card 1 -->
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full">Basketball Boys</span>
+<span class="text-xs font-mono text-slate-400">#TM-BASK-04</span>
+</div>
+<h3 class="text-lg font-black text-purple-950 mt-2">Thunder Hoops</h3>
+<p class="text-xs text-slate-500 mt-1">SRM University AP</p>
+<div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-xs">
+<div class="flex justify-between">
+<span class="text-slate-400">Captain Roll No:</span>
+<span class="font-mono font-bold text-purple-800">Y23ME044</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Total Squad:</span>
+<span class="font-bold text-slate-700">10 Players</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Verification:</span>
+<span class="text-emerald-600 font-bold">Approved</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 bg-purple-50 hover:bg-purple-100 text-purple-900 rounded-lg text-xs font-bold transition-colors" onclick="openRosterModal('Thunder Hoops', 'Basketball (Boys)', '10 Players', 'Devendra Reddy (Y23ME044)')">
+                View Squad Roster
+              </button>
+</div>
+<!-- Team Card 2 -->
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 bg-pink-100 text-pink-800 text-[10px] font-bold rounded-full">Dance Group</span>
+<span class="text-xs font-mono text-slate-400">#TM-DNC-11</span>
+</div>
+<h3 class="text-lg font-black text-purple-950 mt-2">Rhythm Squad Crew</h3>
+<p class="text-xs text-slate-500 mt-1">Vellore Institute of Tech</p>
+<div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-xs">
+<div class="flex justify-between">
+<span class="text-slate-400">Captain Roll No:</span>
+<span class="font-mono font-bold text-purple-800">Y24EC204</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Total Squad:</span>
+<span class="font-bold text-slate-700">12 Dancers</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Verification:</span>
+<span class="text-emerald-600 font-bold">Approved</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 bg-purple-50 hover:bg-purple-100 text-purple-900 rounded-lg text-xs font-bold transition-colors" onclick="openRosterModal('Rhythm Squad Crew', 'Dance Group (Western)', '12 Dancers', 'Hansika Hanslama (Y24EC204)')">
+                View Squad Roster
+              </button>
+</div>
+<!-- Team Card 3 -->
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full">Volleyball</span>
+<span class="text-xs font-mono text-slate-400">#TM-VLY-02</span>
+</div>
+<h3 class="text-lg font-black text-purple-950 mt-2">Spike Smashers</h3>
+<p class="text-xs text-slate-500 mt-1">Andhra Loyola College</p>
+<div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-xs">
+<div class="flex justify-between">
+<span class="text-slate-400">Captain Roll No:</span>
+<span class="font-mono font-bold text-purple-800">Y24CS187</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Total Squad:</span>
+<span class="font-bold text-slate-700">8 Players</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Verification:</span>
+<span class="text-amber-600 font-bold">Pending Approval</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 bg-purple-50 hover:bg-purple-100 text-purple-900 rounded-lg text-xs font-bold transition-colors" onclick="openRosterModal('Spike Smashers', 'Volleyball (Boys)', '8 Players', 'Rohan Verma (Y24CS187)')">
+                View Squad Roster
+              </button>
+</div>
+</div>
+</section>
+<!-- END: ViewTeams -->
+<!-- ============================================== -->
+<!-- VIEW 6: SCHEDULE MANAGEMENT                   -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewSchedule -->
+<section class="view-panel space-y-6" id="view-schedule">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Festival Schedule (28 Dec 2026)</h1>
+<p class="text-xs sm:text-sm text-slate-500">Manage time slots, venues, and conflict resolutions for all events.</p>
+</div>
+<button class="px-3.5 py-2 bg-brand-magenta hover:bg-brand-magentaDark text-white font-semibold rounded-lg text-xs shadow-xs" onclick="openModal('createScheduleModal')">
+              + Add Schedule Slot
+            </button>
+</div>
+<!-- Schedule Timeline Table -->
+<div class="bg-white rounded-2xl shadow-xs border border-slate-200 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap">
+<thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Time Slot</th>
+<th class="py-3 px-4">Event Name</th>
+<th class="py-3 px-4">Category</th>
+<th class="py-3 px-4">Date</th>
+<th class="py-3 px-4">Venue Assignment</th>
+<th class="py-3 px-4">Coordinator</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-bold text-purple-950">09:00 AM - 11:30 AM</td>
+<td class="py-3 px-4 font-bold text-slate-900">Classical Dance Solo</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-pink-100 text-pink-800 text-[10px] font-bold">Cultural</span></td>
+<td class="py-3 px-4 font-mono text-slate-600">28 Dec 2026</td>
+<td class="py-3 px-4 font-medium text-slate-700">SRM Main Auditorium Stage</td>
+<td class="py-3 px-4 text-slate-600">Dr. M. Sridhar (Faculty)</td>
+<td class="py-3 px-4 text-right">
+<button class="text-purple-700 hover:underline font-semibold" onclick="showToast('Schedule edit modal opened')">Reschedule</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-bold text-purple-950">10:30 AM - 01:00 PM</td>
+<td class="py-3 px-4 font-bold text-slate-900">Basketball (Boys) Prelims</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-bold">Sports</span></td>
+<td class="py-3 px-4 font-mono text-slate-600">28 Dec 2026</td>
+<td class="py-3 px-4 font-medium text-slate-700">SRM Indoor Sports Arena</td>
+<td class="py-3 px-4 text-slate-600">Coach K. Ramesh (Sports)</td>
+<td class="py-3 px-4 text-right">
+<button class="text-purple-700 hover:underline font-semibold" onclick="showToast('Schedule edit modal opened')">Reschedule</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-bold text-purple-950">02:00 PM - 05:00 PM</td>
+<td class="py-3 px-4 font-bold text-slate-900">Battle of Bands (Music Group)</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-pink-100 text-pink-800 text-[10px] font-bold">Cultural</span></td>
+<td class="py-3 px-4 font-mono text-slate-600">28 Dec 2026</td>
+<td class="py-3 px-4 font-medium text-slate-700">Open Air Amphitheatre</td>
+<td class="py-3 px-4 text-slate-600">P. Ananya (Cultural Lead)</td>
+<td class="py-3 px-4 text-right">
+<button class="text-purple-700 hover:underline font-semibold" onclick="showToast('Schedule edit modal opened')">Reschedule</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-mono font-bold text-purple-950">06:00 PM - 09:30 PM</td>
+<td class="py-3 px-4 font-bold text-slate-900">Fashion Show Finale &amp; Gala</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-pink-100 text-pink-800 text-[10px] font-bold">Cultural</span></td>
+<td class="py-3 px-4 font-mono text-slate-600">28 Dec 2026</td>
+<td class="py-3 px-4 font-medium text-slate-700">Grand Lawn Main Pavilion</td>
+<td class="py-3 px-4 text-slate-600">Dean Student Affairs</td>
+<td class="py-3 px-4 text-right">
+<button class="text-purple-700 hover:underline font-semibold" onclick="showToast('Schedule edit modal opened')">Reschedule</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: ViewSchedule -->
+<!-- ============================================== -->
+<!-- VIEW 7: ANNOUNCEMENTS                          -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewAnnouncements -->
+<section class="view-panel space-y-6" id="view-announcements">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Announcements Broadcast</h1>
+<p class="text-xs sm:text-sm text-slate-500">Publish instant push notices and flash banners to the participant portal.</p>
+</div>
+<button class="px-4 py-2 bg-brand-magenta hover:bg-brand-magentaDark text-white font-semibold rounded-lg text-xs shadow-xs" onclick="openModal('createAnnouncementModal')">
+              + New Broadcast
+            </button>
+</div>
+<div class="space-y-3">
+<div class="bg-white p-4 rounded-xl border-l-4 border-l-amber-500 border border-slate-200 flex items-start justify-between">
+<div>
+<div class="flex items-center space-x-2">
+<span class="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">High Priority</span>
+<span class="text-xs text-slate-400">Dec 20, 2026 • 11:20 AM</span>
+</div>
+<h4 class="text-sm font-bold text-purple-950 mt-1">Campus ID Verification Required for All Registered Teams</h4>
+<p class="text-xs text-slate-600 mt-1">All participants must carry their physical institutional ID card alongside the COLORIDO QR gate pass during reporting.</p>
+</div>
+<button class="text-slate-400 hover:text-rose-600 text-xs" onclick="showToast('Broadcast deleted', 'rose')">Delete</button>
+</div>
+<div class="bg-white p-4 rounded-xl border-l-4 border-l-purple-700 border border-slate-200 flex items-start justify-between">
+<div>
+<div class="flex items-center space-x-2">
+<span class="text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">Normal</span>
+<span class="text-xs text-slate-400">Dec 19, 2026 • 04:10 PM</span>
+</div>
+<h4 class="text-sm font-bold text-purple-950 mt-1">Track &amp; Field Practice Slots Available at Sports Complex</h4>
+<p class="text-xs text-slate-600 mt-1">Teams participating in volleyball and basketball can book practice warm-up slots starting 07:00 AM on 27th Dec.</p>
+</div>
+<button class="text-slate-400 hover:text-rose-600 text-xs" onclick="showToast('Broadcast deleted', 'rose')">Delete</button>
+</div>
+</div>
+</section>
+<!-- END: ViewAnnouncements -->
+<!-- ============================================== -->
+<!-- VIEW 8: RESULTS MANAGEMENT                     -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewResults -->
+<section class="view-panel space-y-6" id="view-results">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Results &amp; Scores</h1>
+<p class="text-xs sm:text-sm text-slate-500">Record judge evaluation scores, determine winners, and publish podium standings.</p>
+</div>
+<button class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-purple-950 font-bold rounded-lg text-xs shadow-xs" onclick="openModal('addResultModal')">
+              + Record Winner Result
+            </button>
+</div>
+<div class="bg-white rounded-2xl p-8 border border-slate-200 text-center">
+<div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+              🏆
+            </div>
+<h3 class="text-base font-bold text-purple-950">No Results Published Yet</h3>
+<p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Events commence on 28 Dec 2026. Once judging rounds are completed, lock results here to publish them live to the festival scoreboard.</p>
+<button class="mt-4 px-4 py-2 bg-purple-950 hover:bg-purple-900 text-white rounded-lg text-xs font-semibold" onclick="openModal('addResultModal')">
+              Enter First Scorecard
+            </button>
+</div>
+</section>
+<!-- END: ViewResults -->
+<!-- ============================================== -->
+<!-- VIEW 9: GALLERY MANAGEMENT                     -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewGallery -->
+<section class="view-panel space-y-6" id="view-gallery">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Festival Media Gallery</h1>
+<p class="text-xs sm:text-sm text-slate-500">Manage high-resolution photo highlights, posters, and coverage assets.</p>
+</div>
+<button class="px-4 py-2 bg-brand-magenta hover:bg-brand-magentaDark text-white font-semibold rounded-lg text-xs shadow-xs" onclick="showToast('Media upload dialog triggered')">
+              + Upload Media
+            </button>
+</div>
+<!-- Gallery Grid with Clean Placeholders -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+<div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs group">
+<div class="h-36 bg-gradient-to-tr from-purple-900 to-indigo-800 flex items-center justify-center text-white/50 text-xs font-mono">
+                Cultural Dance Cover
+              </div>
+<div class="p-3">
+<p class="text-xs font-bold text-purple-950 truncate">Classical Dance Finale</p>
+<p class="text-[10px] text-slate-400 mt-0.5">High Res • Stage A</p>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs group">
+<div class="h-36 bg-gradient-to-tr from-pink-800 to-amber-700 flex items-center justify-center text-white/50 text-xs font-mono">
+                Sports Arena Cover
+              </div>
+<div class="p-3">
+<p class="text-xs font-bold text-purple-950 truncate">Basketball Slam Dunk</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Indoor Arena</p>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs group">
+<div class="h-36 bg-gradient-to-tr from-purple-950 to-slate-800 flex items-center justify-center text-white/50 text-xs font-mono">
+                Battle of Bands Cover
+              </div>
+<div class="p-3">
+<p class="text-xs font-bold text-purple-950 truncate">Rock Band Solo Guitar</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Amphitheatre</p>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs group">
+<div class="h-36 bg-gradient-to-tr from-amber-600 to-rose-700 flex items-center justify-center text-white/50 text-xs font-mono">
+                Fashion Runway Cover
+              </div>
+<div class="p-3">
+<p class="text-xs font-bold text-purple-950 truncate">Runway Models 2K26</p>
+<p class="text-[10px] text-slate-400 mt-0.5">Grand Lawn</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ViewGallery -->
+<!-- ============================================== -->
+<!-- VIEW 10: SPONSORS MANAGEMENT                   -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewSponsors -->
+<section class="view-panel space-y-6" id="view-sponsors">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Sponsors &amp; Partners</h1>
+<p class="text-xs sm:text-sm text-slate-500">Corporate endorsements, tier levels, logos, and deliverables.</p>
+</div>
+<button class="px-4 py-2 bg-purple-950 hover:bg-purple-900 text-white font-semibold rounded-lg text-xs shadow-xs" onclick="showToast('Add sponsor modal initiated')">
+              + Add Partner / Sponsor
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Title Sponsor -->
+<div class="bg-white p-5 rounded-2xl border-2 border-amber-400 shadow-sm">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400 text-purple-950">Title Sponsor</span>
+<span class="text-xs font-mono font-bold text-emerald-600">₹15,00,000</span>
+</div>
+<h3 class="text-lg font-black text-purple-950 mt-3">Red Bull India</h3>
+<p class="text-xs text-slate-500 mt-1">Official Energy Drink &amp; Stage Partner</p>
+<div class="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs text-slate-500">
+<span class="">Deliverable: Main Stage Backdrop</span>
+<span class="text-emerald-600 font-bold">Active</span>
+</div>
+</div>
+<!-- Gold Sponsor -->
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-purple-100 text-purple-900">Gold Sponsor</span>
+<span class="text-xs font-mono font-bold text-emerald-600">₹5,00,000</span>
+</div>
+<h3 class="text-lg font-black text-purple-950 mt-3">Decathlon Sports</h3>
+<p class="text-xs text-slate-500 mt-1">Official Sports Equipment &amp; Apparel Kit</p>
+<div class="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs text-slate-500">
+<span class="">Deliverable: Basketball Courts</span>
+<span class="text-emerald-600 font-bold">Active</span>
+</div>
+</div>
+<!-- Beverage Partner -->
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-700">Official Partner</span>
+<span class="text-xs font-mono font-bold text-emerald-600">₹2,00,000</span>
+</div>
+<h3 class="text-lg font-black text-purple-950 mt-3">Fastrack Eyewear</h3>
+<p class="text-xs text-slate-500 mt-1">Fashion Show Title &amp; Youth Styling</p>
+<div class="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs text-slate-500">
+<span class="">Deliverable: Runway Banners</span>
+<span class="text-emerald-600 font-bold">Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ViewSponsors -->
+<!-- ============================================== -->
+<!-- VIEW 11: CONTACT MESSAGES                      -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewContacts -->
+<section class="view-panel space-y-6" id="view-contacts">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Public Inquiries &amp; Helpdesk</h1>
+<p class="text-xs sm:text-sm text-slate-500">Queries submitted by college students and contingent faculty coordinators.</p>
+</div>
+</div>
+<div class="bg-white rounded-2xl shadow-xs border border-slate-200 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap">
+<thead class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Sender</th>
+<th class="py-3 px-4">Email &amp; Phone</th>
+<th class="py-3 px-4">Subject</th>
+<th class="py-3 px-4">Message Preview</th>
+<th class="py-3 px-4 text-center">Status</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-bold text-purple-950">Prof. J. Venkatesh</td>
+<td class="py-3 px-4 font-mono text-slate-500">j.venkat@vit.edu • +91 94401 23456</td>
+<td class="py-3 px-4 font-semibold text-slate-800">Bus Parking &amp; Contingent Accommodation</td>
+<td class="py-3 px-4 text-slate-500 max-w-xs truncate">Our college bus arrives at 07:00 AM on 28th. Will parking permits be given...</td>
+<td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold text-[10px]">New</span></td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 bg-purple-100 hover:bg-purple-200 text-purple-900 rounded font-semibold" onclick="showToast('Query resolved &amp; archived')">Mark Handled</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="py-3 px-4 font-bold text-purple-950">Kavya Murthy</td>
+<td class="py-3 px-4 font-mono text-slate-500">kavya.m@gmail.com • +91 97001 88990</td>
+<td class="py-3 px-4 font-semibold text-slate-800">Western Dance Track Upload Format</td>
+<td class="py-3 px-4 text-slate-500 max-w-xs truncate">Can we submit our audio track in MP3 320kbps via Google Drive link beforehand?</td>
+<td class="py-3 px-4 text-center"><span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold text-[10px]">New</span></td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 bg-purple-100 hover:bg-purple-200 text-purple-900 rounded font-semibold" onclick="showToast('Query resolved &amp; archived')">Mark Handled</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- END: ViewContacts -->
+<!-- ============================================== -->
+<!-- VIEW 12: SETTINGS & ADMIN PROFILE              -->
+<!-- ============================================== -->
+<!-- BEGIN: ViewSettings -->
+<section class="view-panel space-y-6" id="view-settings">
+<div>
+<h1 class="text-2xl font-black text-purple-950 tracking-tight">Admin System Settings</h1>
+<p class="text-xs sm:text-sm text-slate-500">Festival configuration, registration gating, and access control parameters.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left 2 Cols: Form -->
+<div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-5">
+<h3 class="text-sm font-bold text-purple-950 uppercase tracking-wider">Festival Configuration</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold text-slate-600 mb-1">Festival Name</label>
+<input class="w-full text-xs rounded-lg border-slate-200" type="text" value="COLORIDO 2K26 Cultural &amp; Sports Festival">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 mb-1">Festival Main Date</label>
+<input class="w-full text-xs rounded-lg border-slate-200 font-mono" type="text" value="28 December 2026">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 mb-1">Host Venue</label>
+<input class="w-full text-xs rounded-lg border-slate-200" type="text" value="SRM University Campus">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 mb-1">Registration Gate Status</label>
+<select class="w-full text-xs rounded-lg border-slate-200 font-bold text-emerald-700">
+<option selected="">Open for All College Students</option>
+<option>Spot Registrations Only</option>
+<option>Closed / Archived</option>
+</select>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+<button class="px-4 py-2 bg-purple-950 hover:bg-purple-900 text-white rounded-lg text-xs font-bold shadow-sm" onclick="showToast('Settings saved successfully to Supabase!')">
+                  Save Changes
+                </button>
+<span class="text-[11px] text-slate-400">Last synchronized 2 minutes ago</span>
+</div>
+</div>
+<!-- Right 1 Col: Admin Profile Card -->
+<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-800 to-indigo-950 text-white font-black text-2xl flex items-center justify-center ring-4 ring-amber-400 shadow-md mb-3">
+                AP
+              </div>
+<h3 class="text-base font-black text-purple-950">Festival Administrator</h3>
+<p class="text-xs font-mono text-purple-700 font-semibold bg-purple-50 px-2 py-0.5 rounded mt-1">admin@colorido2k26.org</p>
+<span class="inline-block mt-2 px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-[10px] font-bold">Role: Super Admin (All Permissions)</span>
+<div class="w-full mt-6 pt-4 border-t border-slate-100 space-y-2 text-left text-xs">
+<div class="flex justify-between text-slate-500">
+<span class="">Supabase RBAC:</span>
+<span class="font-mono font-bold text-slate-700">Level 5 (Root)</span>
+</div>
+<div class="flex justify-between text-slate-500">
+<span class="">Two-Factor Auth:</span>
+<span class="text-emerald-600 font-bold">Enabled</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold rounded-lg transition-colors" onclick="openLogoutModal()">
+                Sign Out Console
+              </button>
+</div>
+</div>
+</section>
+<!-- END: ViewSettings -->
+</main>
+<!-- END: ViewsHostArea -->
+<!-- BEGIN: GlobalFooter -->
+<footer class="py-3 px-6 text-center text-xs text-slate-400 border-t border-slate-200 bg-white">
+        COLORIDO 2K26 Event Management • SRM Cultural &amp; Sports Festival Console • All Systems Operational
+      </footer>
+<!-- END: GlobalFooter -->
+</div>
+<!-- END: MainContentWrapper -->
+</div>
+<!-- END: ApplicationLayout -->
+<!-- ============================================== -->
+<!-- MODALS & SLIDE-OVER DRAWERS                    -->
+<!-- ============================================== -->
+<!-- BEGIN: CreateEventModal -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900/60 p-4" id="createEventModal">
+<div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<h3 class="text-base font-bold text-purple-950">+ Create COLORIDO 2K26 Event</h3>
+<button class="text-slate-400 hover:text-slate-700 font-bold" onclick="closeModal('createEventModal')">✕</button>
+</div>
+<form class="space-y-3 text-xs" onsubmit="handleCreateEvent(event)">
+<div>
+<label class="block font-semibold text-slate-700 mb-1">Event Name</label>
+<input class="w-full rounded-lg border-slate-200" id="newEventName" placeholder="e.g. Mono Acting / Carroms" required="" type="text">
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-semibold text-slate-700 mb-1">Category</label>
+<select class="w-full rounded-lg border-slate-200" id="newEventCategory">
+<option value="Cultural">Cultural</option>
+<option value="Sports">Sports</option>
+</select>
+</div>
+<div>
+<label class="block font-semibold text-slate-700 mb-1">Format Type</label>
+<input class="w-full rounded-lg border-slate-200" id="newEventFormat" placeholder="e.g. Solo / Team (5 max)" required="" type="text">
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-semibold text-slate-700 mb-1">Venue Assignment</label>
+<input class="w-full rounded-lg border-slate-200" id="newEventVenue" placeholder="e.g. Auditorium Hall B" required="" type="text">
+</div>
+<div>
+<label class="block font-semibold text-slate-700 mb-1">Max Registrations</label>
+<input class="w-full rounded-lg border-slate-200 font-mono" id="newEventMax" type="number" value="50">
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 flex justify-end space-x-2">
+<button class="px-4 py-2 rounded-lg bg-slate-100 text-slate-600 font-semibold" onclick="closeModal('createEventModal')" type="button">Cancel</button>
+<button class="px-4 py-2 rounded-lg bg-brand-magenta hover:bg-brand-magentaDark text-white font-semibold" type="submit">Save &amp; Publish</button>
+</div>
+</form>
+</div>
+</div>
+<!-- END: CreateEventModal -->
+<!-- BEGIN: ParticipantDrawer -->
+<div class="fixed inset-0 z-50 hidden" id="participantDrawer">
+<div class="absolute inset-0 bg-slate-900/50 backdrop-blur-xs" onclick="closeParticipantDrawer()"></div>
+<div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-slate-100">
+<h3 class="text-base font-bold text-purple-950">Student Participant Profile</h3>
+<button class="text-slate-400 hover:text-slate-700 font-bold" onclick="closeParticipantDrawer()">✕</button>
+</div>
+<div class="mt-6 text-center">
+<div class="w-20 h-20 rounded-full bg-purple-900 text-amber-400 text-2xl font-bold flex items-center justify-center mx-auto shadow-md">
+            ST
+          </div>
+<h4 class="text-lg font-black text-purple-950 mt-3" id="drawerName">Aarav Sharma</h4>
+<span class="inline-block font-mono font-bold text-purple-800 bg-purple-100 px-3 py-0.5 rounded-full text-xs mt-1" id="drawerRoll">Y24CS187</span>
+</div>
+<div class="mt-6 bg-slate-50 p-4 rounded-xl space-y-2.5 text-xs">
+<div class="flex justify-between">
+<span class="text-slate-400">College:</span>
+<span class="font-semibold text-slate-800" id="drawerCollege">SRM University AP</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Department:</span>
+<span class="font-semibold text-slate-800" id="drawerDept">Computer Science</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Email:</span>
+<span class="font-mono text-slate-700" id="drawerEmail">aarav.s@srm.edu</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-400">Mobile:</span>
+<span class="font-mono text-slate-700" id="drawerPhone">+91 98765 43210</span>
+</div>
+</div>
+<div class="mt-6">
+<h5 class="text-xs font-bold text-purple-950 uppercase mb-2">Registered Events</h5>
+<div class="p-3 rounded-lg border border-slate-200 flex justify-between items-center text-xs">
+<div>
+<p class="font-bold text-purple-950">Classical Dance Solo</p>
+<p class="text-[10px] text-slate-400">Stage A • Approved</p>
+</div>
+<span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-bold rounded text-[10px]">Verified</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<button class="w-full py-2.5 bg-purple-950 hover:bg-purple-900 text-white rounded-lg text-xs font-bold" onclick="showToast('Verification pass printed / sent to email')">
+          Email Official Entry Pass
+        </button>
+</div>
+</div>
+</div>
+<!-- END: ParticipantDrawer -->
+<!-- BEGIN: RosterModal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 hidden" id="rosterModal">
+<div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<div>
+<h3 class="text-base font-bold text-purple-950" id="rosterTeamTitle">Thunder Hoops</h3>
+<p class="text-xs text-slate-400" id="rosterEventSubtitle">Basketball (Boys) • 10 Players</p>
+</div>
+<button class="text-slate-400 hover:text-slate-700 font-bold" onclick="closeModal('rosterModal')">✕</button>
+</div>
+<div class="space-y-2 text-xs">
+<div class="p-2.5 bg-amber-50 rounded-lg flex items-center justify-between">
+<div>
+<span class="text-[10px] font-bold text-amber-800 uppercase block">Captain</span>
+<span class="font-bold text-purple-950" id="rosterCaptain">Devendra Reddy (Y23ME044)</span>
+</div>
+<span class="font-mono text-[10px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded">Jersey #1</span>
+</div>
+<p class="font-bold text-slate-700 pt-2 text-xs">Squad Lineup</p>
+<ul class="divide-y divide-slate-100 max-h-40 overflow-y-auto">
+<li class="py-1.5 flex justify-between text-slate-600"><span class="">1. V. Sai Kiran (Y23CS112)</span><span class="font-mono text-[10px]">Starter</span></li>
+<li class="py-1.5 flex justify-between text-slate-600"><span class="">2. T. Karthik (Y23EC089)</span><span class="font-mono text-[10px]">Starter</span></li>
+<li class="py-1.5 flex justify-between text-slate-600"><span class="">3. P. Joseph (Y24ME012)</span><span class="font-mono text-[10px]">Starter</span></li>
+<li class="py-1.5 flex justify-between text-slate-600"><span class="">4. M. Harsh (Y24IT094)</span><span class="font-mono text-[10px]">Starter</span></li>
+<li class="py-1.5 flex justify-between text-slate-600"><span class="">5. N. Praveen (Y23CE033)</span><span class="font-mono text-[10px]">Sub</span></li>
+</ul>
+</div>
+<div class="pt-3 border-t border-slate-100 flex justify-end">
+<button class="px-4 py-2 rounded-lg bg-purple-950 text-white font-semibold text-xs" onclick="closeModal('rosterModal')">Done</button>
+</div>
+</div>
+</div>
+<!-- END: RosterModal -->
+<!-- BEGIN: LogoutModal -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900/60 p-4" id="logoutModal">
+<div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 text-center space-y-3">
+<div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto text-xl font-bold">
+        !
+      </div>
+<h3 class="text-base font-black text-purple-950">Confirm Sign Out?</h3>
+<p class="text-xs text-slate-500">You will be redirected out of the COLORIDO 2K26 Admin Management Console.</p>
+<div class="pt-3 flex space-x-2">
+<button class="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold" onclick="closeModal('logoutModal')">Cancel</button>
+<button class="flex-1 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold" onclick="showToast('Signed out successfully'); closeModal('logoutModal')">Sign Out</button>
+</div>
+</div>
+</div>
+<!-- END: LogoutModal -->
+<!-- BEGIN: InteractiveToastNotification -->
+<div class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toastNotification">
+<div class="bg-purple-950 text-white px-4 py-3 rounded-xl shadow-2xl border border-purple-800 flex items-center space-x-3 text-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-400" id="toastIcon"></span>
+<span class="font-medium" id="toastMessage">Action completed successfully.</span>
+</div>
+</div>
+<!-- END: InteractiveToastNotification -->
+<!-- ============================================== -->
+<!-- JAVASCRIPT: CLIENT INTERACTION LOGIC           -->
+<!-- ============================================== -->
+<script data-purpose="console-interactivity">
+    // Breadcrumb labels lookup table
+    const viewTitles = {
+      dashboard: 'Dashboard Overview',
+      events: 'Events Management',
+      registrations: 'Registrations Management',
+      participants: 'Participants Directory',
+      teams: 'Teams Management',
+      schedule: 'Schedule Management',
+      announcements: 'Announcements Broadcast',
+      results: 'Results & Scores',
+      gallery: 'Festival Gallery',
+      sponsors: 'Sponsors & Partners',
+      contacts: 'Contact Messages',
+      settings: 'Admin System Settings'
+    };
+
+    // Tab Switching Router
+    function switchView(viewKey) {
+      // 1. Hide all panels
+      document.querySelectorAll('.view-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      // 2. Show active panel
+      const targetPanel = document.getElementById('view-' + viewKey);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+
+      // 3. Update breadcrumbs
+      const title = viewTitles[viewKey] || 'Dashboard Overview';
+      document.getElementById('breadcrumbCurrent').textContent = title;
+
+      // 4. Update sidebar link active states
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        const key = btn.getAttribute('data-nav');
+        if (key === viewKey) {
+          btn.classList.add('bg-purple-900/70', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-purple-200', 'hover:bg-purple-900/40');
+        } else {
+          btn.classList.remove('bg-purple-900/70', 'text-white', 'shadow-sm');
+          btn.classList.add('text-purple-200', 'hover:bg-purple-900/40');
+        }
+      });
+
+      // Close mobile drawer if opened
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('mobileBackdrop');
+      sidebar.classList.add('-translate-x-full');
+      backdrop.classList.add('hidden');
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mobile Sidebar Toggle
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('mobileBackdrop');
+      const isClosed = sidebar.classList.contains('-translate-x-full');
+      if (isClosed) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    // Modal Control Functions
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function openLogoutModal() {
+      openModal('logoutModal');
+    }
+
+    // Toast Notification Dispatcher
+    let toastTimeout;
+    function showToast(message, type = 'emerald') {
+      const toast = document.getElementById('toastNotification');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastMessage.textContent = message;
+      toastIcon.className = `w-2 h-2 rounded-full ${type === 'rose' ? 'bg-rose-400' : 'bg-emerald-400'}`;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3000);
+    }
+
+    // Filter Events Table
+    function filterEvents(category) {
+      const rows = document.querySelectorAll('#eventsTableBody tr');
+      rows.forEach(row => {
+        const cat = row.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      // Update button styling
+      const btnAll = document.getElementById('btnEventAll');
+      const btnCult = document.getElementById('btnEventCult');
+      const btnSport = document.getElementById('btnEventSport');
+
+      [btnAll, btnCult, btnSport].forEach(b => {
+        b.className = 'px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200';
+      });
+
+      if (category === 'all') btnAll.className = 'px-3 py-1.5 text-xs font-bold rounded-lg bg-purple-950 text-white';
+      if (category === 'Cultural') btnCult.className = 'px-3 py-1.5 text-xs font-bold rounded-lg bg-purple-950 text-white';
+      if (category === 'Sports') btnSport.className = 'px-3 py-1.5 text-xs font-bold rounded-lg bg-purple-950 text-white';
+    }
+
+    // Handle Create Event Form
+    function handleCreateEvent(e) {
+      e.preventDefault();
+      const name = document.getElementById('newEventName').value;
+      const category = document.getElementById('newEventCategory').value;
+      const format = document.getElementById('newEventFormat').value;
+      const venue = document.getElementById('newEventVenue').value;
+
+      const tbody = document.getElementById('eventsTableBody');
+      const newRow = document.createElement('tr');
+      newRow.setAttribute('data-category', category);
+      newRow.className = 'hover:bg-slate-50';
+      newRow.innerHTML = `
+        <td class="py-3 px-4 font-mono font-bold ${category === 'Cultural' ? 'text-purple-700' : 'text-amber-700'}">NEW-0${Math.floor(Math.random()*90)+10}</td>
+        <td class="py-3 px-4 font-bold text-purple-950">${name}</td>
+        <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${category === 'Cultural' ? 'bg-pink-100 text-pink-800' : 'bg-amber-100 text-amber-800'}">${category}</span></td>
+        <td class="py-3 px-4 text-slate-600">${format}</td>
+        <td class="py-3 px-4 font-mono">Custom</td>
+        <td class="py-3 px-4 font-bold text-slate-800 font-mono">0</td>
+        <td class="py-3 px-4 text-slate-600">${venue}</td>
+        <td class="py-3 px-4 text-right space-x-1">
+          <button onclick="showToast('Viewing event details')" class="p-1 hover:text-purple-700">👁</button>
+          <button onclick="showToast('Edit modal opened')" class="p-1 hover:text-amber-600">✎</button>
+          <button onclick="this.closest('tr').remove(); showToast('Event deleted', 'rose')" class="p-1 hover:text-rose-600">✕</button>
+        </td>
+      `;
+      tbody.prepend(newRow);
+      closeModal('createEventModal');
+      e.target.reset();
+      showToast(`Event '${name}' created and published!`);
+      switchView('events');
+    }
+
+    // Inline Approve / Reject for Registrations
+    function updateRegStatus(buttonElement, status) {
+      const row = buttonElement.closest('tr');
+      const badge = row.querySelector('.status-badge');
+      if (status === 'Approved') {
+        badge.className = 'status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800';
+        badge.textContent = 'Approved';
+        showToast('Registration Approved & Roll Number Confirmed');
+      } else {
+        badge.className = 'status-badge px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800';
+        badge.textContent = 'Rejected';
+        showToast('Registration Rejected', 'rose');
+      }
+    }
+
+    // Filter Registrations Table
+    function filterRegTable() {
+      const search = document.getElementById('regFilterInput').value.toLowerCase();
+      const statusFilter = document.getElementById('regStatusFilter').value.toLowerCase();
+      const eventFilter = document.getElementById('regEventFilter').value.toLowerCase();
+      const rows = document.querySelectorAll('#regTableBody tr');
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const matchesSearch = text.includes(search);
+        const matchesStatus = !statusFilter || text.includes(statusFilter);
+        const matchesEvent = !eventFilter || text.includes(eventFilter);
+
+        if (matchesSearch && matchesStatus && matchesEvent) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Participant Drawer
+    function openParticipantDrawer(name, roll, college, dept, email, phone) {
+      document.getElementById('drawerName').textContent = name;
+      document.getElementById('drawerRoll').textContent = roll;
+      document.getElementById('drawerCollege').textContent = college;
+      document.getElementById('drawerDept').textContent = dept;
+      document.getElementById('drawerEmail').textContent = email;
+      document.getElementById('drawerPhone').textContent = phone;
+      document.getElementById('participantDrawer').classList.remove('hidden');
+    }
+
+    function closeParticipantDrawer() {
+      document.getElementById('participantDrawer').classList.add('hidden');
+    }
+
+    // Roster Modal Trigger
+    function openRosterModal(teamName, eventName, squadCount, captain) {
+      document.getElementById('rosterTeamTitle').textContent = teamName;
+      document.getElementById('rosterEventSubtitle').textContent = `${eventName} • ${squadCount}`;
+      document.getElementById('rosterCaptain').textContent = captain;
+      openModal('rosterModal');
+    }
+
+    // Export CSV Mock Handler
+    function exportCSV() {
+      showToast('Generating CSV export: colorido_registrations_2026.csv');
+    }
+
+    // Global Search Bar Handler (Cmd+K)
+    function handleGlobalSearch(e) {
+      const q = e.target.value.toLowerCase();
+      if (e.key === 'Enter' && q.trim()) {
+        showToast(`Searching directory for "${q}"...`);
+        switchView('registrations');
+        document.getElementById('regFilterInput').value = q;
+        filterRegTable();
+      }
+    }
+
+    // Keyboard Shortcuts (Cmd+K / Ctrl+K focus)
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('globalSearchInput');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
+    });
+  </script>
+
+
+</body></html>

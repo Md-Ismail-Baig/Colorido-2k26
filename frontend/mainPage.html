@@ -1,0 +1,1013 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>COLORIDO 2K26 — Cultural &amp; Sports Festival | 28 December 2026</title>
+<!-- Tailwind CSS CDN with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cinzel Decorative, Cinzel, Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#18092A',
+              deepPurple: '#120520',
+              royal: '#2B0F4C',
+              burgundy: '#4C1036',
+              gold: '#E5A93C',
+              lightGold: '#F8D886',
+              cream: '#FAF7F2',
+              creamDark: '#F2ECE1',
+              cyanAccent: '#0EA5E9'
+            }
+          },
+          fontFamily: {
+            heading: ['Cinzel', 'serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Mandalas and Texture Overlays -->
+<style data-purpose="custom-effects">
+    .mandala-pattern {
+      background-image: radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 10% 20%, rgba(229, 169, 60, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+    }
+    
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF1CE 0%, #E5A93C 55%, #B47C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border-gradient {
+      border-image: linear-gradient(to right, #E5A93C, #4C1036, #0EA5E9) 1;
+    }
+
+    .glass-card-dark {
+      background: rgba(36, 15, 62, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(229, 169, 60, 0.2);
+    }
+
+    .glass-card-light {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(229, 169, 60, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-slate-800 font-body antialiased selection:bg-brand-gold selection:text-brand-deepPurple">
+<!-- BEGIN: NavigationBar -->
+<header class="sticky top-0 z-50 w-full bg-brand-deepPurple/90 backdrop-blur-md border-b border-brand-gold/20 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Brand Logo & Identity -->
+<a aria-label="Colorido 2K26 Home" class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-brand-burgundy p-0.5 flex items-center justify-center shadow-lg shadow-brand-gold/20">
+<div class="w-full h-full bg-brand-purple rounded-full flex items-center justify-center">
+<!-- Geometric Mandala Icon -->
+<svg class="w-5 h-5 text-brand-gold group-hover:rotate-45 transition-transform duration-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+</svg>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-heading font-extrabold text-xl tracking-wider text-white">COLORIDO <span class="text-brand-gold font-normal">2K26</span></span>
+<span class="text-[10px] tracking-widest text-slate-300 uppercase -mt-1 font-medium">Cultural &amp; Sports Fest</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav aria-label="Main Navigation" class="hidden lg:flex items-center space-x-7">
+<a class="text-sm font-medium text-brand-gold border-b-2 border-brand-gold pb-1 transition-colors" href="#hero">Home</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#about">About</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#cultural-events">Events</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#sports-events">Sports</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#countdown">Schedule</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#announcements">Announcements</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#gallery">Gallery</a>
+<a class="text-sm font-medium text-slate-200 hover:text-brand-gold transition-colors" href="#contact">Contact</a>
+</nav>
+<!-- CTA & Quick Register Button -->
+<div class="hidden sm:flex items-center gap-4">
+<a class="relative group px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase text-brand-deepPurple bg-gradient-to-r from-brand-gold via-brand-lightGold to-brand-gold hover:shadow-lg hover:shadow-brand-gold/30 hover:scale-[1.02] active:scale-95 transition-all duration-200" href="#register">
+            Register Now
+          </a>
+</div>
+<!-- Mobile Navigation Menu Toggle Button -->
+<div class="lg:hidden flex items-center">
+<button aria-label="Open navigation menu" class="text-slate-200 hover:text-white p-2 rounded-lg border border-slate-700 focus:outline-none" id="mobile-menu-btn" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Drawer Menu (Hidden by default) -->
+<div class="hidden lg:hidden bg-brand-purple/95 border-b border-brand-gold/20 px-6 py-4 space-y-3" id="mobile-menu">
+<a class="block text-sm font-medium text-brand-gold py-1" href="#hero">Home</a>
+<a class="block text-sm font-medium text-slate-200 hover:text-brand-gold py-1" href="#about">About</a>
+<a class="block text-sm font-medium text-slate-200 hover:text-brand-gold py-1" href="#cultural-events">Cultural Events</a>
+<a class="block text-sm font-medium text-slate-200 hover:text-brand-gold py-1" href="#sports-events">Sports Events</a>
+<a class="block text-sm font-medium text-slate-200 hover:text-brand-gold py-1" href="#announcements">Announcements</a>
+<a class="block text-sm font-medium text-slate-200 hover:text-brand-gold py-1" href="#gallery">Gallery</a>
+<a class="block text-sm font-medium text-slate-200 hover:text-brand-gold py-1" href="#contact">Contact</a>
+<div class="pt-3 border-t border-slate-700">
+<a class="block w-full text-center py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-brand-deepPurple bg-brand-gold" href="#register">Register Now</a>
+</div>
+</div>
+</header>
+<!-- END: NavigationBar -->
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-gradient-to-b from-brand-deepPurple via-brand-purple to-brand-royal text-white overflow-hidden pt-12 pb-24 mandala-pattern" data-purpose="hero-banner" id="hero">
+<!-- Subtle Background Circular Mandalas -->
+<div class="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center">
+<svg class="w-[800px] h-[800px] text-brand-gold animate-spin" style="animation-duration: 120s;" viewBox="0 0 200 200">
+<circle cx="100" cy="100" fill="none" r="85" stroke="currentColor" stroke-dasharray="2 4" stroke-width="0.5"></circle>
+<circle cx="100" cy="100" fill="none" r="70" stroke="currentColor" stroke-width="0.75"></circle>
+<path d="M100 15 L105 45 L115 35 L110 65 L125 50 L115 75 L135 60 L120 85 L145 75 L125 95 L150 90 L125 105 L150 110 L125 115 L145 125 L120 120 L135 140 L115 128 L122 150 L108 135 L100 160 L92 135 L78 150 L85 128 L65 140 L80 120 L55 125 L75 115 L50 110 L75 105 L50 90 L75 95 L55 75 L80 85 L65 60 L85 75 L75 50 L90 65 L85 35 L95 45 Z" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+</svg>
+</div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Top Micro Badge -->
+<div class="flex justify-center mb-6">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-deepPurple/70 backdrop-blur-sm">
+<span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+<span class="text-xs uppercase tracking-widest text-brand-lightGold font-medium">Inter-Collegiate Cultural &amp; Sports Extravaganza</span>
+</div>
+</div>
+<!-- Main Headline Content -->
+<div class="text-center max-w-4xl mx-auto mb-10">
+<h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white mb-3">
+          COLORIDO <span class="gold-gradient-text">2K26</span>
+</h1>
+<p class="font-heading text-lg sm:text-2xl tracking-[0.25em] text-slate-200 uppercase font-semibold mb-4">
+          Cultural &amp; Sports Festival
+        </p>
+<div class="inline-flex items-center gap-3 px-6 py-2 rounded-lg bg-white/5 border border-brand-gold/20 text-brand-lightGold font-medium text-sm sm:text-base">
+<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="tracking-wider">28 DECEMBER 2026</span>
+</div>
+</div>
+<!-- Hero Interactive Action CTAs -->
+<div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+<a class="px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider text-brand-deepPurple bg-gradient-to-r from-brand-gold via-brand-lightGold to-brand-gold hover:shadow-xl hover:shadow-brand-gold/20 transform hover:-translate-y-0.5 transition-all" href="#cultural-events">
+          Explore Events
+        </a>
+<a class="px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider text-white border border-white/30 hover:border-brand-gold hover:bg-white/5 transition-all" href="#register">
+          Register Now
+        </a>
+</div>
+<!-- Hero Visual Composition Grid (Cultural on Left, Athletes on Right) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto mb-16">
+<!-- Left: Classical Cultural Visual Representative Card -->
+<div class="relative group rounded-2xl overflow-hidden glass-card-dark p-3 border border-brand-gold/30 shadow-2xl">
+<div class="h-64 sm:h-80 rounded-xl overflow-hidden relative bg-brand-deepPurple/80 flex items-center justify-center">
+<!-- Classical Indian dance visual representation -->
+<img alt="Indian Classical Performer expressing cultural heritage" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2QFJshYtbXN-zyTGkQszaSXN8C1aDum4z_oemz_QvXTdFavSbaz70h5Kf25KCjdyZzxtCs_Brgvw65yhwzwHZDSMQJm2uxN4dlGhXOCes_LCC9RqS5pIp1G_euKkq6o3DQWCsNUOXn4RUaY0RH_HJ5BG7hliGbWjsZM7pc3PNccxL0NpoEm4zrlygTqIFE_npmNRy3lqKbNp3JSetAgmFVdnQg5kLWOkaiYIR8HoTaODExM6RkAU0">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="px-2.5 py-1 text-[11px] font-semibold tracking-wider uppercase rounded bg-brand-gold text-brand-deepPurple inline-block mb-1">Cultural Domain</span>
+<p class="text-white text-base font-heading font-bold">Rhythms of Tradition &amp; Artistic Expression</p>
+</div>
+</div>
+</div>
+<!-- Right: Dynamic College Sports Visual Card -->
+<div class="relative group rounded-2xl overflow-hidden glass-card-dark p-3 border border-brand-cyanAccent/40 shadow-2xl">
+<div class="h-64 sm:h-80 rounded-xl overflow-hidden relative bg-brand-deepPurple/80 flex items-center justify-center">
+<!-- Dynamic basketball / athletics match action -->
+<img alt="Student basketball player in mid-air motion during championship" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA14ro-QYLv6VnjS4bSCYGE6eEPlFyXm4Hf-1EM2q5v67TKr0c-3K6TUH8BTR7GaQUSXkVeviked4fnG9blu3tsWd53g4fjkLNekVlSjqF-2cEF2Yuhl6bOet_xgQ4rJE3QNfwxEyyO3cefPLnzUqoX27VQP-G_aoznK9oylDP-911XECDkJOGVzVID2bIbY0JA7n1__uzy2Kyyxf4iXX-OJxmUjxqoIecl9AftdrJb-KQ2VcnpX6E7">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="px-2.5 py-1 text-[11px] font-semibold tracking-wider uppercase rounded bg-brand-cyanAccent text-brand-deepPurple inline-block mb-1">Sports Arena</span>
+<p class="text-white text-base font-heading font-bold">Speed, Tenacity &amp; Pure Sportsmanship</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Integrated Countdown Bar Section -->
+<div class="max-w-3xl mx-auto rounded-2xl bg-black/40 border border-brand-gold/30 p-6 backdrop-blur-md text-center">
+<div class="text-xs uppercase tracking-widest text-brand-lightGold mb-4 font-semibold">Grand Festival Inauguration Countdown</div>
+<div class="grid grid-cols-4 gap-3 sm:gap-6">
+<div class="bg-brand-deepPurple/70 rounded-xl p-3 border border-white/10">
+<span class="block font-heading text-2xl sm:text-4xl font-bold text-white" id="count-days">28</span>
+<span class="text-[11px] uppercase tracking-wider text-slate-300">Days</span>
+</div>
+<div class="bg-brand-deepPurple/70 rounded-xl p-3 border border-white/10">
+<span class="block font-heading text-2xl sm:text-4xl font-bold text-brand-gold" id="count-hours">00</span>
+<span class="text-[11px] uppercase tracking-wider text-slate-300">Hours</span>
+</div>
+<div class="bg-brand-deepPurple/70 rounded-xl p-3 border border-white/10">
+<span class="block font-heading text-2xl sm:text-4xl font-bold text-white" id="count-mins">DECEMBER</span>
+<span class="text-[11px] uppercase tracking-wider text-slate-300">Month</span>
+</div>
+<div class="bg-brand-deepPurple/70 rounded-xl p-3 border border-white/10">
+<span class="block font-heading text-2xl sm:text-4xl font-bold text-brand-cyanAccent" id="count-year">2026</span>
+<span class="text-[11px] uppercase tracking-wider text-slate-300">Year</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: AboutSection -->
+<section class="py-24 bg-brand-cream border-t border-brand-gold/20" data-purpose="about-colorido" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Numbering Marker -->
+<div class="text-center mb-12">
+<span class="inline-block text-xs font-semibold tracking-widest text-brand-burgundy uppercase px-3 py-1 bg-brand-creamDark rounded-full mb-3 border border-brand-burgundy/15">
+          02 / ABOUT COLORIDO
+        </span>
+<h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-brand-deepPurple font-bold">
+          Where Heritage Meets Athletic Excellence
+        </h2>
+<div class="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+</div>
+<!-- Dual Column Editorial Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left: Text Purpose Presentation -->
+<div class="lg:col-span-6 space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
+<p class="font-medium text-brand-royal text-xl leading-snug">
+            COLORIDO 2K26 is a premier inter-collegiate Cultural &amp; Sports Festival, curated to celebrate creative prowess, ethnic vibrancy, and athletic tenacity under one unified platform.
+          </p>
+<p class="">
+            Rooted in our commitment to holistic collegiate life, COLORIDO serves as a grand confluence where time-honored traditional performing arts harmonize with the competitive adrenaline of the sports arena. 
+          </p>
+<p class="">
+            Whether executing graceful classical choreographies, energizing crowds during dynamic battle-of-the-bands, or dominating the court in basketball and volleyball championships, every participant is empowered to compete with honor, mutual respect, and unbound enthusiasm.
+          </p>
+<!-- Key Metric Stats Cards -->
+<div class="grid grid-cols-3 gap-4 pt-4 border-t border-brand-creamDark">
+<div class="text-center p-3 rounded-xl bg-white shadow-sm border border-slate-200">
+<span class="block font-heading text-2xl font-bold text-brand-burgundy">10+</span>
+<span class="text-xs text-slate-500 uppercase font-medium">Cultural Arenas</span>
+</div>
+<div class="text-center p-3 rounded-xl bg-white shadow-sm border border-slate-200">
+<span class="block font-heading text-2xl font-bold text-brand-cyanAccent">6+</span>
+<span class="text-xs text-slate-500 uppercase font-medium">Sports Divisions</span>
+</div>
+<div class="text-center p-3 rounded-xl bg-white shadow-sm border border-slate-200">
+<span class="block font-heading text-2xl font-bold text-brand-gold">1000+</span>
+<span class="text-xs text-slate-500 uppercase font-medium">Athletes &amp; Artists</span>
+</div>
+</div>
+</div>
+<!-- Right: Multi-Photo Curated Collage -->
+<div class="lg:col-span-6 grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="rounded-2xl overflow-hidden shadow-lg border border-brand-gold/30 aspect-[4/5] bg-slate-200">
+<!-- Classical Indian classical dance showcase -->
+<img alt="Group cultural performance on festive stage" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQd9nW_e7foVfsNrfX0QoiL7dRlXp2oR157EGrGv7KkGgdtogW9v2bKIOlktXbI0SwRdNuoVgOFrclgMjD4bqrBsFM3HHrpyPc4tsqfVS1xoqI2BLneLFpfOFlQBf9JUOOSmIcPqsN13gyCnUa1qhw1WWtAVhvbgX11ZL8byJXSRGpwmspiSuyT_cL0fO1zYnYGei4tPMfsE7Nk-dvObygfJBCBx_lA_fwy1_5O32mZmU35aLW0rj3">
+</div>
+<div class="rounded-2xl overflow-hidden shadow-lg border border-brand-gold/30 aspect-square bg-slate-200">
+<!-- Instrumental Music performance -->
+<img alt="Solo acoustic musician performing live" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZKKEcelT3SJEBKGVsMzavyssIsRHZ8z1krsB__VUD8UxwAb1IGyd0MuBjltnGMf4_Ojd-gXUq1tck2KuzY8sJQW0UtxkOjqdAXYFHzlrN3qb0u-kr2pA0R8mHBjX6mwVhXjyNAR87Fyh-v4qQazR1gRFlNeJbd-dm5wCdtI7dbACPofn9o4KzmeBaZbfZKQCTq8sY1sfNxkzT7z1lmICM9z0XWGmEPmX7rW2sOxaaIcxnv0HMl1pk">
+</div>
+</div>
+<div class="space-y-4 pt-6">
+<div class="rounded-2xl overflow-hidden shadow-lg border border-brand-cyanAccent/30 aspect-square bg-slate-200">
+<!-- Sports teamwork celebrate -->
+<img alt="Athletic collegiate volleyball team celebrating victory" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClgGsKW0sRGQsRSkdb7cXq5Q4NFd2yg9oCxPETzOOUFUP7XzsF16djkLpA1g4iLAaEIhfpvuZeEAPgKw7It6eTk2TjsxSwKdoS8rnF05qLNBth04aGeANESfBXbzgbYYfzKfyo95Po19Ly6fPjCakkrg5gkuNdociJrBluqPLgnbzGgRE3k6zQeMO5EUjBZ41SxF9XyrujshWAotQ1_RdhsKynlRwhDJ7gmRaC3aoWYwdKUF_wlvoL">
+</div>
+<div class="rounded-2xl overflow-hidden shadow-lg border border-brand-cyanAccent/30 aspect-[4/5] bg-slate-200">
+<!-- Dramatic theatre stage showcase -->
+<img alt="Theatre dramatics ensemble under spotlight" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGOQ6TJraFfJ_XtfIYdhcLYIVltqw08TJSbBdUTQvZY0fXBEMvUh9gFdu9eNchsf2CV5bAmwsKPR2MT1gIxAQGqIi7hBHGJeJsFXC0gwO7viXme8UBdkRdGKTRMFBMn337tEJY0PYoMHeqUGc3emCy-1BsBopkDXaG4_UILlutRG5IFa_khtUa5tSenCq1bZw4fat1BxkrNd_j8iDvL4WvKxFXeZggMxv3wK1EZCbw9D6cYXlwN9zd">
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: CulturalEventsSection -->
+<section class="py-24 bg-brand-deepPurple text-white mandala-pattern relative" data-purpose="cultural-events-directory" id="cultural-events">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<span class="inline-block text-xs font-semibold tracking-widest text-brand-gold uppercase px-3.5 py-1 bg-brand-purple rounded-full mb-3 border border-brand-gold/30">
+          03 / Cultural Events
+        </span>
+<h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white">
+          Artistic Traditions &amp; Creative Stages
+        </h2>
+<p class="max-w-2xl mx-auto mt-4 text-slate-300 text-sm sm:text-base">
+          From classical ragas and high-voltage choreography to canvas fine arts and dramatic monologues, experience the full spectrum of campus creativity.
+        </p>
+<div class="w-20 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mt-6"></div>
+</div>
+<!-- Categories Grid: 10 Documented Cultural Categories -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1: Fine Arts -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Fine Arts Painting and Canvas Art" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP75Fw5_M_2VVuKOwijHqOvcObWOF0jCTr7d5fTrFsupO9ffMFAnKbc0RMBoz_2ga06jc-jXe-FcXQIcgOMA7myLpSOHChYk7zOlFXNppSC4TM95EDSCyqJMQD7oaHHxJJ8PKChsLrMHC12V8-8ZQPz67mmkBl7-oFpnxZ6b71sWdmyeqkznUilYCchnI3Y9BPofc8y3fhLTmGW5Yk5-MNPwVF5bhLzPuzfUWosahyNazcqUBQ3C3M">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Visual</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Fine Arts</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Spot painting, sketching, face art, and traditional mandala canvas design reflecting innovation and aesthetic discipline.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Music & Band — Solo -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Acoustic Solo Guitar and Vocalist" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtkdlxo0FahiLHw6qyiq7Exw7NdbPU5EthbnPW9x40nyDUn3sK_1Wrz0EQEAUN7h7vOEMwotHixf9pF5QX_sAm-fHeTHcjwVx3ZkOHr51RT4-IDXB5TCopnbUaF7ZjV-6VaqDmPpe-qs4eRdcCstK_Y3lRzAZ7GvAk4uB6ntZ-qtk880Q0_bOlDDSPwpTbyNNf5lVMyA7cDYZnz7m0WEhID4tJIKm9EdaoVK6YL7C6fgw18MTJhqFJ">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Vocal &amp; Acoustic</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Music &amp; Band — Solo</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Classical, western, and fusion solo singing accompanied by acoustic or electronic rhythm showcasing individual pitch control.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Music & Band — Group -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Band playing on stage with drums and guitars" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNbLnxR2w4b32GXGSok4Ic_eIzoE0IA5yZq7JID6ttrw-M-CiCyAMbWGKxxj3AB0ra4TKZ9rialo5o5Gs5vtY2FlPOKGcuDhQdH02zvgelON62AlsDcrv3KAc-wNYAPM4vT5ZqUouQvN59TqHWBpKzIuDsOWjAMyaupLvQDY4MufCYeNcmlWKOlyDOC-peQo8Q9uUOm_UiCYLtGqbe-a7ndi47aCZ6Bnr-3jAtLBLnE1UXhtmrtD_N">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Ensemble</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Music &amp; Band — Group</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Battle of the Bands, unplugged groups, and regional choral ensembles orchestrating harmonious rhythm and electrical stage energy.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 4: Dance — Solo -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Classical Bharatnatyam Solo Dancer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALJ3uI-rKAj-mHpSvmhi88EJ5FoZUPs3ebzw8PRZwnlQXNjhgNFnrGX2Zi6mwm6C9TlwID63soUhOwb0N63M0cgTT8z-yOZcLdZjF_cytoMruT32NCYjEsppk4RogM7p5LgujbOlRBLsRbRoHFtaXNF-5fTtHlxpLhzC2oSsjwPlLWlq_uMkeuN8JZIe6-DgzL4Ht11EYCAhacJ3wfSALweHloUGnKZkT-bmXTF2jiGFkJLY0YGmMG">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Solo Expression</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Dance — Solo</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Classical Mudras, semi-classical, contemporary, and hip-hop solo routines judged on technique, expression, and rhythm.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 5: Dance — Group -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Folk group dance celebration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhIp-tbfEAboutgnQ-Ezm5kMngtSiP18ivXN_s4Q-k7je5Vggp4qkmkmDtLCHn0znRcj_w79Tt1SjhJu_G6YgpXqnmLZJjltfm4JdUyRgmfqWZ3HO07BR-p4HSf7Sz3YpUMcl8RdE76KTtHCm5jeUExRyiIzyHguUpy22MlFr59x7myTxQmLyHVFZRGxOOysE-BGSE3ayRbKiAE-OcazPfsIqzlK0fU9XvvU1BLjkmx2dPzgM4Ynua">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Group Dance</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Dance — Group</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                High-synchronization folk, western, and fusion crew performances commanding stage presence and uniform formation transitions.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 6: Choreoday — Theme Based -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Thematic Dance Routine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDakY28HKAu-Bpxpp6BaaXSlUmn4x9qoc8M5rlyDkqNV5i1lIif4UGhRO1EsiF0QNwnVTPSUvZxC3JfGdrF7HRtjQ_oCOf3aLE4oQMU4Gwr-zeLtIm7yG8vQ8HoS2HY5UrAzyJMPQmEhziU4w2mtXEvqnoN-gODaTeYHCfMCht7moq_bYZ58cVfaqIbRMiLuOkeTmDzrQlA1ZKviLFtgcDi88g_LKsjb1AmlKYMDQqHand64B1R31Wt">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Special Event</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Choreoday — Theme Based</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Narrative theatrical dance productions telling socially compelling and historically rich sagas through complex musical storylines.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 7: Dramatics -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Dramatic performance on theatre stage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGB1IpdxGeb0WbZ8DKnLTo3yT-tXo9XMa4Txx25g-fqmkncWNLjcXDm0u26DkAJpB_iS_W0v7NdwfyaeV_w4vqpY7hO18A8_4k1fdATUjCHy8sRvPHbX0x-F75q0thuCHZzSJtJgdLSZRocx2aPeEmN2Ku3Y53jC-MXPjbcm2sCB83aiqgmlbZgpVklB1miL3RNx6_FQ25B1Y1AfGDujW1SvSdza7V3PARiJZVdl6LeMcaCEtmXQEU">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Theatre</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Dramatics</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Street plays (Nukkad Natak), one-act proscenium plays, and comedic mime acts delivering powerful dialogues and expressive acting.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 8: Fashion Show -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Runway high fashion spotlight" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4kEcA8vE1IKinU2eT9ToAqyw8sFx6b1UllVqIfB1qfIBL0lN9JQFDl7OnWzR_4IbdjwknZq1Fx_D1PqZvYsKYuzxGGW0Qca4WVOS0jHSPhTTRMH8fp8iHATeiWcBN5_c-iEU-muKVDZ393SqUu1Fu7qM2Hpo4yBq2Z7vBtd2dKb4QMh41zvtc6aDJt3kzIfVG4SILc4C2GqfkvnzW9b3S5ZzYlBoUhp4WNppBpVsdUobNOXEbsoXY">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Runway</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Fashion Show</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Ethnic couture and avant-garde student designer collections walking the central ramp with poise, styling, and conceptual themes.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 9: Tekraft Events -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Technical craft and design workbench" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJlIJWG1Ly8p6vLIJ2tWk3Bk71bzA9-VcWrjC1V-uLVmMp-g1WxGPb8k0o18Duk8EDszhx7vsw73WvviqVP32kjZYI2XrrNlFntgWA2yZ_01bGCLj8JsS-LjtyXE3TNPr8chdYOrW-ZPehwx8KGeqIWXr9jtg6YaYLKQWrp4F68JNjihjNxQLisUTwVLuZFeHIDqzhIGa0BySNtgjxd5nqBTNCaOhXf6Rg-HEi0eqfN1Ckf7BJ2DN8">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Technical Craft</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Tekraft Events</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Creative prototyping, junk-to-art craftwork, architectural origami, and applied design blending technical finesse with artistic talent.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<!-- Card 10: Literary -->
+<div class="rounded-2xl overflow-hidden bg-brand-royal/60 border border-brand-gold/20 hover:border-brand-gold transition-all duration-300 group flex flex-col justify-between">
+<div>
+<div class="h-44 overflow-hidden relative">
+<img alt="Classic fountain pen and vintage journal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK0kxWpeh2XxKXoS2sZbGixrfo3gYjwvcrJopWqLH_ijXRVz4HMIsDrmw5xC7MT1WszL1rBmLVqGL7OMErzLX6kMeHAjioIscf4GZti3Am86rq_W7BcTmeXdIBv2JLPK1zKr-LXCMb8Uytds3Fvod0f4cYSypSRsJnTA8OQ9BQRBGhIKZdJsurCgi00BhqhYliZuOfSGm_1kPqVLCQYnIcZY8JktexxHnkPUuzPbg4AA4aZEUlVei4">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-deepPurple via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-brand-deepPurple/80 text-brand-gold px-2.5 py-1 rounded border border-brand-gold/30">Literature</span>
+</div>
+<div class="p-5">
+<h3 class="font-heading text-lg font-bold text-white group-hover:text-brand-gold transition-colors">Literary</h3>
+<p class="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
+                Parliamentary debate, slam poetry, creative storytelling, elocution, and general trivia quizzes testing intellectual sharpness.
+              </p>
+</div>
+</div>
+<div class="p-5 pt-0">
+<a class="inline-flex items-center text-xs font-semibold text-brand-gold hover:text-brand-lightGold tracking-wide" href="#register">
+              View Category Details <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CulturalEventsSection -->
+<!-- BEGIN: SportsEventsSection -->
+<section class="py-24 bg-brand-cream border-t border-b border-brand-gold/20" data-purpose="sports-events-directory" id="sports-events">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<span class="inline-block text-xs font-semibold tracking-widest text-brand-cyanAccent uppercase px-3.5 py-1 bg-sky-100 rounded-full mb-3 border border-sky-300">
+          04 / Sports Events
+        </span>
+<h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-brand-deepPurple">
+          The Athletic Championships
+        </h2>
+<p class="max-w-2xl mx-auto mt-4 text-slate-600 text-sm sm:text-base">
+          High-stamina campus rivalries across designated Boys and Girls team divisions. Witness grit, swiftness, and strategic brilliance.
+        </p>
+<div class="w-20 h-1 bg-brand-cyanAccent mx-auto mt-6 rounded-full"></div>
+</div>
+<!-- Boys Division Sub-Section -->
+<div class="mb-16">
+<div class="flex items-center justify-between mb-8 border-b border-slate-300 pb-3">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-brand-cyanAccent"></span>
+<h3 class="font-heading text-2xl font-bold text-slate-900 tracking-wide">Boys Division</h3>
+</div>
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Official Tournament Rules</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Basketball (Boys) -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-200 group">
+<div class="h-52 overflow-hidden relative">
+<img alt="Men's Basketball Team Championship" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGC9l7zkukaaEaFtHeFIOMzT6Rwm4xIKwmTb5eHkD84Uyv_GhKK1Z_Rqfv7lk39r0W3RX1mq0qn9WCK2vNiPJU0FaB5YUhwqORb2ZzYEj3SO4A2F5ZEI8FELBC29YgRe7qaMZfbIHToNURy9pWBPtIIqNT7A5onT0SLIn7JUs1jkxRARbdEXFJ_hmRiBJ2p3wuz0nPMsfnrTCrR3LFE_QVE6k3nyPuSC_i1GJZyz2NiJTT_Rww01bN">
+<div class="absolute top-3 right-3 bg-brand-cyanAccent text-brand-deepPurple text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Boys Division
+              </div>
+</div>
+<div class="p-6">
+<h4 class="font-heading text-xl font-bold text-brand-deepPurple mb-2">Basketball</h4>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Full-court 5v5 collegiate knockout championship held at the main indoor sports complex with standard FIBA time intervals.
+              </p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100">
+<span class="text-[11px] text-slate-500 font-medium">Team Size: 5 + 5 Sub</span>
+<a class="text-xs font-semibold text-brand-cyanAccent hover:underline flex items-center gap-1" href="#fixtures">
+                  View Fixtures <span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Volleyball (Boys) -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-200 group">
+<div class="h-52 overflow-hidden relative">
+<img alt="Men's Volleyball Tournament Match" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEM30Qux5tjjg4XsRXPKcFIB-Vk11B0KN_k4VT_LkNSX5O_wvd85JJ2jffwHyHcuxOJRbR_cpOaOKjtMRUshjD5AFnVEcnX29KgsWHaZ9eGisCLRntgPYapRKTXoXRnYhEXjoF3KywzGEd_04mmjc0YdTUXPqmwzLO6Bakz_-x3hPeUOX1U-H6D2f_l28wtGlW-fS0qB8Z6-9y90SxSE1ZXfZqi8k6-O6HTPC8U-tq9OabXEdwahDt">
+<div class="absolute top-3 right-3 bg-brand-cyanAccent text-brand-deepPurple text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Boys Division
+              </div>
+</div>
+<div class="p-6">
+<h4 class="font-heading text-xl font-bold text-brand-deepPurple mb-2">Volleyball</h4>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Fast-paced outdoor clay court rotation format featuring rally-point scoring across best-of-three qualifying sets.
+              </p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100">
+<span class="text-[11px] text-slate-500 font-medium">Team Size: 6 + 4 Sub</span>
+<a class="text-xs font-semibold text-brand-cyanAccent hover:underline flex items-center gap-1" href="#fixtures">
+                  View Fixtures <span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Table Tennis (Boys) -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-200 group">
+<div class="h-52 overflow-hidden relative">
+<img alt="Table Tennis Paddle and Ball on Table" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMM9HY6nSWjWg4_IXMGdiNCwQLq2F5TIaG_FsZHmYEG2RPZRHRiJ965hxxGk3JMNyt1kWQc6-Y-pJlgZ-ZDSIlcbntkaDERCEf6EIOv6QF8H7Vmx3t7_1Ljmb9GPT0YXIgtai1KCrzLxdWATmsB7XloTOeqDwAe-066xvmvO1Opk4b3ARdvuKyNSFgUtaygFjubq3YJyyAiz5oLWMoTTNoEQZz818C5I3qRaM0PfZWxWL5qNaosvP8">
+<div class="absolute top-3 right-3 bg-brand-cyanAccent text-brand-deepPurple text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Boys Division
+              </div>
+</div>
+<div class="p-6">
+<h4 class="font-heading text-xl font-bold text-brand-deepPurple mb-2">Table Tennis</h4>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Indoor singles and doubles high-velocity knockout brackets governed under standard ITTF technical regulations.
+              </p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100">
+<span class="text-[11px] text-slate-500 font-medium">Singles &amp; Doubles</span>
+<a class="text-xs font-semibold text-brand-cyanAccent hover:underline flex items-center gap-1" href="#fixtures">
+                  View Fixtures <span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Girls Division Sub-Section -->
+<div>
+<div class="flex items-center justify-between mb-8 border-b border-slate-300 pb-3">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-pink-500"></span>
+<h3 class="font-heading text-2xl font-bold text-slate-900 tracking-wide">Girls Division</h3>
+</div>
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Official Tournament Rules</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Throwball (Girls) -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-200 group">
+<div class="h-52 overflow-hidden relative">
+<img alt="Women's Throwball and Court Action" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaNkHJ8Vn1mlAfglXf_dsSUaGxF1PmaCOvvXXtzujRlf62hFfrxRrloo49cYc0Z82ATE93L8jiU1aE2TjhFtCuq-EXp3hHltOfZh55hAPliXAHtrudqnyzmc5fd_na9LU78Wlf1XiDy4ccXu4k1NAWIb9SWmSTEJyI0T-vF1iwkhZPLcF8DmER6QS9uI29WKs0fHhP3s00OK2fWwOWfxc5xM4LrSeGezFnUv7psh9Nxthe_k8y5BKP">
+<div class="absolute top-3 right-3 bg-pink-500 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Girls Division
+              </div>
+</div>
+<div class="p-6">
+<h4 class="font-heading text-xl font-bold text-brand-deepPurple mb-2">Throwball</h4>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">
+                High-reflex collegiate throwball championship testing coordination, tactical catch-release timing, and court coverage.
+              </p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100">
+<span class="text-[11px] text-slate-500 font-medium">Team Size: 7 + 5 Sub</span>
+<a class="text-xs font-semibold text-pink-600 hover:underline flex items-center gap-1" href="#fixtures">
+                  View Fixtures <span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- TenniKoit (Girls) -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-200 group">
+<div class="h-52 overflow-hidden relative">
+<img alt="Women's Racquet and Ring Court Sports" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTeaEHD4DQ6nlFsjpCgw9shldhV2wZH8CThbx3T5e8GsA_Hga3aNBiye_Vyr8ZpMlIF9IneVnykfffo0rS5eZY-ufGMdpCzU8QHg67sSRQUAZDe4TGbDzy-SlhcZOMWHTeo_Nz-9UkRbzMaDVqCx4goLVSM1FoHmYwWGtPcjoTF4nIOzmhw5PwdOju4DcAFpuA2ifFAF916O5NqYgCTE6nfwKlaYj421CoZ6Sf5RwLBStWLQ5cGOAR">
+<div class="absolute top-3 right-3 bg-pink-500 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Girls Division
+              </div>
+</div>
+<div class="p-6">
+<h4 class="font-heading text-xl font-bold text-brand-deepPurple mb-2">TenniKoit</h4>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Agility-driven ring tennis tournament played over singles and doubles formats requiring rapid wrist reflexes and positioning.
+              </p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100">
+<span class="text-[11px] text-slate-500 font-medium">Singles &amp; Doubles</span>
+<a class="text-xs font-semibold text-pink-600 hover:underline flex items-center gap-1" href="#fixtures">
+                  View Fixtures <span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Table Tennis (Girls) -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-slate-200 group">
+<div class="h-52 overflow-hidden relative">
+<img alt="Table Tennis Indoor Arena Game" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx4Ns9oX9uHnz-Ut3AKis3cx2gCpLESPV0ZdH0GC3wexjv-i8WmAzPKMPWhCsvJZT6VlDIaSbrWnuO0WHYKQtzvsDTY47DaGEQSmMwjDUwnGe3wWvt-ictrW9S8ehdMrVTz7Je1SiY5phWUnQv7tZNB2VreN1w60WxCUvAH2EG8pws9crsO3WqA7SpPnGe_-C9sbJ5xx6_gyLxoBWBSIgabkUA4gWZ7pzK2ZV_aGhdyb_irEmHdDbq">
+<div class="absolute top-3 right-3 bg-pink-500 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                Girls Division
+              </div>
+</div>
+<div class="p-6">
+<h4 class="font-heading text-xl font-bold text-brand-deepPurple mb-2">Table Tennis</h4>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Championship indoor matches emphasizing spin control, tactical rallies, and steady forehand returns on certified tables.
+              </p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100">
+<span class="text-[11px] text-slate-500 font-medium">Singles &amp; Doubles</span>
+<a class="text-xs font-semibold text-pink-600 hover:underline flex items-center gap-1" href="#fixtures">
+                  View Fixtures <span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SportsEventsSection -->
+<!-- BEGIN: EventCountdownBanner -->
+<section class="py-20 bg-brand-deepPurple text-white relative overflow-hidden" data-purpose="milestone-banner" id="countdown">
+<!-- Mandala Graphic Watermark Background -->
+<div class="absolute -right-24 -bottom-24 w-96 h-96 opacity-10 pointer-events-none">
+<svg class="w-full h-full text-brand-gold animate-spin" style="animation-duration: 90s;" viewBox="0 0 200 200">
+<circle cx="100" cy="100" fill="none" r="90" stroke="currentColor" stroke-width="2"></circle>
+<path d="M100 10 L110 50 L150 60 L120 90 L130 130 L100 110 L70 130 L80 90 L50 60 L90 50 Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<span class="text-xs uppercase tracking-widest text-brand-lightGold font-semibold">28 December 2026 Celebration</span>
+<h2 class="font-heading text-3xl sm:text-5xl font-black mt-2 mb-4 text-white">
+        Official Event Countdown
+      </h2>
+<p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-10">
+        All college registrations, song submissions, and athletic rosters must be confirmed prior to the lock-in date.
+      </p>
+<!-- Dynamic Schedule Status Placeholder -->
+<div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-brand-gold/30 text-xs sm:text-sm text-brand-gold">
+<span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Curating Highlights &amp; Stage Allocations — Official Lineup Publishing Soon
+      </div>
+</div>
+</section>
+<!-- END: EventCountdownBanner -->
+<!-- BEGIN: AnnouncementsSection -->
+<section class="py-24 bg-brand-cream" data-purpose="announcements-feed" id="announcements">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-14">
+<span class="inline-block text-xs font-semibold tracking-widest text-brand-royal uppercase px-3.5 py-1 bg-brand-creamDark rounded-full mb-3 border border-brand-royal/20">
+          07 / Latest Announcements
+        </span>
+<h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-deepPurple">
+          Notices &amp; Important Updates
+        </h2>
+<div class="w-16 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+</div>
+<!-- Announcements List -->
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:border-brand-gold transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">Priority Notice</span>
+<span class="text-xs text-slate-600">Pending Release</span>
+</div>
+<h4 class="font-heading text-base sm:text-lg font-bold text-brand-deepPurple">
+              Registration Deadline Updates — Phase 1 Early Bird Entries
+            </h4>
+<p class="text-xs text-slate-600">
+              Department team managers are advised to finalize student ID verifications for all multi-event players.
+            </p>
+</div>
+<a class="self-start sm:self-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-brand-royal border border-brand-royal/30 rounded-lg hover:bg-brand-royal hover:text-white transition-all whitespace-nowrap" href="#register">
+            Read Guidelines →
+          </a>
+</div>
+<!-- Item 2 -->
+<div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:border-brand-gold transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-sky-100 text-sky-800">Sports Desk</span>
+<span class="text-xs text-slate-600">Pending Release</span>
+</div>
+<h4 class="font-heading text-base sm:text-lg font-bold text-brand-deepPurple">
+              Reporting Time &amp; Manager Meet Schedule — Pending Release
+            </h4>
+<p class="text-xs text-slate-600">
+              The mandatory team captains and cultural coordinators briefing session schedule will be published here.
+            </p>
+</div>
+<span class="self-start sm:self-center text-xs font-semibold text-slate-600 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded">
+            Scheduled Soon
+          </span>
+</div>
+<!-- Item 3 -->
+<div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:border-brand-gold transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-100 text-purple-800">Logistics</span>
+<span class="text-xs text-slate-600">Venue to be announced</span>
+</div>
+<h4 class="font-heading text-base sm:text-lg font-bold text-brand-deepPurple">
+              Venue Allocation &amp; Arena Maps — Venue to be announced
+            </h4>
+<p class="text-xs text-slate-600">
+              Auditorium distribution for Fine Arts, Choreoday stages, and outdoor athletic pitches will be revealed.
+            </p>
+</div>
+<span class="self-start sm:self-center text-xs font-semibold text-slate-600 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded">
+            Awaiting Release
+          </span>
+</div>
+<!-- Item 4 -->
+<div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:border-brand-gold transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">Portal</span>
+<span class="text-xs text-slate-600">Live on 28 Dec 2026</span>
+</div>
+<h4 class="font-heading text-base sm:text-lg font-bold text-brand-deepPurple">
+              Rulebook &amp; Results Publication Portal
+            </h4>
+<p class="text-xs text-slate-600">
+              Live tournament brackets, score tallies, and jury decision scorecards will refresh in real time during the festival.
+            </p>
+</div>
+<span class="self-start sm:self-center text-xs font-semibold text-slate-600 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded">
+            Portal Inactive
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AnnouncementsSection -->
+<!-- BEGIN: HighlightsAndGallerySection -->
+<section class="py-24 bg-brand-deepPurple text-white" data-purpose="gallery-preview" id="gallery">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<span class="inline-block text-xs font-semibold tracking-widest text-brand-gold uppercase px-3.5 py-1 bg-brand-purple rounded-full mb-3 border border-brand-gold/30">
+          08 / Festival Highlights &amp; Gallery Preview
+        </span>
+<h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white">
+          Visual Memories of Excellence
+        </h2>
+<p class="max-w-xl mx-auto mt-4 text-slate-300 text-sm">
+          Snapshots of passion, intense athletic clashes, and colorful cultural milestones from previous editions.
+        </p>
+<div class="w-16 h-1 bg-brand-gold mx-auto mt-6 rounded-full"></div>
+</div>
+<!-- 6-Image Editorial Curated Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Gallery 1 -->
+<div class="group relative rounded-xl overflow-hidden aspect-square bg-brand-royal/50 border border-white/10">
+<img alt="Traditional Dance Performance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYTPz1bQKGGk-_rpztsnXkoCaV9wor-b9gwRiS_z7rQY1E105-R7FWbrT3fQWY_FyAlKH-j_oHP3fJYDfmwD36VBj9r1SftDPwvzDYZPBiSfemksS3WK_0bSAt-L6GbFouR_twTxFHeEWisRQWqgviwxGlI5tWVHwPdK3Pr1R7oh_HioyIvlV-aoOj_u5HfybZffpq8-8yhRh-8D6i4LHi-K5jTP7K4WCal2RE6LG_80ciPmWcsO0U">
+<div class="absolute inset-0 bg-brand-purple/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-xs font-heading font-semibold text-brand-gold tracking-wider">Classical</span>
+</div>
+</div>
+<!-- Gallery 2 -->
+<div class="group relative rounded-xl overflow-hidden aspect-square bg-brand-royal/50 border border-white/10">
+<img alt="Acoustic Instrumental Jam" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr0dM-ef7_8MYDBu4KiryNAMS-gQ15b7e5JGDDGzQ26OonEJwmuQCmwnfitm8bcBFEEVnrV9lJ8F3QeaGP1cx2akYIuAwLomv-4eGaQbhMkIZ8DUgKguSICDCPqi1MnuIaiwP0hOVSDq8IgZe8Q6v3fKCuNMtmA-EOU-ZLDNziLtVDwrHLXJiq-AJCfgXxpjUqHd4HG9JKyS3h8KtVwDXgR-siBbWcfAlPFIoXz1Gp0Zs0i6m1FKVV">
+<div class="absolute inset-0 bg-brand-purple/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-xs font-heading font-semibold text-brand-gold tracking-wider">Live Music</span>
+</div>
+</div>
+<!-- Gallery 3 -->
+<div class="group relative rounded-xl overflow-hidden aspect-square bg-brand-royal/50 border border-white/10">
+<img alt="Fast Break Basketball Point" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcRnVMt4W1W3R6CAYttyqndLJn21u9CSfkzRat2-IaznIuw_mXkSqSVQpKpUUPgdNl7ZZXFdUXiQk6XyqDZOYq1sSetPJ_mn_VKRae4cg9NroFj791OzjAxcfWwbcK5llhx08mblEAVXCNvQkdMcCNRGtu781JP4rgCHjQTVN-4_paK5sOt1K2Ggne4aHl2uaW27sU3JV6VAnv7xmJRU13WMmp-lsvNdBBRIUIaiLexGJe0cbt8IM">
+<div class="absolute inset-0 bg-brand-purple/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-xs font-heading font-semibold text-brand-gold tracking-wider">Athletics</span>
+</div>
+</div>
+<!-- Gallery 4 -->
+<div class="group relative rounded-xl overflow-hidden aspect-square bg-brand-royal/50 border border-white/10">
+<img alt="Fashion Runway Showcase" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsnDBQK0xCVFn3KUOSmh4azlOw3VKBQX-YsA0xRFSf8ElMaE-Q49XQkOBX2rFxB7wRu6mKwL57wpx-aohdvIiwCVKTxHeeDEhUGXqiIVGbR46_pid7WpIC6VS7zSLbhADvSk3uZXwUw-8imcuE4zXuF11IYJ-AxBWA5gK-mkbnyFIxBgeSo6K3xvI-_neCyBL4keeC0IxIEUv_boZwwZaGgUHC5BwxEEHkJOenBlRCnI4xEgr0RxHu">
+<div class="absolute inset-0 bg-brand-purple/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-xs font-heading font-semibold text-brand-gold tracking-wider">Fashion Walk</span>
+</div>
+</div>
+<!-- Gallery 5 -->
+<div class="group relative rounded-xl overflow-hidden aspect-square bg-brand-royal/50 border border-white/10">
+<img alt="Volleyball Match Spike" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuuBwF270zMQ2mW-9R2FHv1so96No8zegahzg-Y0p-SRZjCJ_zwfMJbnFOCQCrQwUsALu6ZLp_fBTbiMOup4jxsHNtQDRnEWdPs20qJRV4iSRslNpmFbxF2PLz5GzzB-YUxh8aBCKs4YCPT2jx8T-bFCADXsZkQmeH7DmKiLt38-J07FfPreaYiSXAOvnOusoWMYaRXyW3ZYbS9bkkXuvXpH75fdo9Uuu7CXIjzjiBEtKg5mUMboxP">
+<div class="absolute inset-0 bg-brand-purple/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-xs font-heading font-semibold text-brand-gold tracking-wider">Court Spikes</span>
+</div>
+</div>
+<!-- Gallery 6 -->
+<div class="group relative rounded-xl overflow-hidden aspect-square bg-brand-royal/50 border border-white/10">
+<img alt="Dramatic Play Ensemble" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhd2QovBhizEnFCi1zetkxlsCbrKa9ZDB98RgmaAbUzVRY5dx-PWqqaINRVNMbHL_2k17UiQjdV_fIMZBsL_FBv0OXHa6n4N_54icWo4juRFg_i3GAM7TUFLNVF1cfP1B4K-NjGVTNeawfGK0GyCxMyqmdkbnkyeUvi7Ff8vIEYyI0Frjuw8dwu93mLGXLEt9WICFxLJuHLcVza2K4gd5QdnRCXQkCaiCImeLSo2Y8HI_jcBi8sS33">
+<div class="absolute inset-0 bg-brand-purple/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-xs font-heading font-semibold text-brand-gold tracking-wider">Theatre Arts</span>
+</div>
+</div>
+</div>
+<!-- Gallery CTA -->
+<div class="text-center mt-12">
+<a class="inline-flex items-center px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-brand-gold border border-brand-gold/40 hover:bg-brand-gold hover:text-brand-deepPurple transition-all" href="#gallery">
+          Explore Archive Gallery
+        </a>
+</div>
+</div>
+</section>
+<!-- END: HighlightsAndGallerySection -->
+<!-- BEGIN: SponsorsSection -->
+<section class="py-16 bg-brand-cream border-b border-brand-gold/20" data-purpose="partners-showcase">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<span class="text-xs font-bold uppercase tracking-widest text-slate-500">Festival Partners &amp; Patrons</span>
+<h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-deepPurple mt-1 mb-8">Official Sponsors</h3>
+<!-- Minimalist Placeholder Sponsor Logo Tiles (Strictly neutral without invented brand names) -->
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+<div class="h-20 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-4 shadow-sm text-slate-400 font-medium text-xs tracking-wider uppercase">DUMMY</div>
+<div class="h-20 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-4 shadow-sm text-slate-400 font-medium text-xs tracking-wider uppercase">DUMMY</div>
+<div class="h-20 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-4 shadow-sm text-slate-400 font-medium text-xs tracking-wider uppercase">DUMMY</div>
+<div class="h-20 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-4 shadow-sm text-slate-400 font-medium text-xs tracking-wider uppercase">DUMMY</div>
+<div class="h-20 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-4 shadow-sm text-slate-400 font-medium text-xs tracking-wider uppercase">DUMMY</div>
+<div class="h-20 rounded-xl bg-white border border-slate-200 flex items-center justify-center p-4 shadow-sm text-slate-400 font-medium text-xs tracking-wider uppercase">DUMMY</div>
+</div>
+</div>
+</section>
+<!-- END: SponsorsSection -->
+<!-- BEGIN: ContactSection -->
+<section class="py-20 bg-brand-deepPurple text-white relative" data-purpose="contact-cta" id="contact">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="rounded-3xl p-8 sm:p-12 glass-card-dark border border-brand-gold/30">
+<span class="text-xs uppercase tracking-widest text-brand-gold font-semibold">Get Connected</span>
+<h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">
+          Festival Inquiries &amp; Help Desk
+        </h2>
+<p class="text-slate-300 text-sm max-w-xl mx-auto mb-8">
+          For inter-college contingent slot booking, manager credentials, rules queries, and venue transport accommodations:
+        </p>
+<!-- Neutral Placeholder Contact Details -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left mb-8">
+<div class="p-4 rounded-xl bg-white/5 border border-white/10">
+<span class="block text-xs uppercase tracking-wider text-brand-lightGold mb-1 font-semibold">Official Location</span>
+<p class="text-xs text-slate-300">Venue to be announced</p>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/10">
+<span class="block text-xs uppercase tracking-wider text-brand-lightGold mb-1 font-semibold">Phone Inquiries</span>
+<p class="text-xs text-slate-300">Contact details coming soon</p>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/10">
+<span class="block text-xs uppercase tracking-wider text-brand-lightGold mb-1 font-semibold">Email Desk</span>
+<p class="text-xs text-slate-300">Contact details coming soon</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4">
+<a class="px-8 py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider text-brand-deepPurple bg-brand-gold hover:bg-brand-lightGold transition-colors" href="#register" id="register">
+            Register Contingent Now
+          </a>
+<button class="px-8 py-3.5 rounded-full font-semibold text-xs uppercase tracking-wider text-white border border-brand-gold/40 hover:bg-white/5 transition-colors" type="button">
+            Contact Festival Office
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ContactSection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-deepPurple border-t border-brand-gold/20 text-slate-400 py-14" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+<!-- Brand Summary Column -->
+<div class="space-y-4 md:col-span-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-deepPurple font-heading font-black text-sm">
+              C
+            </div>
+<span class="font-heading font-extrabold text-xl text-white tracking-wider">COLORIDO 2K26</span>
+</div>
+<p class="text-xs text-slate-400 max-w-md leading-relaxed">
+            The flagship annual cultural and athletic convergence celebrating student talent, classical heritage, and competitive sportsmanship. Event date: 28 December 2026.
+          </p>
+<div class="flex items-center gap-2 text-xs text-brand-lightGold">
+<span class="w-2 h-2 rounded-full bg-brand-gold"></span>
+<span class="">All participating institutes must verify affiliated credentials at reporting desk.</span>
+</div>
+</div>
+<!-- Quick Navigation -->
+<div>
+<h4 class="text-xs uppercase tracking-widest text-white font-semibold mb-4 font-heading">Explore Quick Links</h4>
+<ul class="space-y-2 text-xs">
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#hero">Home</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#about">About COLORIDO</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#cultural-events">Cultural Events Grid</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#sports-events">Sports Arenas</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#announcements">Latest Bulletins</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#gallery">Festival Highlights</a></li>
+</ul>
+</div>
+<!-- Official Compliance & Guidelines -->
+<div>
+<h4 class="text-xs uppercase tracking-widest text-white font-semibold mb-4 font-heading">Regulations</h4>
+<ul class="space-y-2 text-xs">
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#about">Contingent Guidelines</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#sports-events">Boys Division Rules</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#sports-events">Girls Division Rules</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#contact">Venue &amp; Entry Logistics</a></li>
+<li class=""><a class="hover:text-brand-gold transition-colors" href="#contact">Dispute Redressal</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Disclaimer / Copyright -->
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+<div class="">
+          © 2026 COLORIDO 2K26 Cultural &amp; Sports Festival. All rights reserved.
+        </div>
+<div class="flex items-center space-x-6">
+<span class="hover:text-slate-400">Strictly Non-Commercial Academic Extravaganza</span>
+<span class="hover:text-slate-400">28 December 2026</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- JavaScript: Responsive Mobile Menu Toggle -->
+<script data-purpose="mobile-menu-interactions">
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close menu when clicking link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+  </script>
+
+
+</body></html>

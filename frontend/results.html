@@ -1,0 +1,1768 @@
+<!DOCTYPE html><html lang="en"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Festival Results | COLORIDO 2K26 Cultural &amp; Sports Fest</title>
+<!-- Tailwind CSS CDN with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fest: {
+              plum: '#18092a',
+              dark: '#120520',
+              deepPurple: '#1c0a2a',
+              accentPurple: '#2a1140',
+              gold: '#f59e0b',
+              goldLight: '#fbbf24',
+              goldDark: '#b45309',
+              cream: '#fbf9f4',
+              creamMuted: '#f4ede2',
+              borderCream: '#e8dcce',
+              cyanAccent: '#0ea5e9',
+              cyanDark: '#0369a1'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts for Editorial Serif & Clean Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&amp;display=swap" rel="stylesheet">
+<style data-purpose="base-styling">
+    body {
+      background-color: #fbf9f4;
+      color: #2b1d38;
+      font-family: 'Inter', system-ui, sans-serif;
+      scroll-behavior: smooth;
+    }
+    .font-editorial {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+  </style>
+<style data-purpose="decorations">
+    .mandala-bg {
+      background-image: radial-gradient(circle at 85% 50%, rgba(245, 158, 11, 0.08) 0%, rgba(24, 9, 42, 0) 65%);
+    }
+    .gold-shimmer {
+      background: linear-gradient(135deg, #fce09b 0%, #dfa13d 50%, #b87a1d 100%);
+    }
+    .silver-shimmer {
+      background: linear-gradient(135deg, #f1f3f5 0%, #cbd3da 50%, #9aa0a6 100%);
+    }
+    .bronze-shimmer {
+      background: linear-gradient(135deg, #fbe3cf 0%, #d89668 50%, #a25c31 100%);
+    }
+    .tab-active {
+      background-color: #2a1140 !important;
+      color: #ffffff !important;
+      border-color: #2a1140 !important;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f4ede2;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd3da;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-200 selection:text-fest-plum">
+<!-- BEGIN: MainHeader -->
+<header class="w-full text-white sticky top-0 z-50 shadow-xl overflow-hidden" data-purpose="primary-navbar" style="width: 100%; max-width: none; height: 80px; min-height: 80px; max-height: 80px; background: rgb(28, 15, 43); border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; box-sizing: border-box;">
+  <div style="width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 32px; height: 100%; display: flex; align-items: center; justify-content: space-between;">
+    <!-- Brand Logo & Fest Sub-title -->
+    <a aria-label="COLORIDO 2K26 Home" class="flex items-center gap-3.5 group focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-lg py-1" href="#hero">
+      <div class="relative flex items-center justify-center flex-shrink-0">
+        <div class="absolute inset-0 rounded-full blur-sm opacity-60" style="background: #e5a93c;"></div>
+        <div class="relative rounded-full flex items-center justify-center shadow-lg" style="width: 44px; height: 44px; background: radial-gradient(circle at 35% 35%, #2a1545 0%, #170828 100%); border: 1.5px solid #f5b642; box-shadow: 0 0 12px rgba(245, 182, 66, 0.35);">
+          <svg class="w-5 h-5 fill-none" stroke="#f5b642" stroke-width="1.8" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M12 2.5l2.8 6.9 7.2.6-5.4 4.8 1.6 7.2L12 18.2l-6.2 3.8 1.6-7.2L2 10l7.2-.6L12 2.5z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="leading-none flex flex-col justify-center">
+        <div class="flex items-baseline gap-1.5">
+          <span class="text-[21px] font-bold tracking-[0.06em] text-white font-editorial">COLORIDO</span>
+          <span class="text-[21px] font-semibold tracking-wide font-editorial" style="color: #e5a93c;">2K26</span>
+        </div>
+        <span class="text-[10px] tracking-[0.14em] font-medium uppercase mt-1" style="color: #c2b5d4;">CULTURAL &amp; SPORTS FEST</span>
+      </div>
+    </a>
+
+    <!-- Center Navigation Links -->
+    <nav aria-label="Desktop Navigation" class="hidden lg:flex items-center text-[15px] font-medium tracking-normal" style="gap: 28px;">
+      <!-- Active Home Link with warm gold underline -->
+      <div class="relative flex flex-col items-center justify-center py-1">
+        <a class="font-medium transition-colors" href="#hero" style="color: #e5a93c;">Home</a>
+        <span class="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full" style="background: #e5a93c;"></span>
+      </div>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#about" style="color: #eae5f2;">About</a>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#events" style="color: #eae5f2;">Events</a>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#sports-section" style="color: #eae5f2;">Sports</a>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#schedule" style="color: #eae5f2;">Schedule</a>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#announcements" style="color: #eae5f2;">Announcements</a>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#gallery" style="color: #eae5f2;">Gallery</a>
+      <a class="hover:text-amber-300 transition-colors py-1" href="#contact" style="color: #eae5f2;">Contact</a>
+    </nav>
+
+    <!-- Right CTA Button & Mobile Menu Trigger -->
+    <div class="flex items-center gap-3">
+      <button class="hidden sm:inline-flex items-center justify-center active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-amber-300 cursor-pointer" onclick="toggleEventDetails('All Cultural &amp; Sports Entries')" style="padding: 10px 24px; border-radius: 9999px; background: linear-gradient(135deg, #f6c042 0%, #e59d28 100%); box-shadow: 0 2px 10px rgba(230, 160, 40, 0.3); font-size: 13px; font-weight: 700; letter-spacing: 0.05em; color: #1c0f2b;">
+        REGISTER NOW
+      </button>
+      <!-- Mobile hamburger toggle button -->
+      <button aria-label="Toggle navigation menu" class="lg:hidden p-2 text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-lg" id="mobile-menu-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="hidden lg:hidden absolute top-[80px] left-0 right-0 bg-fest-dark/95 border-b border-amber-500/20 px-6 py-4 space-y-3 transition-all z-50" id="mobile-nav">
+    <a class="block font-bold py-1" href="#hero" style="color: #e5a93c;">Home</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#about">About</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#events">Events</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#sports-section">Sports</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#schedule">Schedule</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#announcements">Announcements</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#gallery">Gallery</a>
+    <a class="block text-gray-200 hover:text-amber-300 font-medium py-1" href="#contact">Contact</a>
+  </div>
+</header>
+<!-- END: MainHeader -->
+<main class="flex-grow" id="results-portal">
+<!-- BEGIN: HeroSection -->
+<section class="relative overflow-hidden bg-gradient-to-b from-[#18092a] via-[#240e3a] to-[#1a082c] text-white py-12 md:py-16 border-b border-amber-500/20" id="hero">
+<!-- Mandala Background Watermark & Gold Sparkles Overlay -->
+<div class="absolute inset-0 pointer-events-none opacity-25">
+<svg class="absolute -right-20 -top-20 w-[550px] h-[550px] text-amber-400/20" fill="currentColor" viewBox="0 0 200 200">
+<circle cx="100" cy="100" fill="none" r="80" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5"></circle>
+<circle cx="100" cy="100" fill="none" r="60" stroke="currentColor" stroke-width="2"></circle>
+<circle cx="100" cy="100" fill="none" r="40" stroke="currentColor" stroke-width="1"></circle>
+<path d="M100 0 L105 40 L120 20 L115 50 L140 40 L125 65 L155 70 L130 90 L160 100 L130 110 L155 130 L125 135 L140 160 L115 150 L120 180 L105 160 L100 200 L95 160 L80 180 L85 150 L60 160 L75 135 L45 130 L70 110 L40 100 L70 90 L45 70 L75 65 L60 40 L85 50 L80 20 L95 40 Z" opacity="0.4"></path>
+</svg>
+</div>
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Left: Hero Text -->
+<div class="md:col-span-8 space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-semibold tracking-wider uppercase">
+<span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              Eyebrow: COLORIDO 2K26
+            </div>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-editorial text-white tracking-tight leading-tight">
+              Festival Results
+            </h1>
+<p class="text-base sm:text-lg text-amber-100/80 max-w-2xl font-normal leading-relaxed">
+              Celebrate the talent, teamwork and performances that made COLORIDO 2K26 memorable.
+            </p>
+</div>
+<!-- Right: Hero Trophy Visual Representation -->
+<div class="md:col-span-4 flex justify-center md:justify-end">
+<div class="relative group">
+<!-- Glow backdrop -->
+<div class="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full scale-110"></div>
+<!-- 3D Style Golden Trophy Graphic -->
+<div class="relative w-44 h-48 sm:w-52 sm:h-56 flex flex-col items-center justify-center p-4 rounded-2xl bg-gradient-to-b from-amber-400/10 to-transparent border border-amber-400/20 shadow-2xl backdrop-blur-sm">
+<svg class="w-32 h-32 filter drop-shadow-[0_10px_15px_rgba(245,158,11,0.4)] transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 120 120">
+<!-- Cup Base -->
+<rect fill="#602804" height="10" rx="3" width="36" x="42" y="98"></rect>
+<path d="M47 88 L73 88 L68 98 L52 98 Z" fill="#d97706"></path>
+<!-- Stem -->
+<path d="M57 72 L63 72 L64 88 L56 88 Z" fill="#f59e0b"></path>
+<!-- Cup Body -->
+<path d="M34 26 C34 58, 50 72, 60 72 C70 72, 86 58, 86 26 Z" fill="url(#trophy-grad)"></path>
+<!-- Cup Rim -->
+<ellipse cx="60" cy="26" fill="#fde68a" rx="26" ry="6"></ellipse>
+<ellipse cx="60" cy="26" fill="#d97706" rx="23" ry="4"></ellipse>
+<!-- Handles -->
+<path d="M34 32 C20 32 18 52 34 58" fill="none" stroke="#fbbf24" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M86 32 C100 32 102 52 86 58" fill="none" stroke="#fbbf24" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Star on Cup -->
+<polygon fill="#ffffff" opacity="0.9" points="60,38 62.5,44 69,44.5 64,49 65.5,55 60,51.5 54.5,55 56,49 51,44.5 57.5,44"></polygon>
+<!-- Gradients -->
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="trophy-grad" x1="34" x2="86" y1="26" y2="72">
+<stop stop-color="#fef08a"></stop>
+<stop offset="0.4" stop-color="#f59e0b"></stop>
+<stop offset="0.8" stop-color="#b45309"></stop>
+<stop offset="1" stop-color="#78350f"></stop>
+</linearGradient>
+</defs>
+</svg>
+<span class="text-xs font-semibold tracking-widest uppercase text-amber-200 mt-2">Victory Honors 2026</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 py-8 space-y-8">
+<!-- BEGIN: ResultsStatusBanner -->
+<section class="rounded-xl border border-emerald-300 bg-emerald-50/90 p-4 sm:p-5 shadow-sm transition-all duration-300" data-purpose="status-notification-banner" id="official-status-banner">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start sm:items-center gap-3.5">
+<span class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-600 text-white shadow-sm" id="status-icon">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full" id="status-badge">
+                  RESULTS PUBLISHED
+                </span>
+<span class="text-xs text-emerald-700 font-medium hidden md:inline">● Verified by Official COLORIDO Jury</span>
+</div>
+<p class="text-sm text-emerald-900 mt-1 font-medium" id="status-text">
+                Official results will appear here as events are completed and published.
+              </p>
+</div>
+</div>
+<!-- Interactive Simulator Toggle to switch between Published & Draft states -->
+<div class="flex items-center gap-2 self-end sm:self-center bg-white/80 border border-emerald-200 rounded-lg p-1.5 shadow-xs">
+<span class="text-xs font-semibold text-gray-700 pl-2">State Simulator:</span>
+<button class="text-xs font-bold bg-fest-plum text-white px-3 py-1 rounded transition hover:bg-fest-accentPurple" id="toggle-sim-mode" onclick="toggleResultSimulation()">
+              Simulate "No Results"
+            </button>
+</div>
+</div>
+</section>
+<!-- END: ResultsStatusBanner -->
+<!-- Simulated Empty State Container (Hidden by default) -->
+<div class="hidden bg-white border border-fest-borderCream rounded-2xl p-12 text-center shadow-sm" id="simulated-empty-state">
+<div class="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-500">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-bold font-editorial text-fest-plum mb-2">Awaiting Official Tabulation</h3>
+<p class="text-sm text-gray-600 max-w-md mx-auto mb-6">Competitions are currently ongoing. Jury scoresheets are being audited by the Council and will publish immediately once ratified.</p>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-fest-plum text-white text-xs font-semibold hover:bg-fest-accentPurple transition" onclick="toggleResultSimulation()">
+          Back to Live Published Results
+        </button>
+</div>
+<!-- MAIN RESULTS CONTAINER (Visible in Published Mode) -->
+<div class="space-y-8" id="active-results-display">
+<!-- BEGIN: FilterAndSearchToolbar -->
+<section class="bg-white p-4 sm:p-5 rounded-2xl border border-fest-borderCream shadow-sm" data-purpose="filtering-controls">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Category Filter Tabs -->
+<div aria-label="Result category filters" class="flex flex-wrap items-center gap-2" role="tablist">
+<button class="tab-active px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase border border-fest-borderCream bg-fest-plum text-white transition-all shadow-sm" id="filter-btn-ALL" onclick="setCategoryFilter('ALL')">
+                [ ALL ]
+              </button>
+<button class="px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase border border-fest-borderCream bg-[#faf7f2] text-gray-700 hover:bg-gray-100 transition-all" id="filter-btn-CULTURAL" onclick="setCategoryFilter('CULTURAL')">
+                [ CULTURAL ]
+              </button>
+<button class="px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase border border-fest-borderCream bg-[#faf7f2] text-gray-700 hover:bg-gray-100 transition-all" id="filter-btn-SPORTS" onclick="setCategoryFilter('SPORTS')">
+                [ SPORTS ]
+              </button>
+<button class="px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase border border-fest-borderCream bg-[#faf7f2] text-gray-700 hover:bg-gray-100 transition-all" id="filter-btn-FEATURED" onclick="setCategoryFilter('FEATURED')">
+                [ ALL EVENTS ]
+              </button>
+</div>
+<!-- Search and Sort controls -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1 lg:max-w-2xl lg:justify-end">
+<!-- Real-time Search Box -->
+<div class="relative flex-grow">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input aria-label="Search festival results" class="w-full pl-10 pr-10 py-2 text-sm bg-fest-cream/60 border border-fest-borderCream rounded-xl focus:ring-2 focus:ring-fest-plum focus:border-fest-plum text-gray-800 placeholder-gray-400" id="results-search-input" oninput="handleSearch(this.value)" placeholder="Search event, participant or team..." type="text">
+<button class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600" id="clear-search-btn" onclick="clearSearch()">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+<!-- Sort Dropdown -->
+<div class="flex items-center gap-2 flex-shrink-0">
+<label class="text-xs font-semibold text-gray-600" for="sort-select">Sort</label>
+<select class="text-xs font-medium py-2 pl-3 pr-8 bg-fest-cream/60 border border-fest-borderCream rounded-xl text-gray-800 focus:ring-2 focus:ring-fest-plum" id="sort-select" onchange="handleSort(this.value)">
+<option value="recent">Recently Published</option>
+<option value="highest">Highest Score</option>
+<option value="name">Event Name (A-Z)</option>
+</select>
+</div>
+<!-- Active Results Badge -->
+<div class="hidden sm:flex items-center px-3 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold whitespace-nowrap">
+<span id="match-count-badge" class="">16 Published Events</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FilterAndSearchToolbar -->
+<!-- BEGIN: FeaturedResultsPodium -->
+<section class="space-y-4" data-purpose="featured-podium" id="featured-results-section">
+<div class="text-center sm:text-left">
+<h2 class="text-2xl sm:text-3xl font-bold font-editorial text-fest-plum">Featured Results</h2>
+<p class="text-xs sm:text-sm text-gray-600 mt-1">Sophisticated treatment when results are available.</p>
+</div>
+<!-- Podium Grid 3 Distinct Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
+<!-- 1ST PLACE - GOLD -->
+<div class="cursor-pointer group relative overflow-hidden rounded-2xl border-2 border-amber-400 bg-gradient-to-b from-amber-50/70 via-white to-amber-100/40 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300" onclick="openResultModal('Arjun Kumar', 'Y24CS187', 'Dance — Solo', '1st Place (Winner)', 'City Engineering College', '96', 'Flawless classical fusion footwork and stage presence.')">
+<div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
+                Gold Standard
+              </div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center mx-auto mb-4 text-fest-plum shadow-md shadow-amber-500/20 group-hover:rotate-6 transition-transform">
+<!-- Gold Trophy Icon -->
+<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+<path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"></path>
+</svg>
+</div>
+<div class="text-center space-y-1">
+<span class="inline-block px-3 py-0.5 rounded-full text-xs font-black tracking-widest uppercase bg-amber-200 text-amber-900 mb-1">
+                  1ST PLACE
+                </span>
+<h3 class="text-xl font-bold font-editorial text-fest-plum group-hover:text-amber-700 transition-colors">Arjun Kumar</h3>
+<p class="text-xs font-semibold text-gray-500">Roll: Y24CS187 • Dance — Solo</p>
+<p class="text-xs text-gray-700 font-medium">City Engineering College</p>
+<div class="pt-3 mt-3 border-t border-amber-200/60 flex items-center justify-between text-xs">
+<span class="text-gray-500">Score Awarded:</span>
+<span class="font-extrabold text-amber-700 text-base">96 / 100</span>
+</div>
+</div>
+</div>
+<!-- 2ND PLACE - SILVER -->
+<div class="cursor-pointer group relative overflow-hidden rounded-2xl border-2 border-slate-300 bg-gradient-to-b from-slate-50 via-white to-slate-100 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300" onclick="openResultModal('Meera Nair', 'Y24CS192', 'Dance — Solo', '2nd Place (Runner-Up)', 'Vellore Tech Institute', '92', 'Exceptional emotional resonance and choreography timing.')">
+<div class="absolute top-0 right-0 bg-slate-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
+                Silver Honor
+              </div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-slate-400 to-gray-200 flex items-center justify-center mx-auto mb-4 text-fest-plum shadow-md group-hover:rotate-6 transition-transform">
+<!-- Silver Medal Icon -->
+<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="14" r="7"></circle>
+<path d="M8.5 2h7l2 8h-3.5L12 6.5 10 10H6.5z"></path>
+</svg>
+</div>
+<div class="text-center space-y-1">
+<span class="inline-block px-3 py-0.5 rounded-full text-xs font-black tracking-widest uppercase bg-slate-200 text-slate-800 mb-1">
+                  2ND PLACE
+                </span>
+<h3 class="text-xl font-bold font-editorial text-fest-plum group-hover:text-slate-700 transition-colors">Meera Nair</h3>
+<p class="text-xs font-semibold text-gray-500">Roll: Y24CS192 • Dance — Solo</p>
+<p class="text-xs text-gray-700 font-medium">Vellore Tech Institute</p>
+<div class="pt-3 mt-3 border-t border-slate-200 flex items-center justify-between text-xs">
+<span class="text-gray-500">Score Awarded:</span>
+<span class="font-extrabold text-slate-700 text-base">92 / 100</span>
+</div>
+</div>
+</div>
+<!-- 3RD PLACE - BRONZE -->
+<div class="cursor-pointer group relative overflow-hidden rounded-2xl border-2 border-orange-300 bg-gradient-to-b from-orange-50/70 via-white to-orange-100/40 p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300" onclick="openResultModal('Rohan Verma', 'Y24EC104', 'Dance — Solo', '3rd Place', 'National Arts Academy', '88', 'Commendable musicality and expressive movement narrative.')">
+<div class="absolute top-0 right-0 bg-orange-700 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
+                Bronze Standout
+              </div>
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-700 to-orange-300 flex items-center justify-center mx-auto mb-4 text-white shadow-md group-hover:rotate-6 transition-transform">
+<!-- Bronze Medal Icon -->
+<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="14" r="7"></circle>
+<path d="M9 2h6l2 8h-3l-2-3-2 3H7z"></path>
+</svg>
+</div>
+<div class="text-center space-y-1">
+<span class="inline-block px-3 py-0.5 rounded-full text-xs font-black tracking-widest uppercase bg-orange-200 text-orange-900 mb-1">
+                  3RD PLACE
+                </span>
+<h3 class="text-xl font-bold font-editorial text-fest-plum group-hover:text-amber-900 transition-colors">Rohan Verma</h3>
+<p class="text-xs font-semibold text-gray-500">Roll: Y24EC104 • Dance — Solo</p>
+<p class="text-xs text-gray-700 font-medium">National Arts Academy</p>
+<div class="pt-3 mt-3 border-t border-orange-200 flex items-center justify-between text-xs">
+<span class="text-gray-500">Score Awarded:</span>
+<span class="font-extrabold text-amber-900 text-base">88 / 100</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FeaturedResultsPodium -->
+<!-- BEGIN: CulturalEventsSection -->
+<section class="space-y-4 pt-4" data-purpose="cultural-accordions" id="events">
+<div class="border-b border-fest-borderCream pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold font-editorial text-fest-plum">Cultural Events</h2>
+<p class="text-xs sm:text-sm text-gray-600">Collapsible/expandable grouped result cards.</p>
+</div>
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="">Quick Action:</span>
+<button class="text-fest-plum font-semibold hover:underline" onclick="toggleAllAccordions(true)">Expand All</button>
+<span class="">•</span>
+<button class="text-fest-plum font-semibold hover:underline" onclick="toggleAllAccordions(false)">Collapse All</button>
+</div>
+</div>
+<!-- Cultural Accordion Items Container (NO DUPLICATES) -->
+<div class="space-y-3" id="cultural-accordions-group">
+<!-- 1. Fine Arts -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Fine Arts" data-score="94">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('fine-arts')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  FINE ARTS
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-fine-arts" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-fine-arts">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Participant / Team Name</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Sneha Reddy', 'Y24FA110', 'Fine Arts', '1st Place', 'Govt College of Fine Arts', '94', 'Unparalleled canvas depth &amp; water-color gradient blending.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Sneha Reddy <span class="text-xs text-gray-400 font-normal">(Y24FA110)</span></td>
+<td class="py-3 text-gray-600">Govt College of Fine Arts</td>
+<td class="py-3 font-bold text-gray-800">94</td>
+<td class="py-3 text-gray-500">Exemplary oil stroke balance</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Kabir Sen', 'Y24AR042', 'Fine Arts', '2nd Place', 'Metropolitan Arts College', '89', 'Exceptional charcoal shading.')">
+<td class="py-3 font-bold text-slate-600">2nd Place</td>
+<td class="py-3 font-medium text-fest-plum">Kabir Sen <span class="text-xs text-gray-400 font-normal">(Y24AR042)</span></td>
+<td class="py-3 text-gray-600">Metropolitan Arts College</td>
+<td class="py-3 font-bold text-gray-800">89</td>
+<td class="py-3 text-gray-500">High technical depth</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Ananya Roy', 'Y24FA015', 'Fine Arts', '3rd Place', 'Presidency College', '85', 'Strong impressionistic touch.')">
+<td class="py-3 font-bold text-amber-800">3rd Place</td>
+<td class="py-3 font-medium text-fest-plum">Ananya Roy <span class="text-xs text-gray-400 font-normal">(Y24FA015)</span></td>
+<td class="py-3 text-gray-600">Presidency College</td>
+<td class="py-3 font-bold text-gray-800">85</td>
+<td class="py-3 text-gray-500">Intricate line drawing</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Fine Arts')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 2. Music & Band — Solo -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Music &amp; Band — Solo" data-score="91">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('music-solo')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  MUSIC &amp; BAND — SOLO
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-music-solo" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-music-solo">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Participant Name</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Varun Sastri', 'Y24MU091', 'Music &amp; Band — Solo', '1st Place', 'Music Conservatory of Chennai', '91', 'Superlative pitch control on acoustic medley.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Varun Sastri <span class="text-xs text-gray-400 font-normal">(Y24MU091)</span></td>
+<td class="py-3 text-gray-600">Music Conservatory of Chennai</td>
+<td class="py-3 font-bold text-gray-800">91</td>
+<td class="py-3 text-gray-500">Superb vocal pitch control</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Dhruv Pillai', 'Y24CS332', 'Music &amp; Band — Solo', 'Runner-up', 'St. Joseph Engineering College', '87', 'High electric guitar shred execution.')">
+<td class="py-3 font-bold text-slate-600">Runner-up</td>
+<td class="py-3 font-medium text-fest-plum">Dhruv Pillai <span class="text-xs text-gray-400 font-normal">(Y24CS332)</span></td>
+<td class="py-3 text-gray-600">St. Joseph Engineering College</td>
+<td class="py-3 font-bold text-gray-800">87</td>
+<td class="py-3 text-gray-500">Electric lead solo perfection</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Music &amp; Band — Solo')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 3. Music & Band — Group -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Music &amp; Band — Group" data-score="95">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('music-group')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  MUSIC &amp; BAND — GROUP
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-music-group" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-music-group">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Category / Band Name</th>
+<th class="pb-3 font-semibold">Colleges</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('The Octave Project', 'GRP-MUS-01', 'Music &amp; Band — Group', '1st Place', 'Apex Institute of Tech', '120', 'Grand ensemble rock arrangement and crowd chemistry.')">
+<td class="py-3 font-bold text-amber-600">1</td>
+<td class="py-3 font-medium text-fest-plum">The Octave Project <span class="text-xs text-gray-400 font-normal">(Band)</span></td>
+<td class="py-3 text-gray-600">Apex Institute of Tech</td>
+<td class="py-3 font-bold text-gray-800">120</td>
+<td class="py-3 text-gray-500">Unanimous jury favorite</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Rhythm Horizon', 'GRP-MUS-04', 'Music &amp; Band — Group', '2nd Place', 'National University', '114', 'Dynamic rhythm synchronization.')">
+<td class="py-3 font-bold text-slate-600">2</td>
+<td class="py-3 font-medium text-fest-plum">Rhythm Horizon</td>
+<td class="py-3 text-gray-600">National University</td>
+<td class="py-3 font-bold text-gray-800">114</td>
+<td class="py-3 text-gray-500">High vocal layering power</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Acoustic Pulse', 'GRP-MUS-09', 'Music &amp; Band — Group', '3rd Place', 'Vellore Tech', '93', 'Great jazz improvisation.')">
+<td class="py-3 font-bold text-amber-800">3</td>
+<td class="py-3 font-medium text-fest-plum">Acoustic Pulse</td>
+<td class="py-3 text-gray-600">Vellore Tech</td>
+<td class="py-3 font-bold text-gray-800">93</td>
+<td class="py-3 text-gray-500">Tight bass and brass combo</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Crescendo Crew', 'GRP-MUS-12', 'Music &amp; Band — Group', 'Special Mention', 'Loyola Tech', '88', 'Commended for original composition.')">
+<td class="py-3 font-bold text-gray-600">4</td>
+<td class="py-3 font-medium text-fest-plum">Crescendo Crew</td>
+<td class="py-3 text-gray-600">Loyola Tech</td>
+<td class="py-3 font-bold text-gray-800">88</td>
+<td class="py-3 text-gray-500">Special Jury Citation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Music &amp; Band — Group')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 4. Dance — Solo (Expanded by default as per snapshot) -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs ring-1 ring-amber-400/40" data-category="CULTURAL" data-name="Dance — Solo" data-score="96">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('dance-solo')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
+                  DANCE — SOLO
+                  <span class="ml-2 text-[10px] font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">Primary Feature</span>
+</span>
+<svg class="w-5 h-5 text-gray-700 transform rotate-180 transition-transform duration-200" fill="none" id="arrow-dance-solo" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="block p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-dance-solo">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Participant Name</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/60 cursor-pointer bg-amber-50/20" onclick="openResultModal('Arjun Kumar', 'Y24CS187', 'Dance — Solo', '1st Place (Winner)', 'City Engineering College', '96', 'Flawless classical fusion footwork and stage presence.')">
+<td class="py-3 font-black text-amber-600">1</td>
+<td class="py-3 font-bold text-fest-plum">Arjun Kumar <span class="text-xs text-gray-500 font-semibold">(Y24CS187)</span></td>
+<td class="py-3 text-gray-700">City Engineering College</td>
+<td class="py-3 font-black text-gray-900">96</td>
+<td class="py-3 text-emerald-700 font-medium">Champion Performance</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Meera Nair', 'Y24CS192', 'Dance — Solo', '2nd Place', 'Vellore Tech Institute', '92', 'Exceptional emotional resonance and choreography timing.')">
+<td class="py-3 font-bold text-slate-600">2</td>
+<td class="py-3 font-bold text-fest-plum">Meera Nair <span class="text-xs text-gray-500 font-normal">(Y24CS192)</span></td>
+<td class="py-3 text-gray-700">Vellore Tech Institute</td>
+<td class="py-3 font-bold text-gray-900">92</td>
+<td class="py-3 text-gray-600">Outstanding expression</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Rohan Verma', 'Y24EC104', 'Dance — Solo', '3rd Place', 'National Arts Academy', '88', 'Commendable musicality and expressive movement narrative.')">
+<td class="py-3 font-bold text-amber-800">3</td>
+<td class="py-3 font-bold text-fest-plum">Rohan Verma <span class="text-xs text-gray-500 font-normal">(Y24EC104)</span></td>
+<td class="py-3 text-gray-700">National Arts Academy</td>
+<td class="py-3 font-bold text-gray-900">88</td>
+<td class="py-3 text-gray-600">Strong stage utilization</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+<span class="text-xs text-gray-500">Judged on: Rhythm (30), Choreography (30), Stage Appeal (20), Costume (20)</span>
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Dance — Solo')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 5. Dance — Group -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Dance — Group" data-score="93">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('dance-group')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  DANCE — GROUP
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-dance-group" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-dance-group">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Dance Troupe</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Vibe Kings Troupe', 'GRP-DNC-08', 'Dance — Group', '1st Place', 'SRM Institute', '93', 'High-speed synchronization &amp; acrobatics.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Vibe Kings Troupe</td>
+<td class="py-3 text-gray-600">SRM Institute</td>
+<td class="py-3 font-bold text-gray-800">93</td>
+<td class="py-3 text-gray-500">Perfect stunt transitions</td>
+</tr>
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Nritya Mandala', 'GRP-DNC-02', 'Dance — Group', 'Runner-up', 'Govt Arts &amp; Science', '90', 'Flawless folk synchronization.')">
+<td class="py-3 font-bold text-slate-600">Runner-up</td>
+<td class="py-3 font-medium text-fest-plum">Nritya Mandala</td>
+<td class="py-3 text-gray-600">Govt Arts &amp; Science</td>
+<td class="py-3 font-bold text-gray-800">90</td>
+<td class="py-3 text-gray-500">Rich cultural presentation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Dance — Group')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 6. Choreoday — Theme Based -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Choreoday — Theme Based" data-score="95">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('choreoday')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  CHOREODAY — THEME BASED
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-choreoday" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-choreoday">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Team Name (Theme)</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Echoes of Gaia', 'THEME-03', 'Choreoday', '1st Place', 'St. Xavier College', '95', 'Profound ecological narrative through movement.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Echoes of Gaia (Theme: Mother Earth)</td>
+<td class="py-3 text-gray-600">St. Xavier College</td>
+<td class="py-3 font-bold text-gray-800">95</td>
+<td class="py-3 text-gray-500">Unmatched narrative depth</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Choreoday — Theme Based')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 7. Dramatics -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Dramatics" data-score="89">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('dramatics')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  DRAMATICS
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-dramatics" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-dramatics">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Play Title / Cast</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('The Forgotten Echo', 'DRAMA-02', 'Dramatics', 'Winner', 'City Theater Guild', '89', 'Riveting social dialogue delivery.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">The Forgotten Echo</td>
+<td class="py-3 text-gray-600">City Theater Guild</td>
+<td class="py-3 font-bold text-gray-800">89</td>
+<td class="py-3 text-gray-500">Best Original Script</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Dramatics')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 8. Fashion Show -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Fashion Show" data-score="97">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('fashion-show')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  FASHION SHOW
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-fashion-show" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-fashion-show">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Ensemble / Theme</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Ethereal Silk Couture', 'FASH-01', 'Fashion Show', '1st Place', 'National Institute of Fashion', '97', 'Sensational silhouette styling.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Ethereal Silk (Theme: Cyber Heritage)</td>
+<td class="py-3 text-gray-600">National Institute of Fashion</td>
+<td class="py-3 font-bold text-gray-800">97</td>
+<td class="py-3 text-gray-500">Flawless ramp choreography</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Fashion Show')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 9. Tekraft Events -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Tekraft Events" data-score="90">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('tekraft')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  TEKRAFT EVENTS
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-tekraft" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-tekraft">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Design Prototype</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('AeroMorph Drone', 'TEK-09', 'Tekraft Events', '1st Place', 'IIT Madras Satellite Campus', '90', 'Advanced autonomous payload delivery design.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">AeroMorph Drone Unit</td>
+<td class="py-3 text-gray-600">IIT Madras Satellite Campus</td>
+<td class="py-3 font-bold text-gray-800">90</td>
+<td class="py-3 text-gray-500">Outstanding industrial finish</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Tekraft Events')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- 10. Literary (Single entry strictly avoiding duplicates) -->
+<div class="accordion-item rounded-xl border border-fest-borderCream bg-[#faf7f2] overflow-hidden shadow-xs" data-category="CULTURAL" data-name="Literary" data-score="87">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-fest-creamMuted/70 hover:bg-fest-creamMuted text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('literary')">
+<span class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  LITERARY
+                </span>
+<svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" id="arrow-literary" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-fest-borderCream" id="content-literary">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Author / Orator</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-amber-50/40 cursor-pointer" onclick="openResultModal('Kavya Natarajan', 'Y24LIT03', 'Literary — Debate', '1st Place', 'Loyola Academy', '87', 'Persuasive rhetoric and counter-rebuttal elegance.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Kavya Natarajan <span class="text-xs text-gray-400 font-normal">(Y24LIT03)</span></td>
+<td class="py-3 text-gray-600">Loyola Academy</td>
+<td class="py-3 font-bold text-gray-800">87</td>
+<td class="py-3 text-gray-500">First in Parliamentary Debate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-plum hover:text-amber-600 uppercase border border-fest-borderCream px-4 py-2 rounded-lg bg-fest-creamMuted/40 hover:bg-fest-creamMuted transition" onclick="toggleEventDetails('Literary')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CulturalEventsSection -->
+<!-- BEGIN: SportsEventsSection -->
+<section class="space-y-6 pt-6" data-purpose="sports-accordions" id="sports-section">
+<div class="border-b border-fest-borderCream pb-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-fest-cyanAccent ring-4 ring-cyan-100"></span>
+<h2 class="text-2xl sm:text-3xl font-bold font-editorial text-fest-plum">Sports Events</h2>
+</div>
+<span class="text-xs font-bold text-fest-cyanDark bg-cyan-50 border border-cyan-200 px-3 py-1 rounded-full uppercase tracking-wider">
+              Athletics &amp; Court Competitions
+            </span>
+</div>
+<!-- BOYS SUB-SECTION -->
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="text-xs font-extrabold uppercase tracking-widest text-sky-900 bg-sky-100 px-3 py-1 rounded-md">
+                BOYS
+              </span>
+<div class="flex-grow h-px bg-sky-200"></div>
+</div>
+<!-- Boys: Basketball (Expanded as in snapshot) -->
+<div class="accordion-item rounded-xl border border-sky-200 bg-[#f0f9ff] overflow-hidden shadow-xs ring-1 ring-sky-300" data-category="SPORTS" data-name="Boys Basketball" data-score="289">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-[#e0f2fe] text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('boys-basketball')">
+<span class="flex items-center gap-2 text-sky-950">
+<svg class="w-4 h-4 text-sky-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 015.659 4.025A9.972 9.972 0 0010 7a9.97 9.97 0 00-5.659 1.025A6 6 0 0110 4zm-6 6c0-.528.068-1.04.196-1.528A11.97 11.97 0 0110 9c2.083 0 4.041.528 5.804 1.472A5.972 5.972 0 0116 10a6 6 0 01-12 0z"></path></svg>
+                  Basketball
+                  <span class="text-xs font-medium text-sky-700 bg-white/70 px-2 py-0.5 rounded-full ml-2">Boys Championship</span>
+</span>
+<svg class="w-5 h-5 text-sky-700 transform rotate-180 transition-transform duration-200" fill="none" id="arrow-boys-basketball" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="block p-4 sm:p-6 bg-white border-t border-sky-100" id="content-boys-basketball">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Participant / Team Name</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Titans Club', 'TEAM-BB-01', 'Boys Basketball', 'Winner (Gold)', 'City Tech College', '289', 'Outstanding clutch 3-pointers in 4th Quarter.')">
+<td class="py-3 font-black text-amber-600">1</td>
+<td class="py-3 font-bold text-fest-plum">Titans Club (Captain: Rahul)</td>
+<td class="py-3 text-gray-700">City Tech College</td>
+<td class="py-3 font-bold text-gray-900">289</td>
+<td class="py-3 text-emerald-700 font-semibold">Gold Winner</td>
+</tr>
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Apex Warriors', 'TEAM-BB-04', 'Boys Basketball', 'Runner-up (Silver)', 'National Sports Institute', '250', 'Fierce defense through four quarters.')">
+<td class="py-3 font-bold text-slate-600">2</td>
+<td class="py-3 font-bold text-fest-plum">Apex Warriors</td>
+<td class="py-3 text-gray-700">National Sports Institute</td>
+<td class="py-3 font-bold text-gray-900">250</td>
+<td class="py-3 text-gray-600">Silver Runner-up</td>
+</tr>
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Phoenix Hawks', 'TEAM-BB-09', 'Boys Basketball', '3rd Place (Bronze)', 'St. Thomas University', '250', 'Hard fought overtime match.')">
+<td class="py-3 font-bold text-amber-800">3</td>
+<td class="py-3 font-bold text-fest-plum">Phoenix Hawks</td>
+<td class="py-3 text-gray-700">St. Thomas University</td>
+<td class="py-3 font-bold text-gray-900">250</td>
+<td class="py-3 text-gray-600">Bronze Podium</td>
+</tr>
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Vellore Knights', 'TEAM-BB-02', 'Boys Basketball', 'Semi-Finalist', 'Vellore Tech', '125', 'Strong quarter-final run.')">
+<td class="py-3 font-medium text-gray-600">4</td>
+<td class="py-3 font-medium text-fest-plum">Vellore Knights</td>
+<td class="py-3 text-gray-700">Vellore Tech</td>
+<td class="py-3 font-bold text-gray-900">125</td>
+<td class="py-3 text-gray-500">Semi-Finalist</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-cyanDark hover:text-sky-900 uppercase border border-sky-300 px-4 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 transition" onclick="toggleEventDetails('Boys Basketball')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- Boys: Volleyball -->
+<div class="accordion-item rounded-xl border border-sky-200 bg-[#f0f9ff] overflow-hidden shadow-xs" data-category="SPORTS" data-name="Boys Volleyball" data-score="85">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-[#f0f9ff] hover:bg-[#e0f2fe] text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('boys-volleyball')">
+<span class="flex items-center gap-2 text-sky-950">
+                  Volleyball
+                </span>
+<svg class="w-5 h-5 text-sky-700 transform transition-transform duration-200" fill="none" id="arrow-boys-volleyball" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-sky-100" id="content-boys-volleyball">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Team Name</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Sets Won</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Spikers United', 'VB-B-01', 'Boys Volleyball', '1st Place', 'State Physical Academy', '3 - 1', 'Unstoppable outside spiking.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Spikers United</td>
+<td class="py-3 text-gray-600">State Physical Academy</td>
+<td class="py-3 font-bold text-gray-800">3 - 1</td>
+<td class="py-3 text-gray-500">Finals Gold</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-cyanDark hover:text-sky-900 uppercase border border-sky-300 px-4 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 transition" onclick="toggleEventDetails('Boys Volleyball')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- Boys: Table Tennis -->
+<div class="accordion-item rounded-xl border border-sky-200 bg-[#f0f9ff] overflow-hidden shadow-xs" data-category="SPORTS" data-name="Boys Table Tennis" data-score="88">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-[#f0f9ff] hover:bg-[#e0f2fe] text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('boys-tt')">
+<span class="flex items-center gap-2 text-sky-950">
+                  Table Tennis (Boys Solo)
+                </span>
+<svg class="w-5 h-5 text-sky-700 transform transition-transform duration-200" fill="none" id="arrow-boys-tt" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-sky-100" id="content-boys-tt">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Player</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Set Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Vikas Sundar', 'Y24CS912', 'Boys Table Tennis', 'Champion', 'IIT Madras', '3 - 0', 'Flawless top-spin serves.')">
+<td class="py-3 font-bold text-amber-600">Champion</td>
+<td class="py-3 font-medium text-fest-plum">Vikas Sundar <span class="text-xs text-gray-400 font-normal">(Y24CS912)</span></td>
+<td class="py-3 text-gray-600">IIT Madras</td>
+<td class="py-3 font-bold text-gray-800">3 - 0</td>
+<td class="py-3 text-gray-500">Undefeated tournament run</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-cyanDark hover:text-sky-900 uppercase border border-sky-300 px-4 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 transition" onclick="toggleEventDetails('Boys Table Tennis')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- GIRLS SUB-SECTION -->
+<div class="space-y-3 pt-3">
+<div class="flex items-center gap-2">
+<span class="text-xs font-extrabold uppercase tracking-widest text-pink-900 bg-pink-100 px-3 py-1 rounded-md">
+                GIRLS
+              </span>
+<div class="flex-grow h-px bg-pink-200"></div>
+</div>
+<!-- Girls: Throwball (Expanded as in snapshot) -->
+<div class="accordion-item rounded-xl border border-sky-200 bg-[#f0f9ff] overflow-hidden shadow-xs ring-1 ring-sky-300" data-category="SPORTS" data-name="Girls Throwball" data-score="92">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-[#e0f2fe] text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('girls-throwball')">
+<span class="flex items-center gap-2 text-sky-950">
+                  Throwball
+                  <span class="text-xs font-medium text-sky-700 bg-white/70 px-2 py-0.5 rounded-full ml-2">Girls Championship</span>
+</span>
+<svg class="w-5 h-5 text-sky-700 transform rotate-180 transition-transform duration-200" fill="none" id="arrow-girls-throwball" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="block p-4 sm:p-6 bg-white border-t border-sky-100" id="content-girls-throwball">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Participant / Team Name</th>
+<th class="pb-3 font-semibold">College / Roll ID</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Phoenix Squad', 'Y24CS1187', 'Girls Throwball', '1st Place', 'Govt Tech College', '21', 'Exceptional jump serve consistency.')">
+<td class="py-3 font-bold text-amber-600">1</td>
+<td class="py-3 font-bold text-fest-plum">Phoenix Squad</td>
+<td class="py-3 text-gray-700">Govt Tech (Roll: Y24CS1187)</td>
+<td class="py-3 font-bold text-gray-900">21</td>
+<td class="py-3 text-gray-500">Set 1 &amp; 2 Victor</td>
+</tr>
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Zenith Stars', 'Y24CS1187', 'Girls Throwball', '2nd Place', 'Vellore Tech', '20', 'Narrow set loss 20-21.')">
+<td class="py-3 font-bold text-slate-600">2</td>
+<td class="py-3 font-bold text-fest-plum">Zenith Stars</td>
+<td class="py-3 text-gray-700">Vellore Tech (Roll: Y24CS1187)</td>
+<td class="py-3 font-bold text-gray-900">20</td>
+<td class="py-3 text-gray-500">Runner-up Finalist</td>
+</tr>
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Valkyries', 'Y24CS1187', 'Girls Throwball', '3rd Place', 'National Science', '20', 'Third place playoff winner.')">
+<td class="py-3 font-bold text-amber-800">3</td>
+<td class="py-3 font-bold text-fest-plum">Valkyries</td>
+<td class="py-3 text-gray-700">National Science (Roll: Y24CS1187)</td>
+<td class="py-3 font-bold text-gray-900">20</td>
+<td class="py-3 text-gray-500">Bronze Medalist</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-cyanDark hover:text-sky-900 uppercase border border-sky-300 px-4 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 transition" onclick="toggleEventDetails('Girls Throwball')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- Girls: TenniKoit -->
+<div class="accordion-item rounded-xl border border-sky-200 bg-[#f0f9ff] overflow-hidden shadow-xs" data-category="SPORTS" data-name="Girls TenniKoit" data-score="86">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-[#f0f9ff] hover:bg-[#e0f2fe] text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('girls-tennikoit')">
+<span class="flex items-center gap-2 text-sky-950">
+                  TenniKoit
+                </span>
+<svg class="w-5 h-5 text-sky-700 transform transition-transform duration-200" fill="none" id="arrow-girls-tennikoit" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-sky-100" id="content-girls-tennikoit">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Player</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Pooja Hegde', 'Y24TK012', 'Girls TenniKoit', '1st Place', 'Arts &amp; Commerce College', '21 - 18', 'Exceptional agility at net.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Pooja Hegde <span class="text-xs text-gray-400 font-normal">(Y24TK012)</span></td>
+<td class="py-3 text-gray-600">Arts &amp; Commerce College</td>
+<td class="py-3 font-bold text-gray-800">21 - 18</td>
+<td class="py-3 text-gray-500">Gold Champion</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-cyanDark hover:text-sky-900 uppercase border border-sky-300 px-4 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 transition" onclick="toggleEventDetails('Girls TenniKoit')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+<!-- Girls: Table Tennis -->
+<div class="accordion-item rounded-xl border border-sky-200 bg-[#f0f9ff] overflow-hidden shadow-xs" data-category="SPORTS" data-name="Girls Table Tennis" data-score="89">
+<button class="w-full flex items-center justify-between p-4 sm:px-6 bg-[#f0f9ff] hover:bg-[#e0f2fe] text-left transition-colors font-bold text-fest-plum tracking-wide text-sm sm:text-base" onclick="toggleAccordion('girls-tt')">
+<span class="flex items-center gap-2 text-sky-950">
+                  Table Tennis (Girls)
+                </span>
+<svg class="w-5 h-5 text-sky-700 transform transition-transform duration-200" fill="none" id="arrow-girls-tt" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="hidden p-4 sm:p-6 bg-white border-t border-sky-100" id="content-girls-tt">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead>
+<tr class="border-b border-gray-200 text-gray-500 uppercase text-[11px] tracking-wider">
+<th class="pb-3 font-semibold">Position</th>
+<th class="pb-3 font-semibold">Player</th>
+<th class="pb-3 font-semibold">College</th>
+<th class="pb-3 font-semibold">Score</th>
+<th class="pb-3 font-semibold">Remarks</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100">
+<tr class="hover:bg-sky-50 cursor-pointer" onclick="openResultModal('Divya Sharma', 'Y24TT088', 'Girls Table Tennis', '1st Place', 'Engineering Institute', '3 - 1', 'Rapid backhand counter smashes.')">
+<td class="py-3 font-bold text-amber-600">1st Place</td>
+<td class="py-3 font-medium text-fest-plum">Divya Sharma <span class="text-xs text-gray-400 font-normal">(Y24TT088)</span></td>
+<td class="py-3 text-gray-600">Engineering Institute</td>
+<td class="py-3 font-bold text-gray-800">3 - 1</td>
+<td class="py-3 text-gray-500">Singles Champion</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+<button class="text-xs font-bold tracking-wider text-fest-cyanDark hover:text-sky-900 uppercase border border-sky-300 px-4 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 transition" onclick="toggleEventDetails('Girls Table Tennis')">
+                    [ VIEW EVENT DETAILS ]
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SportsEventsSection -->
+</div>
+<!-- BEGIN: FindAResultTool -->
+<section class="bg-white rounded-2xl border border-fest-borderCream p-6 sm:p-8 shadow-sm space-y-6" data-purpose="direct-lookup-portal" id="find-result-tool">
+<div class="text-center sm:text-left">
+<h2 class="text-2xl sm:text-3xl font-bold font-editorial text-fest-plum">Find a Result</h2>
+<p class="text-xs sm:text-sm text-gray-600 mt-1">Direct lookup by participant name, roll number, college, or event category.</p>
+</div>
+<!-- Search Input Bar & Quick Test Chips -->
+<div class="space-y-3">
+<div class="flex flex-col sm:flex-row gap-3">
+<div class="relative flex-grow">
+<input aria-label="Direct result lookup input" class="w-full pl-4 pr-10 py-3 text-sm bg-fest-cream/60 border border-fest-borderCream rounded-xl focus:ring-2 focus:ring-fest-plum focus:border-fest-plum text-gray-800 placeholder-gray-400" id="lookup-input" onkeypress="if(event.key === 'Enter') triggerDirectLookup()" placeholder="Enter participant name, student roll number or event..." type="text">
+</div>
+<button class="px-6 py-3 rounded-xl bg-fest-plum hover:bg-fest-accentPurple text-white text-xs font-bold uppercase tracking-wider shadow-sm transition active:scale-95" onclick="triggerDirectLookup()">
+              [ SEARCH RESULT ]
+            </button>
+</div>
+<!-- Quick Test Chips -->
+<div class="flex flex-wrap items-center gap-2 text-xs">
+<span class="text-gray-500 font-semibold">Try sample tags:</span>
+<button class="px-2.5 py-1 rounded-md bg-fest-creamMuted text-fest-plum hover:bg-amber-100 border border-fest-borderCream font-mono font-bold transition" onclick="setDirectLookupValue('Y24CS187')">Y24CS187</button>
+<button class="px-2.5 py-1 rounded-md bg-fest-creamMuted text-fest-plum hover:bg-amber-100 border border-fest-borderCream font-medium transition" onclick="setDirectLookupValue('Titans')">Titans</button>
+<button class="px-2.5 py-1 rounded-md bg-fest-creamMuted text-fest-plum hover:bg-amber-100 border border-fest-borderCream font-medium transition" onclick="setDirectLookupValue('Table Tennis')">Table Tennis</button>
+<button class="px-2.5 py-1 rounded-md bg-fest-creamMuted text-fest-plum hover:bg-amber-100 border border-fest-borderCream font-medium transition" onclick="setDirectLookupValue('Meera Nair')">Meera Nair</button>
+</div>
+</div>
+<!-- Matched Result Output Container -->
+<div class="block border border-fest-borderCream rounded-xl overflow-hidden bg-fest-cream/30" id="lookup-result-card">
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left text-xs sm:text-sm">
+<thead class="bg-fest-creamMuted text-fest-plum uppercase text-[11px] tracking-wider font-semibold">
+<tr>
+<th class="py-3 px-4">Participant Name</th>
+<th class="py-3 px-4">Student Roll Number</th>
+<th class="py-3 px-4">Event</th>
+<th class="py-3 px-4">Position</th>
+<th class="py-3 px-4">College</th>
+<th class="py-3 px-4">Score</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-fest-borderCream bg-white" id="lookup-table-body">
+<!-- Default Pre-populated row matching snapshot -->
+<tr class="hover:bg-amber-50/50 transition">
+<td class="py-3 px-4 font-bold text-fest-plum" id="lookup-name">Arjun Kumar</td>
+<td class="py-3 px-4 font-mono font-medium text-gray-700" id="lookup-roll">Y24CS187</td>
+<td class="py-3 px-4 text-gray-800" id="lookup-event">Dance — Solo</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-900" id="lookup-position">
+                      1st Place
+                    </span>
+</td>
+<td class="py-3 px-4 text-gray-600" id="lookup-college">City Engineering College</td>
+<td class="py-3 px-4 font-black text-gray-900" id="lookup-score">96</td>
+<td class="py-3 px-4 text-right">
+<button class="text-xs font-bold text-fest-plum hover:text-amber-700 underline" onclick="openResultModal('Arjun Kumar', 'Y24CS187', 'Dance — Solo', '1st Place', 'City Engineering College', '96', 'Flawless classical fusion footwork.')">
+                      [ VIEW DETAILS ]
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Dedicated Banner if user needs more schedule / event info -->
+<div class="rounded-xl bg-gradient-to-r from-fest-plum via-fest-accentPurple to-fest-dark p-6 text-center text-white space-y-3 shadow-md">
+<p class="text-sm sm:text-base font-medium text-amber-100">Didn't find what you're looking for?</p>
+<div class="flex flex-wrap items-center justify-center gap-3">
+<button class="px-5 py-2 rounded-lg bg-white text-fest-plum hover:bg-amber-100 text-xs font-bold tracking-wider uppercase transition shadow-sm" onclick="toggleEventDetails('Full Festival Catalogue')">
+              [ VIEW EVENTS ]
+            </button>
+<button class="px-5 py-2 rounded-lg bg-fest-plum border border-amber-400/40 text-amber-300 hover:bg-fest-accentPurple text-xs font-bold tracking-wider uppercase transition" onclick="toggleScheduleNotice()">
+              [ VIEW SCHEDULE ]
+            </button>
+</div>
+</div>
+</section>
+<!-- END: FindAResultTool -->
+</div>
+</main>
+<!-- BEGIN: EventDetailsSlideDrawer -->
+<aside aria-label="Event Details Drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col" id="event-drawer">
+<!-- Drawer Header -->
+<div class="p-5 bg-fest-plum text-white flex items-center justify-between border-b border-amber-500/20">
+<div>
+<span class="text-[10px] uppercase font-bold tracking-widest text-amber-300">COLORIDO 2K26 Technical Dossier</span>
+<h3 class="text-xl font-bold font-editorial text-white" id="drawer-title">Event Details</h3>
+</div>
+<button aria-label="Close details drawer" class="p-1 rounded-lg text-gray-300 hover:text-white hover:bg-fest-accentPurple transition" onclick="closeEventDrawer()">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Drawer Content Scroll Area -->
+<div class="p-6 overflow-y-auto custom-scroll flex-grow space-y-6 text-sm text-gray-700">
+<div class="bg-fest-cream p-4 rounded-xl border border-fest-borderCream space-y-2">
+<div class="flex justify-between text-xs">
+<span class="text-gray-500 font-semibold">Fest Date:</span>
+<span class="font-bold text-fest-plum">28 December 2026</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-gray-500 font-semibold">Venue:</span>
+<span class="font-bold text-fest-plum" id="drawer-venue">Main Open Auditorium / Arena</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-gray-500 font-semibold">Audited Status:</span>
+<span class="text-emerald-700 font-bold">Ratified &amp; Published</span>
+</div>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-fest-plum text-xs uppercase tracking-wider">Rules &amp; Competition Guidelines</h4>
+<ul class="list-disc pl-5 space-y-1.5 text-xs text-gray-600">
+<li class="">Standard maximum performance duration: 4 to 8 minutes as per category brief.</li>
+<li class="">All soundtracks or visual assets submitted at stage management desk 2 hours prior.</li>
+<li class="">Participants must present college identity card and fest accreditation badge.</li>
+<li class="">Zero tolerance for derogatory themes, explicit lyrics or safety violations.</li>
+</ul>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-fest-plum text-xs uppercase tracking-wider">Official Judging Criteria (100 pts)</h4>
+<div class="grid grid-cols-2 gap-2 text-xs">
+<div class="p-2.5 rounded-lg bg-gray-50 border border-gray-100">
+<span class="block text-gray-500 text-[10px]">CREATIVITY</span>
+<span class="font-bold text-fest-plum">30 Points</span>
+</div>
+<div class="p-2.5 rounded-lg bg-gray-50 border border-gray-100">
+<span class="block text-gray-500 text-[10px]">EXECUTION</span>
+<span class="font-bold text-fest-plum">30 Points</span>
+</div>
+<div class="p-2.5 rounded-lg bg-gray-50 border border-gray-100">
+<span class="block text-gray-500 text-[10px]">STAGE APPEAL</span>
+<span class="font-bold text-fest-plum">20 Points</span>
+</div>
+<div class="p-2.5 rounded-lg bg-gray-50 border border-gray-100">
+<span class="block text-gray-500 text-[10px]">TIME COMPLIANCE</span>
+<span class="font-bold text-fest-plum">20 Points</span>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+<span class="font-bold block">Lead Faculty Coordinator:</span>
+<p class="">Dr. V. Ramanathan, Dept. of Student Affairs (Ext: 2404)</p>
+<p class="text-amber-800">Student Convener: <span class="font-semibold">colorido2k26@festcouncil.org</span></p>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="p-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
+<button class="px-4 py-2 rounded-lg border border-gray-300 text-xs font-semibold text-gray-700 hover:bg-gray-100" onclick="closeEventDrawer()">
+        Close Dossier
+      </button>
+<button class="px-4 py-2 rounded-lg bg-fest-plum text-white text-xs font-bold hover:bg-fest-accentPurple" onclick="alert('Digital Rulebook PDF downloaded successfully.')">
+        Download PDF Rulebook
+      </button>
+</div>
+</aside>
+<!-- END: EventDetailsSlideDrawer -->
+<!-- BEGIN: ResultDetailModal -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden items-center justify-center p-4" id="result-modal-backdrop">
+<div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border-2 border-amber-400 transform transition-all animate-in fade-in zoom-in duration-200">
+<!-- Certificate Header Banner -->
+<div class="bg-gradient-to-r from-fest-plum via-fest-accentPurple to-fest-dark p-6 text-center text-white relative">
+<button class="absolute top-4 right-4 text-gray-300 hover:text-white p-1" onclick="closeResultModal()">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<span class="text-[10px] font-bold tracking-widest uppercase text-amber-300">Official Fest Certificate of Merit</span>
+<h3 class="text-2xl font-editorial font-bold text-white mt-1">COLORIDO 2K26 HONORS</h3>
+</div>
+<!-- Certificate Body -->
+<div class="p-6 text-center space-y-4">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-100 text-amber-700 mx-auto">
+<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+</svg>
+</div>
+<div>
+<span class="text-xs uppercase font-extrabold tracking-widest text-amber-600" id="modal-position">1st Place (Winner)</span>
+<h4 class="text-2xl font-bold font-editorial text-fest-plum mt-1" id="modal-name">Participant Name</h4>
+<p class="text-xs text-gray-500" id="modal-roll-event">Roll: Y24CS187 • Dance — Solo</p>
+</div>
+<div class="bg-fest-cream p-4 rounded-2xl border border-fest-borderCream text-left text-xs space-y-2">
+<div class="flex justify-between">
+<span class="text-gray-500">Institution:</span>
+<span class="font-bold text-fest-plum" id="modal-college">City Engineering College</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-500">Final Tabulated Score:</span>
+<span class="font-extrabold text-amber-700 text-sm" id="modal-score">96 / 100</span>
+</div>
+<div class="border-t border-fest-borderCream pt-2 text-gray-600 italic" id="modal-remarks">
+            "Flawless classical fusion footwork and stage presence."
+          </div>
+</div>
+<div class="flex items-center justify-center gap-3 pt-2">
+<button class="px-5 py-2.5 rounded-xl border border-fest-borderCream bg-white hover:bg-gray-50 text-xs font-bold text-fest-plum" onclick="window.print()">
+            Print Certificate
+          </button>
+<button class="px-5 py-2.5 rounded-xl bg-fest-plum hover:bg-fest-accentPurple text-white text-xs font-bold" onclick="closeResultModal()">
+            Close View
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: ResultDetailModal -->
+<!-- BEGIN: Footer -->
+<footer class="bg-gradient-to-b from-[#18092a] via-[#120520] to-[#0c0316] text-gray-300 border-t border-amber-500/20 pt-16 pb-8" data-purpose="site-footer">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+<!-- Fest Brand Col -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center text-fest-plum font-black font-editorial">
+              C
+            </div>
+<span class="text-xl font-bold font-editorial text-white tracking-wider">COLORIDO 2K26</span>
+</div>
+<p class="text-xs text-gray-400 leading-relaxed">
+            The flagship annual cultural and athletic convergence. Fostering excellence, camaraderie, and artistic brilliance across universities nationwide.
+          </p>
+<div class="text-[11px] text-amber-300 font-mono">
+            Fest Dates: 28 Dec 2026 - 30 Dec 2026
+          </div>
+</div>
+<!-- Quick Links -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-widest text-amber-300">Support &amp; Council</h4>
+<ul class="space-y-2 text-xs text-gray-400">
+<li class=""><a class="hover:text-white transition" href="#hero">Home Portal</a></li>
+<li class=""><a class="hover:text-white transition" href="#schedule">Festival Schedule</a></li>
+<li class=""><a class="hover:text-white transition" href="#results-portal">Results Declaration</a></li>
+<li class=""><a class="hover:text-white transition" href="#contact">Rules &amp; Regulations</a></li>
+<li class=""><a class="hover:text-white transition" href="#contact">Grievance Cell</a></li>
+</ul>
+</div>
+<!-- Fest Sectors -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-widest text-amber-300">Gallery &amp; Media</h4>
+<ul class="space-y-2 text-xs text-gray-400">
+<li class=""><a class="hover:text-white transition" href="#events">Fine Arts Exhibition</a></li>
+<li class=""><a class="hover:text-white transition" href="#events">Battle of the Bands</a></li>
+<li class=""><a class="hover:text-white transition" href="#events">Choreoday Themes</a></li>
+<li class=""><a class="hover:text-white transition" href="#sports-section">Athletic Champions</a></li>
+<li class=""><a class="hover:text-white transition" href="#contact">Sponsorship Dossier</a></li>
+</ul>
+</div>
+<!-- Social & Student Guild -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold uppercase tracking-widest text-amber-300">Social Links</h4>
+<p class="text-xs text-gray-400">Follow live winner highlights &amp; stage streaming:</p>
+<div class="flex items-center gap-3 pt-1">
+<!-- Twitter/X -->
+<a aria-label="Fest Twitter" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-amber-300 hover:border-amber-400 transition" href="#social">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<!-- Instagram -->
+<a aria-label="Fest Instagram" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-amber-300 hover:border-amber-400 transition" href="#social">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<!-- YouTube -->
+<a aria-label="Fest YouTube" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-amber-300 hover:border-amber-400 transition" href="#social">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+<p class="">© 2026 COLORIDO 2K26. All rights reserved.</p>
+<p class="">Curated &amp; Maintained by Festival Academic Technical Council</p>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: InteractiveHandlersScript -->
+<script data-purpose="results-interaction-controller">
+    // State Tracker
+    let isSimulatedNoResults = false;
+    let currentCategoryFilter = 'ALL';
+
+    // Mock dataset for searching & direct lookup
+    const allRegisteredResults = [
+      { name: "Arjun Kumar", roll: "Y24CS187", event: "Dance — Solo", pos: "1st Place", college: "City Engineering College", score: "96", remarks: "Flawless classical fusion footwork and stage presence." },
+      { name: "Meera Nair", roll: "Y24CS192", event: "Dance — Solo", pos: "2nd Place", college: "Vellore Tech Institute", score: "92", remarks: "Exceptional emotional resonance and choreography timing." },
+      { name: "Rohan Verma", roll: "Y24EC104", event: "Dance — Solo", pos: "3rd Place", college: "National Arts Academy", score: "88", remarks: "Commendable musicality and expressive movement narrative." },
+      { name: "Titans Club", roll: "TEAM-BB-01", event: "Boys Basketball", pos: "1st Place", college: "City Tech College", score: "289", remarks: "Gold winners in final playoff 4th quarter." },
+      { name: "Apex Warriors", roll: "TEAM-BB-04", event: "Boys Basketball", pos: "2nd Place", college: "National Sports Institute", score: "250", remarks: "Silver finalist." },
+      { name: "Phoenix Squad", roll: "Y24CS1187", event: "Girls Throwball", pos: "1st Place", college: "Govt Tech College", score: "21", remarks: "Set 1 & 2 Victor." },
+      { name: "Zenith Stars", roll: "Y24CS1187", event: "Girls Throwball", pos: "2nd Place", college: "Vellore Tech", score: "20", remarks: "Runner-up Finalist." },
+      { name: "Sneha Reddy", roll: "Y24FA110", event: "Fine Arts", pos: "1st Place", college: "Govt College of Fine Arts", score: "94", remarks: "Exemplary oil stroke balance." },
+      { name: "Varun Sastri", roll: "Y24MU091", event: "Music & Band — Solo", pos: "1st Place", college: "Music Conservatory of Chennai", score: "91", remarks: "Superb vocal pitch control." },
+      { name: "The Octave Project", roll: "GRP-MUS-01", event: "Music & Band — Group", pos: "1st Place", college: "Apex Institute of Tech", score: "120", remarks: "Unanimous jury favorite." },
+      { name: "Vikas Sundar", roll: "Y24CS912", event: "Boys Table Tennis", pos: "Champion", college: "IIT Madras", score: "88", remarks: "Top-spin ace champion." },
+      { name: "Divya Sharma", roll: "Y24TT088", event: "Girls Table Tennis", pos: "1st Place", college: "Engineering Institute", score: "89", remarks: "Singles Champion." }
+    ];
+
+    // Accordion Toggle
+    function toggleAccordion(id) {
+      const content = document.getElementById('content-' + id);
+      const arrow = document.getElementById('arrow-' + id);
+      if (!content) return;
+
+      const isHidden = content.classList.contains('hidden');
+      if (isHidden) {
+        content.classList.remove('hidden');
+        content.classList.add('block');
+        if (arrow) arrow.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        content.classList.remove('block');
+        if (arrow) arrow.classList.remove('rotate-180');
+      }
+    }
+
+    // Expand / Collapse All Accordions
+    function toggleAllAccordions(expand) {
+      const accordions = document.querySelectorAll('.accordion-item');
+      accordions.forEach(item => {
+        const content = item.querySelector('[id^="content-"]');
+        const arrow = item.querySelector('[id^="arrow-"]');
+        if (content) {
+          if (expand) {
+            content.classList.remove('hidden');
+            content.classList.add('block');
+            if (arrow) arrow.classList.add('rotate-180');
+          } else {
+            content.classList.add('hidden');
+            content.classList.remove('block');
+            if (arrow) arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+
+    // Switch between published and no-results simulated states
+    function toggleResultSimulation() {
+      isSimulatedNoResults = !isSimulatedNoResults;
+      const statusBadge = document.getElementById('status-badge');
+      const statusText = document.getElementById('status-text');
+      const statusIcon = document.getElementById('status-icon');
+      const statusBanner = document.getElementById('official-status-banner');
+      const toggleBtn = document.getElementById('toggle-sim-mode');
+      const activeDisplay = document.getElementById('active-results-display');
+      const emptyDisplay = document.getElementById('simulated-empty-state');
+
+      if (isSimulatedNoResults) {
+        statusBadge.textContent = 'RESULTS PENDING';
+        statusBadge.className = 'text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full';
+        statusText.textContent = 'Simulated View: Events are in final jury rounds. Results not yet ratified.';
+        statusBanner.className = 'rounded-xl border border-amber-300 bg-amber-50/90 p-4 sm:p-5 shadow-sm transition-all duration-300';
+        statusIcon.className = 'flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-amber-500 text-white shadow-sm';
+        statusIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+        toggleBtn.textContent = 'Restore "Published" Mode';
+        activeDisplay.classList.add('hidden');
+        emptyDisplay.classList.remove('hidden');
+      } else {
+        statusBadge.textContent = 'RESULTS PUBLISHED';
+        statusBadge.className = 'text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full';
+        statusText.textContent = 'Official results will appear here as events are completed and published.';
+        statusBanner.className = 'rounded-xl border border-emerald-300 bg-emerald-50/90 p-4 sm:p-5 shadow-sm transition-all duration-300';
+        statusIcon.className = 'flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-600 text-white shadow-sm';
+        statusIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>';
+        toggleBtn.textContent = 'Simulate "No Results"';
+        activeDisplay.classList.remove('hidden');
+        emptyDisplay.classList.add('hidden');
+      }
+    }
+
+    // Category Tabs Filtering
+    function setCategoryFilter(category) {
+      currentCategoryFilter = category;
+      const tabButtons = ['ALL', 'CULTURAL', 'SPORTS', 'FEATURED'];
+      tabButtons.forEach(tab => {
+        const btn = document.getElementById('filter-btn-' + tab);
+        if (!btn) return;
+        if (tab === category) {
+          btn.className = 'tab-active px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase border border-fest-plum bg-fest-plum text-white transition-all shadow-sm';
+        } else {
+          btn.className = 'px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase border border-fest-borderCream bg-[#faf7f2] text-gray-700 hover:bg-gray-100 transition-all';
+        }
+      });
+
+      const featuredSection = document.getElementById('featured-results-section');
+      const culturalSection = document.getElementById('events');
+      const sportsSection = document.getElementById('sports-section');
+
+      if (category === 'ALL' || category === 'FEATURED') {
+        featuredSection.classList.remove('hidden');
+        culturalSection.classList.remove('hidden');
+        sportsSection.classList.remove('hidden');
+      } else if (category === 'CULTURAL') {
+        featuredSection.classList.add('hidden');
+        culturalSection.classList.remove('hidden');
+        sportsSection.classList.add('hidden');
+      } else if (category === 'SPORTS') {
+        featuredSection.classList.add('hidden');
+        culturalSection.classList.add('hidden');
+        sportsSection.classList.remove('hidden');
+      }
+    }
+
+    // Real-time search across accordions and cards
+    function handleSearch(query) {
+      const q = query.trim().toLowerCase();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (q.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+
+      const accordionItems = document.querySelectorAll('.accordion-item');
+      let visibleCount = 0;
+
+      accordionItems.forEach(item => {
+        const textContent = item.textContent.toLowerCase();
+        if (textContent.includes(q)) {
+          item.classList.remove('hidden');
+          visibleCount++;
+          // auto-expand matches if searching
+          if (q.length >= 2) {
+            const content = item.querySelector('[id^="content-"]');
+            const arrow = item.querySelector('[id^="arrow-"]');
+            if (content) {
+              content.classList.remove('hidden');
+              content.classList.add('block');
+              if (arrow) arrow.classList.add('rotate-180');
+            }
+          }
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      document.getElementById('match-count-badge').textContent = visibleCount + ' Events Matched';
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('results-search-input');
+      input.value = '';
+      handleSearch('');
+    }
+
+    // Sort order handling
+    function handleSort(order) {
+      const container = document.getElementById('cultural-accordions-group');
+      const items = Array.from(container.getElementsByClassName('accordion-item'));
+      
+      items.sort((a, b) => {
+        if (order === 'name') {
+          return a.dataset.name.localeCompare(b.dataset.name);
+        } else if (order === 'highest') {
+          return parseInt(b.dataset.score || 0) - parseInt(a.dataset.score || 0);
+        }
+        return 0; // Default recent
+      });
+
+      items.forEach(el => container.appendChild(el));
+    }
+
+    // Direct Lookup Tool Handling
+    function setDirectLookupValue(val) {
+      const input = document.getElementById('lookup-input');
+      input.value = val;
+      triggerDirectLookup();
+    }
+
+    function triggerDirectLookup() {
+      const input = document.getElementById('lookup-input');
+      const term = input.value.trim().toLowerCase();
+      if (!term) return;
+
+      const matched = allRegisteredResults.filter(r => 
+        r.name.toLowerCase().includes(term) ||
+        r.roll.toLowerCase().includes(term) ||
+        r.event.toLowerCase().includes(term) ||
+        r.college.toLowerCase().includes(term)
+      );
+
+      const tableBody = document.getElementById('lookup-table-body');
+      tableBody.innerHTML = '';
+
+      if (matched.length > 0) {
+        matched.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-amber-50/50 transition';
+          tr.innerHTML = `
+            <td class="py-3 px-4 font-bold text-fest-plum">${item.name}</td>
+            <td class="py-3 px-4 font-mono font-medium text-gray-700">${item.roll}</td>
+            <td class="py-3 px-4 text-gray-800">${item.event}</td>
+            <td class="py-3 px-4">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold ${item.pos.includes('1') ? 'bg-amber-100 text-amber-900' : 'bg-gray-100 text-gray-800'}">
+                ${item.pos}
+              </span>
+            </td>
+            <td class="py-3 px-4 text-gray-600">${item.college}</td>
+            <td class="py-3 px-4 font-black text-gray-900">${item.score}</td>
+            <td class="py-3 px-4 text-right">
+              <button onclick="openResultModal('${item.name}', '${item.roll}', '${item.event}', '${item.pos}', '${item.college}', '${item.score}', '${item.remarks}')" class="text-xs font-bold text-fest-plum hover:text-amber-700 underline">
+                [ VIEW DETAILS ]
+              </button>
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      } else {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-gray-500">
+              <p class="font-bold text-sm text-gray-700">No official entries found for "${input.value}"</p>
+              <p class="text-xs mt-1">Please verify the candidate roll ID or event spelling.</p>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    // Modal Details Handler
+    function openResultModal(name, roll, event, pos, college, score, remarks) {
+      document.getElementById('modal-name').textContent = name;
+      document.getElementById('modal-position').textContent = pos;
+      document.getElementById('modal-roll-event').textContent = `Roll ID: ${roll} • Event: ${event}`;
+      document.getElementById('modal-college').textContent = college;
+      document.getElementById('modal-score').textContent = score + ' / 100';
+      document.getElementById('modal-remarks').textContent = `"${remarks || 'Jury validated official assessment.'}"`;
+
+      const modalBackdrop = document.getElementById('result-modal-backdrop');
+      modalBackdrop.classList.remove('hidden');
+      modalBackdrop.classList.add('flex');
+    }
+
+    function closeResultModal() {
+      const modalBackdrop = document.getElementById('result-modal-backdrop');
+      modalBackdrop.classList.add('hidden');
+      modalBackdrop.classList.remove('flex');
+    }
+
+    // Slide-out Drawer Event Details
+    function toggleEventDetails(eventName) {
+      const drawer = document.getElementById('event-drawer');
+      document.getElementById('drawer-title').textContent = eventName;
+      document.getElementById('drawer-venue').textContent = eventName.toLowerCase().includes('sports') || eventName.toLowerCase().includes('basketball') || eventName.toLowerCase().includes('throwball') ? 'Main Sports Complex Courts' : 'Central Open Auditorium';
+      drawer.classList.remove('translate-x-full');
+    }
+
+    function closeEventDrawer() {
+      const drawer = document.getElementById('event-drawer');
+      drawer.classList.add('translate-x-full');
+    }
+
+    function toggleScheduleNotice() {
+      alert("Festival Schedule: 28 Dec 2026 Opening Rounds (09:00 AM) to 30 Dec 2026 Grand Valedictory (07:00 PM). Complete timetable available at the Information Kiosk.");
+    }
+
+    // Mobile nav trigger
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('hidden');
+    });
+
+    // Close modal on escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeResultModal();
+        closeEventDrawer();
+      }
+    });
+  </script>
+<!-- END: InteractiveHandlersScript -->
+
+
+</body></html>

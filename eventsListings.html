@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COLORIDO 2K26 — Events Listing &amp; Interactive Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#18092a',
+              dark: '#0e031a',
+              indigo: '#241042',
+              wine: '#3a144e',
+              gold: '#d97706',
+              goldLight: '#f59e0b',
+              goldWarm: '#fbbf24',
+              cream: '#fbf9f5',
+              creamSurface: '#f4efe6',
+              magenta: '#9b1c5a',
+              berry: '#be185d',
+              cyan: '#0090b8',
+              sportsBlue: '#0284c7',
+              slateCard: '#1e1030',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'festival': '0 10px 30px -5px rgba(24, 9, 42, 0.08), 0 4px 12px -2px rgba(24, 9, 42, 0.04)',
+            'festival-hover': '0 20px 40px -10px rgba(36, 16, 66, 0.2), 0 8px 16px -4px rgba(217, 119, 6, 0.16)',
+            'gold-glow': '0 0 25px rgba(245, 158, 11, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #fbf9f5;
+      color: #18092a;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(155, 28, 90, 0.32) 0%, rgba(36, 16, 66, 0.96) 60%, #18092a 100%);
+    }
+    /* Mandala ring decorative pattern */
+    .mandala-bg {
+      background-image: radial-gradient(circle at center, rgba(251, 191, 36, 0.12) 1px, transparent 1px),
+                        radial-gradient(circle at center, rgba(155, 28, 90, 0.15) 2px, transparent 2px);
+      background-size: 32px 32px, 64px 64px;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .btn-festival-primary {
+      background: linear-gradient(135deg, #9b1c5a 0%, #be185d 50%, #d97706 100%);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-festival-primary:hover {
+      box-shadow: 0 6px 20px rgba(190, 24, 93, 0.45);
+      transform: translateY(-1px);
+    }
+    .btn-festival-gold {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+      transition: all 0.25s ease;
+    }
+    .btn-festival-gold:hover {
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+      transform: translateY(-1px);
+    }
+    .active-card-ring {
+      outline: 2.5px solid #f59e0b !important;
+      outline-offset: -2px;
+      box-shadow: 0 12px 30px -4px rgba(245, 158, 11, 0.4) !important;
+      transform: scale(1.01);
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1ece4; }
+    ::-webkit-scrollbar-thumb { background: #d4c9bc; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+    @keyframes pulseSkeleton { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.35; } }
+    .shimmer-pulse { animation: pulseSkeleton 1.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-berry selection:text-white">
+<!-- ========================================== -->
+<!-- 1. GLOBAL PERSISTENT HEADER                -->
+<!-- ========================================== -->
+<header class="sticky top-0 z-40 bg-brand-purple/95 backdrop-blur-md border-b border-brand-wine/60 text-white transition-all duration-300">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<a aria-label="COLORIDO 2K26 Home" class="flex flex-col group focus:outline-none" href="#">
+<div class="flex items-center gap-2">
+<span class="font-display font-bold text-2xl sm:text-3xl tracking-wider text-white group-hover:text-amber-300 transition-colors">
+              COLORIDO <span class="gold-gradient-text font-black">2K26</span>
+</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-magenta/40 text-pink-200 border border-brand-magenta/50">
+              DEC 28
+            </span>
+</div>
+<span class="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] text-amber-200/80 font-medium">
+            Cultural &amp; Sports Festival
+          </span>
+</a>
+<!-- Desktop Navigation Bar -->
+<nav aria-label="Primary Navigation" class="hidden xl:flex items-center space-x-1 text-sm font-medium">
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Home</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">About</a>
+<a class="px-3.5 py-1.5 text-amber-300 font-semibold bg-white/10 rounded-full border border-amber-400/30 shadow-sm flex items-center gap-2" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            Events
+          </a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Schedule</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Registration</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Announcements</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Results</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Gallery</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Sponsors</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-white transition-colors rounded-full hover:bg-white/5" href="#">Contact</a>
+</nav>
+<!-- CTA & Mobile Trigger -->
+<div class="flex items-center gap-3">
+<button class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-wider text-brand-dark btn-festival-gold rounded-full shadow-md font-sans" onclick="handleQuickRegister('dance-solo')">
+            Register Now
+          </button>
+<button aria-label="Toggle Navigation Menu" class="xl:hidden p-2 rounded-lg text-zinc-300 hover:text-white hover:bg-white/10 focus:outline-none" id="mobileMenuBtn" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation Drawer -->
+<div class="hidden xl:hidden bg-brand-purple border-b border-brand-wine/80 px-4 pt-3 pb-6 space-y-2 text-sm font-medium" id="mobileMenu">
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">Home</a>
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">About</a>
+<a class="block px-3 py-2 rounded-md bg-white/15 text-amber-300 font-semibold" href="#">Events (Active)</a>
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">Schedule</a>
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">Registration</a>
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">Announcements</a>
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">Results</a>
+<a class="block px-3 py-2 rounded-md text-zinc-200 hover:bg-white/10" href="#">Contact</a>
+<div class="pt-3">
+<button class="w-full inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-dark btn-festival-gold rounded-full shadow" onclick="handleQuickRegister('dance-solo')">
+          Register Now
+        </button>
+</div>
+</div>
+</header>
+<!-- ========================================== -->
+<!-- 2. PAGE HEADER BANNER                      -->
+<!-- ========================================== -->
+<section class="relative bg-brand-purple hero-glow mandala-bg text-white overflow-hidden py-10 md:py-12 border-b border-amber-500/20">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+<div>
+<nav aria-label="Breadcrumb" class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider text-amber-200/70 mb-3 bg-white/5 px-3.5 py-1 rounded-full border border-white/10">
+<a class="hover:text-amber-300 transition-colors" href="#">Home</a>
+<span class="text-zinc-500">/</span>
+<span class="text-amber-300 font-semibold">Events Directory</span>
+</nav>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight text-white mb-2">
+            Explore <span class="gold-gradient-text italic font-serif">COLORIDO 2K26</span> Events
+          </h1>
+<p class="max-w-2xl text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+            Choose your stage. Find your event. Make your COLORIDO moment. Discover cultural competitions and sports tournaments scheduled for 
+            <span class="font-semibold text-amber-300 underline decoration-amber-500/50 underline-offset-4">28 December 2026</span>.
+          </p>
+</div>
+<!-- Festival Quick Counters Bar -->
+<div class="flex flex-wrap items-center gap-3 text-xs font-medium">
+<button class="inline-flex items-center gap-2 bg-brand-wine/60 border border-amber-300/30 px-4 py-2 rounded-xl text-zinc-200 shadow-sm backdrop-blur-sm hover:border-amber-400 transition cursor-pointer" onclick="setPrimaryCategory('all')">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+<span class="font-bold text-white">16</span> Official Events
+          </button>
+<button class="inline-flex items-center gap-2 bg-brand-magenta/30 border border-brand-magenta/40 px-3.5 py-2 rounded-xl text-pink-200 backdrop-blur-sm hover:border-pink-300 transition cursor-pointer" onclick="setPrimaryCategory('cultural')">
+<span class="w-2 h-2 rounded-full bg-brand-magenta"></span>
+<span class="font-semibold">10 Cultural</span>
+</button>
+<button class="inline-flex items-center gap-2 bg-brand-cyan/25 border border-brand-cyan/40 px-3.5 py-2 rounded-xl text-cyan-200 backdrop-blur-sm hover:border-cyan-300 transition cursor-pointer" onclick="setPrimaryCategory('sports')">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+<span class="font-semibold">6 Sports (Boys &amp; Girls)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- 3. CORE SPLIT-VIEW INTERACTIVE CONTAINER   -->
+<!-- ========================================== -->
+<main class="flex-grow max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+<div class="flex flex-col lg:flex-row items-start gap-8 relative">
+<!-- ======================================== -->
+<!-- LEFT CONTAINER (CATALOG & FILTERS: 65%)  -->
+<!-- ======================================== -->
+<section class="w-full lg:w-[65%] flex flex-col space-y-6" id="leftCatalogContainer">
+<!-- Filter and Search Card -->
+<div class="bg-white rounded-2xl p-5 shadow-festival border border-amber-900/10 space-y-4 transition-shadow hover:shadow-festival-hover">
+<!-- Top Row: Search & Auxiliary Controls -->
+<div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+<div class="relative flex-1">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-400">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input aria-label="Search events" class="block w-full pl-10 pr-9 py-2 text-sm bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 placeholder-zinc-400 transition" id="eventSearchInput" placeholder="Search by title, genre, format (e.g. Dance, Boys, Solo)..." type="text"/>
+<button aria-label="Clear Search" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-zinc-400 hover:text-zinc-700" id="clearSearchBtn" type="button">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Sorting & Skeleton Loading Demo -->
+<div class="flex items-center gap-2">
+<select class="text-xs font-semibold py-2 pl-3 pr-7 bg-zinc-50 border border-zinc-200 rounded-xl text-zinc-700 cursor-pointer focus:ring-1 focus:ring-amber-500" id="eventSortSelect">
+<option value="featured">Sort: Featured</option>
+<option value="alphabetical-asc">Name: A to Z</option>
+<option value="alphabetical-desc">Name: Z to A</option>
+<option value="cultural-first">Cultural First</option>
+<option value="sports-first">Sports First</option>
+</select>
+<button class="text-xs font-medium px-3 py-2 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-600 transition flex items-center gap-1.5 focus:outline-none" id="toggleSkeletonBtn" title="Demonstrate skeleton loading state" type="button">
+<svg class="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span id="skeletonBtnText">Simulate Loading</span>
+</button>
+</div>
+</div>
+<!-- Primary Segmented Categories Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-zinc-100">
+<div class="flex items-center gap-2">
+<span class="text-xs uppercase font-bold tracking-wider text-zinc-400">Category:</span>
+<div class="inline-flex p-1 bg-zinc-100/90 rounded-xl border border-zinc-200 text-xs font-bold" role="tablist">
+<button class="category-tab-btn px-4 py-1.5 rounded-lg transition-all text-white bg-brand-purple shadow-sm" data-filter="all" type="button">
+                  ALL <span class="tab-badge opacity-80">(16)</span>
+</button>
+<button class="category-tab-btn px-3.5 py-1.5 rounded-lg transition-all text-zinc-600 hover:text-brand-purple hover:bg-white/60" data-filter="cultural" type="button">
+                  CULTURAL <span class="tab-badge opacity-75">(10)</span>
+</button>
+<button class="category-tab-btn px-3.5 py-1.5 rounded-lg transition-all text-zinc-600 hover:text-brand-purple hover:bg-white/60" data-filter="sports" type="button">
+                  SPORTS <span class="tab-badge opacity-75">(6)</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-zinc-500 font-medium" id="displayedCountText">
+                Showing <strong class="text-brand-dark" id="displayedCount">16</strong> of 16 events
+              </span>
+<button class="hidden text-[11px] font-semibold text-amber-700 hover:text-amber-900 underline decoration-amber-400" id="resetQuickBtn" onclick="resetAllFilters()" type="button">Reset</button>
+</div>
+</div>
+<!-- Dependent Subcategory Row: ALL neutral state banner -->
+<div class="pt-2 border-t border-dashed border-zinc-200 text-xs text-zinc-500 flex items-center justify-between" id="allNeutralBar">
+<span class="inline-flex items-center gap-1.5 text-[11px] text-zinc-600">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Showing all 16 official festival events. Select <button class="font-bold text-brand-magenta underline hover:text-pink-800" onclick="setPrimaryCategory('cultural')">Cultural</button> or <button class="font-bold text-brand-cyan underline hover:text-sky-800" onclick="setPrimaryCategory('sports')">Sports</button> to filter sub-genres.
+            </span>
+</div>
+<!-- Dependent Subcategory Row: Cultural (Strictly 8 Cultural Subcategories) -->
+<div class="hidden pt-2 border-t border-dashed border-zinc-200 flex flex-wrap items-center gap-1.5" id="culturalSubFilters">
+<span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mr-1">Cultural Sub-genre:</span>
+<button class="subfilter-btn active text-xs px-2.5 py-1 rounded-full bg-brand-magenta text-white font-medium" data-subfilter="all" type="button">All Cultural (10)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="fine-arts" type="button">Fine Arts (1)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="music" type="button">Music (2)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="dance" type="button">Dance (2)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="choreoday" type="button">Choreoday (1)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="dramatics" type="button">Dramatics (1)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="fashion" type="button">Fashion Show (1)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="tekraft" type="button">Tekraft (1)</button>
+<button class="subfilter-btn text-xs px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium" data-subfilter="literary" type="button">Literary (1)</button>
+</div>
+<!-- Dependent Subcategory Row: Sports Division (Strictly BOYS / GIRLS) -->
+<div class="hidden pt-2 border-t border-dashed border-zinc-200 flex flex-wrap items-center gap-1.5" id="sportsSubFilters">
+<span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mr-1">Sports Division:</span>
+<button class="division-btn active text-xs px-3 py-1 rounded-full bg-brand-cyan text-white font-medium" data-division="all" type="button">All Sports (6)</button>
+<button class="division-btn text-xs px-3 py-1 rounded-full bg-zinc-100 hover:bg-cyan-50 text-zinc-700 hover:text-brand-cyan font-medium" data-division="boys" type="button">BOYS (3)</button>
+<button class="division-btn text-xs px-3 py-1 rounded-full bg-zinc-100 hover:bg-pink-50 text-zinc-700 hover:text-brand-berry font-medium" data-division="girls" type="button">GIRLS (3)</button>
+</div>
+</div>
+<!-- Skeleton Loading State (Hidden by default) -->
+<div class="hidden grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5" id="skeletonContainer">
+<div class="bg-white rounded-2xl p-4 border border-zinc-200 shimmer-pulse space-y-3">
+<div class="h-36 bg-zinc-200 rounded-xl"></div>
+<div class="h-4 bg-zinc-200 rounded w-1/3"></div>
+<div class="h-5 bg-zinc-200 rounded w-3/4"></div>
+<div class="h-3 bg-zinc-200 rounded w-full"></div>
+<div class="pt-3 flex gap-2"><div class="h-8 bg-zinc-200 rounded flex-1"></div><div class="h-8 bg-zinc-200 rounded flex-1"></div></div>
+</div>
+<div class="bg-white rounded-2xl p-4 border border-zinc-200 shimmer-pulse space-y-3">
+<div class="h-36 bg-zinc-200 rounded-xl"></div>
+<div class="h-4 bg-zinc-200 rounded w-1/3"></div>
+<div class="h-5 bg-zinc-200 rounded w-3/4"></div>
+<div class="h-3 bg-zinc-200 rounded w-full"></div>
+<div class="pt-3 flex gap-2"><div class="h-8 bg-zinc-200 rounded flex-1"></div><div class="h-8 bg-zinc-200 rounded flex-1"></div></div>
+</div>
+<div class="bg-white rounded-2xl p-4 border border-zinc-200 shimmer-pulse space-y-3">
+<div class="h-36 bg-zinc-200 rounded-xl"></div>
+<div class="h-4 bg-zinc-200 rounded w-1/3"></div>
+<div class="h-5 bg-zinc-200 rounded w-3/4"></div>
+<div class="h-3 bg-zinc-200 rounded w-full"></div>
+<div class="pt-3 flex gap-2"><div class="h-8 bg-zinc-200 rounded flex-1"></div><div class="h-8 bg-zinc-200 rounded flex-1"></div></div>
+</div>
+</div>
+<!-- Empty State View -->
+<div class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-zinc-200 shadow-festival" id="emptyStateView">
+<div class="w-14 h-14 mx-auto mb-3 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-display font-bold text-zinc-900 mb-1">No Events Found</h3>
+<p class="text-xs text-zinc-500 mb-4 max-w-sm mx-auto">No festival events match your search or filter combination.</p>
+<button class="inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold uppercase tracking-wider text-white bg-brand-purple hover:bg-brand-indigo rounded-xl shadow transition" onclick="resetAllFilters()" type="button">
+            Clear Filters
+          </button>
+</div>
+<!-- Dynamic Events Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5" id="eventsGridContainer"></div>
+</section>
+<!-- ======================================== -->
+<!-- RIGHT CONTAINER (SPLIT-VIEW DYNAMIC 35%) -->
+<!-- ======================================== -->
+<!-- On mobile, fixed full-screen overlay when opened; on desktop, sticky 35% side panel -->
+<aside class="w-full lg:w-[35%] sticky top-24 self-start bg-white rounded-3xl border border-amber-900/10 shadow-festival overflow-hidden transition-all duration-300 z-30" id="rightDynamicPanel">
+<div class="max-h-[calc(100vh-7rem)] overflow-y-auto flex flex-col" id="rightPanelScrollArea">
+<!-- STATE 0: WELCOME / EMPTY STATE -->
+<div class="p-8 sm:p-10 text-center flex flex-col items-center justify-center my-auto min-h-[520px]" id="panelStateA">
+<div class="w-20 h-20 rounded-full bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-500 mb-6 shadow-inner">
+<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5"></circle>
+<path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
+</svg>
+</div>
+<span class="text-[11px] font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full mb-2">Interactive Event Hub</span>
+<h3 class="text-2xl font-display font-bold text-zinc-900 mb-2">Select an Event to Explore</h3>
+<p class="text-xs sm:text-sm text-zinc-500 leading-relaxed max-w-sm mb-6">
+              Choose any cultural competition or sports tournament from the directory to inspect official guidelines, judging criteria, and initiate registration.
+            </p>
+<div class="w-full pt-4 border-t border-zinc-100 space-y-2">
+<span class="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider block">Recommended Quick Starts:</span>
+<div class="flex flex-col sm:flex-row gap-2 justify-center">
+<button class="text-xs font-semibold px-3 py-2 rounded-xl bg-pink-50 text-pink-700 hover:bg-pink-100 transition flex items-center justify-center gap-1.5" onclick="selectEventById('dance-solo')">
+<span>💃</span> Dance — Solo
+                </button>
+<button class="text-xs font-semibold px-3 py-2 rounded-xl bg-cyan-50 text-cyan-700 hover:bg-cyan-100 transition flex items-center justify-center gap-1.5" onclick="selectEventById('basketball-boys')">
+<span>🏀</span> Basketball (Boys)
+                </button>
+</div>
+</div>
+</div>
+<!-- STATE 1: EVENT DETAILS PANEL -->
+<div class="flex flex-col hidden" id="panelStateB"></div>
+<!-- STATE 2: REGISTRATION FORM PANEL -->
+<div class="flex flex-col hidden" id="panelStateC"></div>
+<!-- STATE 3: REGISTRATION SUCCESS PASS -->
+<div class="flex flex-col hidden p-8 text-center" id="panelStateD"></div>
+</div>
+</aside>
+</div>
+<!-- Contingent Help Desk Banner -->
+<aside class="mt-14 bg-gradient-to-r from-brand-purple via-brand-indigo to-brand-wine rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl mandala-bg">
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="space-y-2 text-center md:text-left">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold border border-amber-400/30">
+<span>Contingent &amp; College Inquiries</span>
+</div>
+<h3 class="text-2xl sm:text-3xl font-display font-bold">Have Questions About Rules or Accommodations?</h3>
+<p class="text-xs sm:text-sm text-zinc-300 max-w-xl">
+            Our Central Festival Desk is available for contingent team registrations, slot scheduling, and venue inquiries.
+          </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<a class="px-5 py-2.5 rounded-full border border-amber-300/40 text-amber-200 text-xs font-bold uppercase tracking-wider hover:bg-white/10 transition" href="#">
+            View Rulebook
+          </a>
+<a class="px-5 py-2.5 rounded-full btn-festival-gold text-brand-dark text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-gold-glow transition" href="#">
+            Contact Desk
+          </a>
+</div>
+</div>
+</aside>
+</main>
+<!-- ========================================== -->
+<!-- 4. SITE FOOTER                             -->
+<!-- ========================================== -->
+<footer class="bg-brand-dark text-zinc-300 border-t border-brand-wine/40 font-sans mt-auto">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-zinc-800 text-xs">
+<div class="space-y-3">
+<span class="font-display font-bold text-2xl tracking-wider text-white">
+            COLORIDO <span class="gold-gradient-text font-black">2K26</span>
+</span>
+<p class="text-zinc-400">The flagship annual cultural and sports festivity celebrating raw artistic expression and collegiate athletic vigor.</p>
+<p class="text-amber-300 font-semibold">Festival Date: 28 December 2026</p>
+</div>
+<div>
+<h4 class="font-bold uppercase text-white mb-3 tracking-wider">Quick Navigation</h4>
+<ul class="space-y-1.5 text-zinc-400">
+<li><a class="hover:text-amber-300" href="#">Home Page</a></li>
+<li><a class="hover:text-amber-300" href="#">About COLORIDO</a></li>
+<li><a class="text-amber-300 font-semibold" href="#">Events Directory</a></li>
+<li><a class="hover:text-amber-300" href="#">Festival Schedule</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold uppercase text-white mb-3 tracking-wider">Policies</h4>
+<ul class="space-y-1.5 text-zinc-400">
+<li><a class="hover:text-white" href="#">General Code of Conduct</a></li>
+<li><a class="hover:text-white" href="#">Eligibility Terms</a></li>
+<li><a class="hover:text-white" href="#">Rulebooks (Boys &amp; Girls)</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold uppercase text-white mb-3 tracking-wider">Help Desk</h4>
+<p class="text-zinc-400 mb-1">Inquiries: info@colorido2k26.org</p>
+<p class="text-zinc-400 mb-1">Hotline: +91 98765 43210</p>
+<p class="text-amber-300">Reporting: 8:00 AM Onwards</p>
+</div>
+</div>
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-3">
+<p>© 2026 COLORIDO Festival Committee. Strictly Cultural &amp; Sports Events.</p>
+<div class="flex gap-4">
+<a class="hover:text-zinc-300" href="#">Privacy Policy</a>
+<a class="hover:text-zinc-300" href="#">Terms of Entry</a>
+<a class="hover:text-zinc-300" href="#">Back to Top ↑</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ========================================== -->
+<!-- 5. DYNAMIC STATE ENGINE                    -->
+<!-- ========================================== -->
+<script>
+    // STRICTLY 16 OFFICIAL EVENTS (10 CULTURAL, 6 SPORTS - NO TECH EVENTS)
+    const festivalEvents = [
+      {
+        id: "fine-arts",
+        name: "Fine Arts",
+        category: "cultural",
+        subcategory: "fine-arts",
+        badgeText: "Art & Craft",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Solo / Team",
+        maxTeamMembers: 2,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA1Wh1ALfrj7B12CqLT_12-CuiIR_I-Y4dZrTqYbwdahZvIrw8M0HBMC3Qkz2Ghi3N81_7QcB96p-IZjagDNi-qgRQtzo-rshCMaEDOmdkcxjp2CXdaote51a64Xc80tWLnlccBDpyxi2CK2UjwY6Z23P4XMpMVWaY4SFpkkRhIlERwRZLzZdr0KLMgYHJfFUIZu2DenPUymwjxNBeKwoisj61sA36hBXKbODvHHMZqWNyIB20p844Z",
+        description: "Express your imagination through on-the-spot sketching, canvas painting, and classical Indian art mediums. Live thematic prompt declared at reporting.",
+        venue: "Art Studios, Block B",
+        startTime: "10:00 AM",
+        reportingTime: "08:30 AM",
+        deadline: "20 Dec 2026",
+        rules: [
+          "Drawing sheets provided by the host college; bring your own colors/brushes.",
+          "Strictly 2 hours and 30 minutes duration.",
+          "Use of digital devices during competition is prohibited."
+        ],
+        eligibility: ["Open to enrolled undergraduate & postgraduate collegiate students.", "Valid College ID mandatory."],
+        judging: [
+          { name: "Originality & Interpretation", weight: "35%" },
+          { name: "Technique & Medium Handling", weight: "35%" },
+          { name: "Composition & Overall Impact", weight: "30%" }
+        ],
+        scheduleText: "Slot 1: 10:00 AM – 12:30 PM (Fine Arts Studio A)"
+      },
+      {
+        id: "music-solo",
+        name: "Music & Band — Solo",
+        category: "cultural",
+        subcategory: "music",
+        badgeText: "Vocal / Inst.",
+        gender: "all",
+        isTeam: false,
+        teamSizeText: "Individual Solo",
+        maxTeamMembers: 1,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFZbe826zgIuVMoVxxAbnfJ1qHbU7e7h4H-wR5MCPYXUh797WAxfoLJFa_xdSbbnjV3HKHaUPEFEbuJHgeHY0gOJWZtqkd0HMlFoeSPHL0OHZBDYcaJKIU7cvzOrLtoc7d5uxREyRh8WT1ccabqdLqmeIQcVsYMHYV5jPZx0Qu9m5CgkJFSRf33-zWwIhP0gh8CPpnA4cg5_7FDKbENhVD4x_7RtHtwKga_PLW0qqt9zVHZziPXMGl",
+        description: "Individual vocal or solo acoustic/electric instrumental showdown. Showcase melody, rhythm, and charisma across classical, western, or light genres.",
+        venue: "Acoustic Auditorium (OAT Indoor)",
+        startTime: "11:00 AM",
+        reportingTime: "09:00 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Time limit: 4 mins performance + 1 min mic check.", "Backing tracks must be MP3 320kbps on a pendrive."],
+        eligibility: ["Individual registration with college ID."],
+        judging: [
+          { name: "Pitch & Vocal Melody", weight: "40%" },
+          { name: "Rhythm & Taal Precision", weight: "30%" },
+          { name: "Stage Presence", weight: "30%" }
+        ],
+        scheduleText: "Prelims: 11:00 AM | Finals: 03:30 PM"
+      },
+      {
+        id: "music-group",
+        name: "Music & Band — Group",
+        category: "cultural",
+        subcategory: "music",
+        badgeText: "Battle of Bands",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Team (3–8 Members)",
+        maxTeamMembers: 8,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAA-Sq4md-KRAWHjAj4mY1BBgtOxPLWLTwTrH_SCHyDmuAsMiREybh-zn4Cc9EZWpB32dNeqKJMiWZUmNX4-sI7cZ57gQL0Ec_ZQI-Iu40VX9oks3GZovfFPEgLHVMahfe188am-IFfkv7fSygrhl20Gx9wveMTVCtBV-EXFEHVqT-rfRnDIG58BbStK9SLzG3DGnVfmh1WkxXm7YnFXppuusZzfrVf-A5b8K3j4lcqq32Wbzo_EDnT",
+        description: "Full live rock, fusion, or classical collegiate bands contending for the grand COLORIDO musical crown on the festival main stage.",
+        venue: "Open Air Theatre Main Amphitheatre",
+        startTime: "04:30 PM",
+        reportingTime: "01:30 PM",
+        deadline: "20 Dec 2026",
+        rules: ["Stage time: 12 minutes total.", "Drum kit and baseline backline provided."],
+        eligibility: ["Bands with 3–8 enrolled students."],
+        judging: [
+          { name: "Tightness & Musicianship", weight: "40%" },
+          { name: "Originality & Arrangement", weight: "35%" },
+          { name: "Crowd Energy", weight: "25%" }
+        ],
+        scheduleText: "Live Battle: 04:30 PM – 08:30 PM (Main OAT)"
+      },
+      {
+        id: "dance-solo",
+        name: "Dance — Solo",
+        category: "cultural",
+        subcategory: "dance",
+        badgeText: "Classical / Western",
+        gender: "all",
+        isTeam: false,
+        teamSizeText: "Individual Solo",
+        maxTeamMembers: 1,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBnq98awuSMotl-Ncg3tRoelDLiI5LDC3sqApbL3v3cLcm0u_YZOLGflZ12mEqmO7O9K47RohNwgAosvdxD_1Qj67W-sdeRc4NWRsmeGsw4Qo-MJvQFqyx7U9wJLMIRaqDPTP0odmSiRzHlWn1f3tqTiKWnrNYgV66wFhAtR4u-RdbT8QuCmElZNM6H5f6yebjk68pmc-CpcVA6BjkqoSbZaMbUdwXqlUkgBCumT7vw2sqnjUJljpbx",
+        description: "Individual choreography spotlight featuring classical, contemporary, folk, hip-hop, or freestyle elegance under professional stage lighting.",
+        venue: "Main Auditorium, Central Hall",
+        startTime: "10:30 AM",
+        reportingTime: "08:30 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Time limit: 2.5 to 4 minutes.", "Audio file submitted at reporting in MP3 format."],
+        eligibility: ["All verified collegiate students."],
+        judging: [
+          { name: "Choreography & Technique", weight: "35%" },
+          { name: "Expressions & Musicality", weight: "35%" },
+          { name: "Costume & Stage Presence", weight: "30%" }
+        ],
+        scheduleText: "Rounds begin: 10:30 AM | Stage 1 Central Auditorium"
+      },
+      {
+        id: "dance-group",
+        name: "Dance — Group",
+        category: "cultural",
+        subcategory: "dance",
+        badgeText: "Group Dance",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Team (6–16 Members)",
+        maxTeamMembers: 16,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWaaTkh7I8ea_m45AtqgXgPCpMzKSTI0EXnvOwtRshBtAWdwyreZZHOv6Fl1Ys7ZC39bkzDa5PuEHBtvUhnclvtQeuwaXWYPEhDga4Kk2BA7Vf3wun1A3gZAVzj_0RJAKHb-yHny0O1iSrVRrE5YlRv7ZRfsjczYUlmipaviu7Au-PS3OhM8CwQVL4lLJGTQefGbOUq46gAKCulIE5euoItCH5ozf1Y7w5OPYMaek6T4a7EXiNW2XV",
+        description: "High-energy crew synchronization, theatrical formations, and vibrant fusion routines delivered by powerhouse collegiate squads.",
+        venue: "Open Air Theatre Main Stage",
+        startTime: "02:00 PM",
+        reportingTime: "11:30 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Team size: 6 to 16 members on stage.", "Performance duration: 6 to 8 minutes."],
+        eligibility: ["Collegiate team contingent."],
+        judging: [
+          { name: "Synchronization & Formations", weight: "40%" },
+          { name: "Choreographic Innovation", weight: "30%" },
+          { name: "Energy & Transitions", weight: "30%" }
+        ],
+        scheduleText: "Slot 1: 02:00 PM | Slot 2: 04:30 PM (Main OAT)"
+      },
+      {
+        id: "choreoday",
+        name: "Choreoday — Theme Based",
+        category: "cultural",
+        subcategory: "choreoday",
+        badgeText: "Choreo Night",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Team (8–20 Members)",
+        maxTeamMembers: 20,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA9N90svaKNyLWsRp2OpMD5tmoZIrAGb2XciwO3EnPeVauNtcPD_sWP60KhsEbHxhzgcjNptTpBGHfhYpVKrVkkEaMYeJg-iv3JiuTPGryP5nOzzZg37-ayMGyNa3lmF0HRaUv8qKpoj5LPmRzRztMhF4CicJicobBYMWmwUc4wU4aG0N-UaUyVxFH5wU03PsvHVnxxe8XROSvg8vosrHL7rApieSCbWpXk6oRt6M0nuaXaj3q1NNYf",
+        description: "Concept-driven narrative choreography with elaborate story arcs, synchronized costume shifts, and theatrical music composition.",
+        venue: "Festival Grand Stage",
+        startTime: "06:00 PM",
+        reportingTime: "03:00 PM",
+        deadline: "20 Dec 2026",
+        rules: ["Theme statement submitted in writing.", "Duration: 8 to 10 minutes."],
+        eligibility: ["Single collegiate team contingent."],
+        judging: [
+          { name: "Thematic Cohesion & Storytelling", weight: "40%" },
+          { name: "Synchronization & Technique", weight: "35%" },
+          { name: "Costume Transformation", weight: "25%" }
+        ],
+        scheduleText: "Night Gala Showcase: 06:00 PM – 09:30 PM"
+      },
+      {
+        id: "dramatics",
+        name: "Dramatics",
+        category: "cultural",
+        subcategory: "dramatics",
+        badgeText: "Theater / Skit",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Team (4–12 Members)",
+        maxTeamMembers: 12,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJHSx_53zYOQAx1Ngnn170kavfMsaUJaPXVsLQWY3bsaISnO7M7SzHHClJoWYExAcIN4a1JXnAZ6Gob1vK5rvpe5_nak_UooH92hRqrPOYQzj0usd027RDkbJDBXtkD-NAnjB8tt1-2E4jTl8tOH-YG1CI376VBoXvUenuCQKPBEZs8aYVFA0w8d0M8YTU2vefWBfdY6v6m9qDUTYUiBRagBrOxNGuKMsaKGQU4UnGpaLGIlZ8zy7i",
+        description: "Original skits, street theatre (Nukkad Natak), and stage plays emphasizing voice modulation, script, social consciousness, and emotional depth.",
+        venue: "Amphitheatre Courtyard (Circle 2)",
+        startTime: "11:30 AM",
+        reportingTime: "09:30 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Time: 10 to 12 minutes.", "Languages: English, Hindi, or Regional with English synopsis."],
+        eligibility: ["Collegiate drama society or open entries."],
+        judging: [
+          { name: "Script & Direction", weight: "35%" },
+          { name: "Acting & Voice Projection", weight: "40%" },
+          { name: "Stage Management", weight: "25%" }
+        ],
+        scheduleText: "Street Theatre & Skits: 11:30 AM onwards"
+      },
+      {
+        id: "fashion-show",
+        name: "Fashion Show",
+        category: "cultural",
+        subcategory: "fashion",
+        badgeText: "Runway Couture",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Team (8–14 Models)",
+        maxTeamMembers: 14,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAztENfEJXEbMNpt_SP3Pwf6MClf_DdKClUQJSTQmYYe0OF5ctInk6LlE_x18HbTjrUQ_FaRHAGyjIj2r3xaAsRZ_PCOmoor9-jVqxUFlCHmoitrUmCt4SeJ1UBws-fPrJOHeeEF9ECuixW_Q57q7Kj_k8LlOBAt_5DUWTKmpPXT9CgD9gi2c_BvakC28gNXSl61Qq2N99Vc8YAVfo3phuBpffPr5bmX-T9IddkBH4qnA75fSJytqXK",
+        description: "The glamour ramp walk presenting innovative ethnic-modern apparel, runway presence, poise, design craftsmanship, and coordinated music curation.",
+        venue: "Grand Ballroom & Catwalk Arena",
+        startTime: "07:30 PM",
+        reportingTime: "04:00 PM",
+        deadline: "20 Dec 2026",
+        rules: ["Runway duration: 8 to 10 minutes per team.", "Audio submitted at 4:30 PM."],
+        eligibility: ["Collegiate model contingents."],
+        judging: [
+          { name: "Theme Interpretation & Apparel", weight: "40%" },
+          { name: "Runway Walk & Poise", weight: "35%" },
+          { name: "Music & Presentation", weight: "25%" }
+        ],
+        scheduleText: "Couture Gala Walk: 07:30 PM – 10:00 PM"
+      },
+      {
+        id: "tekraft",
+        name: "Tekraft Events",
+        category: "cultural",
+        subcategory: "tekraft",
+        badgeText: "Craft & Build",
+        gender: "all",
+        isTeam: true,
+        teamSizeText: "Solo / Pair",
+        maxTeamMembers: 2,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDKPqJsF4lY0v8MdwZuYQoOwUZ8wJOyiSobuof9rpuZkL4dTGeqvV-iMeuhPKaAkjF4Tu5C3mxX4E14wpmshfG2Ra9MNTKtWdlRMUL6tWGd8Pe5Wgk1sB19kkJI2GrCYPKJKAm6qU4iFRxPo3EQUBsuk7tkpr8qS31NjZHtBHLBbmMEa_WloDQUIaRS7JKhG7zzZAqNy7GFlqkTRiMRZFpwIjASol_50bDfweDgTV5sEBJH767LwgdL",
+        description: "Creative artistic design, origami installations, sustainable model crafts, and visual construction ingenuity under fast-paced live challenges.",
+        venue: "Design Lab 3, Innovation Centre",
+        startTime: "01:00 PM",
+        reportingTime: "11:30 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Materials package provided on spot with mystery elements.", "2 hours build time."],
+        eligibility: ["Teams of 1 or 2 enrolled students."],
+        judging: [
+          { name: "Structural Innovation & Craft", weight: "50%" },
+          { name: "Utilization of Materials", weight: "30%" },
+          { name: "Aesthetic Finish", weight: "20%" }
+        ],
+        scheduleText: "Live Challenge: 01:00 PM – 03:00 PM"
+      },
+      {
+        id: "literary",
+        name: "Literary",
+        category: "cultural",
+        subcategory: "literary",
+        badgeText: "Debate & Words",
+        gender: "all",
+        isTeam: false,
+        teamSizeText: "Individual Solo",
+        maxTeamMembers: 1,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCPb7Xj5NNsgwijaHM3V0fpygwqo-OCaxAdESEhWkd-ScBUkwqufQj7ID15FVtf_4A4tfcMH55izbfryyPUBrUGp-yqmWEWIgruDvXO3dp9vmDQx-AyRDzBWA53ShlQzawCye4opb8Xb4782UROrFz1EIpLUvzX1TNstjlZvMeyDQr39XwX0Afnu0ZSzL57sTfJcwz25erVZ7udYfBcrAdHPNYRSfFXMToUXHL6TwEXBqJst9jM7Oe0",
+        description: "Poetry slams, parliamentary debates, creative prose, and quiz tournaments celebrating vocabulary, sharp rhetoric, and intellectual wit.",
+        venue: "Conference Hall Alpha, Academic Wing",
+        startTime: "10:00 AM",
+        reportingTime: "08:45 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Debate format: 3 mins speech + 1 min rebuttal.", "Motion revealed 15 mins prior."],
+        eligibility: ["Individual collegiate orators."],
+        judging: [
+          { name: "Argument Logic & Substance", weight: "45%" },
+          { name: "Rhetoric & Delivery Style", weight: "35%" },
+          { name: "Rebuttal Precision", weight: "20%" }
+        ],
+        scheduleText: "Prelims: 10:00 AM | Final Debate: 02:30 PM"
+      },
+
+      // 6 SPORTS (3 BOYS, 3 GIRLS)
+      {
+        id: "basketball-boys",
+        name: "Basketball (Boys)",
+        category: "sports",
+        subcategory: "basketball",
+        badgeText: "Boys Division",
+        gender: "boys",
+        division: "boys",
+        isTeam: true,
+        teamSizeText: "Team (5+7 Rolling)",
+        maxTeamMembers: 12,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCodgwp5rHcujECTWvCA4-mZFh1yUmuA5gilUxOUz7cV76gYEL779BU2RQppiYPISO0zhlHSInuXkwqxyDRT39GNU3ok9qfZ3eV0XDrqgezRdmvrDLtJc41egmKRhrbcRoTYvzSFqrquoEAkbycwsQJV0pW6zPFOMV47qbOzQzhF9q8EqO5E5zzJFzfTelrzOISWsYd7hHUCCKwVib05XdeTcRIObWH3XziH1OOKM5wfa7C0PFi-Y1J",
+        description: "Full-court 5v5 collegiate championship matches adhering strictly to international FIBA tournament rules and high-intensity knockout brackets.",
+        venue: "Wooden Court 1, Sports Complex",
+        startTime: "09:00 AM",
+        reportingTime: "07:45 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Standard FIBA 4-quarter format.", "Numbered matching jerseys required."],
+        eligibility: ["Male college students under 25."],
+        judging: [{ name: "Official FIBA Points", weight: "Tournament Wins" }],
+        scheduleText: "Match 1: 09:00 AM | Quarter-Finals: 01:00 PM | Finals: 06:00 PM"
+      },
+      {
+        id: "volleyball-boys",
+        name: "Volleyball (Boys)",
+        category: "sports",
+        subcategory: "volleyball",
+        badgeText: "Boys Division",
+        gender: "boys",
+        division: "boys",
+        isTeam: true,
+        teamSizeText: "Team (6+6 Subs)",
+        maxTeamMembers: 12,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCDGBRGFlF6ZizdK_IDfDZyYu4XQOxI7i-GvfmI4LGWICUICEdMK-AnJ-oK3SyScUeJdbYEjOTCn4OvnyQmxKB7GBLtMGPEpJzk5U-iYZGZ-Y98z9GJ_uyd4NZlGfXdaJQ0JI_tqzaMVqzxlVTC9R4qxNQlqtHpAXvBokMfijPHTtvbsr0picgNSwCXrEVyis0yjoSTnIdAtbALaoIBb9bawi7vrAzx2oD0i_PaLfbObHtDE7RbhZb7",
+        description: "High-octane rallies, powerful spikes, and tight defensive blocks across fast-paced knockout collegiate sets organized under FIVB regulations.",
+        venue: "Outdoor Synthetic Court B",
+        startTime: "09:30 AM",
+        reportingTime: "08:15 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Best of 3 sets (25-25-15 point rally scoring).", "Net height: 2.43m regulation."],
+        eligibility: ["Male collegiate athletes."],
+        judging: [{ name: "FIVB Tournament Bracket", weight: "Set Wins" }],
+        scheduleText: "Knockout Pool Matches: 09:30 AM – 04:30 PM"
+      },
+      {
+        id: "table-tennis-boys",
+        name: "Table Tennis (Boys)",
+        category: "sports",
+        subcategory: "table-tennis",
+        badgeText: "Boys Division",
+        gender: "boys",
+        division: "boys",
+        isTeam: false,
+        teamSizeText: "Singles & Doubles",
+        maxTeamMembers: 2,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAc7vnSWvbHKy5aZKYNy8rvwlGzppuLdkcvEU7bXNMvwsmqFIE254AWdOHYPg5ooPerZDReV1kwj-WW7DhD6pxV-5cY8pKQhw2z-BfElxEnrwkBPl6qF876Kq8EwcuB2uepOAG2pjx3TU5xRRqtXclawASbr73KmEep015bH_BBkl8K13PMzvt5X8qNSei8VtsfHv21RgIZo7lbEjCiX_B211OY0wivMeehAz750W9TExtfzLI-cXcz",
+        description: "Fast-paced spins, smashes, and intense tactical matches organized on ITTF tournament tables with Stag 3-star balls.",
+        venue: "Indoor Pavilion, Arena 2",
+        startTime: "10:00 AM",
+        reportingTime: "08:45 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Best of 5 sets of 11 points.", "Non-marking court shoes compulsory."],
+        eligibility: ["Enrolled male collegiate students."],
+        judging: [{ name: "Official TTFI Bracket", weight: "Match Points" }],
+        scheduleText: "Singles: 10:00 AM | Doubles: 02:00 PM"
+      },
+      {
+        id: "throwball-girls",
+        name: "Throwball (Girls)",
+        category: "sports",
+        subcategory: "throwball",
+        badgeText: "Girls Division",
+        gender: "girls",
+        division: "girls",
+        isTeam: true,
+        teamSizeText: "Team (7+5 Subs)",
+        maxTeamMembers: 12,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBGRa5dB0WDX9_xbaI5xZ4QFYyfWjixLKbQ4RnzFV_i4t90FieZegdrOF_1nSL07kfgy5qseER2Ni607QYMHfmPMyQx9sJiQGKWgiiwk3OoIhujdn1amHnTWNpnV_ZOB85aNOeeqkULcctOS0U8FBaWc5QBkqTlM8tWWRmJsg6NVD4rXIadtG6UxFTK7JYLuo0h8AROOobdrNc3rFB09Dfwpo8saqoy4MPmZCFGzjs7JUtWYG2rMFh2",
+        description: "Swift catches, strategic passes, and quick-fire releases in a fast-paced outdoor court throwball contest for collegiate women teams.",
+        venue: "East Clay Courts 1 & 2",
+        startTime: "09:30 AM",
+        reportingTime: "08:00 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Best of 3 sets of 25 points.", "Catch with 2 hands, release with 1 within 3 secs."],
+        eligibility: ["Female collegiate students with IDs."],
+        judging: [{ name: "Throwball Fed. Rules", weight: "Set Scores" }],
+        scheduleText: "Pools: 09:30 AM | Finals: 05:00 PM"
+      },
+      {
+        id: "tennikoit-girls",
+        name: "TenniKoit (Girls)",
+        category: "sports",
+        subcategory: "tennikoit",
+        badgeText: "Girls Division",
+        gender: "girls",
+        division: "girls",
+        isTeam: false,
+        teamSizeText: "Singles & Doubles",
+        maxTeamMembers: 2,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAI6-08xdiV2onWYEYRisY4_Wqw2iV_xlBldwxemr39xQIqzH2G5PgTgnnjuqPtiH8iy3AFpDJzMZwSanaR4D_dakZDv58WOdvMJ7QB_8LQ9oxG7TVvjDTySDaPMauD0XxH5vfyKqARjzWo376dl5F1_sKGvqAhmv2opglOyqULbFZqrq_VwzQBQYs2KT4j5dzquPTT41B3f_552a2p04Y5y7a9etilMFMzKacdfz9WWeLtiFizxrEz",
+        description: "High-agility ring catches and precision drop shots over the net tested through standard federation sets for women athletes.",
+        venue: "Tennis Court Wing C",
+        startTime: "11:00 AM",
+        reportingTime: "09:30 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Best of 3 sets of 21 points.", "Clean one-handed catches without wobbling."],
+        eligibility: ["Female collegiate athletes."],
+        judging: [{ name: "TFA Official Rules", weight: "Federation Points" }],
+        scheduleText: "Qualifying: 11:00 AM onwards"
+      },
+      {
+        id: "table-tennis-girls",
+        name: "Table Tennis (Girls)",
+        category: "sports",
+        subcategory: "table-tennis",
+        badgeText: "Girls Division",
+        gender: "girls",
+        division: "girls",
+        isTeam: false,
+        teamSizeText: "Singles & Doubles",
+        maxTeamMembers: 2,
+        date: "28 December 2026",
+        status: "OPEN",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD49DkagEtXgdDU90oIC_rQ83AH7hkRxN2BdEHY1OCxJ5921Ks1Aj9Xu_IT7OSIWoGEnf2D1ka6AHUOigrM1t9dGkfF_OjUQqB8uF8mCqtQtnGPOJ5XYwA_pJdWnzOWg_IByqYAZt6VMvY2ltudIMXkekwntwWLqSPi1HW_0i6c_cor8Fc8PkHAHN7llpFiCbb-z15qVjN18_P8piKOqBOIsJkMVkowLCbKWXyuPwhWuZQ6RBqZtq_U",
+        description: "Swift reflexes, spinning serves, and competitive baseline rallies in an indoor tournament environment for women collegiate champions.",
+        venue: "Indoor Pavilion, Arena 1",
+        startTime: "10:30 AM",
+        reportingTime: "09:00 AM",
+        deadline: "20 Dec 2026",
+        rules: ["Best of 5 sets (11 points each).", "Non-marking indoor shoes only."],
+        eligibility: ["Enrolled female college students."],
+        judging: [{ name: "TTFI Official Bracket", weight: "Match Points" }],
+        scheduleText: "Matches start 10:30 AM | Arena 1 Tables"
+      }
+    ];
+
+    // APPLICATION STATE
+    let currentSelectedEventId = null;
+    let activePrimaryCategory = 'all'; // 'all', 'cultural', 'sports'
+    let activeCulturalSubfilter = 'all'; // 'all', 'fine-arts', 'music', 'dance', 'choreoday', 'dramatics', 'fashion', 'tekraft', 'literary'
+    let activeSportsDivision = 'all'; // 'all', 'boys', 'girls'
+    let currentSearchText = '';
+    let isSkeletonLoading = false;
+    let lastRegisteredEvent = null;
+
+    // DOM REFERENCES
+    const eventsGridContainer = document.getElementById('eventsGridContainer');
+    const displayedCount = document.getElementById('displayedCount');
+    const displayedCountText = document.getElementById('displayedCountText');
+    const emptyStateView = document.getElementById('emptyStateView');
+    const skeletonContainer = document.getElementById('skeletonContainer');
+    const panelStateA = document.getElementById('panelStateA');
+    const panelStateB = document.getElementById('panelStateB');
+    const panelStateC = document.getElementById('panelStateC');
+    const panelStateD = document.getElementById('panelStateD');
+    const rightPanelScrollArea = document.getElementById('rightPanelScrollArea');
+    const searchInput = document.getElementById('eventSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const sortSelect = document.getElementById('eventSortSelect');
+    const allNeutralBar = document.getElementById('allNeutralBar');
+    const culturalSubFilters = document.getElementById('culturalSubFilters');
+    const sportsSubFilters = document.getElementById('sportsSubFilters');
+    const toggleSkeletonBtn = document.getElementById('toggleSkeletonBtn');
+    const skeletonBtnText = document.getElementById('skeletonBtnText');
+    const resetQuickBtn = document.getElementById('resetQuickBtn');
+
+    // RENDER EVENTS GRID BASED ON FILTER CRITERIA
+    function renderCardsGrid() {
+      if (isSkeletonLoading) return;
+      const q = currentSearchText.trim().toLowerCase();
+
+      let filtered = festivalEvents.filter(ev => {
+        // 1. Primary Category Filter
+        if (activePrimaryCategory !== 'all' && ev.category !== activePrimaryCategory) {
+          return false;
+        }
+
+        // 2. Cultural Dependent Subcategories
+        if (activePrimaryCategory === 'cultural') {
+          if (activeCulturalSubfilter !== 'all') {
+            if (ev.subcategory !== activeCulturalSubfilter) return false;
+          }
+        }
+
+        // 3. Sports Dependent Subcategories (BOYS / GIRLS)
+        if (activePrimaryCategory === 'sports') {
+          if (activeSportsDivision !== 'all') {
+            if (activeSportsDivision === 'boys' && ev.gender !== 'boys') return false;
+            if (activeSportsDivision === 'girls' && ev.gender !== 'girls') return false;
+          }
+        }
+
+        // 4. Text Search
+        if (q !== '') {
+          const matchTitle = ev.name.toLowerCase().includes(q);
+          const matchBadge = ev.badgeText.toLowerCase().includes(q);
+          const matchSize = ev.teamSizeText.toLowerCase().includes(q);
+          const matchDesc = ev.description.toLowerCase().includes(q);
+          const matchSub = ev.subcategory.toLowerCase().includes(q);
+          if (!matchTitle && !matchBadge && !matchSize && !matchDesc && !matchSub) return false;
+        }
+
+        return true;
+      });
+
+      // Sorting
+      const s = sortSelect.value;
+      if (s === 'alphabetical-asc') filtered.sort((a, b) => a.name.localeCompare(b.name));
+      else if (s === 'alphabetical-desc') filtered.sort((a, b) => b.name.localeCompare(a.name));
+      else if (s === 'cultural-first') filtered.sort((a, b) => (a.category === 'cultural' ? -1 : 1));
+      else if (s === 'sports-first') filtered.sort((a, b) => (a.category === 'sports' ? -1 : 1));
+
+      // Update Count Display
+      displayedCount.textContent = filtered.length;
+      let contextLabel = "";
+      if (activePrimaryCategory === 'cultural' && activeCulturalSubfilter !== 'all') {
+        const subName = activeCulturalSubfilter.charAt(0).toUpperCase() + activeCulturalSubfilter.slice(1);
+        contextLabel = ` (${subName}: ${filtered.length} Event${filtered.length > 1 ? 's' : ''})`;
+      } else if (activePrimaryCategory === 'sports' && activeSportsDivision !== 'all') {
+        contextLabel = ` (${activeSportsDivision.toUpperCase()}: ${filtered.length} Events)`;
+      }
+      displayedCountText.innerHTML = `Showing <strong class="text-brand-dark">${filtered.length}</strong> of 16 events${contextLabel}`;
+
+      // Show/Hide Quick Reset Button if filtered
+      const isFiltered = activePrimaryCategory !== 'all' || activeCulturalSubfilter !== 'all' || activeSportsDivision !== 'all' || q !== '';
+      if (resetQuickBtn) {
+        if (isFiltered) resetQuickBtn.classList.remove('hidden');
+        else resetQuickBtn.classList.add('hidden');
+      }
+
+      // Empty State Handling
+      if (filtered.length === 0) {
+        eventsGridContainer.classList.add('hidden');
+        emptyStateView.classList.remove('hidden');
+        return;
+      } else {
+        eventsGridContainer.classList.remove('hidden');
+        emptyStateView.classList.add('hidden');
+      }
+
+      // Render Cards
+      let html = '';
+      filtered.forEach(ev => {
+        const isSelected = currentSelectedEventId === ev.id;
+        const isCultural = ev.category === 'cultural';
+        const badgeColor = isCultural ? 'bg-brand-magenta text-white' : 'bg-brand-cyan text-white';
+        const subBadgeColor = isCultural ? 'bg-amber-400 text-brand-dark' : (ev.gender === 'boys' ? 'bg-cyan-200 text-brand-dark' : 'bg-pink-400 text-white');
+        const btnRegisterColor = isCultural ? 'btn-festival-primary text-white' : 'bg-brand-cyan hover:bg-sky-700 text-white';
+
+        html += `
+          <article 
+            id="card-${ev.id}"
+            class="event-card bg-white rounded-2xl overflow-hidden border border-amber-900/10 shadow-festival hover:shadow-festival-hover transition-all duration-300 flex flex-col group cursor-pointer ${isSelected ? 'active-card-ring' : ''}"
+            onclick="selectEventById('${ev.id}')"
+          >
+            <div class="relative h-40 bg-zinc-900 overflow-hidden">
+              <img alt="${ev.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" src="${ev.image}"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/85 via-transparent to-black/20"></div>
+              <div class="absolute top-2.5 left-2.5 flex gap-1.5 flex-wrap">
+                <span class="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-full ${badgeColor} shadow-sm">${ev.category}</span>
+                <span class="px-2 py-0.5 text-[9px] font-semibold rounded-full ${subBadgeColor}">${ev.badgeText}</span>
+              </div>
+              <span class="absolute bottom-2 right-2.5 px-2 py-0.5 text-[9px] font-bold rounded bg-emerald-500/90 text-white tracking-wider uppercase">STATUS: ${ev.status}</span>
+            </div>
+
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-lg text-brand-dark leading-snug group-hover:text-amber-600 transition-colors">${ev.name}</h3>
+                <p class="text-xs text-zinc-500 mt-1 line-clamp-2">${ev.description}</p>
+                <div class="mt-3 space-y-1 text-[11px] text-zinc-600 border-t border-zinc-100 pt-2.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-400">Format:</span>
+                    <span class="font-semibold text-zinc-800">${ev.teamSizeText}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-400">Date:</span>
+                    <span class="font-medium text-zinc-700">${ev.date}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 pt-2.5 border-t border-zinc-100 grid grid-cols-2 gap-2">
+                <button onclick="event.stopPropagation(); selectEventById('${ev.id}')" class="text-center py-1.5 px-2 rounded-lg border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-100 transition" type="button">View Details</button>
+                <button onclick="event.stopPropagation(); handleQuickRegister('${ev.id}')" class="text-center py-1.5 px-2 rounded-lg ${btnRegisterColor} text-xs font-bold shadow-sm transition" type="button">Register</button>
+              </div>
+            </div>
+          </article>
+        `;
+      });
+      eventsGridContainer.innerHTML = html;
+    }
+
+    // SWITCH RIGHT PANEL STATES (A: Welcome, B: Details, C: Form, D: Success)
+    function showPanelState(stateName) {
+      panelStateA.classList.add('hidden');
+      panelStateB.classList.add('hidden');
+      panelStateC.classList.add('hidden');
+      panelStateD.classList.add('hidden');
+
+      if (stateName === 'A') panelStateA.classList.remove('hidden');
+      if (stateName === 'B') panelStateB.classList.remove('hidden');
+      if (stateName === 'C') panelStateC.classList.remove('hidden');
+      if (stateName === 'D') panelStateD.classList.remove('hidden');
+      rightPanelScrollArea.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // SELECT AN EVENT & POPULATE DETAILS PANEL
+    function selectEventById(eventId) {
+      currentSelectedEventId = eventId;
+      const ev = festivalEvents.find(e => e.id === eventId);
+      if (!ev) return;
+
+      // Highlight active card
+      document.querySelectorAll('.event-card').forEach(c => c.classList.remove('active-card-ring'));
+      const activeCard = document.getElementById(`card-${ev.id}`);
+      if (activeCard) activeCard.classList.add('active-card-ring');
+
+      const isCultural = ev.category === 'cultural';
+      const categoryBadge = isCultural 
+        ? '<span class="px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full bg-brand-magenta text-white">Cultural Showcase</span>'
+        : '<span class="px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full bg-brand-cyan text-white">Sports Tournament</span>';
+
+      panelStateB.innerHTML = `
+        <div class="sticky top-0 z-20 bg-white/95 backdrop-blur-md px-5 py-3.5 border-b border-zinc-200 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full ${isCultural ? 'bg-brand-magenta' : 'bg-brand-cyan'} animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-zinc-500">Event Details &amp; Criteria</span>
+          </div>
+          <!-- Close button: closes panel, deselects card, preserves active filters & search text -->
+          <button onclick="closeDetailsPanel()" class="p-1 rounded-full text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 transition" title="Close Panel" aria-label="Close details panel">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+
+        <div class="relative h-52 bg-zinc-900">
+          <img src="${ev.image}" alt="${ev.name}" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-black/40 to-transparent"></div>
+          <div class="absolute bottom-4 left-5 right-5 text-white">
+            <div class="flex items-center gap-2 mb-1.5">
+              ${categoryBadge}
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-emerald-500 text-white uppercase tracking-wider">STATUS: ${ev.status}</span>
+            </div>
+            <h2 class="font-display font-bold text-2xl text-white leading-tight">${ev.name}</h2>
+            <div class="flex items-center gap-3 text-xs text-zinc-300 mt-1">
+              <span>📅 ${ev.date}</span>
+              <span>•</span>
+              <span class="text-amber-300 font-semibold">${ev.teamSizeText}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 space-y-6 flex-1 text-zinc-700">
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">About The Event</h4>
+            <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed bg-zinc-50 p-3.5 rounded-xl border border-zinc-100">${ev.description}</p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2.5">Official Information</h4>
+            <div class="grid grid-cols-2 gap-2.5 text-xs">
+              <div class="bg-zinc-50 p-3 rounded-xl border border-zinc-100">
+                <span class="text-zinc-400 block text-[10px] uppercase font-bold">Venue Arena</span>
+                <span class="font-bold text-zinc-800">${ev.venue}</span>
+              </div>
+              <div class="bg-zinc-50 p-3 rounded-xl border border-zinc-100">
+                <span class="text-zinc-400 block text-[10px] uppercase font-bold">Start Time</span>
+                <span class="font-bold text-zinc-800">${ev.startTime}</span>
+              </div>
+              <div class="bg-zinc-50 p-3 rounded-xl border border-zinc-100">
+                <span class="text-zinc-400 block text-[10px] uppercase font-bold">Reporting Time</span>
+                <span class="font-bold text-amber-700">${ev.reportingTime}</span>
+              </div>
+              <div class="bg-zinc-50 p-3 rounded-xl border border-zinc-100">
+                <span class="text-zinc-400 block text-[10px] uppercase font-bold">Registration Cut-off</span>
+                <span class="font-bold text-red-600">${ev.deadline}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-2 border-t border-zinc-100">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">Guidelines &amp; Regulations</h4>
+
+            <div class="border border-zinc-200 rounded-xl overflow-hidden">
+              <button onclick="toggleAccordion('acc-rules')" class="w-full flex items-center justify-between p-3.5 bg-zinc-50 hover:bg-zinc-100 text-left font-bold text-xs text-zinc-800 transition">
+                <span class="flex items-center gap-2"><span class="text-amber-500">📜</span> 1. Rules &amp; Regulations</span>
+                <svg id="icon-acc-rules" class="w-4 h-4 text-zinc-400 transform transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              </button>
+              <div id="acc-rules" class="p-3.5 bg-white text-xs text-zinc-600 space-y-1.5 border-t border-zinc-100">
+                <ul class="list-disc list-inside space-y-1">${ev.rules.map(r => `<li>${r}</li>`).join('')}</ul>
+              </div>
+            </div>
+
+            <div class="border border-zinc-200 rounded-xl overflow-hidden">
+              <button onclick="toggleAccordion('acc-eligibility')" class="w-full flex items-center justify-between p-3.5 bg-zinc-50 hover:bg-zinc-100 text-left font-bold text-xs text-zinc-800 transition">
+                <span class="flex items-center gap-2"><span class="text-blue-500">🎓</span> 2. Eligibility &amp; Credentials</span>
+                <svg id="icon-acc-eligibility" class="w-4 h-4 text-zinc-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              </button>
+              <div id="acc-eligibility" class="hidden p-3.5 bg-white text-xs text-zinc-600 space-y-1 border-t border-zinc-100">
+                <ul class="list-disc list-inside space-y-1">${ev.eligibility.map(e => `<li>${e}</li>`).join('')}</ul>
+              </div>
+            </div>
+
+            <div class="border border-zinc-200 rounded-xl overflow-hidden">
+              <button onclick="toggleAccordion('acc-judging')" class="w-full flex items-center justify-between p-3.5 bg-zinc-50 hover:bg-zinc-100 text-left font-bold text-xs text-zinc-800 transition">
+                <span class="flex items-center gap-2"><span class="text-emerald-500">⚖️</span> 3. Judging Criteria &amp; Rubric</span>
+                <svg id="icon-acc-judging" class="w-4 h-4 text-zinc-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              </button>
+              <div id="acc-judging" class="hidden p-3.5 bg-white text-xs text-zinc-600 space-y-2 border-t border-zinc-100">
+                <div class="space-y-1.5">
+                  ${ev.judging.map(j => `
+                    <div class="flex items-center justify-between py-1 border-b border-zinc-100 last:border-0">
+                      <span class="font-medium text-zinc-700">${j.name}</span>
+                      <span class="font-bold text-brand-dark bg-zinc-100 px-2 py-0.5 rounded text-[11px]">${j.weight}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sticky bottom-0 bg-white/95 backdrop-blur-md p-4 border-t border-zinc-200 shadow-md">
+          <button onclick="openRegistrationForm('${ev.id}')" class="w-full py-3 px-4 rounded-xl btn-festival-gold text-brand-dark font-display font-bold text-base tracking-wide uppercase shadow-lg hover:shadow-gold-glow flex items-center justify-center gap-2 transition">
+            <span>REGISTER FOR THIS EVENT →</span>
+          </button>
+        </div>
+      `;
+
+      showPanelState('B');
+      if (window.innerWidth < 1024) {
+        document.getElementById('rightDynamicPanel').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // ACCORDION TOGGLE
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(`icon-${id}`);
+      if (!el) return;
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+    }
+
+    // CLOSE DETAILS PANEL: RETURNS TO STATE A WITHOUT CLEARING FILTERS
+    function closeDetailsPanel() {
+      currentSelectedEventId = null;
+      document.querySelectorAll('.event-card').forEach(c => c.classList.remove('active-card-ring'));
+      showPanelState('A');
+    }
+
+    // QUICK REGISTER SHORTCUT
+    function handleQuickRegister(eventId) {
+      selectEventById(eventId);
+      openRegistrationForm(eventId);
+    }
+
+    // STATE 2: DYNAMIC REGISTRATION PANEL (SOLO VS TEAM FORMS)
+    function openRegistrationForm(eventId) {
+      const ev = festivalEvents.find(e => e.id === eventId);
+      if (!ev) return;
+      const isTeam = ev.isTeam;
+
+      panelStateC.innerHTML = `
+        <div class="sticky top-0 z-20 bg-white/95 backdrop-blur-md px-5 py-3.5 border-b border-zinc-200 flex items-center justify-between">
+          <button onclick="selectEventById('${ev.id}')" class="text-xs font-semibold text-zinc-600 hover:text-brand-purple flex items-center gap-1.5 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            ← Back to Event Details
+          </button>
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+            Registration Form
+          </span>
+        </div>
+
+        <div class="p-5 bg-gradient-to-r from-brand-purple to-brand-indigo text-white">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 block mb-1">REGISTER FOR ${ev.name.toUpperCase()}</span>
+          <h2 class="text-xl font-display font-bold leading-tight">${ev.name}</h2>
+          <div class="flex items-center gap-2 mt-1.5 text-xs text-zinc-300">
+            <span>Category: <strong class="text-amber-200 capitalize">${ev.category}</strong></span>
+            <span>•</span>
+            <span>Format: <strong class="text-white">${ev.teamSizeText}</strong></span>
+            <span>•</span>
+            <span>28 Dec 2026</span>
+          </div>
+        </div>
+
+        <form id="festivalRegistrationForm" onsubmit="handleFormSubmission(event, '${ev.id}')" class="p-5 space-y-4 text-xs">
+          ${!isTeam ? `
+            <!-- SOLO REGISTRATION FIELDS -->
+            <div class="space-y-3">
+              <div>
+                <label class="block font-bold text-zinc-700 mb-1">Full Name *</label>
+                <input required type="text" id="regFullName" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500" placeholder="e.g. Aryan Sharma">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-bold text-amber-900 mb-1">Student Roll Number *</label>
+                  <input required type="text" id="regRollNo" class="w-full text-xs py-2 px-3 bg-amber-50/60 border border-amber-300 rounded-xl focus:ring-2 focus:ring-amber-500 font-mono font-semibold text-brand-dark" placeholder="e.g. 21BCE1048">
+                </div>
+                <div>
+                  <label class="block font-bold text-zinc-700 mb-1">Gender *</label>
+                  <select required id="regGender" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-bold text-zinc-700 mb-1">Email Address *</label>
+                  <input required type="email" id="regEmail" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500" placeholder="aryan@college.edu">
+                </div>
+                <div>
+                  <label class="block font-bold text-zinc-700 mb-1">Mobile Number *</label>
+                  <input required type="tel" id="regPhone" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500" placeholder="+91 9876543210">
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-bold text-zinc-700 mb-1">College / Institution *</label>
+                <input required type="text" id="regCollege" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500" placeholder="e.g. National Institute of Technology">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-bold text-zinc-700 mb-1">Department *</label>
+                  <input required type="text" id="regDept" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500" placeholder="Computer Science">
+                </div>
+                <div>
+                  <label class="block font-bold text-zinc-700 mb-1">Year of Study *</label>
+                  <select required id="regYear" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500">
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year" selected>2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          ` : `
+            <!-- TEAM REGISTRATION FIELDS -->
+            <div class="space-y-3">
+              <div>
+                <label class="block font-bold text-zinc-700 mb-1">Team / Contingent Name *</label>
+                <input required type="text" id="regFullName" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-amber-500" placeholder="e.g. Thunder Strikers Crew">
+              </div>
+
+              <div>
+                <label class="block font-bold text-zinc-700 mb-1">College / Institution Name *</label>
+                <input required type="text" id="regCollege" class="w-full text-xs py-2 px-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-1 focus:ring-amber-500" placeholder="St. Xavier's Autonomous College">
+              </div>
+
+              <div class="bg-amber-50/70 p-3 rounded-xl border border-amber-200 space-y-2.5">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-900 block">Captain Credentials *</span>
+                <div class="grid grid-cols-2 gap-2.5">
+                  <div>
+                    <label class="block text-[11px] font-medium text-zinc-700 mb-0.5">Captain Name *</label>
+                    <input required type="text" id="regCaptainName" class="w-full text-xs py-1.5 px-2.5 bg-white border border-zinc-200 rounded-lg" placeholder="Captain Full Name">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-bold text-amber-900 mb-0.5">Captain Roll Number *</label>
+                    <input required type="text" id="regRollNo" class="w-full text-xs py-1.5 px-2.5 bg-white border border-amber-300 rounded-lg font-mono font-bold" placeholder="e.g. 21BME204">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                  <div>
+                    <label class="block text-[11px] font-medium text-zinc-700 mb-0.5">Captain Phone *</label>
+                    <input required type="tel" id="regPhone" class="w-full text-xs py-1.5 px-2.5 bg-white border border-zinc-200 rounded-lg" placeholder="+91 9876543210">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] font-medium text-zinc-700 mb-0.5">Captain Email *</label>
+                    <input required type="email" id="regEmail" class="w-full text-xs py-1.5 px-2.5 bg-white border border-zinc-200 rounded-lg" placeholder="captain@college.edu">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Team Member Entry fields -->
+              <div class="border border-zinc-200 rounded-xl p-3 bg-zinc-50 space-y-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">Team Member Roster (Min 1 additional)</span>
+                <div class="grid grid-cols-3 gap-2">
+                  <input type="text" placeholder="Member 2 Name" class="w-full text-[11px] py-1 px-2 bg-white border border-zinc-200 rounded-lg">
+                  <input type="text" placeholder="Roll No." class="w-full text-[11px] py-1 px-2 bg-white border border-zinc-200 rounded-lg font-mono">
+                  <input type="text" placeholder="Dept." class="w-full text-[11px] py-1 px-2 bg-white border border-zinc-200 rounded-lg">
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                  <input type="text" placeholder="Member 3 Name" class="w-full text-[11px] py-1 px-2 bg-white border border-zinc-200 rounded-lg">
+                  <input type="text" placeholder="Roll No." class="w-full text-[11px] py-1 px-2 bg-white border border-zinc-200 rounded-lg font-mono">
+                  <input type="text" placeholder="Dept." class="w-full text-[11px] py-1 px-2 bg-white border border-zinc-200 rounded-lg">
+                </div>
+              </div>
+            </div>
+          `}
+
+          <div class="pt-3 border-t border-zinc-100">
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input required type="checkbox" class="mt-0.5 rounded border-zinc-300 text-amber-500 focus:ring-amber-400">
+              <span class="text-[11px] text-zinc-500 leading-tight">
+                I verify that all entries hold valid student ID credentials and abide by official COLORIDO festival guidelines.
+              </span>
+            </label>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full py-3 px-4 rounded-xl btn-festival-primary text-white font-bold uppercase tracking-wider text-xs shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+              <span>Submit Registration</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </button>
+          </div>
+        </form>
+      `;
+
+      showPanelState('C');
+      if (window.innerWidth < 1024) {
+        document.getElementById('rightDynamicPanel').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // FORM SUBMISSION HANDLER
+    function handleFormSubmission(e, eventId) {
+      e.preventDefault();
+      const ev = festivalEvents.find(ev => ev.id === eventId);
+      if (!ev) return;
+
+      const fullName = document.getElementById('regFullName')?.value || 'Participant';
+      const rollNo = document.getElementById('regRollNo')?.value || 'CLR-21048';
+      const college = document.getElementById('regCollege')?.value || 'Affiliated College';
+
+      const randomNum = Math.floor(100000 + Math.random() * 900000);
+      const regId = `CLR26-${randomNum}`;
+
+      lastRegisteredEvent = {
+        id: regId,
+        eventId: ev.id,
+        eventName: ev.name,
+        participantName: fullName,
+        rollNumber: rollNo,
+        college: college,
+        date: ev.date,
+        venue: ev.venue,
+        reporting: ev.reportingTime
+      };
+
+      renderRegistrationSuccess();
+    }
+
+    // STATE 3: REGISTRATION SUCCESS PASS
+    function renderRegistrationSuccess() {
+      if (!lastRegisteredEvent) return;
+
+      panelStateD.innerHTML = `
+        <div class="py-4 flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 ring-8 ring-emerald-50">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+          </div>
+
+          <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full mb-1">
+            Status: Registration Confirmed
+          </span>
+
+          <h3 class="text-2xl font-display font-bold text-zinc-900 mb-1">You're Registered!</h3>
+          <p class="text-xs text-zinc-500 max-w-xs mb-5">
+            Official pass generated. Bring this e-pass with valid college ID to reporting desk.
+          </p>
+
+          <div class="w-full bg-gradient-to-br from-brand-purple to-brand-slateCard text-white rounded-2xl p-5 text-left shadow-lg border border-amber-400/30 relative overflow-hidden mb-5">
+            <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
+              <div>
+                <span class="text-[9px] uppercase tracking-widest text-amber-300 font-bold block">COLORIDO 2K26 PASS</span>
+                <span class="font-mono text-base font-bold text-white tracking-wider">${lastRegisteredEvent.id}</span>
+              </div>
+              <span class="text-[10px] font-semibold bg-emerald-500 px-2 py-0.5 rounded text-white uppercase">CONFIRMED</span>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div>
+                <span class="text-zinc-400 text-[10px] block">Event:</span>
+                <span class="font-bold text-white text-sm">${lastRegisteredEvent.eventName}</span>
+              </div>
+              <div>
+                <span class="text-zinc-400 text-[10px] block">Participant / Team:</span>
+                <span class="font-semibold text-amber-200">${lastRegisteredEvent.participantName}</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-[11px] pt-1">
+                <div>
+                  <span class="text-zinc-400 block text-[10px]">Roll No:</span>
+                  <span class="font-mono font-medium">${lastRegisteredEvent.rollNumber}</span>
+                </div>
+                <div>
+                  <span class="text-zinc-400 block text-[10px]">Reporting Time:</span>
+                  <span class="font-medium text-amber-300">${lastRegisteredEvent.reporting}</span>
+                </div>
+              </div>
+              <div>
+                <span class="text-zinc-400 text-[10px] block">Venue Arena:</span>
+                <span class="text-[11px] text-zinc-200">${lastRegisteredEvent.venue}</span>
+              </div>
+            </div>
+
+            <!-- QR Placeholder -->
+            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-white p-1 rounded">
+                  <div class="w-full h-full bg-zinc-900 grid grid-cols-3 gap-0.5 p-0.5">
+                    <div class="bg-white"></div><div class="bg-zinc-900"></div><div class="bg-white"></div>
+                    <div class="bg-zinc-900"></div><div class="bg-white"></div><div class="bg-zinc-900"></div>
+                    <div class="bg-white"></div><div class="bg-white"></div><div class="bg-white"></div>
+                  </div>
+                </div>
+                <span class="text-[10px] text-zinc-400">Scan at Security Desk</span>
+              </div>
+              <span class="text-[10px] font-mono text-zinc-400">28-DEC-2026</span>
+            </div>
+          </div>
+
+          <div class="w-full space-y-2">
+            <button onclick="window.print()" class="w-full py-2.5 px-4 rounded-xl btn-festival-gold text-brand-dark font-bold text-xs uppercase tracking-wider shadow hover:shadow-md transition">
+              Print / Save Pass
+            </button>
+            <button onclick="selectEventById('${lastRegisteredEvent.eventId}')" class="w-full py-2.5 px-4 rounded-xl border border-zinc-200 text-zinc-700 hover:bg-zinc-50 font-semibold text-xs transition">
+              Back to Event Details
+            </button>
+          </div>
+        </div>
+      `;
+
+      showPanelState('D');
+    }
+
+    // PRIMARY CATEGORY SEGMENTED CONTROLS SWITCH
+    function setPrimaryCategory(cat) {
+      activePrimaryCategory = cat;
+      activeCulturalSubfilter = 'all';
+      activeSportsDivision = 'all';
+
+      // Update Tab UI
+      const categoryTabs = document.querySelectorAll('.category-tab-btn');
+      categoryTabs.forEach(tab => {
+        if (tab.getAttribute('data-filter') === cat) {
+          tab.classList.add('text-white', 'bg-brand-purple', 'shadow-sm');
+          tab.classList.remove('text-zinc-600', 'hover:bg-white/60');
+        } else {
+          tab.classList.remove('text-white', 'bg-brand-purple', 'shadow-sm');
+          tab.classList.add('text-zinc-600', 'hover:bg-white/60');
+        }
+      });
+
+      // Reset subfilter buttons to 'all'
+      document.querySelectorAll('.subfilter-btn').forEach(b => {
+        if (b.getAttribute('data-subfilter') === 'all') {
+          b.classList.add('bg-brand-magenta', 'text-white', 'active');
+          b.classList.remove('bg-zinc-100', 'text-zinc-700');
+        } else {
+          b.classList.remove('bg-brand-magenta', 'text-white', 'active');
+          b.classList.add('bg-zinc-100', 'text-zinc-700');
+        }
+      });
+      document.querySelectorAll('.division-btn').forEach(b => {
+        if (b.getAttribute('data-division') === 'all') {
+          b.classList.add('bg-brand-cyan', 'text-white', 'active');
+          b.classList.remove('bg-zinc-100', 'text-zinc-700');
+        } else {
+          b.classList.remove('bg-brand-cyan', 'text-white', 'active');
+          b.classList.add('bg-zinc-100', 'text-zinc-700');
+        }
+      });
+
+      // Manage Subcategory Dependent Containers
+      if (cat === 'all') {
+        allNeutralBar.classList.remove('hidden');
+        culturalSubFilters.classList.add('hidden');
+        sportsSubFilters.classList.add('hidden');
+      } else if (cat === 'cultural') {
+        allNeutralBar.classList.add('hidden');
+        culturalSubFilters.classList.remove('hidden');
+        sportsSubFilters.classList.add('hidden');
+      } else if (cat === 'sports') {
+        allNeutralBar.classList.add('hidden');
+        culturalSubFilters.classList.add('hidden');
+        sportsSubFilters.classList.remove('hidden');
+      }
+
+      renderCardsGrid();
+    }
+
+    // RESET ALL FILTERS (PRESERVES RIGHT PANEL STATE)
+    function resetAllFilters() {
+      searchInput.value = '';
+      currentSearchText = '';
+      clearSearchBtn.classList.add('hidden');
+      setPrimaryCategory('all');
+    }
+
+    // INITIALIZATION & EVENT LISTENERS
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initial Render
+      renderCardsGrid();
+
+      // Set initial panel to Music Solo or Welcome
+      // Show Welcome state 0 by default, or open preview
+      showPanelState('A');
+
+      // 2. Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // 3. Primary Category Tabs
+      const categoryTabs = document.querySelectorAll('.category-tab-btn');
+      categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-filter');
+          setPrimaryCategory(filter);
+        });
+      });
+
+      // 4. Cultural Subcategory Pills
+      const subfilterBtns = document.querySelectorAll('.subfilter-btn');
+      subfilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          subfilterBtns.forEach(b => {
+            b.classList.remove('bg-brand-magenta', 'text-white', 'active');
+            b.classList.add('bg-zinc-100', 'text-zinc-700');
+          });
+          btn.classList.add('bg-brand-magenta', 'text-white', 'active');
+          btn.classList.remove('bg-zinc-100', 'text-zinc-700');
+          activeCulturalSubfilter = btn.getAttribute('data-subfilter');
+          renderCardsGrid();
+        });
+      });
+
+      // 5. Sports Division Pills (BOYS / GIRLS)
+      const divisionBtns = document.querySelectorAll('.division-btn');
+      divisionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          divisionBtns.forEach(b => {
+            b.classList.remove('bg-brand-cyan', 'text-white', 'active');
+            b.classList.add('bg-zinc-100', 'text-zinc-700');
+          });
+          btn.classList.add('bg-brand-cyan', 'text-white', 'active');
+          btn.classList.remove('bg-zinc-100', 'text-zinc-700');
+          activeSportsDivision = btn.getAttribute('data-division');
+          renderCardsGrid();
+        });
+      });
+
+      // 6. Live Search Input
+      searchInput.addEventListener('input', (e) => {
+        currentSearchText = e.target.value;
+        if (currentSearchText.length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+        }
+        renderCardsGrid();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        currentSearchText = '';
+        clearSearchBtn.classList.add('hidden');
+        renderCardsGrid();
+      });
+
+      // 7. Sort Dropdown
+      sortSelect.addEventListener('change', () => {
+        renderCardsGrid();
+      });
+
+      // 8. Toggle Skeleton State
+      toggleSkeletonBtn.addEventListener('click', () => {
+        isSkeletonLoading = !isSkeletonLoading;
+        if (isSkeletonLoading) {
+          eventsGridContainer.classList.add('hidden');
+          skeletonContainer.classList.remove('hidden');
+          skeletonBtnText.textContent = 'Hide Skeleton';
+        } else {
+          skeletonContainer.classList.add('hidden');
+          skeletonBtnText.textContent = 'Simulate Loading';
+          renderCardsGrid();
+        }
+      });
+    });
+  </script>
+</body></html>

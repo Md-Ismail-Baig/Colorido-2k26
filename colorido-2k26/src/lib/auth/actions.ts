@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { allow } from "@/lib/rate-limit";
 import type { UserRole } from "@/types/database";
 
 export interface StaffLoginState {
@@ -39,6 +40,11 @@ export async function signInStaff(
   _prevState: StaffLoginState,
   formData: FormData,
 ): Promise<StaffLoginState> {
+  // Phase 13: brute-force guard on staff sign-in per IP.
+  if (!(await allow("login"))) {
+    return { error: "Too many sign-in attempts. Please wait a few minutes and try again." };
+  }
+
   const parsed = staffCredentialsSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),

@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import {
   registrationStatusSchema,
   contactStatusSchema,
@@ -17,7 +18,10 @@ export async function setRegistrationStatus(formData: FormData): Promise<void> {
   });
   if (!parsed.success) return;
 
-  const supabase = await createClient();
+  // RLS currently has no registrations UPDATE policy (see migration 0005),
+  // so the status workflow writes via the service-role client after the
+  // requireRole() gate — same trusted-server pattern as console reads.
+  const supabase = createAdminClient();
   const { error } = await supabase
     .from("registrations")
     .update({ status: parsed.data.status })

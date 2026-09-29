@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { assertHostEvent } from "@/lib/queries/host-events";
 import {
   scheduleFormSchema,
@@ -146,6 +147,10 @@ export async function hostSetRegistrationStatus(formData: FormData): Promise<voi
     .safeParse(formData.get("status"));
   if (!id.success || !status.success) return;
 
+  // Scope check first (404-safe via assertHostEvent), then the write via the
+  // service-role client — RLS has no registrations UPDATE policy (migration
+  // 0005 adds it for defense-in-depth), so unscoped user-client writes would
+  // be silently dropped.
   const supabase = await createClient();
   const { data: reg } = await supabase
     .from("registrations")
@@ -155,7 +160,8 @@ export async function hostSetRegistrationStatus(formData: FormData): Promise<voi
   if (!reg?.event_id) return;
   await assertHostEvent(profile.id, reg.event_id);
 
-  const { error } = await supabase
+  const admin = createAdminClient();
+  const { error } = await admin
     .from("registrations")
     .update({ status: status.data })
     .eq("id", id.data);

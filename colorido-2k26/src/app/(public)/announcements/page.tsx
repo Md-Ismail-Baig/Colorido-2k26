@@ -49,6 +49,14 @@ export default async function AnnouncementsPage() {
                   <Badge tone="neutral">
                     {a.scope === "event" ? "Event update" : "Festival-wide"}
                   </Badge>
+                  {a.scope === "event" && a.event_name && (
+                    <Link
+                      href={`/events/${a.event_slug}`}
+                      className="text-xs font-semibold text-brand-burgundy hover:text-brand-gold"
+                    >
+                      {a.event_name}
+                    </Link>
+                  )}
                   <time className="text-xs text-slate-400">
                     {a.published_at
                       ? new Date(a.published_at).toLocaleDateString("en-IN", {
@@ -65,12 +73,12 @@ export default async function AnnouncementsPage() {
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {a.description}
                 </p>
-                {a.event_id && (
+                {a.scope === "event" && a.event_slug && (
                   <Link
-                    href={`/events?q=${encodeURIComponent(a.title)}`}
+                    href={`/events/${a.event_slug}`}
                     className="mt-3 inline-block text-xs font-semibold uppercase tracking-wider text-brand-burgundy hover:text-brand-gold"
                   >
-                    Related event →
+                    View event →
                   </Link>
                 )}
               </article>

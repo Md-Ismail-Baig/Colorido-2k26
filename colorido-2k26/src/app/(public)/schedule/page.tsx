@@ -16,12 +16,19 @@ export default async function SchedulePage({
   const slots = data ?? [];
   const dates = [...new Set(slots.map((s) => s.event_date))];
   const venues = [...new Set(slots.map((s) => s.venue).filter(Boolean))] as string[];
+  const eventOptions = [
+    ...new Map(
+      slots
+        .filter((s) => s.event_slug && s.event_name)
+        .map((s) => [s.event_slug, { slug: s.event_slug!, name: s.event_name! }]),
+    ).values(),
+  ];
 
-  // Join event names client-side of the query (slots carry event_id).
   const filtered = slots.filter(
     (s) =>
       (!sp.date || s.event_date === sp.date) &&
-      (!sp.venue || s.venue === sp.venue),
+      (!sp.venue || s.venue === sp.venue) &&
+      (!sp.event || s.event_slug === sp.event),
   );
 
   const TBA = <span className="italic text-slate-400">To be announced</span>;
@@ -43,9 +50,21 @@ export default async function SchedulePage({
 
         {/* Filters */}
         <div className="mb-8 flex flex-wrap justify-center gap-2">
-          <FilterChip href="/schedule" active={!sp.date && !sp.venue}>
+          <FilterChip
+            href="/schedule"
+            active={!sp.date && !sp.venue && !sp.event}
+          >
             All
           </FilterChip>
+          {eventOptions.map(({ slug, name }) => (
+            <FilterChip
+              key={slug}
+              href={`/schedule?event=${encodeURIComponent(slug)}`}
+              active={sp.event === slug}
+            >
+              {name}
+            </FilterChip>
+          ))}
           {dates.map((d) => (
             <FilterChip
               key={d}
@@ -77,11 +96,12 @@ export default async function SchedulePage({
             description="Event-wise timings will appear here as the festival approaches."
           />
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <table className="w-full text-left text-sm">
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <table className="w-full min-w-[640px] text-left text-sm">
               <thead className="bg-brand-deep-purple text-xs uppercase tracking-wider text-brand-light-gold">
                 <tr>
                   <th className="px-4 py-3">Date</th>
+                  <th className="px-4 py-3">Event</th>
                   <th className="px-4 py-3">Time</th>
                   <th className="px-4 py-3">Round</th>
                   <th className="px-4 py-3">Venue</th>
@@ -97,9 +117,27 @@ export default async function SchedulePage({
                         { day: "numeric", month: "short" },
                       )}
                     </td>
+                    <td className="px-4 py-3 font-medium text-brand-deep-purple">
+                      {s.event_slug && s.event_name ? (
+                        <Link
+                          href={`/events/${s.event_slug}`}
+                          className="hover:text-brand-burgundy"
+                        >
+                          {s.event_name}
+                        </Link>
+                      ) : (
+                        TBA
+                      )}
+                    </td>
                     <td className="px-4 py-3 font-medium text-slate-700">
-                      {s.start_time ?? TBA}
-                      {s.end_time ? ` – ${s.end_time}` : ""}
+                      {s.start_time ? (
+                        <>
+                          {s.start_time.slice(0, 5)}
+                          {s.end_time ? ` – ${s.end_time.slice(0, 5)}` : ""}
+                        </>
+                      ) : (
+                        TBA
+                      )}
                     </td>
                     <td className="px-4 py-3">
                       {s.round ? <Badge tone="gold">{s.round}</Badge> : TBA}

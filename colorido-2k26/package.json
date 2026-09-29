@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "verify:db": "node scripts/verify-db.mjs",
+    "verify:integration": "node scripts/verify-integration.mjs",
     "create-user": "node scripts/create-user.mjs",
+    "purge:test-data": "node scripts/purge-test-data.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

@@ -105,9 +105,9 @@ export default async function HomePage() {
               </p>
               <div className="grid grid-cols-3 gap-4 border-t border-brand-cream-dark pt-4">
                 {[
-                  ["10+", "Cultural Arenas"],
-                  ["6", "Sports Divisions"],
-                  ["16", "Total Events"],
+                  [String(cultural.length), "Cultural Events"],
+                  [String(sports.length), "Sports Events"],
+                  [String(events.length), "Total Events"],
                 ].map(([v, l]) => (
                   <div
                     key={l}

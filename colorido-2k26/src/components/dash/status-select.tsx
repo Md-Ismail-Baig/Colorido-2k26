@@ -13,6 +13,7 @@ function SelectControl({
   return (
     <select
       name="status"
+      aria-label="Change status"
       defaultValue={value}
       disabled={pending}
       onChange={(e) => e.currentTarget.form?.requestSubmit()}

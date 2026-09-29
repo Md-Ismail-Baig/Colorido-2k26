@@ -3,6 +3,7 @@
 import { registrationPayloadSchema } from "@/lib/validations/registration";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { allow } from "@/lib/rate-limit";
 
 export interface RegistrationResultState {
   step?: "form" | "success";
@@ -42,6 +43,13 @@ export async function confirmRegistration(
   _prev: RegistrationResultState,
   formData: FormData,
 ): Promise<RegistrationResultState> {
+  // Phase 13: rate-limit public registrations per IP (campus-NAT generous).
+  if (!(await allow("registration"))) {
+    return {
+      error: "Too many registrations from this network right now. Please try again later.",
+    };
+  }
+
   // The wizard serializes its state into JSON (client-generated).
   let raw: unknown;
   try {

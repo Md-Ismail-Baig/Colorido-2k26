@@ -32,19 +32,44 @@ export async function getPublishedEvents(): Promise<QueryResult<Event[]>> {
 
 export async function getPublishedAnnouncements(
   limit?: number,
-): Promise<QueryResult<Announcement[]>> {
+): Promise<
+  QueryResult<
+    (Announcement & {
+      event_name: string | null;
+      event_slug: string | null;
+    })[]
+  >
+> {
   const supabase = await createClient();
   let query = supabase
     .from("announcements")
-    .select("*")
+    .select("*, events(name, slug)")
     .eq("status", "published")
     .order("priority", { ascending: true })
     .order("published_at", { ascending: false });
   if (limit) query = query.limit(limit);
   const { data, error } = await query;
-  return error
-    ? { data: null, error: "We couldn't load announcements right now." }
-    : { data: (data ?? []) as Announcement[], error: null };
+
+  if (error)
+    return { data: null, error: "We couldn't load announcements right now." };
+
+  type Row = Announcement & {
+    events:
+      | { name: string; slug: string }
+      | { name: string; slug: string }[]
+      | null;
+  };
+
+  const rows = ((data ?? []) as unknown as Row[]).map((raw) => {
+    const ev = Array.isArray(raw.events) ? raw.events[0] : raw.events;
+    return {
+      ...raw,
+      event_name: ev?.name ?? null,
+      event_slug: ev?.slug ?? null,
+    };
+  });
+
+  return { data: rows, error: null };
 }
 
 export async function getPublishedGallery(
@@ -77,18 +102,41 @@ export async function getActiveSponsors(): Promise<QueryResult<Sponsor[]>> {
 }
 
 export async function getPublishedSchedule(): Promise<
-  QueryResult<ScheduleSlot[]>
+  QueryResult<
+    (ScheduleSlot & {
+      event_name: string | null;
+      event_slug: string | null;
+    })[]
+  >
 > {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("schedules")
-    .select("*")
+    .select("*, events(name, slug)")
     .eq("is_published", true)
     .order("event_date")
     .order("start_time");
-  return error
-    ? { data: null, error: "We couldn't load the schedule right now." }
-    : { data: (data ?? []) as ScheduleSlot[], error: null };
+
+  if (error)
+    return { data: null, error: "We couldn't load the schedule right now." };
+
+  type Row = ScheduleSlot & {
+    events:
+      | { name: string; slug: string }
+      | { name: string; slug: string }[]
+      | null;
+  };
+
+  const slots = ((data ?? []) as unknown as Row[]).map((raw) => {
+    const ev = Array.isArray(raw.events) ? raw.events[0] : raw.events;
+    return {
+      ...raw,
+      event_name: ev?.name ?? null,
+      event_slug: ev?.slug ?? null,
+    };
+  });
+
+  return { data: slots, error: null };
 }
 
 /** Public results grouped per event (published rows only). */

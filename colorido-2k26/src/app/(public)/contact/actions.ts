@@ -2,6 +2,7 @@
 
 import { contactMessageSchema } from "@/lib/validations/registration";
 import { createClient } from "@/lib/supabase/server";
+import { allow } from "@/lib/rate-limit";
 
 export interface ContactFormState {
   success?: boolean;
@@ -16,6 +17,13 @@ export async function submitContactMessage(
   _prev: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
+  // Phase 13: rate-limit public submissions per IP.
+  if (!(await allow("contact"))) {
+    return {
+      error: "Too many messages sent recently. Please try again later.",
+    };
+  }
+
   const parsed = contactMessageSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),

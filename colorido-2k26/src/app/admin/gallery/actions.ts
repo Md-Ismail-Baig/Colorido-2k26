@@ -143,14 +143,48 @@ export async function createSponsor(
     return { error: parsed.error.issues[0]?.message ?? "Invalid input." };
   }
   const supabase = await createClient();
+
+  // Optional logo upload — validated + stored in the gallery bucket under
+  // sponsor-logos/, mirroring the gallery upload rules (spec §24).
+  let logoPath: string | null = null;
+  const logo = formData.get("logo");
+  if (logo instanceof File && logo.size > 0) {
+    if (!GALLERY_MIME_TYPES.includes(logo.type as (typeof GALLERY_MIME_TYPES)[number])) {
+      return { error: "Logo must be a JPG, PNG, WebP or GIF image." };
+    }
+    if (logo.size > GALLERY_MAX_BYTES) {
+      return { error: "Logo is too large — maximum 8 MB." };
+    }
+    const ext =
+      logo.type === "image/jpeg"
+        ? "jpg"
+        : logo.type === "image/png"
+          ? "png"
+          : logo.type === "image/webp"
+            ? "webp"
+            : "gif";
+    logoPath = `sponsor-logos/${crypto.randomUUID()}.${ext}`;
+    const { error: upErr } = await supabase.storage
+      .from("gallery")
+      .upload(logoPath, logo, { contentType: logo.type, upsert: false });
+    if (upErr) {
+      console.error("[admin/sponsors] logo upload failed:", upErr.message);
+      return { error: "The logo upload failed. Please try again." };
+    }
+  }
+
   const { error } = await supabase.from("sponsors").insert({
     name: parsed.data.name,
     website: parsed.data.website || null,
     tier: parsed.data.tier,
     display_order: parsed.data.display_order ?? 0,
     is_active: parsed.data.is_active ?? true,
+    logo_path: logoPath,
   });
   if (error) {
+    if (logoPath) {
+      await supabase.storage.from("gallery").remove([logoPath]);
+    }
     console.error("[admin/sponsors] create failed:", error.message);
     return { error: "We couldn't add the sponsor. Please try again." };
   }
@@ -183,10 +217,19 @@ export async function deleteSponsor(formData: FormData): Promise<void> {
   const id = z.string().uuid().safeParse(formData.get("id"));
   if (!id.success) return;
   const supabase = await createClient();
+  const { data: sponsor } = await supabase
+    .from("sponsors")
+    .select("logo_path")
+    .eq("id", id.data)
+    .single();
+
   const { error } = await supabase.from("sponsors").delete().eq("id", id.data);
   if (error) {
     console.error("[admin/sponsors] delete failed:", error.message);
     return;
+  }
+  if (sponsor?.logo_path) {
+    await supabase.storage.from("gallery").remove([sponsor.logo_path]);
   }
   revalidatePath("/admin/sponsors");
   revalidatePath("/sponsors");

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Badge, EventStatusBadge } from "@/components/ui/badge";
 import { EventCard } from "@/components/events/event-card";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseUrl } from "@/lib/supabase/env";
 import type { Announcement, Event, ResultEntry, ScheduleSlot } from "@/types/database";
 
 /** Dynamic SEO per event (spec §13). */
@@ -49,7 +50,7 @@ export default async function EventDetailPage({
   const ev = event as Event;
 
   // Related public data for this event — published rows only.
-  const [scheduleRes, annRes, resultsRes] = await Promise.all([
+  const [scheduleRes, annRes, resultsRes, galleryRes] = await Promise.all([
     supabase
       .from("schedules")
       .select("*")
@@ -67,11 +68,21 @@ export default async function EventDetailPage({
       .eq("event_id", ev.id)
       .eq("status", "published")
       .order("position"),
+    supabase
+      .from("gallery")
+      .select("storage_path, title")
+      .eq("event_id", ev.id)
+      .eq("is_published", true)
+      .limit(8),
   ]);
 
   const schedule = (scheduleRes.data ?? []) as ScheduleSlot[];
   const announcements = (annRes.data ?? []) as Announcement[];
   const results = (resultsRes.data ?? []) as ResultEntry[];
+  const gallery = (galleryRes.data ?? []) as {
+    storage_path: string;
+    title: string | null;
+  }[];
 
   const isCultural = ev.category === "cultural";
   const dateLabel = new Date(`${ev.event_date}T00:00:00`).toLocaleDateString(
@@ -248,6 +259,31 @@ export default async function EventDetailPage({
                     </li>
                   ))}
                 </ol>
+              </div>
+            )}
+
+            {/* Gallery from this event */}
+            {gallery.length > 0 && (
+              <div>
+                <h2 className="mb-4 font-heading text-2xl font-bold text-brand-deep-purple">
+                  From the Gallery
+                </h2>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {gallery.map((g) => (
+                    <div
+                      key={g.storage_path}
+                      className="aspect-square overflow-hidden rounded-xl border border-slate-200 bg-brand-cream-dark"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`${supabaseUrl}/storage/v1/object/public/gallery/${g.storage_path}`}
+                        alt={g.title ?? "Festival photo"}
+                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                        loading="lazy"
+                      />
+                    </div>
+                    ))}
+                </div>
               </div>
             )}
           </div>

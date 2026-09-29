@@ -81,11 +81,17 @@ Run each file top-to-bottom in **Supabase Dashboard → SQL Editor → Run**:
 5. `supabase/migrations/0004_duplicate_backstops.sql` — race-proof unique
    indexes (one canonical participant per college+roll, one registration per
    participant per event). **⚠️ PENDING — not yet run on the live project.**
+6. `supabase/migrations/0005_registration_status_policies.sql` — adds RLS
+   UPDATE policies on registrations/teams (admins + assigned hosts) so status
+   workflows honor RLS even on user clients. **⚠️ PENDING — recommended
+   together with 0003/0004** (the app already works via service-role writes).
 
 Sanity check any time with:
 
 ```bash
-npm run verify:db    # 12-check acceptance suite (schema, seed, RLS)
+npm run verify:db           # 12-check acceptance suite (schema, seed, RLS)
+npm run verify:integration  # Phase 12 FK/lifecycle audit (12 FK checks +
+                            # per-event data matrix + host coverage)
 ```
 
 ### 4. Run the app
@@ -146,12 +152,22 @@ Supabase gives every project three credentials — here is what each is for:
 | 6 | Participant registration (individual + team + duplicate block) | ✅ Done |
 | 7 | Admin console (14 routes) | ✅ Done |
 | 8 | Event Host console (5 routes, event-scoped) | ✅ Done |
-| 9–11 | Schedule / announcements / results / gallery / sponsors / contact | ✅ Done (built inside the consoles + public pages) |
-| 12–14 | Integration hardening, security audit, responsive QA | 🔜 Remaining |
-| 15 | Production deployment (Vercel) | 🔜 Remaining |
+| 9 | Schedule — console → DB → public (event column, filters, mobile scroll) | ✅ Done + E2E-verified |
+| 10 | Announcements + results — console → DB → public (event links, draft/publish) | ✅ Done + E2E-verified |
+| 11 | Gallery (Storage), sponsors (incl. logo upload), contacts workflow | ✅ Done + E2E-verified |
+| 12 | Integration & data verification (FK audit, lifecycle E2E, auth probes) | ✅ Done |
+| 13 | Security & RBAC audit (RLS probes, rate limiting, secrets scan — see `docs/PHASE13-SECURITY-AUDIT.md`) | ✅ Done |
+| 14 | Responsive & UX QA (320–1440px, drawer, a11y, touch targets) | ✅ Done |
+| 15 | Production deployment — prep done; execute with [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | 🔜 Ready to deploy |
 
 **Build status:** `tsc --noEmit` clean · `next build` green · **35 routes**
 (16 public + login + 14 admin + 5 host incl. the CSV export route).
+
+**Feature flows proven end-to-end (console → database → public page):**
+schedule (with event column + filters), event-scoped announcements (drafts
+stay private), published results (grouped, medal display), gallery (Storage
+upload + category filter), sponsors (incl. logo upload to Storage), and the
+contact-form → admin-inbox → status workflow.
 
 ---
 
@@ -168,8 +184,9 @@ Supabase gives every project three credentials — here is what each is for:
 edit, armed delete) · registrations (filters, status workflow, **CSV export**
 at `/admin/registrations/export`) · participants · teams · schedule ·
 announcements · results · gallery (Storage upload, MIME + 8 MB validation) ·
-sponsors · contacts (status workflow) · hosts (create/remove staff, assign /
-unassign events)
+sponsors (name/website/tier/order + optional **logo upload**, active toggle,
+delete with Storage cleanup) · contacts (status workflow) · hosts
+(create/remove staff, assign / unassign events)
 
 **Host console** (`/host`, role: event_host) — my events · registrations ·
 schedule · announcements · results — every page and action scoped to the
@@ -215,6 +232,29 @@ the PostgreSQL sequence `registration_number_seq` and formats it as
 - **Host isolation is double-enforced:** server-side `assertHostEvent()` (404)
   plus RLS policies on every host-managed table. Hosts can only ever create
   event-scoped announcements.
+- **Verified by probes (Phase 12):** anon-key REST reads return `[]` on
+  registrations/profiles, anon UPDATE attempts change nothing, unauthenticated
+  `/admin` + `/host` requests redirect to `/login` (307), and every
+  registration status change is visible across both consoles.
+- **Phase 13 attack probes all fail safely:** a host JWT cannot read other
+  hosts' profiles (self-only policy), cannot update/insert/delete rows of
+  unassigned events (silent no-op or `42501` RLS violation), anon Storage
+  uploads are rejected (`403 AccessDenied`), oversized/garbage payloads are
+  rejected by Zod + DB constraints (`23514`), tampered session cookies cannot
+  open consoles, and `next=//evil.com` open-redirects are sanitized.
+- **No secrets in the client bundle:** `.next/static` contains no
+  service-role key or non-public env vars (verified by build scan).
+- **Rate limiting (Phase 13):** public server actions are throttled per IP —
+  contact 8/15 min, registration 30/h (campus-NAT generous), staff login
+  10/5 min (`src/lib/rate-limit.ts`; swap the Map for Redis on multi-instance
+  hosting).
+- **Responsive & a11y (Phase 14):** no page overflow at 320/375/425/768/1440px
+  (wide tables scroll inside `overflow-x-auto` wrappers), mobile drawer nav
+  works, registration wizard inputs are ≥42px touch targets, status selects
+  are `aria-label`-ed, sign-out clears session + viewer cookie.
+- **Full audit report:** [`docs/PHASE13-SECURITY-AUDIT.md`](docs/PHASE13-SECURITY-AUDIT.md)
+  — 17-probe evidence table, per-action guard matrix (35/35 actions guarded),
+  rate-limit rationale, and the secrets-scan result.
 - The service-role key is used **only** in server code
   (`src/lib/supabase/admin.ts`) and throws when missing. `.env*` files are
   git-ignored.
@@ -230,11 +270,15 @@ be removed before the festival goes live:
   fine-arts) and `CLR26-000007` (team "Nova Beats", music-band-group) plus
   their test participants.
 - All temporary E2E staff accounts were already removed
-  (`scripts/cleanup-e2e-users.mjs`); the project currently has **zero** staff
-  users — create your real admin with `npm run create-user` (see above).
+  (`scripts/cleanup-e2e-users.mjs`).
+- Demo/seed announcements are clearly marked and should be reviewed before
+  production.
 - Optionally reset the counter so the festival starts at `CLR26-000001`:
   `truncate registration_number_seq restart with 1;` after deleting the test
   registrations.
+- All pre-launch cleanup is scripted and guarded: see
+  [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) — `npm run purge:test-data`
+  (dry-run first, `--yes` to execute).
 
 ## 📌 Data policy
 

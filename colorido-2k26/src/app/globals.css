@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ============================================================
+   COLORIDO 2K26 — GLOBAL DESIGN SYSTEM (Tailwind v4 tokens)
+   One source of truth for every page. Do not redefine brand
+   colors per-page; consume the tokens below.
+   ============================================================ */
+
+:root {
+  /* Brand palette */
+  --brand-purple: #18092a; /* deep purple — primary dark */
+  --brand-deep-purple: #120520;
+  --brand-royal: #2b0f4c;
+  --brand-burgundy: #4c1036;
+  --brand-gold: #e5a93c;
+  --brand-light-gold: #f8d886;
+  --brand-cream: #faf7f2;
+  --brand-cream-dark: #f2ece1;
+  --brand-cyan: #0ea5e9; /* sports accent */
+
+  /* Feedback */
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-info: #0284c7;
+
+  /* Layout */
+  --header-height: 80px;
+  --content-max-width: 1440px;
+}
+
+@theme inline {
+  /* Brand colors as Tailwind utilities (bg-brand-gold, text-brand-purple, ...) */
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-deep-purple: var(--brand-deep-purple);
+  --color-brand-royal: var(--brand-royal);
+  --color-brand-burgundy: var(--brand-burgundy);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-light-gold: var(--brand-light-gold);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-cream-dark: var(--brand-cream-dark);
+  --color-brand-cyan: var(--brand-cyan);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+
+  /* Typography */
+  --font-heading: var(--font-cinzel), serif;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+body {
+  background-color: var(--brand-cream);
+  color: #1e293b;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--brand-gold);
+  color: var(--brand-deep-purple);
+}
+
+/* Accessible focus */
+:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
+/* Subtle, brand-consistent scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--brand-cream-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #c9bda9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-gold);
+}
+
+/* ------------------------------------------------------------
+   Reusable brand utilities
+   ------------------------------------------------------------ */
+
+/* Indian mandala-inspired soft pattern (restrained, decorative) */
+.mandala-pattern {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 20%, rgba(229, 169, 60, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff1ce 0%, #e5a93c 55%, #b47c1c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card-dark {
+  background: rgba(36, 15, 62, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 169, 60, 0.2);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(229, 169, 60, 0.25);
+}

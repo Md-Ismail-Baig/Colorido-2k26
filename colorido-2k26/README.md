@@ -33,7 +33,11 @@ colorido-2k26/
 │   └── types/                   # Central data model (mirrors the DB schema)
 ├── scripts/
 │   ├── verify-db.mjs            # 12-check database acceptance suite
+│   ├── verify-integration.mjs   # Phase 12 FK audit + lifecycle checks
+│   ├── verify-qr.mjs            # Phase 16 QR encoder proof (jsqr + reference)
+│   ├── seed-demo-data.mjs       # Fake demo registrations for every event
 │   ├── create-user.mjs          # Create admin/host staff accounts
+│   ├── purge-test-data.mjs      # Pre-launch cleanup (dry-run default)
 │   └── cleanup-e2e-users.mjs    # Remove temporary test accounts (service role)
 ├── supabase/
 │   ├── migrations/              # 0001 schema + RLS, 0002 host isolation,
@@ -121,6 +125,38 @@ npm run create-user -- host@college.edu HostPass123 host dance-solo
 Sign in at http://localhost:3000/login → you land on `/admin` (admin) or
 `/host` (event host) based on your database role.
 
+### 6. Optional: demo data for every event
+
+To see the consoles, analytics and check-in flows populated, seed clearly-
+marked FAKE registrations — 2 per event (2 individuals for every individual
+event incl. Dance — Solo, 2 full teams with captains/members for every team
+event incl. Music & Band — Group):
+
+```bash
+npm run seed:demo          # dry run: shows the plan
+npm run seed:demo -- --yes # writes 32 demo registrations (CLR26-000008+)
+```
+
+Everything demo is marked (`@demo.colorido.test` emails, `DEM…` rolls,
+"DEMO …" team names) and is removed by the same pre-launch purge as the test
+rows — real registrations are never touched.
+
+### 7. Event details (venues, times, rules) and the contact page
+
+Real campus content lives in `scripts/seed-event-details.mjs`: per-event
+venue, reporting/start/end times, registration deadline, eligibility, rules,
+judging criteria and two published schedule slots (Reporting + Competition),
+staggered across R.V.R. & J.C. College venues. Re-runnable — re-run it after
+edits:
+
+```bash
+npm run seed:details
+```
+
+The contact page (`/contact`) ships with the college address, a festival
+phone, `info@rvrjc.ac.in`, and an embedded Google Map of the campus —
+edit the constants at the top of `src/app/(public)/contact/page.tsx`.
+
 > Note: the DB trigger auto-creates every new auth user as `event_host`.
 > Promote an existing user to admin with:
 > `update public.profiles set role='admin' where id = (select id from auth.users where email='…');`
@@ -159,9 +195,10 @@ Supabase gives every project three credentials — here is what each is for:
 | 13 | Security & RBAC audit (RLS probes, rate limiting, secrets scan — see `docs/PHASE13-SECURITY-AUDIT.md`) | ✅ Done |
 | 14 | Responsive & UX QA (320–1440px, drawer, a11y, touch targets) | ✅ Done |
 | 15 | Production deployment — prep done; execute with [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | 🔜 Ready to deploy |
+| 16 | Analytics dashboard · QR entry passes + check-in scanner · email confirmations | ✅ Done + E2E-verified |
 
-**Build status:** `tsc --noEmit` clean · `next build` green · **35 routes**
-(16 public + login + 14 admin + 5 host incl. the CSV export route).
+**Build status:** `tsc --noEmit` clean · `next build` green · **39 routes**
+(14 public + login + 17 admin + 6 host + the public `/check-in/[id]` pass).
 
 **Feature flows proven end-to-end (console → database → public page):**
 schedule (with event column + filters), event-scoped announcements (drafts
@@ -180,18 +217,24 @@ contact-form → admin-inbox → status workflow.
 
 **Staff** — `/login` (viewer gate + staff sign-in with role redirect)
 
-**Admin console** (`/admin`, role: admin) — dashboard · events (list, new,
-edit, armed delete) · registrations (filters, status workflow, **CSV export**
-at `/admin/registrations/export`) · participants · teams · schedule ·
-announcements · results · gallery (Storage upload, MIME + 8 MB validation) ·
-sponsors (name/website/tier/order + optional **logo upload**, active toggle,
-delete with Storage cleanup) · contacts (status workflow) · hosts
-(create/remove staff, assign / unassign events)
+**Admin console** (`/admin`, role: admin) — dashboard · **analytics** ·
+events (list, new, edit, armed delete) · registrations (filters, status
+workflow, **CSV export** at `/admin/registrations/export`) · participants ·
+teams · schedule · announcements · results · gallery (Storage upload, MIME +
+8 MB validation) · sponsors (name/website/tier/order + optional **logo
+upload**, active toggle, delete with Storage cleanup) · contacts (status
+workflow) · hosts (create/remove staff, assign / unassign events) ·
+**check-in scanner**
 
 **Host console** (`/host`, role: event_host) — my events · registrations ·
-schedule · announcements · results — every page and action scoped to the
-host's assigned events via `assertHostEvent()` **and** RLS (404 if not
-assigned).
+**check-in scanner** (with an assigned-events-only queue) · schedule ·
+announcements · results — every page and action scoped to the host's assigned
+events via `assertHostEvent()` **and** RLS (404 if not assigned).
+
+**Participant pass** — `/check-in/<registration-uuid>`: the public QR entry
+pass (wallet-style card). No login needed — the unguessable UUID is the
+capability token, and the middleware explicitly admits `/check-in/` so the
+link can be shared over WhatsApp or printed.
 
 ---
 
@@ -209,6 +252,47 @@ the PostgreSQL sequence `registration_number_seq` and formats it as
 - Next number after the current test data is **CLR26-000008**.
 - PostgreSQL sequences can skip a number if a transaction aborts — normal and
   harmless.
+
+---
+
+## 📊 Phase 16 — analytics, QR passes & check-in, email
+
+**① `/admin/analytics`** — DB-driven dashboard: registration totals by
+status, unique participants, team vs individual split, per-event bars (with
+checked-in counts), signups-per-day chart, top colleges, and a published-
+results medal table. Pure CSS charts — no chart library, no extra deps.
+
+**② QR entry passes + check-in scanner**
+
+- Every confirmed registration has a public pass at `/check-in/<uuid>`:
+  wallet-style card with a server-rendered QR (SVG), the registration
+  number in plain text, event/date/venue details, and a status banner that
+  flips to **"Checked in"** after the pass is used.
+- The QR encodes the pass URL itself. Scanners accept the camera scan, a
+  pasted URL, or a bare UUID — USB/Bluetooth "keyboard-wedge" scanners just
+  work in the code box.
+- Staff scan at `/admin/check-in` (festival-wide stats + scanner) and
+  `/host/check-in` (same scanner plus an "awaiting entry" queue limited to
+  the host's assigned events).
+- `src/lib/qr.ts` is a **zero-dependency QR encoder** (byte mode, EC level
+  M, versions 2–6, ISO/IEC 18004). Correctness is *proven*, not assumed:
+  `npm run verify:qr` decodes its output with the independent `jsqr` decoder
+  AND asserts bit-for-bit matrix equality against the `qrcode` reference
+  encoder for every version (11 checks, all passing).
+- Check-in rules: only `confirmed` registrations can check in; the action is
+  idempotent ("Already checked in."); hosts are refused passes from events
+  they are not assigned to.
+
+**③ Email confirmations** (`src/lib/email.ts` + `src/lib/email-notifications.ts`)
+
+- Registration confirmation (with the pass link) is sent right after a
+  successful registration; approve / reject / cancel decisions email the
+  participant — only when the status actually changed.
+- Uses Resend's REST API directly. **Without `RESEND_API_KEY` the email
+  layer silently no-ops** (logged, never sent) — dev, preview and E2E flows
+  are unaffected. Send failures never break a registration.
+- Optional env vars (see `.env.example`): `RESEND_API_KEY`, `EMAIL_FROM`,
+  `NEXT_PUBLIC_APP_URL` (used for pass/detail links in emails).
 
 ---
 
@@ -248,6 +332,14 @@ the PostgreSQL sequence `registration_number_seq` and formats it as
   contact 8/15 min, registration 30/h (campus-NAT generous), staff login
   10/5 min (`src/lib/rate-limit.ts`; swap the Map for Redis on multi-instance
   hosting).
+- **Check-in passes & scanning (Phase 16):** `/check-in/<uuid>` is public by
+  design (capability-token URL, same trust model as `/registration/[id]`) —
+  it exposes exactly one registration's display fields. The check-in action
+  requires a staff session; hosts are scope-checked per event inline (no
+  `notFound()` throws inside actions), and the write still goes through the
+  service-role client only after the gates. Email helpers are
+  fire-and-forget: they resolve context server-side and never leak errors
+  into the user flow.
 - **Responsive & a11y (Phase 14):** no page overflow at 320/375/425/768/1440px
   (wide tables scroll inside `overflow-x-auto` wrappers), mobile drawer nav
   works, registration wizard inputs are ≥42px touch targets, status selects
@@ -263,14 +355,18 @@ the PostgreSQL sequence `registration_number_seq` and formats it as
 
 ## 🧹 Before production (data cleanup)
 
-The live project currently contains clearly-identified test data that should
-be removed before the festival goes live:
+The live project currently contains clearly-identified test **and demo**
+data that should be removed before the festival goes live:
 
 - Test registrations `CLR26-000003`, `CLR26-000006` (individual, dance-solo /
   fine-arts) and `CLR26-000007` (team "Nova Beats", music-band-group) plus
   their test participants.
+- All 32 demo registrations from `npm run seed:demo`
+  (`@demo.colorido.test` participants, DEM… rolls, "DEMO …" teams).
+- One command removes everything: `npm run purge:test-data`
+  (dry-run first, `--yes` to execute) — real registrations never match.
 - All temporary E2E staff accounts were already removed
-  (`scripts/cleanup-e2e-users.mjs`).
+  (`npm run cleanup:e2e-users`).
 - Demo/seed announcements are clearly marked and should be reviewed before
   production.
 - Optionally reset the counter so the festival starts at `CLR26-000001`:
@@ -284,8 +380,11 @@ be removed before the festival goes live:
 
 - Only the **16 documented events** exist. No technical/departmental events
   will ever be added.
-- Information not officially provided (venue, deadlines, contact details,
-  sponsors…) is stored as empty and displayed as **"To be announced"** —
-  never fabricated.
-- Demo/seed announcements are clearly marked and must be removed before
-  production.
+- Event venues/times/rules are campus content defined in
+  `scripts/seed-event-details.mjs` (re-run after edits); anything not yet
+  entered still displays as **"To be announced"**.
+- The festival phone number on `/contact` is a placeholder — replace it with
+  the official number before go-live.
+- Demo/seed announcements, `seed:demo` registrations and the E2E test rows
+  are clearly marked and must be purged before production
+  (`npm run purge:test-data`).

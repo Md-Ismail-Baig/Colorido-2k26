@@ -9,6 +9,7 @@ import {
   registrationStatusSchema,
   contactStatusSchema,
 } from "@/lib/validations/admin";
+import { notifyRegistrationStatus } from "@/lib/email-notifications";
 
 export async function setRegistrationStatus(formData: FormData): Promise<void> {
   await requireRole("admin");
@@ -22,6 +23,11 @@ export async function setRegistrationStatus(formData: FormData): Promise<void> {
   // so the status workflow writes via the service-role client after the
   // requireRole() gate — same trusted-server pattern as console reads.
   const supabase = createAdminClient();
+  const { data: previous } = await supabase
+    .from("registrations")
+    .select("status")
+    .eq("id", parsed.data.id)
+    .single();
   const { error } = await supabase
     .from("registrations")
     .update({ status: parsed.data.status })
@@ -30,6 +36,18 @@ export async function setRegistrationStatus(formData: FormData): Promise<void> {
     console.error("[admin/registrations] status failed:", error.message);
     return;
   }
+
+  // Phase 16: notify the participant on approve/reject/cancel decisions —
+  // only when the status actually changed (no spam on redundant saves).
+  if (
+    previous?.status !== parsed.data.status &&
+    (parsed.data.status === "confirmed" ||
+      parsed.data.status === "rejected" ||
+      parsed.data.status === "cancelled")
+  ) {
+    notifyRegistrationStatus(parsed.data.id, parsed.data.status);
+  }
+
   revalidatePath("/admin/registrations");
   revalidatePath("/host/registrations");
 }

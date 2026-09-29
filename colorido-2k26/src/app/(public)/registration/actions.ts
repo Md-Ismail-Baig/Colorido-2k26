@@ -4,6 +4,7 @@ import { registrationPayloadSchema } from "@/lib/validations/registration";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { allow } from "@/lib/rate-limit";
+import { notifyRegistrationConfirmed } from "@/lib/email-notifications";
 
 export interface RegistrationResultState {
   step?: "form" | "success";
@@ -292,6 +293,10 @@ export async function confirmRegistration(
       };
     }
   }
+
+  // Phase 16: courtesy confirmation email — fire-and-forget, no-ops when
+  // RESEND_API_KEY is unset, and never affects the registration result.
+  notifyRegistrationConfirmed(registration.id);
 
   return {
     step: "success",

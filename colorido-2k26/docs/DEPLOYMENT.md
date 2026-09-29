@@ -38,7 +38,7 @@ git push origin main
    - **Root Directory:** click **Edit** → select `colorido-2k26`
      (the app lives in a subfolder of the repo)
    - Build/install commands: leave as defaults
-4. Open **Environment Variables** and add exactly three entries
+4. Open **Environment Variables** and add the three required entries
    (values come from `colorido-2k26/.env.local` — never commit them):
 
    | Name | Value | Environments |
@@ -46,6 +46,14 @@ git push origin main
    | `NEXT_PUBLIC_SUPABASE_URL` | `https://sqvajosxlxztzqwpvjfs.supabase.co` | Production, Preview, Development |
    | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | your publishable key (`sb_publishable_…` or the legacy anon JWT) | Production, Preview, Development |
    | `SUPABASE_SERVICE_ROLE_KEY` | your service-role key — **secret** | Production, Preview, Development |
+
+   **Phase 16 (optional) — email + pass links:**
+
+   | Name | Value | Environments |
+   |---|---|---|
+   | `RESEND_API_KEY` | from resend.com → API Keys (omit = emails skipped gracefully) | Production |
+   | `EMAIL_FROM` | `COLORIDO 2K26 <noreply@your-verified-domain.edu>` | Production |
+   | `NEXT_PUBLIC_APP_URL` | your final site URL (used in email links) | Production |
 
 5. Click **Deploy**. First build takes ~2 minutes.
 

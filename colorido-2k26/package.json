@@ -6,8 +6,12 @@
     "dev": "next dev",
     "verify:db": "node scripts/verify-db.mjs",
     "verify:integration": "node scripts/verify-integration.mjs",
+    "verify:qr": "node scripts/verify-qr.mjs",
+    "seed:demo": "node scripts/seed-demo-data.mjs",
+    "seed:details": "node --env-file=.env.local scripts/seed-event-details.mjs",
     "create-user": "node scripts/create-user.mjs",
-    "purge:test-data": "node scripts/purge-test-data.mjs",
+    "purge:test-data": "node --env-file=.env.local scripts/purge-test-data.mjs",
+    "cleanup:e2e-users": "node --env-file=.env.local scripts/cleanup-e2e-users.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -34,6 +38,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

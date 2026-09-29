@@ -83,10 +83,21 @@ export async function middleware(request: NextRequest) {
     path === "/favicon.ico" ||
     /\.[\w]+$/.test(path.split("/").pop() ?? "");
 
+  // Phase 16: check-in passes (/check-in/<uuid>) are shared with participants
+  // (WhatsApp, print) and must open without any session or viewer cookie.
+  // The UUID is the capability token — same trust model as /registration/[id].
+  const isPublicPass = path.startsWith("/check-in/");
+
   const viewerAdmitted =
     request.cookies.get("clr_viewer")?.value === "1";
 
-  if (path !== "/login" && !user && !viewerAdmitted && !isStaticLike) {
+  if (
+    path !== "/login" &&
+    !user &&
+    !viewerAdmitted &&
+    !isStaticLike &&
+    !isPublicPass
+  ) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.search = "";

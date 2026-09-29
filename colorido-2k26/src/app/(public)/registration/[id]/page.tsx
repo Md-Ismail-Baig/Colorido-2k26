@@ -163,9 +163,17 @@ export default async function RegistrationDetailPage({
                 View Event
               </Link>
             )}
+            {registration.status === "confirmed" || registration.status === "checked_in" ? (
+              <Link
+                href={`/check-in/${registration.id}`}
+                className="rounded-full bg-brand-deep-purple px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-gold"
+              >
+                Entry Pass ↗
+              </Link>
+            ) : null}
             <Link
               href="/events"
-              className="rounded-full bg-brand-deep-purple px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-gold"
+              className="rounded-full border border-slate-300 px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-600 hover:bg-slate-50"
             >
               Back to Events
             </Link>

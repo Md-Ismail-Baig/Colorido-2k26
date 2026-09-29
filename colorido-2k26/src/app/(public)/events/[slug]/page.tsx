@@ -5,6 +5,7 @@ import { Badge, EventStatusBadge } from "@/components/ui/badge";
 import { EventCard } from "@/components/events/event-card";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseUrl } from "@/lib/supabase/env";
+import { formatTime, formatDate } from "@/lib/utils";
 import type { Announcement, Event, ResultEntry, ScheduleSlot } from "@/types/database";
 
 /** Dynamic SEO per event (spec §13). */
@@ -162,10 +163,10 @@ export default async function EventDetailPage({
               {[
                 ["Event Date", <span key="d">{dateLabel}</span>],
                 ["Venue", ev.venue ?? TBA],
-                ["Reporting Time", ev.reporting_time ?? TBA],
-                ["Start Time", ev.start_time ?? TBA],
-                ["End Time", ev.end_time ?? TBA],
-                ["Registration Deadline", ev.registration_deadline ?? TBA],
+                ["Reporting Time", ev.reporting_time ? formatTime(ev.reporting_time) : TBA],
+                ["Start Time", ev.start_time ? formatTime(ev.start_time) : TBA],
+                ["End Time", ev.end_time ? formatTime(ev.end_time) : TBA],
+                ["Registration Deadline", ev.registration_deadline ? formatDate(ev.registration_deadline) : TBA],
               ].map(([label, value]) => (
                 <div
                   key={label as string}

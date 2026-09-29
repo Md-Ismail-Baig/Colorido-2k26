@@ -21,9 +21,11 @@ interface NavItem {
 
 const ADMIN_NAV: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: "◈" },
+  { href: "/admin/analytics", label: "Analytics", icon: "▲" },
   { href: "/admin/events", label: "Events", icon: "✦" },
   { href: "/admin/registrations", label: "Registrations", icon: "✧" },
   { href: "/admin/participants", label: "Participants", icon: "☰" },
+  { href: "/admin/check-in", label: "Check-in Scanner", icon: "▣" },
   { href: "/admin/teams", label: "Teams", icon: "⚒" },
   { href: "/admin/schedule", label: "Schedule", icon: "◷" },
   { href: "/admin/announcements", label: "Announcements", icon: "📣" },
@@ -37,6 +39,7 @@ const ADMIN_NAV: NavItem[] = [
 const HOST_NAV: NavItem[] = [
   { href: "/host", label: "My Events", icon: "◈" },
   { href: "/host/registrations", label: "Registrations", icon: "✧" },
+  { href: "/host/check-in", label: "Check-in Scanner", icon: "▣" },
   { href: "/host/schedule", label: "Schedule", icon: "◷" },
   { href: "/host/announcements", label: "Announcements", icon: "📣" },
   { href: "/host/results", label: "Results", icon: "🏆" },

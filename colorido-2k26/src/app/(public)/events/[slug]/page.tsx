@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Badge, EventStatusBadge } from "@/components/ui/badge";
+import { Badge, CategoryBadge, EventStatusBadge } from "@/components/ui/badge";
 import { EventCard } from "@/components/events/event-card";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseUrl } from "@/lib/supabase/env";
-import { formatTime, formatDate } from "@/lib/utils";
+import { formatTime, formatDate, isRegistrationOpen } from "@/lib/utils";
+
+/** Medals for the top-3 finishers in every results list. */
+const MEDALS = ["🥇", "🥈", "🥉"];
 import type { Announcement, Event, ResultEntry, ScheduleSlot } from "@/types/database";
 
 /** Dynamic SEO per event (spec §13). */
@@ -105,7 +108,26 @@ export default async function EventDetailPage({
             : "bg-gradient-to-b from-brand-deep-purple via-brand-royal to-sky-900"
         }`}
       >
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        {ev.banner_image && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={ev.banner_image}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
+        {ev.banner_image && (
+          <div
+            aria-hidden="true"
+            className={`absolute inset-0 bg-gradient-to-b ${
+              isCultural
+                ? "from-brand-deep-purple/95 via-brand-purple/80 to-brand-royal/70"
+                : "from-brand-deep-purple/95 via-brand-royal/80 to-sky-900/70"
+            }`}
+          />
+        )}
+        <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-6 text-xs text-white/60">
             <Link href="/" className="hover:text-brand-gold">Home</Link>
             <span className="mx-2">/</span>
@@ -115,9 +137,7 @@ export default async function EventDetailPage({
           </nav>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Badge tone={isCultural ? "gold" : "cyan"}>
-              {isCultural ? "Cultural" : `Sports · ${ev.gender}`}
-            </Badge>
+            <CategoryBadge category={ev.category} gender={ev.gender} />
             {ev.subcategory && <Badge tone="neutral">{ev.subcategory}</Badge>}
             <EventStatusBadge status={ev.status} />
           </div>
@@ -131,13 +151,17 @@ export default async function EventDetailPage({
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            {ev.status === "published" ? (
+            {ev.status === "published" && isRegistrationOpen(ev) ? (
               <Link
                 href={`/registration?event=${ev.id}`}
                 className="rounded-full bg-gradient-to-r from-brand-gold via-brand-light-gold to-brand-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-brand-deep-purple transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-gold/20"
               >
                 Register Now
               </Link>
+            ) : ev.status === "published" ? (
+              <span className="inline-flex cursor-not-allowed items-center rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/40">
+                Registrations Closed
+              </span>
             ) : (
               <span className="inline-flex cursor-not-allowed items-center rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/40">
                 {ev.status === "completed" ? "Event Completed" : "Registration Closed"}
@@ -178,6 +202,35 @@ export default async function EventDetailPage({
                   <p className="mt-1 text-sm font-medium text-slate-700">{value}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Prizes */}
+            <div>
+              <h2 className="mb-4 font-heading text-2xl font-bold text-brand-deep-purple">
+                🏆 Prizes
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  { medal: "🥇", place: "1st Place", reward: "Trophy + ₹5,000" },
+                  { medal: "🥈", place: "2nd Place", reward: "Trophy + ₹3,500" },
+                  { medal: "🥉", place: "3rd Place", reward: "Trophy + ₹2,000" },
+                ].map((p) => (
+                  <div
+                    key={p.place}
+                    className="rounded-2xl border border-brand-gold/40 bg-gradient-to-b from-brand-cream to-white p-5 text-center shadow-sm"
+                  >
+                    <span className="text-3xl" aria-hidden>
+                      {p.medal}
+                    </span>
+                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest text-brand-burgundy">
+                      {p.place}
+                    </p>
+                    <p className="mt-1 font-heading text-lg font-bold text-brand-deep-purple">
+                      {p.reward}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Rules / Eligibility / Judging */}
@@ -248,7 +301,7 @@ export default async function EventDetailPage({
                       className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
                     >
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-gold font-heading font-bold text-brand-deep-purple">
-                        {r.position}
+                        {MEDALS[r.position - 1] ?? r.position}
                       </span>
                       <span className="font-medium text-slate-700">
                         {r.team_name ?? r.participant_name ?? "—"}
@@ -278,7 +331,7 @@ export default async function EventDetailPage({
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={`${supabaseUrl}/storage/v1/object/public/gallery/${g.storage_path}`}
-                        alt={g.title ?? "Festival photo"}
+                        alt={g.title ?? "Fest photo"}
                         className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
                         loading="lazy"
                       />
@@ -323,7 +376,7 @@ export default async function EventDetailPage({
                   </dd>
                 </div>
               </dl>
-              {ev.status === "published" && (
+              {ev.status === "published" && isRegistrationOpen(ev) && (
                 <Link
                   href={`/registration?event=${ev.id}`}
                   className="mt-6 block rounded-full bg-gradient-to-r from-brand-gold via-brand-light-gold to-brand-gold py-3 text-center text-sm font-semibold uppercase tracking-wider text-brand-deep-purple transition hover:shadow-lg hover:shadow-brand-gold/30"

@@ -39,10 +39,14 @@ export default async function HomePage() {
       >
         <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex justify-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-deep-purple/70 px-4 py-1.5 backdrop-blur-sm">
-              <span className="h-2 w-2 animate-ping rounded-full bg-brand-gold" />
-              <span className="text-xs font-medium uppercase tracking-widest text-brand-light-gold">
-                Inter-Collegiate Cultural &amp; Sports Extravaganza
+            <div className="inline-flex flex-col items-center gap-1.5 rounded-full border border-brand-gold/30 bg-brand-deep-purple/70 px-6 py-3 backdrop-blur-sm">
+              <span className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-white sm:text-base">
+                R.V.R. &amp; J.C. College of Engineering
+              </span>
+              <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-brand-light-gold">
+                <span className="h-2 w-2 animate-ping rounded-full bg-brand-gold" aria-hidden />
+                Inter-Collegiate Cultural &amp; Sports
+                <span className="h-2 w-2 animate-ping rounded-full bg-brand-gold" aria-hidden />
               </span>
             </div>
           </div>
@@ -52,7 +56,7 @@ export default async function HomePage() {
               COLORIDO <span className="gold-gradient-text">2K26</span>
             </h1>
             <p className="mb-4 font-heading text-lg font-semibold uppercase tracking-[0.25em] text-slate-200 sm:text-2xl">
-              Cultural &amp; Sports Festival
+              Cultural &amp; Sports Fest
             </p>
             <p className="inline-flex items-center gap-3 rounded-lg border border-brand-gold/20 bg-white/5 px-6 py-2 text-sm font-medium tracking-wider text-brand-light-gold sm:text-base">
               28 DECEMBER 2026
@@ -77,7 +81,7 @@ export default async function HomePage() {
           {/* 2 · COUNTDOWN */}
           <div className="mx-auto max-w-3xl rounded-2xl border border-brand-gold/30 bg-black/40 p-6 text-center backdrop-blur-md">
             <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-light-gold">
-              Countdown to Festival Day
+              Countdown to Fest Day
             </div>
             <Countdown />
           </div>
@@ -95,7 +99,7 @@ export default async function HomePage() {
             <div className="space-y-6 text-base leading-relaxed text-slate-700 lg:col-span-6 sm:text-lg">
               <p className="text-xl font-medium leading-snug text-brand-royal">
                 COLORIDO 2K26 is a premier inter-collegiate Cultural &amp;
-                Sports Festival — a confluence of artistic tradition and
+                Sports Fest — a confluence of artistic tradition and
                 athletic tenacity on one unified stage.
               </p>
               <p>
@@ -125,16 +129,23 @@ export default async function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-4 lg:col-span-6">
               {[
-                ["Cultural Stages", "from-brand-royal to-brand-burgundy"],
-                ["Sports Arenas", "from-brand-deep-purple to-sky-900"],
-                ["Music & Theatre", "from-brand-burgundy to-brand-royal"],
-                ["Team Championships", "from-sky-900 to-brand-purple"],
-              ].map(([title, grad]) => (
+                ["Cultural Stages", "/images/colorido/CulturalStages.png"],
+                ["Sports Arenas", "/images/colorido/Sports%20arenas.png"],
+                ["Music & Theatre", "/images/colorido/Music%20&%20Theatre.png"],
+                ["Team Championships", "/images/colorido/Team%20Championships.png"],
+              ].map(([title, src]) => (
                 <div
                   key={title}
-                  className={`flex aspect-[4/3] items-center justify-center rounded-2xl border border-brand-gold/20 bg-gradient-to-br ${grad} p-6 text-center`}
+                  className="relative flex aspect-[4/3] items-end justify-center overflow-hidden rounded-2xl border border-brand-gold/20 bg-gradient-to-br from-brand-royal to-brand-burgundy p-6 text-center"
                 >
-                  <span className="font-heading text-sm font-bold text-white/90">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <span className="relative rounded-lg bg-black/45 px-3 py-1.5 font-heading text-sm font-bold text-white backdrop-blur-sm">
                     {title}
                   </span>
                 </div>
@@ -275,7 +286,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="07 / Gallery"
-            title="Festival Highlights"
+            title="Fest Highlights"
             description="Glimpses from the COLORIDO stage and arena."
           />
           {gallery.length === 0 ? (
@@ -334,7 +345,7 @@ export default async function HomePage() {
       <section className="bg-brand-deep-purple py-20 text-white">
         <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl font-bold sm:text-4xl">
-            Questions about the festival?
+            Questions about the fest?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300">
             Reach the organizing committee through the contact page — we&apos;ll

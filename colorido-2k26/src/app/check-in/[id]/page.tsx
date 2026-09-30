@@ -97,7 +97,7 @@ export default async function CheckInPassPage({
     <main className="flex min-h-screen items-center justify-center bg-brand-deep-purple px-4 py-10">
       <div className="w-full max-w-sm">
         <p className="mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-brand-light-gold">
-          COLORIDO 2K26 · Cultural &amp; Sports Festival
+          COLORIDO 2K26 · Cultural &amp; Sports Fest
         </p>
 
         <div className="overflow-hidden rounded-2xl bg-white shadow-xl">

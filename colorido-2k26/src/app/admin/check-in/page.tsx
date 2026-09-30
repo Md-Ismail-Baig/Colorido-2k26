@@ -30,7 +30,7 @@ export default async function AdminCheckInPage() {
     <ConsoleShell
       profile={profile}
       title="Check-in Scanner"
-      subtitle="Festival-wide entry gate — scan a pass or type its code."
+      subtitle="Fest-wide entry gate — scan a pass or type its code."
     >
       <div className="mb-6 grid grid-cols-3 gap-4">
         <div className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">

@@ -9,7 +9,7 @@ const labelCls =
   "mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500";
 
 const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-const MAX_MB = 8;
+const MAX_MB = 1;
 
 export function GalleryUploadForm({
   action,

@@ -7,12 +7,13 @@ import { cn } from "@/lib/utils";
 
 /**
  * Global COLORIDO navbar (spec §7).
- * Exactly FIVE primary items (spec §5): Home, Events, Announcements, Gallery,
- * Contact. All other modules reached via contextual links/footer.
+ * Primary items: Home, Events, Results, Announcements, Gallery, Contact.
+ * All other modules reached via contextual links/footer.
  */
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Events", href: "/events" },
+  { label: "Results", href: "/results" },
   { label: "Announcements", href: "/announcements" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
@@ -57,7 +58,7 @@ export function Navbar() {
         {/* Desktop nav — exactly five items */}
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-5 xl:gap-6 lg:flex"
         >
           {NAV_ITEMS.map((item) => (
             <Link

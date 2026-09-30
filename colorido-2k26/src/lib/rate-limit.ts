@@ -26,6 +26,8 @@ export const RATE_LIMITS = {
   registration: { limit: 30, windowMs: 60 * 60 * 1000 },
   /** Staff sign-in (brute-force guard). */
   login: { limit: 10, windowMs: 5 * 60 * 1000 },
+  /** Verification-email resend (protects the mail provider quota). */
+  verify_email: { limit: 5, windowMs: 60 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 /** Best-effort client IP from proxy headers (set by the host/CDN). */

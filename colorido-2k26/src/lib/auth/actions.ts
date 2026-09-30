@@ -22,7 +22,7 @@ function safeAuthError(code?: string): string {
     case "invalid_credentials":
       return "Invalid email or password.";
     case "email_not_confirmed":
-      return "This account has not been confirmed yet. Contact the festival admin.";
+      return "This account has not been confirmed yet. Contact the fest admin.";
     case "over_request_rate_limit":
     case "over_email_send_rate_limit":
       return "Too many attempts. Please wait a moment and try again.";

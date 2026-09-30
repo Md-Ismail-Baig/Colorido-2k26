@@ -21,7 +21,7 @@ export default async function EventsPage({
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-burgundy">
-            Festival Program
+            Fest Program
           </p>
           <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
             Explore Events
@@ -37,7 +37,7 @@ export default async function EventsPage({
           error={error}
           params={sp}
           heading="Explore Events"
-          subheading="All festival events"
+          subheading="All fest events"
         />
       </div>
     </section>

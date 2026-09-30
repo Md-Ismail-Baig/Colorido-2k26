@@ -43,6 +43,9 @@ export function AnnouncementForm({
 
       {hostMode && (
         <>
+          {/* Host announcements are always event-scoped — the server-side
+              announcementFormSchema requires the scope field, so pin it here. */}
+          <input type="hidden" name="scope" value="event" />
           <div>
             <label className={labelCls}>Scope</label>
             <input
@@ -75,7 +78,7 @@ export function AnnouncementForm({
               onChange={(e) => setScope(e.target.value)}
               className={inputCls}
             >
-              <option value="festival">Festival-wide</option>
+              <option value="festival">Fest-wide</option>
               <option value="event">Event-specific</option>
             </select>
           </div>

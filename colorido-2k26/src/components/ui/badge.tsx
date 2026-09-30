@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import type { EventGender } from "@/types/database";
 
 const badgeBase =
   "inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider";
@@ -59,4 +60,38 @@ export function RegistrationStatusBadge({
 }) {
   const s = regStatusMap[status];
   return <Badge tone={s.tone}>{s.label}</Badge>;
+}
+
+/**
+ * Category pill for Cultural / Sports — solid deep-purple base with a
+ * gold (cultural) or cyan (sports) border and colored text, so the label
+ * never blends into banner images or gradient backgrounds. Shared by the
+ * event card and the event detail hero.
+ */
+export function CategoryBadge({
+  category,
+  gender,
+  className,
+}: {
+  category: "cultural" | "sports";
+  gender?: EventGender | null;
+  className?: string;
+}) {
+  const isCultural = category === "cultural";
+  const label = isCultural
+    ? "Cultural"
+    : `Sports · ${gender === "boys" ? "Boys" : gender === "girls" ? "Girls" : "Open"}`;
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full border-2 px-3 py-1 text-[11px] font-bold uppercase tracking-wider shadow-md backdrop-blur-sm",
+        isCultural
+          ? "border-brand-gold bg-brand-deep-purple/85 text-brand-gold"
+          : "border-brand-cyan bg-brand-deep-purple/85 text-sky-300",
+        className,
+      )}
+    >
+      {label}
+    </span>
+  );
 }

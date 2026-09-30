@@ -86,7 +86,11 @@ export async function middleware(request: NextRequest) {
   // Phase 16: check-in passes (/check-in/<uuid>) are shared with participants
   // (WhatsApp, print) and must open without any session or viewer cookie.
   // The UUID is the capability token — same trust model as /registration/[id].
-  const isPublicPass = path.startsWith("/check-in/");
+  const isPublicPass =
+    path.startsWith("/check-in/") ||
+    // Email-verification links open straight from the inbox; capability is
+    // the registration UUID + HMAC token in the query (registration-verify.ts).
+    path === "/registration/verify";
 
   const viewerAdmitted =
     request.cookies.get("clr_viewer")?.value === "1";

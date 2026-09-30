@@ -7,6 +7,13 @@ export const metadata = { title: "Results" };
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
+/** Prize for each finishing position (matches the prizes shown per event). */
+const PRIZES: Record<number, string> = {
+  1: "Trophy + ₹5,000",
+  2: "Trophy + ₹3,500",
+  3: "Trophy + ₹2,000",
+};
+
 export default async function ResultsPage() {
   const { data, error } = await getPublishedResults();
 
@@ -18,8 +25,19 @@ export default async function ResultsPage() {
             Champions
           </p>
           <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
-            Festival Results
+            Fest Results
           </h1>
+        </div>
+
+        <div className="mb-10 rounded-2xl border border-brand-gold/40 bg-gradient-to-r from-brand-cream to-white px-6 py-4">
+          <p className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-burgundy">
+            🏆 Prize Pool — Every Event
+          </p>
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm text-slate-700">
+            <span><strong className="text-brand-deep-purple">1st:</strong> Trophy + ₹5,000</span>
+            <span><strong className="text-brand-deep-purple">2nd:</strong> Trophy + ₹3,500</span>
+            <span><strong className="text-brand-deep-purple">3rd:</strong> Trophy + ₹2,000</span>
+          </div>
         </div>
 
         {error ? (
@@ -38,7 +56,7 @@ export default async function ResultsPage() {
               >
                 <header className="border-b border-slate-100 bg-brand-cream-dark/60 px-6 py-4">
                   <h2 className="font-heading text-xl font-bold text-brand-deep-purple">
-                    {group.event_name}
+                    🏆 {group.event_name}
                   </h2>
                 </header>
                 <ol className="divide-y divide-slate-100">
@@ -59,6 +77,9 @@ export default async function ResultsPage() {
                         )}
                       </div>
                       {r.score && <Badge tone="cyan">{r.score}</Badge>}
+                      {PRIZES[r.position] && (
+                        <Badge tone="gold">{PRIZES[r.position]}</Badge>
+                      )}
                     </li>
                   ))}
                 </ol>

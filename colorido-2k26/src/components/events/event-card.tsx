@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Badge, EventStatusBadge } from "@/components/ui/badge";
+import { Badge, CategoryBadge, EventStatusBadge } from "@/components/ui/badge";
+import { isRegistrationOpen } from "@/lib/utils";
 import type { Event } from "@/types/database";
 
 /** Human labels for database enum values. */
@@ -14,15 +15,19 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   literary: "Literary",
 };
 
+/** Top-3 prize summary shown on every event card (spec: trophies + cash). */
+export const EVENT_PRIZES = [
+  { place: "1st", reward: "Trophy + ₹5,000" },
+  { place: "2nd", reward: "Trophy + ₹3,500" },
+  { place: "3rd", reward: "Trophy + ₹2,000" },
+] as const;
+
 /**
  * One EventCard works for EVERY event (spec §11/§44) — all content comes
  * from the `event` prop; nothing is hardcoded per event.
  */
 export function EventCard({ event }: { event: Event }) {
   const isCultural = event.category === "cultural";
-  const categoryLabel = isCultural
-    ? "Cultural"
-    : `Sports · ${event.gender === "boys" ? "Boys" : "Girls"}`;
 
   const dateLabel = event.event_date
     ? new Date(`${event.event_date}T00:00:00`).toLocaleDateString("en-IN", {
@@ -34,9 +39,10 @@ export function EventCard({ event }: { event: Event }) {
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-      {/* Banner */}
+      {/* Banner — aspect-ratio based so it scales cleanly on every device,
+          rendered exactly like the gallery tiles (cover + lazy load). */}
       <div
-        className={`relative h-44 overflow-hidden ${
+        className={`relative aspect-[16/9] w-full overflow-hidden ${
           isCultural
             ? "bg-gradient-to-br from-brand-royal via-brand-purple to-brand-burgundy"
             : "bg-gradient-to-br from-brand-deep-purple via-brand-royal to-sky-900"
@@ -47,6 +53,7 @@ export function EventCard({ event }: { event: Event }) {
           <img
             src={event.banner_image}
             alt={event.name}
+            loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           />
         ) : (
@@ -70,7 +77,7 @@ export function EventCard({ event }: { event: Event }) {
           </div>
         )}
         <span className="absolute left-3 top-3">
-          <Badge tone={isCultural ? "gold" : "cyan"}>{categoryLabel}</Badge>
+          <CategoryBadge category={event.category} gender={event.gender} />
         </span>
         {event.subcategory && (
           <span className="absolute right-3 top-3">
@@ -89,6 +96,21 @@ export function EventCard({ event }: { event: Event }) {
         <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-slate-600">
           {event.description}
         </p>
+
+        {/* Prizes */}
+        <div className="mt-4 rounded-xl border border-brand-gold/40 bg-gradient-to-r from-brand-cream to-white px-4 py-3">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-brand-burgundy">
+            🏆 Prizes
+          </p>
+          <ul className="mt-1 space-y-0.5 text-xs text-slate-700">
+            {EVENT_PRIZES.map((p) => (
+              <li key={p.place} className="flex justify-between gap-2">
+                <span className="font-bold text-brand-deep-purple">{p.place}</span>
+                <span className="font-medium">{p.reward}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <dl className="mt-4 space-y-1.5 text-xs text-slate-500">
           <div className="flex items-center gap-1.5">
@@ -118,7 +140,7 @@ export function EventCard({ event }: { event: Event }) {
             >
               View Details →
             </Link>
-            {event.status === "published" ? (
+            {event.status === "published" && isRegistrationOpen(event) ? (
               <Link
                 href={`/registration?event=${event.id}`}
                 className="rounded-full bg-brand-gold px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-brand-deep-purple transition hover:shadow-md hover:shadow-brand-gold/30"
@@ -127,7 +149,11 @@ export function EventCard({ event }: { event: Event }) {
               </Link>
             ) : (
               <span className="cursor-not-allowed rounded-full bg-slate-100 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                {event.status === "completed" ? "Completed" : "Closed"}
+                {event.status === "completed"
+                  ? "Completed"
+                  : !isRegistrationOpen(event)
+                    ? "Registrations Closed"
+                    : "Closed"}
               </span>
             )}
           </div>

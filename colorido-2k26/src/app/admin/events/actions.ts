@@ -12,8 +12,14 @@ export interface FormState {
   ok?: boolean;
 }
 
-function toPostgres(input: z.infer<typeof eventFormSchema>) {
+function toPostgres(input: z.infer<typeof eventFormSchema>, formData: FormData) {
   const row = {
+    // Optional event image — public URL returned by uploadEventImage.
+    // "undefined" (field absent) keeps the existing value on edit.
+    banner_image:
+      formData.get("banner_image") !== null
+        ? String(formData.get("banner_image")) || null
+        : undefined,
     name: input.name,
     slug: input.slug,
     category: input.category,
@@ -61,7 +67,7 @@ export async function createEvent(
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid input." };
   }
-  const row = toPostgres(parsed.data);
+  const row = toPostgres(parsed.data, formData);
   if (!row.slug) row.slug = slugify(row.name);
 
   const supabase = await createClient();
@@ -97,7 +103,7 @@ export async function updateEvent(
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid input." };
   }
-  const row = toPostgres(parsed.data);
+  const row = toPostgres(parsed.data, formData);
   if (!row.slug) row.slug = slugify(row.name);
 
   const supabase = await createClient();
@@ -141,20 +147,67 @@ export async function setEventStatus(formData: FormData): Promise<void> {
   revalidatePath("/");
 }
 
+/**
+ * DELETE EVENT — removes the event and everything that belongs to it.
+ *
+ * The schema blocks deleting an event that still has registrations
+ * (registrations.event_id is ON DELETE RESTRICT), so the registration chain
+ * is removed explicitly first, then dependent rows cascade (schedules,
+ * announcements, results) or null out (gallery). Storage objects for the
+ * event banner and gallery photos are deleted too so no orphans remain.
+ * Runs on the service-role client: RLS permits staff deletes, but the
+ * multi-table chain must not be interrupted halfway by a policy gap.
+ */
 export async function deleteEvent(formData: FormData): Promise<void> {
   await requireRole("admin");
 
   const id = idSchema.safeParse(formData.get("id"));
   if (!id.success) return;
 
-  const supabase = await createClient();
-  // FK constraint blocks deletes with registrations — surface a clear error
-  // via redirect param instead of a stack trace.
-  const { error } = await supabase.from("events").delete().eq("id", id.data);
+  const { createAdminClient } = await import("@/lib/supabase/admin");
+  const admin = createAdminClient();
+
+  // 1. Registrations (RESTRICT) — plus their teams/team_members (cascade) and
+  //    any gallery rows that point at the event via registration? none do;
+  //    results/schedules/announcements cascade at the FK level but we still
+  //    collect storage paths first.
+  const { data: regs } = await admin
+    .from("registrations")
+    .select("id")
+    .eq("event_id", id.data);
+  const regIds = (regs ?? []).map((r) => r.id);
+  if (regIds.length > 0) {
+    const { error } = await admin
+      .from("registrations")
+      .delete()
+      .in("id", regIds);
+    if (error) {
+      console.error("[admin/events] delete — registrations failed:", error.message);
+      const { redirect } = await import("next/navigation");
+      redirect("/admin/events?error=has-registrations");
+    }
+  }
+
+  // 2. Storage objects owned by this event (banner + event gallery photos).
+  const { data: galleryRows } = await admin
+    .from("gallery")
+    .select("storage_path")
+    .eq("event_id", id.data);
+  const paths = (galleryRows ?? [])
+    .map((g) => g.storage_path)
+    .filter((p): p is string => Boolean(p));
+
+  // 3. The event row — schedules, announcements and results cascade via FK;
+  //    gallery.event_id sets itself to null (photos stay, now unassigned).
+  const { error } = await admin.from("events").delete().eq("id", id.data);
   if (error) {
     console.error("[admin/events] delete failed:", error.message);
     const { redirect } = await import("next/navigation");
     redirect("/admin/events?error=has-registrations");
+  }
+
+  if (paths.length > 0) {
+    await admin.storage.from("gallery").remove(paths);
   }
 
   revalidatePath("/admin/events");

@@ -1,0 +1,19 @@
+npm notice run colorido-2k26@0.1.0 build
+npm notice run next build
+▲ Next.js 16.3.6 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 388ms
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 11.7s
+  Running TypeScript ...
+src/app/error.tsx(28,10): error TS2552: Cannot find name 'error'. Did you mean 'Error'?
+src/app/error.tsx(30,25): error TS2552: Cannot find name 'error'. Did you mean 'Error'?
+Failed to type check.
+

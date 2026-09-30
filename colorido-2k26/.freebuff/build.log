@@ -1,0 +1,73 @@
+npm notice run colorido-2k26@0.1.0 build
+npm notice run next build
+▲ Next.js 16.3.6 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 323ms
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 14.7s
+  Running TypeScript ...
+  Finished TypeScript in 13.3s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/39) ...
+  Generating static pages using 3 workers (9/39) 
+  Generating static pages using 3 workers (19/39) 
+  Generating static pages using 3 workers (29/39) 
+✓ Generating static pages using 3 workers (39/39) in 1689ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /admin
+├ ƒ /admin/analytics
+├ ƒ /admin/announcements
+├ ƒ /admin/check-in
+├ ƒ /admin/contacts
+├ ƒ /admin/events
+├ ƒ /admin/events/[id]
+├ ƒ /admin/events/new
+├ ƒ /admin/gallery
+├ ƒ /admin/hosts
+├ ƒ /admin/participants
+├ ƒ /admin/registrations
+├ ƒ /admin/registrations/export
+├ ƒ /admin/results
+├ ƒ /admin/schedule
+├ ƒ /admin/sponsors
+├ ƒ /admin/teams
+├ ƒ /announcements
+├ ƒ /check-in/[id]
+├ ○ /contact
+├ ƒ /events
+├ ƒ /events/[slug]
+├ ƒ /events/cultural
+├ ƒ /events/sports
+├ ƒ /gallery
+├ ƒ /host
+├ ƒ /host/announcements
+├ ƒ /host/check-in
+├ ƒ /host/registrations
+├ ƒ /host/results
+├ ƒ /host/schedule
+├ ƒ /login
+├ ƒ /registration
+├ ƒ /registration/[id]
+├ ƒ /registration/verify
+├ ƒ /results
+├ ƒ /schedule
+└ ƒ /sponsors
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

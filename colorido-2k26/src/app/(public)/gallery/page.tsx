@@ -60,7 +60,7 @@ export default async function GalleryPage({
         ) : items.length === 0 ? (
           <EmptyState
             title="No photos available"
-            description="Festival photography will appear here once uploaded."
+            description="Fest photography will appear here once uploaded."
           />
         ) : (
           <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">

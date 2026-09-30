@@ -15,10 +15,10 @@ export function Footer() {
               COLORIDO <span className="font-normal text-brand-gold">2K26</span>
             </p>
             <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.24em] text-brand-light-gold/80">
-              Cultural &amp; Sports Festival
+              Cultural &amp; Sports Fest
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-              A college-level cultural and sports festival — 28 December 2026.
+              A college-level cultural and sports fest — 28 December 2026.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export function Footer() {
           {/* Contextual links */}
           <nav aria-label="Footer contextual links">
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-gold">
-              Festival
+              Fest
             </h3>
             <ul className="space-y-2.5 text-sm">
               {[
@@ -69,7 +69,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-white/10 pt-6 text-xs text-slate-500">
           <p>
-            © 2026 COLORIDO 2K26 · Cultural &amp; Sports Festival. All rights
+            © 2026 COLORIDO 2K26 · Cultural &amp; Sports Fest. All rights
             reserved.
           </p>
           <p className="mt-1">

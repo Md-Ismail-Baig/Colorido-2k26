@@ -41,7 +41,7 @@ export function SponsorForm({
           className="w-full text-sm text-slate-600 file:mr-3 file:rounded-full file:border-0 file:bg-brand-cream file:px-4 file:py-2 file:text-xs file:font-semibold file:uppercase file:tracking-wider file:text-brand-burgundy"
         />
         <p className="mt-1 text-[11px] text-slate-400">
-          JPG / PNG / WebP / GIF · max 8 MB — stored in Supabase Storage.
+          JPG / PNG / WebP / GIF · max 1 MB — stored in Supabase Storage.
         </p>
       </div>
       <div className="grid grid-cols-2 gap-4">

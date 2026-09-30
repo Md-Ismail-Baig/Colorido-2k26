@@ -31,7 +31,7 @@ export function Countdown() {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-3 sm:gap-6" role="timer" aria-label="Countdown to festival">
+    <div className="grid grid-cols-4 gap-3 sm:gap-6" role="timer" aria-label="Countdown to fest">
       {cells.map((c) => (
         <div
           key={c.label}

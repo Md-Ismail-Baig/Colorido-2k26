@@ -9,9 +9,15 @@
 import {
   isEmailEnabled,
   getAppUrl,
+  sendEmail,
   registrationConfirmationEmail,
   registrationStatusEmail,
+  registrationVerificationEmail,
 } from "./email";
+import {
+  issueVerificationToken,
+  verificationLink,
+} from "./registration-verify";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 interface RegContext {
@@ -59,6 +65,36 @@ async function resolveContext(registrationId: string) {
     participant: participantRes.data as { full_name: string; email: string },
     teamName,
   };
+}
+
+/**
+ * Send the email-verification request for a pending registration.
+ * Returns the outcome so the registration action can tell the participant
+ * whether mail actually went out; never throws.
+ */
+export async function sendRegistrationVerification(
+  registrationId: string,
+): Promise<{ sent: boolean; reason?: string }> {
+  try {
+    if (!isEmailEnabled()) return { sent: false, reason: "email-disabled" };
+    const issued = issueVerificationToken(registrationId);
+    if (!issued) return { sent: false, reason: "token-key-unavailable" };
+    const ctx = await resolveContext(registrationId);
+    if (!ctx?.participant.email) return { sent: false, reason: "no-context" };
+
+    const { subject, html } = registrationVerificationEmail({
+      participantName: ctx.participant.full_name,
+      registrationNumber: ctx.context.registration_number,
+      eventName: ctx.event.name,
+      verifyUrl: verificationLink(getAppUrl(), registrationId, issued),
+      expiresAt: issued.expiresAt,
+    });
+    const result = await sendEmail({ to: ctx.participant.email, subject, html });
+    return result.sent ? { sent: true } : { sent: false, reason: result.error };
+  } catch (e) {
+    console.error("[email-notifications] verification send failed:", e);
+    return { sent: false, reason: "exception" };
+  }
 }
 
 /** Send the registration confirmation (call right after a successful insert). */

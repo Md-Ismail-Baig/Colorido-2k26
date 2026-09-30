@@ -22,7 +22,7 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600">
-            Questions about events, registration, or the festival? Send us a
+            Questions about events, registration, or the fest? Send us a
             message or reach us directly.
           </p>
         </div>

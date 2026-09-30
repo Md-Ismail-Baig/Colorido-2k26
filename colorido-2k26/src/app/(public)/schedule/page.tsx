@@ -38,7 +38,7 @@ export default async function SchedulePage({
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-burgundy">
-            Festival Program
+            Fest Program
           </p>
           <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
             Schedule
@@ -93,7 +93,7 @@ export default async function SchedulePage({
         ) : filtered.length === 0 ? (
           <EmptyState
             title="Schedule not published yet"
-            description="Event-wise timings will appear here as the festival approaches."
+            description="Event-wise timings will appear here as the fest approaches."
           />
         ) : (
           <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">

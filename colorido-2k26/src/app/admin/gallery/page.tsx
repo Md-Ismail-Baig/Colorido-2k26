@@ -47,7 +47,7 @@ export default async function AdminGalleryPage() {
           {items.length === 0 ? (
             <EmptyState
               title="No photos yet"
-              description="Upload the first festival photo on the right."
+              description="Upload the first fest photo on the right."
             />
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
@@ -60,7 +60,7 @@ export default async function AdminGalleryPage() {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={urls[i]!}
-                      alt={p.title ?? "Festival photo"}
+                      alt={p.title ?? "Fest photo"}
                       className="h-40 w-full object-cover"
                     />
                   ) : (

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { ResendVerificationForm } from "@/components/registration/resend-verification-form";
 import type { Event, Participant, Registration, Team } from "@/types/database";
 
 export const metadata = { title: "Registration Details" };
@@ -81,10 +82,32 @@ export default async function RegistrationDetailPage({
             <h1 className="mt-2 font-heading text-3xl font-black tracking-wide text-brand-deep-purple">
               {registration.registration_number}
             </h1>
-            <p className="mt-2 inline-block rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700">
-              {registration.status}
+            <p
+              className={`mt-2 inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
+                registration.status === "pending"
+                  ? "bg-amber-50 text-amber-700"
+                  : "bg-emerald-50 text-emerald-700"
+              }`}
+            >
+              {registration.status === "pending" ? "Awaiting email verification" : registration.status}
             </p>
           </div>
+
+          {registration.status === "pending" && (
+            <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm">
+              <p className="font-semibold text-amber-800">
+                One more step — verify your email
+              </p>
+              <p className="mt-1 text-amber-700">
+                We sent a verification link to{" "}
+                <strong>{participant?.email ?? "your email"}</strong>. Your
+                registration is saved but not yet confirmed; open the link (valid
+                48 hours) to activate it. Didn't get it? Check spam or resend
+                below.
+              </p>
+              <ResendVerificationForm registrationId={registration.id} />
+            </div>
+          )}
 
           {event && (
             <div className="mt-8 rounded-xl border border-brand-gold/30 bg-brand-cream p-4 text-sm">

@@ -13,10 +13,36 @@ const cleanText = (min: number, max: number) =>
     .min(min)
     .max(max);
 
+/**
+ * Strict, real-looking email validation.
+ *
+ * Zod's `.email()` accepts syntactically-valid-but-impossible addresses such
+ * as `a@b` (no TLD) or `a@localhost`. For registrations we require a
+ * plausible deliverable address: standard local part, a domain with at least
+ * one dot and a 2–24 letter TLD, total length ≤ 254 (RFC 5321).
+ */
+const EMAIL_RE =
+  /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/;
+const emailSchema = (label: string) =>
+  z
+    .string()
+    .trim()
+    .toLowerCase()
+    .max(254)
+    .regex(EMAIL_RE, {
+      message: `Enter a valid email address, e.g. name@example.com${
+        label ? ` (for ${label})` : ""
+      }`,
+    })
+    .refine(
+      (v) => /^[A-Za-z]{2,24}$/.test(v.split(".").pop() ?? ""),
+      { message: "Email domain looks invalid — check the address." },
+    );
+
 export const participantSchema = z.object({
   full_name: cleanText(2, 120),
   roll_number: cleanText(1, 40),
-  email: z.string().trim().email().max(254),
+  email: emailSchema("the participant"),
   mobile: z
     .string()
     .trim()
@@ -32,7 +58,9 @@ export type ParticipantInput = z.infer<typeof participantSchema>;
 export const teamMemberSchema = z.object({
   name: cleanText(2, 120),
   roll_number: cleanText(1, 40),
-  email: z.string().trim().email().max(254).optional().or(z.literal("")),
+  email: emailSchema("a team member")
+    .optional()
+    .or(z.literal("")),
   phone: z
     .string()
     .trim()
@@ -50,7 +78,7 @@ export type TeamMemberInput = z.infer<typeof teamMemberSchema>;
 
 export const contactMessageSchema = z.object({
   name: cleanText(2, 120),
-  email: z.string().trim().email().max(254),
+  email: emailSchema("the contact form"),
   subject: cleanText(3, 200),
   message: cleanText(10, 5000),
 });

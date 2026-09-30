@@ -73,7 +73,7 @@ const BRANDED = (title: string, body: string): string => `
     </div>
     <div style="padding:24px;color:#334155;font-size:14px;line-height:1.6;">${body}</div>
     <div style="padding:14px 24px;background:#f6f2ea;color:#94a3b8;font-size:11px;text-align:center;">
-      Cultural &amp; Sports Festival · 28 December 2026
+      Cultural &amp; Sports Fest · 28 December 2026
     </div>
   </div>
 </div>`;
@@ -137,7 +137,7 @@ export function registrationStatusEmail(d: {
     d.status === "confirmed"
       ? "Your registration was <strong style=\"color:#059669;\">approved</strong>. See you at the venue!"
       : d.status === "rejected"
-        ? "Unfortunately your registration was <strong style=\"color:#dc2626;\">not approved</strong>. Contact the festival desk if you believe this is a mistake."
+        ? "Unfortunately your registration was <strong style=\"color:#dc2626;\">not approved</strong>. Contact the fest desk if you believe this is a mistake."
         : "Your registration was <strong style=\"color:#dc2626;\">cancelled</strong>. You can register again while the event is open.";
   const body = `
     <p>Hi ${escapeHtml(d.participantName)},</p>
@@ -153,6 +153,43 @@ export function registrationStatusEmail(d: {
       ? `Approved — ${d.eventName} (${d.registrationNumber})`
       : `Registration ${d.status} — ${d.eventName} (${d.registrationNumber})`;
   return { subject, html: BRANDED("Registration Update", body) };
+}
+
+/**
+ * Email-verification request — sent right after registration while the
+ * registration sits in `pending`. The participant must open the signed link
+ * to confirm their address before the registration becomes `confirmed`.
+ */
+export function registrationVerificationEmail(d: {
+  participantName: string;
+  registrationNumber: string;
+  eventName: string;
+  verifyUrl: string;
+  expiresAt: Date;
+}): { subject: string; html: string } {
+  const expiry = d.expiresAt.toLocaleString("en-IN", {
+    day: "numeric",
+    month: "short",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "Asia/Kolkata",
+  });
+  const subject = `Verify your email — COLORIDO 2K26 registration ${d.registrationNumber}`;
+  const body = `
+    <p>Hi ${escapeHtml(d.participantName)},</p>
+    <p>Almost there! Confirm your email address to activate your registration for
+    <strong>${escapeHtml(d.eventName)}</strong> <strong>${escapeHtml(d.registrationNumber)}</strong>.</p>
+    <p style="margin:16px 0 4px;">
+      <a href="${d.verifyUrl}" style="background:#2d1b4e;color:#e6c36a;padding:12px 22px;border-radius:999px;text-decoration:none;font-size:12px;font-weight:bold;">
+        VERIFY MY EMAIL
+      </a>
+    </p>
+    <p style="color:#64748b;font-size:12px;">This link works until <strong>${expiry}</strong> (IST).
+    If the button doesn't work, copy this address into your browser:<br />
+    <a href="${d.verifyUrl}" style="color:#7c3aed;word-break:break-all;">${d.verifyUrl}</a></p>
+    <p style="color:#94a3b8;font-size:12px;">Didn't register for COLORIDO 2K26? You can safely ignore this email —
+    the registration stays unconfirmed and no mail will be sent again.</p>`;
+  return { subject, html: BRANDED("Confirm your email", body) };
 }
 
 // -------------------------------------------------------------- helpers -----

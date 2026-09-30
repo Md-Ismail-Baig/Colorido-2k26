@@ -1,19 +1,9 @@
 import Link from "next/link";
 import { EventCard } from "@/components/events/event-card";
+import { FilterDropdowns } from "@/components/events/filter-dropdowns";
 import { EmptyState, ErrorState } from "@/components/ui/states";
+import { registrationDeadlineLabel } from "@/lib/utils";
 import type { Event } from "@/types/database";
-
-const CULTURAL_SUBS = [
-  ["", "All"],
-  ["fine_arts", "Fine Arts"],
-  ["music", "Music"],
-  ["dance", "Dance"],
-  ["choreoday", "Choreoday"],
-  ["dramatics", "Dramatics"],
-  ["fashion_show", "Fashion Show"],
-  ["tekraft", "Tekraft"],
-  ["literary", "Literary"],
-] as const;
 
 export interface EventsListingParams {
   category?: string;
@@ -22,33 +12,27 @@ export interface EventsListingParams {
   q?: string;
 }
 
-function FilterLink({
-  href,
-  active,
-  children,
-}: {
-  href: string;
-  active: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition ${
-        active
-          ? "bg-brand-deep-purple text-brand-gold shadow-sm"
-          : "border border-slate-200 bg-white text-slate-600 hover:border-brand-gold/50 hover:text-brand-burgundy"
-      }`}
-    >
-      {children}
-    </Link>
-  );
-}
+const VALID_CATEGORIES = ["all", "cultural", "sports"];
+const VALID_SUBCATEGORIES = [
+  "fine_arts",
+  "music",
+  "dance",
+  "choreoday",
+  "dramatics",
+  "fashion_show",
+  "tekraft",
+  "literary",
+];
+const VALID_GENDERS = ["boys", "girls"];
 
 /**
  * Shared listing UI (spec §44 — no duplicated structures across pages).
  * `basePath` controls where filter/search links point: /events,
  * /events/cultural or /events/sports.
+ *
+ * Filtering is URL-driven (server-rendered): the dropdown component simply
+ * navigates with the same category/subcategory/gender params this component
+ * has always consumed, so direct links and refreshes keep working.
  */
 export function EventsListing({
   events,
@@ -67,37 +51,38 @@ export function EventsListing({
   heading: string;
   subheading: string;
 }) {
-  const category = params.category ?? "all";
-  const sub = params.subcategory ?? "";
-  const gender = params.gender ?? "";
+  // Sanitize URL params — unknown values fall back to "all" instead of
+  // silently filtering everything out.
+  const rawCategory = params.category ?? "all";
+  const category = VALID_CATEGORIES.includes(rawCategory)
+    ? rawCategory
+    : "all";
+  const sub = VALID_SUBCATEGORIES.includes(params.subcategory ?? "")
+    ? (params.subcategory ?? "")
+    : "";
+  const gender = VALID_GENDERS.includes(params.gender ?? "")
+    ? (params.gender ?? "")
+    : "";
   const q = (params.q ?? "").trim().toLowerCase();
+
+  const effectiveCategory = lockedCategory ?? category;
 
   const filtered = events.filter((e) => {
     if (lockedCategory && e.category !== lockedCategory) return false;
     if (!lockedCategory && category !== "all" && e.category !== category)
       return false;
-    if (e.category === "cultural" && sub && e.subcategory !== sub) return false;
-    if (e.category === "sports" && gender && e.gender !== gender) return false;
+    if (
+      effectiveCategory === "cultural" &&
+      sub &&
+      e.subcategory !== sub
+    )
+      return false;
+    if (effectiveCategory === "sports" && gender && e.gender !== gender)
+      return false;
     if (q && !`${e.name} ${e.description}`.toLowerCase().includes(q))
       return false;
     return true;
   });
-
-  const withParams = (patch: Record<string, string>) => {
-    const merged = {
-      category: lockedCategory ? "" : category,
-      subcategory: sub,
-      gender,
-      q: params.q ?? "",
-      ...patch,
-    };
-    const search = new URLSearchParams();
-    Object.entries(merged).forEach(([k, v]) => {
-      if (v) search.set(k, v);
-    });
-    const s = search.toString();
-    return s ? `${basePath}?${s}` : basePath;
-  };
 
   return (
     <div>
@@ -105,10 +90,18 @@ export function EventsListing({
       <form
         action={basePath}
         method="get"
-        className="mx-auto mb-8 flex max-w-md gap-2"
+        className="mx-auto mb-6 flex max-w-md gap-2"
         role="search"
       >
-        {lockedCategory && <input type="hidden" name="category" value={lockedCategory} />}
+        {lockedCategory ? (
+          <input type="hidden" name="category" value={lockedCategory} />
+        ) : (
+          category !== "all" && (
+            <input type="hidden" name="category" value={category} />
+          )
+        )}
+        {sub && <input type="hidden" name="subcategory" value={sub} />}
+        {gender && <input type="hidden" name="gender" value={gender} />}
         <input
           type="search"
           name="q"
@@ -125,58 +118,14 @@ export function EventsListing({
         </button>
       </form>
 
-      {/* Category tabs (only on the unified page) */}
-      {!lockedCategory && (
-        <div className="mb-4 flex flex-wrap justify-center gap-2">
-          {[
-            ["all", "All"],
-            ["cultural", "Cultural"],
-            ["sports", "Sports"],
-          ].map(([value, label]) => (
-            <FilterLink
-              key={value}
-              href={withParams({ category: value === "all" ? "" : value, subcategory: "", gender: "" })}
-              active={category === value}
-            >
-              {label}
-            </FilterLink>
-          ))}
-        </div>
-      )}
-
-      {/* Cultural subcategories */}
-      {(!lockedCategory || lockedCategory === "cultural") && (
-        <div className="mb-4 flex flex-wrap justify-center gap-2">
-          {CULTURAL_SUBS.map(([value, label]) => (
-            <FilterLink
-              key={value || "all-subs"}
-              href={withParams({ subcategory: value })}
-              active={sub === value}
-            >
-              {label}
-            </FilterLink>
-          ))}
-        </div>
-      )}
-
-      {/* Sports divisions */}
-      {(!lockedCategory || lockedCategory === "sports") && (
-        <div className="mb-4 flex flex-wrap justify-center gap-2">
-          {[
-            ["", "All Divisions"],
-            ["boys", "Boys"],
-            ["girls", "Girls"],
-          ].map(([value, label]) => (
-            <FilterLink
-              key={value || "all-div"}
-              href={withParams({ gender: value })}
-              active={gender === value}
-            >
-              {label}
-            </FilterLink>
-          ))}
-        </div>
-      )}
+      {/* Dependent filter dropdowns — one line on desktop */}
+      <FilterDropdowns
+        category={category}
+        subcategory={sub}
+        gender={gender}
+        lockedCategory={lockedCategory}
+        basePath={basePath}
+      />
 
       {/* Results */}
       <div className="mt-10">
@@ -197,7 +146,20 @@ export function EventsListing({
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((e) => (
-              <EventCard key={e.id} event={e} />
+              <div key={e.id} className="flex flex-col">
+                {registrationDeadlineLabel(e) && (
+                  <p
+                    className={`mb-1.5 ml-2 text-[11px] font-semibold uppercase tracking-wider ${
+                      registrationDeadlineLabel(e)!.startsWith("Closed")
+                        ? "text-slate-400"
+                        : "text-emerald-600"
+                    }`}
+                  >
+                    ⏳ {registrationDeadlineLabel(e)}
+                  </p>
+                )}
+                <EventCard event={e} />
+              </div>
             ))}
           </div>
         )}

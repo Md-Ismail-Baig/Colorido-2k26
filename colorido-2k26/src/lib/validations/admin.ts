@@ -142,7 +142,26 @@ export const GALLERY_MIME_TYPES = [
   "image/webp",
   "image/gif",
 ] as const;
-export const GALLERY_MAX_BYTES = 8 * 1024 * 1024; // 8 MB (spec §24)
+export const GALLERY_MAX_BYTES = 1024 * 1024; // 1 MB per image (server limit)
+/** Whole-bucket quota: every stored image (gallery photos + sponsor logos) combined. */
+export const GALLERY_TOTAL_QUOTA_BYTES = 100 * 1024 * 1024; // 100 MB total
+/** Event card/banner images — same 1 MB server limit as gallery photos. */
+export const EVENT_IMAGE_MAX_BYTES = GALLERY_MAX_BYTES;
+
+/**
+ * Metadata for an optional event image upload. The file itself arrives in a
+ * second request (uploadEventImage) so the big binary never blocks form
+ * submission; this schema validates the resulting public URL.
+ */
+export const bannerImageMetaSchema = z.object({
+  category: z.enum(["cultural", "sports"]),
+  slug: z
+    .string()
+    .trim()
+    .min(3)
+    .max(80)
+    .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+});
 
 export const galleryMetaSchema = z.object({
   title: optionalText(200),

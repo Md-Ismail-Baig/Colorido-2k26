@@ -30,7 +30,7 @@ export default async function AdminAnnouncementsPage() {
     <ConsoleShell
       profile={profile}
       title="Announcements"
-      subtitle="Festival-wide and event-specific announcements. Published items are public immediately."
+      subtitle="Fest-wide and event-specific announcements. Published items are public immediately."
     >
       <div className="grid gap-8 lg:grid-cols-5">
         <div className="space-y-3 lg:col-span-3">
@@ -52,7 +52,7 @@ export default async function AdminAnnouncementsPage() {
                   </span>
                   <span className="text-xs text-slate-400">
                     {a.scope === "festival"
-                      ? "Festival-wide"
+                      ? "Fest-wide"
                       : `Event: ${eMap.get(a.event_id ?? "") ?? "unknown"}`}
                   </span>
                   <div className="ml-auto flex items-center gap-2">

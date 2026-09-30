@@ -150,6 +150,8 @@ export function RegistrationWizard({
         registrationId={state.registrationId!}
         registrationNumber={state.registrationNumber}
         eventName={event.name}
+        awaitingVerification={state.awaitingVerification ?? false}
+        verificationEmailSent={state.verificationEmailSent ?? false}
       />
     );
   }
@@ -466,10 +468,14 @@ function SuccessPanel({
   registrationId,
   registrationNumber,
   eventName,
+  awaitingVerification,
+  verificationEmailSent,
 }: {
   registrationId: string;
   registrationNumber: string;
   eventName: string;
+  awaitingVerification: boolean;
+  verificationEmailSent: boolean;
 }) {
   const download = () => {
     const content = [
@@ -478,8 +484,8 @@ function SuccessPanel({
       "",
       `Registration ID: ${registrationNumber}`,
       `Event:           ${eventName}`,
-      `Status:          Confirmed`,
-      `Festival Date:   28 December 2026`,
+      `Status:          ${awaitingVerification ? "Pending — verify your email" : "Confirmed"}`,
+      `Fest Date:       28 December 2026`,
       "",
       "Keep this ID safe. You may be asked to show it at the venue.",
       "",
@@ -494,16 +500,47 @@ function SuccessPanel({
   };
 
   return (
-    <div className="mx-auto max-w-xl rounded-2xl border border-emerald-200 bg-white p-8 text-center shadow-sm sm:p-10">
-      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-600">
-        ✓
+    <div className="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-10">
+      <div
+        className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full text-2xl ${
+          awaitingVerification ? "bg-amber-100 text-amber-600" : "bg-emerald-100 text-emerald-600"
+        }`}
+      >
+        {awaitingVerification ? "✉" : "✓"}
       </div>
-      <h2 className="font-heading text-2xl font-bold text-emerald-700">
-        Registration Successful!
+      <h2
+        className={`font-heading text-2xl font-bold ${
+          awaitingVerification ? "text-brand-deep-purple" : "text-emerald-700"
+        }`}
+      >
+        {awaitingVerification ? "Almost done — check your inbox" : "Registration Successful!"}
       </h2>
-      <p className="mt-2 text-sm text-slate-600">
-        You are registered for <strong>{eventName}</strong>.
-      </p>
+
+      {awaitingVerification ? (
+        <div className="mt-2 space-y-2 text-sm text-slate-600">
+          <p>
+            Your registration for <strong>{eventName}</strong> is <strong>saved
+            but not yet confirmed</strong>.
+          </p>
+          <p
+            role={verificationEmailSent ? "status" : "alert"}
+            className={`rounded-lg border px-3.5 py-2.5 ${
+              verificationEmailSent
+                ? "border-amber-200 bg-amber-50 text-amber-800"
+                : "border-red-200 bg-red-50 text-red-700"
+            }`}
+          >
+            {verificationEmailSent
+              ? "We've sent a verification link to your email. Open it within 48 hours to confirm your registration — then your confirmation email and entry pass follow automatically."
+              : "We saved your registration, but the verification email couldn't be sent right now. Open your registration page below to request a fresh link, or contact the fest desk."}
+          </p>
+        </div>
+      ) : (
+        <p className="mt-2 text-sm text-slate-600">
+          You are registered for <strong>{eventName}</strong>.
+        </p>
+      )}
+
       <div className="mx-auto mt-6 max-w-xs rounded-xl border-2 border-dashed border-brand-gold bg-brand-cream px-6 py-4">
         <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
           Unique Registration ID

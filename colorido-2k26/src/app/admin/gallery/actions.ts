@@ -8,13 +8,50 @@ import {
   galleryMetaSchema,
   GALLERY_MIME_TYPES,
   GALLERY_MAX_BYTES,
+  GALLERY_TOTAL_QUOTA_BYTES,
   sponsorFormSchema,
   contactStatusSchema,
 } from "@/lib/validations/admin";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export interface SimpleFormState {
   error?: string;
   ok?: boolean;
+}
+
+/**
+ * Sum every object currently stored in the gallery bucket (recursive walk),
+ * for the admin's 100 MB whole-gallery quota. Uses the service-role client:
+ * storage RLS for staff may be folder-scoped and must not break the count.
+ */
+async function galleryBucketUsedBytes(): Promise<number> {
+  const admin = createAdminClient();
+  let total = 0;
+  const walk = async (prefix: string): Promise<void> => {
+    const { data, error } = await admin.storage
+      .from("gallery")
+      .list(prefix, { limit: 1000 });
+    if (error) throw error;
+    for (const entry of data ?? []) {
+      if (entry.id === null) {
+        // Folder entry — recurse.
+        await walk(`${prefix}${entry.name}/`);
+      } else {
+        total += entry.metadata?.size ?? 0;
+      }
+    }
+  };
+  await walk("");
+  return total;
+}
+
+/** Shared quota gate: reject the upload before it hits Storage. */
+async function galleryQuotaError(incomingBytes: number): Promise<string | null> {
+  const used = await galleryBucketUsedBytes();
+  if (used + incomingBytes > GALLERY_TOTAL_QUOTA_BYTES) {
+    return `Gallery storage is full — the ${GALLERY_TOTAL_QUOTA_BYTES / (1024 * 1024)} MB total image limit has been reached. Delete some photos before uploading new ones.`;
+  }
+  return null;
 }
 
 /**
@@ -41,8 +78,10 @@ export async function uploadGalleryPhoto(
     return { error: "Only JPG, PNG, WebP or GIF images are allowed." };
   }
   if (file.size > GALLERY_MAX_BYTES) {
-    return { error: "Photo is too large — maximum 8 MB." };
+    return { error: "Photo is too large — maximum 1 MB." };
   }
+  const quotaError = await galleryQuotaError(file.size);
+  if (quotaError) return { error: quotaError };
 
   const ext =
     file.type === "image/jpeg"
@@ -153,8 +192,10 @@ export async function createSponsor(
       return { error: "Logo must be a JPG, PNG, WebP or GIF image." };
     }
     if (logo.size > GALLERY_MAX_BYTES) {
-      return { error: "Logo is too large — maximum 8 MB." };
+      return { error: "Logo is too large — maximum 1 MB." };
     }
+    const quotaError = await galleryQuotaError(logo.size);
+    if (quotaError) return { error: quotaError };
     const ext =
       logo.type === "image/jpeg"
         ? "jpg"

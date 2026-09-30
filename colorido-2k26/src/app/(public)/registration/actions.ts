@@ -1,15 +1,27 @@
 "use server";
 
+import { z } from "zod";
 import { registrationPayloadSchema } from "@/lib/validations/registration";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { allow } from "@/lib/rate-limit";
-import { notifyRegistrationConfirmed } from "@/lib/email-notifications";
+import { isRegistrationOpen } from "@/lib/utils";
+import {
+  isEmailEnabled,
+} from "@/lib/email";
+import {
+  notifyRegistrationConfirmed,
+  sendRegistrationVerification,
+} from "@/lib/email-notifications";
 
 export interface RegistrationResultState {
   step?: "form" | "success";
   registrationId?: string;
   registrationNumber?: string;
+  /** True when the registration is saved but waiting for email verification. */
+  awaitingVerification?: boolean;
+  /** True when the verification email actually went out (Resend accepted it). */
+  verificationEmailSent?: boolean;
   error?: string;
 }
 
@@ -85,11 +97,10 @@ export async function confirmRegistration(
     };
   }
 
-  if (
-    event.registration_deadline &&
-    new Date(`${event.registration_deadline}T23:59:59`) < new Date()
-  ) {
-    return { error: "The registration deadline for this event has passed." };
+  if (!isRegistrationOpen(event)) {
+    return {
+      error: "The registration deadline for this event has passed. Registrations are closed.",
+    };
   }
 
   // ---- 3. Team requirements -------------------------------------------------
@@ -214,6 +225,12 @@ export async function confirmRegistration(
     return { error: GENERIC_ERROR };
   }
 
+  // With a live mail layer the registration starts `pending` until the
+  // participant verifies their address via the emailed link; without one
+  // (RESEND_API_KEY unset) we degrade gracefully and confirm immediately so
+  // the festival intake never blocks on infrastructure (guide §27).
+  const needsEmailVerification = isEmailEnabled();
+
   const { data: reg, error: rErr } = await admin
     .from("registrations")
     .insert({
@@ -221,7 +238,7 @@ export async function confirmRegistration(
       event_id,
       participant_id: participantId,
       mode: isTeamEvent ? "team" : "individual",
-      status: "confirmed",
+      status: needsEmailVerification ? "pending" : "confirmed",
     })
     .select("id, registration_number")
     .single();
@@ -294,8 +311,20 @@ export async function confirmRegistration(
     }
   }
 
-  // Phase 16: courtesy confirmation email — fire-and-forget, no-ops when
-  // RESEND_API_KEY is unset, and never affects the registration result.
+  // Email-verification or courtesy confirmation — fire-and-forget for the
+  // confirmation, awaited for verification so the UI can offer a resend if
+  // the mail provider hiccupped. Either way the registration write stands.
+  if (needsEmailVerification) {
+    const verification = await sendRegistrationVerification(registration.id);
+    return {
+      step: "success",
+      registrationId: registration.id,
+      registrationNumber: registration.registration_number,
+      awaitingVerification: true,
+      verificationEmailSent: verification.sent,
+    };
+  }
+
   notifyRegistrationConfirmed(registration.id);
 
   return {
@@ -303,6 +332,57 @@ export async function confirmRegistration(
     registrationId: registration.id,
     registrationNumber: registration.registration_number,
   };
+}
+
+/** State for the "Resend verification email" control on the detail page. */
+export interface ResendState {
+  ok?: boolean;
+  message?: string;
+  error?: string;
+}
+
+/**
+ * RESEND VERIFICATION EMAIL — for participants whose link expired, bounced,
+ * or never arrived. The registration UUID in the form is the capability
+ * (same trust model as the detail page itself); the rate limiter protects
+ * the Resend quota from scripted hammering.
+ */
+export async function resendVerificationEmail(
+  _prev: ResendState,
+  formData: FormData,
+): Promise<ResendState> {
+  const id = z.string().uuid().safeParse(formData.get("registrationId"));
+  if (!id.success) return { error: "Invalid registration reference." };
+
+  if (!(await allow("verify_email"))) {
+    return {
+      error:
+        "Too many verification emails requested. Please try again in about an hour or contact the fest desk.",
+    };
+  }
+
+  const admin = createAdminClient();
+  const { data: reg } = await admin
+    .from("registrations")
+    .select("status")
+    .eq("id", id.data)
+    .single();
+  if (!reg) return { error: GENERIC_ERROR };
+
+  const status = (reg as { status: string }).status;
+  if (status !== "pending") {
+    return status === "confirmed" || status === "checked_in"
+      ? { ok: true, message: "This registration is already confirmed — no verification needed." }
+      : { error: "This registration is no longer active." };
+  }
+
+  const result = await sendRegistrationVerification(id.data);
+  return result.sent
+    ? { ok: true, message: "Verification email sent — check your inbox (and spam folder)." }
+    : {
+        error:
+          "The email couldn't be sent right now. Please try again shortly or contact the fest desk.",
+      };
 }
 
 /**

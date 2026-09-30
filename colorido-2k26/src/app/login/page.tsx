@@ -23,7 +23,7 @@ export default async function LoginPage({
         {/* Brand */}
         <div className="mb-8 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-light-gold">
-            Cultural &amp; Sports Festival · 28 December 2026
+            Cultural &amp; Sports Fest · 28 December 2026
           </p>
           <h1 className="mt-2 font-heading text-4xl font-black text-white">
             COLORIDO <span className="gold-gradient-text">2K26</span>
@@ -45,7 +45,7 @@ export default async function LoginPage({
                 type="submit"
                 className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-brand-gold via-brand-light-gold to-brand-gold px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-brand-deep-purple transition hover:shadow-lg hover:shadow-brand-gold/30"
               >
-                Enter Festival Site
+                Enter Fest Site
               </button>
             </form>
             {nextDestination !== "/" && (

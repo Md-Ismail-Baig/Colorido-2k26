@@ -35,7 +35,7 @@ export default async function AdminEventsPage({
     <ConsoleShell
       profile={profile}
       title="Events"
-      subtitle={`${list.length} event(s) — create, edit, publish and manage the festival programme.`}
+      subtitle={`${list.length} event(s) — create, edit, publish and manage the fest programme.`}
     >
       {error === "has-registrations" && (
         <p

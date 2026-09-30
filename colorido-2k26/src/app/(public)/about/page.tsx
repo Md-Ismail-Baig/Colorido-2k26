@@ -10,13 +10,13 @@ export default function AboutPage() {
       <section className="bg-gradient-to-b from-brand-deep-purple via-brand-purple to-brand-royal py-20 text-white">
         <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-light-gold">
-            About the Festival
+            About the Fest
           </p>
           <h1 className="mt-3 font-heading text-4xl font-black sm:text-6xl">
             What is <span className="gold-gradient-text">COLORIDO</span>?
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-slate-200">
-            COLORIDO 2K26 is a college-level Cultural &amp; Sports Festival —
+            COLORIDO 2K26 is a college-level Cultural &amp; Sports Fest —
             one day, one campus, sixteen arenas of creativity and competition.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-[1440px] gap-6 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
           {[
             ["16", "Events", "10 cultural + 6 sports divisions"],
-            ["1", "Festival Day", "28 December 2026"],
+            ["1", "Fest Day", "28 December 2026"],
             ["2", "Disciplines", "Performing arts & athletics"],
           ].map(([v, t, d]) => (
             <div

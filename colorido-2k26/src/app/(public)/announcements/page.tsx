@@ -25,7 +25,7 @@ export default async function AnnouncementsPage() {
         ) : !data || data.length === 0 ? (
           <EmptyState
             title="No announcements available"
-            description="Check back closer to the festival for updates."
+            description="Check back closer to the fest for updates."
           />
         ) : (
           <div className="space-y-5">
@@ -47,7 +47,7 @@ export default async function AnnouncementsPage() {
                     {a.priority} priority
                   </Badge>
                   <Badge tone="neutral">
-                    {a.scope === "event" ? "Event update" : "Festival-wide"}
+                    {a.scope === "event" ? "Event update" : "Fest-wide"}
                   </Badge>
                   {a.scope === "event" && a.event_name && (
                     <Link

@@ -25,8 +25,8 @@ export default async function AdminPage() {
   return (
     <ConsoleShell
       profile={profile}
-      title="Festival Overview"
-      subtitle="Live festival statistics — everything on this page comes from the database."
+      title="Fest Overview"
+      subtitle="Live fest statistics — everything on this page comes from the database."
     >
       {stats.error ? (
         <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">

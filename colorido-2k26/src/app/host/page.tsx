@@ -41,12 +41,12 @@ export default async function HostPage() {
     <ConsoleShell
       profile={profile}
       title="My Events"
-      subtitle="You can only see and manage events assigned to you by the festival admin — enforced server-side and by database RLS."
+      subtitle="You can only see and manage events assigned to you by the fest admin — enforced server-side and by database RLS."
     >
       {eventIds.length === 0 ? (
         <EmptyState
           title="No events assigned yet"
-          description="The festival admin will assign your events here. Only assigned events are accessible."
+          description="The fest admin will assign your events here. Only assigned events are accessible."
         />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

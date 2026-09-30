@@ -17,11 +17,11 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "COLORIDO 2K26 — Cultural & Sports Festival | 28 December 2026",
+    default: "COLORIDO 2K26 — Cultural & Sports Fest | 28 December 2026",
     template: "%s | COLORIDO 2K26",
   },
   description:
-    "COLORIDO 2K26 — a college-level Cultural & Sports Festival. Discover events, view schedules, and register online.",
+    "COLORIDO 2K26 — a college-level Cultural & Sports Fest. Discover events, view schedules, and register online.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

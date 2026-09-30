@@ -33,7 +33,7 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "font-heading text-3xl font-bold sm:text-4xl lg:text-5xl",
+          "font-heading text-2xl font-bold sm:text-3xl lg:text-4xl",
           tone === "dark" ? "text-brand-deep-purple" : "text-white",
         )}
       >

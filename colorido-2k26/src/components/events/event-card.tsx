@@ -17,9 +17,9 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
 
 /** Top-3 prize summary shown on every event card (spec: trophies + cash). */
 export const EVENT_PRIZES = [
-  { place: "1st", reward: "Trophy + ₹5,000" },
-  { place: "2nd", reward: "Trophy + ₹3,500" },
-  { place: "3rd", reward: "Trophy + ₹2,000" },
+  { medal: "🥇", place: "1st", reward: "Trophy + ₹5,000" },
+  { medal: "🥈", place: "2nd", reward: "Trophy + ₹3,500" },
+  { medal: "🥉", place: "3rd", reward: "Trophy + ₹2,000" },
 ] as const;
 
 /**
@@ -97,15 +97,17 @@ export function EventCard({ event }: { event: Event }) {
           {event.description}
         </p>
 
-        {/* Prizes */}
-        <div className="mt-4 rounded-xl border border-brand-gold/40 bg-gradient-to-r from-brand-cream to-white px-4 py-3">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-brand-burgundy">
-            🏆 Prizes
+        {/* Prizes — 🎁 marks prize panels; 🏆 stays on results/champions. */}
+        <div className="mt-3 rounded-lg border border-brand-gold/40 bg-gradient-to-r from-brand-cream to-white px-3 py-2">
+          <p className="text-[9px] font-semibold uppercase tracking-widest text-brand-burgundy">
+            🎁 Prizes
           </p>
-          <ul className="mt-1 space-y-0.5 text-xs text-slate-700">
+          <ul className="mt-0.5 space-y-0 text-[11px] leading-snug text-slate-700">
             {EVENT_PRIZES.map((p) => (
               <li key={p.place} className="flex justify-between gap-2">
-                <span className="font-bold text-brand-deep-purple">{p.place}</span>
+                <span className="font-bold text-brand-deep-purple">
+                  {p.medal} {p.place}
+                </span>
                 <span className="font-medium">{p.reward}</span>
               </li>
             ))}

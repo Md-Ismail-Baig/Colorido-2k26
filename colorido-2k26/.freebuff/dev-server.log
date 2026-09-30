@@ -2,7 +2,114 @@
 - Local:         http://localhost:55080
 - Network:       http://172.16.116.181:55080
 - Environments: .env.local
-✓ Ready in 1882ms
-✓ Running next.config.ts took 138ms
+✓ Ready in 2.1s
+✓ Running next.config.ts took 190ms
 
 ○ Compiling / ...
+ GET / 200 in 2.1min (next.js: 119s, proxy.ts: 19ms, application-code: 6.5s)
+ GET / 200 in 2.5min (next.js: 2.3min, proxy.ts: 1784ms, application-code: 6.6s)
+ GET /login 200 in 2.5s (next.js: 1243ms, proxy.ts: 135ms, application-code: 1076ms)
+ GET / 200 in 5.2s (next.js: 38ms, proxy.ts: 17ms, application-code: 5.1s)
+ GET /events/music-band-group 200 in 7.8s (next.js: 6.1s, proxy.ts: 18ms, application-code: 1617ms)
+ GET /registration?event=049081e9-f15f-4fac-bef5-365726b1e81c 200 in 2.3s (next.js: 679ms, proxy.ts: 17ms, application-code: 1571ms)
+ POST /registration?event=049081e9-f15f-4fac-bef5-365726b1e81c 200 in 9.1s (next.js: 99ms, proxy.ts: 46ms, application-code: 9.0s)
+  └─ ƒ confirmRegistration({}, {}) in 8837ms src/app/(public)/registration/actions.ts
+ GET /registration/39ff7b18-8d9a-40cd-8902-ebd117384ccd 200 in 8.0s (next.js: 5.7s, proxy.ts: 10ms, application-code: 2.3s)
+ POST /registration/39ff7b18-8d9a-40cd-8902-ebd117384ccd 200 in 3.7s (next.js: 219ms, proxy.ts: 53ms, application-code: 3.5s)
+  └─ ƒ resendVerificationEmail({}, {}) in 3374ms src/app/(public)/registration/actions.ts
+○ Compiling /registration/verify ...
+ GET /registration/verify?id=39ff7b18-8d9a-40cd-8902-ebd117384ccd&exp=1790753718&token=0fbc85b4145702cfbf155dfc0cd8fb40044913095beb3a2cc60ff321956a341b 200 in 38.4s (next.js: 32.2s, proxy.ts: 24ms, application-code: 6.2s)
+✓ Finished filesystem cache database compaction in 43s
+ GET / 200 in 41s (next.js: 7.2s, proxy.ts: 401ms, application-code: 33.0s)
+ GET /events 200 in 7.9s (next.js: 572ms, proxy.ts: 11ms, application-code: 7.4s)
+ GET / 200 in 28.5s (next.js: 10ms, proxy.ts: 16ms, application-code: 28.5s)
+ GET /events 200 in 8.8s (next.js: 202ms, proxy.ts: 57ms, application-code: 8.6s)
+ GET /events 200 in 10.4s (next.js: 41ms, proxy.ts: 64ms, application-code: 10.3s)
+ GET / 200 in 10.9s (next.js: 6.8s, proxy.ts: 13ms, application-code: 4.1s)
+ GET /events 200 in 2.3s (next.js: 43ms, proxy.ts: 26ms, application-code: 2.3s)
+ GET /events 200 in 29.0s (next.js: 11.3s, proxy.ts: 13.0s, application-code: 4.7s)
+ GET /events?category=sports 200 in 540ms (next.js: 17ms, proxy.ts: 14ms, application-code: 509ms)
+ GET / 200 in 1210ms (next.js: 25ms, proxy.ts: 8ms, application-code: 1178ms)
+ GET /login 200 in 733ms (next.js: 365ms, proxy.ts: 12ms, application-code: 356ms)
+ GET /admin 200 in 11.6s (next.js: 781ms, proxy.ts: 545ms, application-code: 10.3s)
+ POST /login 200 in 13.8s (next.js: 18ms, proxy.ts: 22ms, application-code: 13.8s)
+  └─ ƒ signInStaff({}, {}) in 1308ms src/lib/auth/actions.ts
+ GET /admin/events 200 in 5.4s (next.js: 2.6s, proxy.ts: 378ms, application-code: 2.4s)
+ GET /admin/events 200 in 1232ms (next.js: 14ms, proxy.ts: 848ms, application-code: 370ms)
+ GET /registration/verify?id=39ff7b18-8d9a-40cd-8902-ebd117384ccd&exp=1790753718&token=0fbc85b4145702cfbf155dfc0cd8fb40044913095beb3a2cc60ff321956a341b 200 in 1030ms (next.js: 65ms, proxy.ts: 21ms, application-code: 944ms)
+○ Compiling /admin/teams ...
+ GET /admin/teams 200 in 10.9s (next.js: 5.2s, proxy.ts: 324ms, application-code: 5.4s)
+ GET /admin/teams 200 in 5.5s (next.js: 235ms, proxy.ts: 1530ms, application-code: 3.8s)
+ GET /registration/verify?id=39ff7b18-8d9a-40cd-8902-ebd117384ccd&exp=1790753718&token=0fbc85b4145702cfbf155dfc0cd8fb40044913095beb3a2cc60ff321956a341b 200 in 5.1s (next.js: 509ms, proxy.ts: 13ms, application-code: 4.6s)
+ GET /admin/teams 200 in 5.5s (next.js: 201ms, proxy.ts: 3.0s, application-code: 2.4s)
+○ Compiling /admin/results ...
+✓ Finished filesystem cache database compaction in 3.4min
+ GET /admin/results 200 in 10.3s (next.js: 5.4s, proxy.ts: 552ms, application-code: 4.4s)
+ GET /admin/results 200 in 28.3s (next.js: 19.2s, proxy.ts: 367ms, application-code: 8.7s)
+ GET /admin/results 200 in 54s (next.js: 45s, proxy.ts: 1374ms, application-code: 7.1s)
+ GET /admin/gallery 200 in 13.4s (next.js: 5.5s, proxy.ts: 783ms, application-code: 7.1s)
+ GET /admin/gallery 200 in 6.8s (next.js: 162ms, proxy.ts: 917ms, application-code: 5.7s)
+ GET /admin/gallery 200 in 6.9s (next.js: 1556ms, proxy.ts: 1124ms, application-code: 4.3s)
+✓ Finished writing to filesystem cache in 24.4s
+ POST /admin/gallery 200 in 94s (next.js: 4.2s, proxy.ts: 47s, application-code: 43s)
+  └─ ƒ deleteGalleryPhoto({}) in 5115ms src/app/admin/gallery/actions.ts
+✓ Finished writing to filesystem cache in 11.8s
+ POST /admin/gallery 200 in 8.2s (next.js: 1236ms, proxy.ts: 1008ms, application-code: 5.9s)
+  └─ ƒ uploadGalleryPhoto({}, {}) in 3896ms src/app/admin/gallery/actions.ts
+ GET /admin/events 200 in 1648ms (next.js: 72ms, proxy.ts: 276ms, application-code: 1300ms)
+○ Compiling /admin/events/new ...
+ GET /admin/events/new 200 in 4.9s (next.js: 3.8s, proxy.ts: 332ms, application-code: 708ms)
+ GET / 200 in 2.5s (next.js: 51ms, proxy.ts: 7ms, application-code: 2.4s)
+ GET /login 200 in 151ms (next.js: 19ms, proxy.ts: 12ms, application-code: 121ms)
+ POST /admin/events/new 200 in 2.0s (next.js: 21ms, proxy.ts: 324ms, application-code: 1661ms)
+  └─ ƒ createEvent({}, {}) in 1069ms src/app/admin/events/actions.ts
+ GET /admin/events 200 in 1141ms (next.js: 28ms, proxy.ts: 260ms, application-code: 852ms)
+ GET /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 6.7s (next.js: 5.2s, proxy.ts: 245ms, application-code: 1229ms)
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 3.8s (next.js: 283ms, proxy.ts: 277ms, application-code: 3.3s)
+  └─ ƒ uploadEventImage({}, {}) in 3239ms src/app/admin/events/upload-image.ts
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 734ms (next.js: 103ms, proxy.ts: 193ms, application-code: 438ms)
+  └─ ƒ updateEvent({}, {}) in 407ms src/app/admin/events/actions.ts
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 837ms (next.js: 118ms, proxy.ts: 271ms, application-code: 448ms)
+  └─ ƒ updateEvent({"error":"Use the time picker (HH:MM)"}, {}) in 414ms src/app/admin/events/actions.ts
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 1132ms (next.js: 114ms, proxy.ts: 246ms, application-code: 772ms)
+  └─ ƒ updateEvent({"error":"Use the time picker (HH:MM)"}, {}) in 736ms src/app/admin/events/actions.ts
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 657ms (next.js: 19ms, proxy.ts: 201ms, application-code: 437ms)
+  └─ ƒ updateEvent({"error":"Use the time picker (HH:MM)"}, {}) in 413ms src/app/admin/events/actions.ts
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 642ms (next.js: 17ms, proxy.ts: 204ms, application-code: 421ms)
+  └─ ƒ updateEvent({"error":"Use the time picker (HH:MM)"}, {}) in 401ms src/app/admin/events/actions.ts
+ GET /admin/events 200 in 1425ms (next.js: 119ms, proxy.ts: 397ms, application-code: 909ms)
+ GET /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 1157ms (next.js: 112ms, proxy.ts: 248ms, application-code: 797ms)
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 2.3s (next.js: 129ms, proxy.ts: 262ms, application-code: 1906ms)
+  └─ ƒ uploadEventImage({}, {}) in 1865ms src/app/admin/events/upload-image.ts
+ POST /admin/events/921735ef-ad46-4282-bcd2-c99e6c0f1446 200 in 837ms (next.js: 112ms, proxy.ts: 273ms, application-code: 452ms)
+  └─ ƒ updateEvent({}, {}) in 423ms src/app/admin/events/actions.ts
+ GET /admin/events 200 in 1145ms (next.js: 22ms, proxy.ts: 202ms, application-code: 921ms)
+ POST /admin/events 200 in 2.2s (next.js: 10ms, proxy.ts: 618ms, application-code: 1588ms)
+  └─ ƒ setEventStatus({}) in 667ms src/app/admin/events/actions.ts
+ GET /admin/events/new 200 in 786ms (next.js: 109ms, proxy.ts: 193ms, application-code: 484ms)
+ GET /registration/verify?id=39ff7b18-8d9a-40cd-8902-ebd117384ccd&exp=1790753718&token=0fbc85b4145702cfbf155dfc0cd8fb40044913095beb3a2cc60ff321956a341b 200 in 131ms (next.js: 16ms, proxy.ts: 16ms, application-code: 99ms)
+ GET /admin/events/new 200 in 695ms (next.js: 7ms, proxy.ts: 520ms, application-code: 168ms)
+ POST /admin/events/new 200 in 2.2s (next.js: 26ms, proxy.ts: 298ms, application-code: 1909ms)
+  └─ ƒ uploadEventImage({}, {}) in 1875ms src/app/admin/events/upload-image.ts
+ POST /admin/events/new 200 in 709ms (next.js: 10ms, proxy.ts: 257ms, application-code: 443ms)
+  └─ ƒ createEvent({}, {}) in 418ms src/app/admin/events/actions.ts
+ GET /registration/verify?id=39ff7b18-8d9a-40cd-8902-ebd117384ccd&exp=1790753718&token=0fbc85b4145702cfbf155dfc0cd8fb40044913095beb3a2cc60ff321956a341b 200 in 207ms (next.js: 33ms, proxy.ts: 23ms, application-code: 152ms)
+ GET /admin/events/new 200 in 448ms (next.js: 18ms, proxy.ts: 302ms, application-code: 129ms)
+ POST /admin/events/new 200 in 2.4s (next.js: 12ms, proxy.ts: 587ms, application-code: 1762ms)
+  └─ ƒ createEvent({"error":"Too small: expected string to have >=10 characters"}, {}) in 1179ms src/app/admin/events/actions.ts
+ GET /admin/events 200 in 1275ms (next.js: 26ms, proxy.ts: 230ms, application-code: 1019ms)
+ GET /registration/verify?id=39ff7b18-8d9a-40cd-8902-ebd117384ccd&exp=1790753718&token=0fbc85b4145702cfbf155dfc0cd8fb40044913095beb3a2cc60ff321956a341b 200 in 478ms (next.js: 20ms, proxy.ts: 16ms, application-code: 442ms)
+ GET /admin/events 200 in 679ms (next.js: 19ms, proxy.ts: 356ms, application-code: 304ms)
+ POST /admin/events 200 in 1850ms (next.js: 20ms, proxy.ts: 211ms, application-code: 1619ms)
+  └─ ƒ setEventStatus({}) in 695ms src/app/admin/events/actions.ts
+ GET /events 200 in 3.9s (next.js: 48ms, proxy.ts: 275ms, application-code: 3.5s)
+ GET / 200 in 1347ms (next.js: 54ms, proxy.ts: 260ms, application-code: 1033ms)
+ GET / 200 in 1198ms (next.js: 10ms, proxy.ts: 363ms, application-code: 826ms)
+○ Compiling /announcements ...
+ GET /gallery 200 in 3.7s (next.js: 2.8s, proxy.ts: 190ms, application-code: 686ms)
+ GET /gallery 200 in 862ms (next.js: 92ms, proxy.ts: 324ms, application-code: 446ms)
+ GET /gallery 200 in 554ms (next.js: 11ms, proxy.ts: 213ms, application-code: 330ms)
+ GET /contact 200 in 8.6s (next.js: 7.9s, proxy.ts: 251ms, application-code: 461ms)
+ GET /announcements 200 in 14.9s (next.js: 13.3s, proxy.ts: 282ms, application-code: 1318ms)
+ GET /admin 200 in 2.2s (next.js: 89ms, proxy.ts: 308ms, application-code: 1836ms)
+ GET /admin/teams 200 in 1846ms (next.js: 104ms, proxy.ts: 265ms, application-code: 1477ms)

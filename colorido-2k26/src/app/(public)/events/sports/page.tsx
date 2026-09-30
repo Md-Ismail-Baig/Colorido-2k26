@@ -18,7 +18,7 @@ export default async function SportsEventsPage({
           <p className="text-xs font-semibold uppercase tracking-widest text-sky-700">
             Athletic Championships
           </p>
-          <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand-deep-purple sm:text-4xl">
             Sports Events
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-sm text-slate-600">

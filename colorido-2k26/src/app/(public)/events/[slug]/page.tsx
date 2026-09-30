@@ -142,7 +142,7 @@ export default async function EventDetailPage({
             <EventStatusBadge status={ev.status} />
           </div>
 
-          <h1 className="mt-4 font-heading text-4xl font-black sm:text-6xl">
+          <h1 className="mt-4 font-heading text-3xl font-black sm:text-4xl">
             {ev.name}
           </h1>
 
@@ -207,7 +207,7 @@ export default async function EventDetailPage({
             {/* Prizes */}
             <div>
               <h2 className="mb-4 font-heading text-2xl font-bold text-brand-deep-purple">
-                🏆 Prizes
+                🎁 Prizes
               </h2>
               <div className="grid gap-3 sm:grid-cols-3">
                 {[

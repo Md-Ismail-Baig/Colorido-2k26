@@ -34,7 +34,7 @@ export default async function GalleryPage({
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-burgundy">
             Media Showcase
           </p>
-          <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand-deep-purple sm:text-4xl">
             Gallery
           </h1>
         </div>

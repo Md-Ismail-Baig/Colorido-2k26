@@ -15,7 +15,7 @@ export default async function AnnouncementsPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-burgundy">
             Stay Informed
           </p>
-          <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand-deep-purple sm:text-4xl">
             Announcements
           </h1>
         </div>

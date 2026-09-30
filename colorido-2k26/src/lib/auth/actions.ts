@@ -95,7 +95,9 @@ export async function enterAsViewer(formData: FormData): Promise<void> {
     httpOnly: false, // the middleware reads it on every navigation
     sameSite: "lax",
     path: "/",
-    maxAge: 60 * 60 * 24 * 30, // 30 days — returning visitors skip the gate
+    // No maxAge → browser-SESSION cookie: every fresh visit to the app
+    // starts at the login page; entering releases the visitor for the
+    // session (the "app always opens on login" rule).
   });
 
   redirect(next);

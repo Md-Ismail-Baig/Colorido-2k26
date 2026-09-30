@@ -1,9 +1,11 @@
 npm notice run colorido-2k26@0.1.0 dev
-npm notice run next dev
-⚠ Turbopack's filesystem cache has been deleted because we previously detected an internal error in Turbopack. Builds or page loads may be slower as a result.
+npm notice run next dev -p 55080
+⚠ Slow filesystem detected. The benchmark took 666ms. If \\?\C:\Users\Hi\Colorido-2k26\colorido-2k26\.next\dev is a network drive, consider moving it to a local folder.
+See more: https://nextjs.org/docs/app/guides/local-development
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
 
   To migrate automatically, run:
   npx @next/codemod@canary middleware-to-proxy .
 
   Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[email] resend 403: {"message":"You can only send testing emails to your own email address (pabbasaipavan123@gmail.com). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain.","name":"validation_error","statusCode":403}

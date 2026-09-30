@@ -39,8 +39,8 @@ export default async function HomePage() {
       >
         <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex justify-center">
-            <div className="inline-flex flex-col items-center gap-1.5 rounded-full border border-brand-gold/30 bg-brand-deep-purple/70 px-6 py-3 backdrop-blur-sm">
-              <span className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-white sm:text-base">
+            <div className="inline-flex flex-col items-center gap-1 rounded-full border border-brand-gold/30 bg-brand-deep-purple/70 px-4 py-1.5 backdrop-blur-sm">
+              <span className="text-sm font-bold uppercase tracking-widest text-white">
                 R.V.R. &amp; J.C. College of Engineering
               </span>
               <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-brand-light-gold">
@@ -52,10 +52,10 @@ export default async function HomePage() {
           </div>
 
           <div className="mx-auto mb-10 max-w-4xl text-center">
-            <h1 className="mb-3 font-heading text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mb-3 font-heading text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
               COLORIDO <span className="gold-gradient-text">2K26</span>
             </h1>
-            <p className="mb-4 font-heading text-lg font-semibold uppercase tracking-[0.25em] text-slate-200 sm:text-2xl">
+            <p className="mb-4 font-heading text-base font-semibold uppercase tracking-[0.25em] text-slate-200 sm:text-lg">
               Cultural &amp; Sports Fest
             </p>
             <p className="inline-flex items-center gap-3 rounded-lg border border-brand-gold/20 bg-white/5 px-6 py-2 text-sm font-medium tracking-wider text-brand-light-gold sm:text-base">
@@ -344,7 +344,7 @@ export default async function HomePage() {
       {/* 11 · CONTACT CTA */}
       <section className="bg-brand-deep-purple py-20 text-white">
         <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">
+          <h2 className="font-heading text-2xl font-bold sm:text-3xl">
             Questions about the fest?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300">

@@ -24,14 +24,14 @@ export default async function ResultsPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-burgundy">
             Champions
           </p>
-          <h1 className="mt-2 font-heading text-4xl font-bold text-brand-deep-purple sm:text-5xl">
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand-deep-purple sm:text-4xl">
             Fest Results
           </h1>
         </div>
 
         <div className="mb-10 rounded-2xl border border-brand-gold/40 bg-gradient-to-r from-brand-cream to-white px-6 py-4">
           <p className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-burgundy">
-            🏆 Prize Pool — Every Event
+            🎁 Prize Pool — Every Event
           </p>
           <div className="mt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm text-slate-700">
             <span><strong className="text-brand-deep-purple">1st:</strong> Trophy + ₹5,000</span>

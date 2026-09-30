@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import {
   galleryMetaSchema,
   GALLERY_MIME_TYPES,
@@ -12,7 +13,6 @@ import {
   sponsorFormSchema,
   contactStatusSchema,
 } from "@/lib/validations/admin";
-import { createAdminClient } from "@/lib/supabase/admin";
 
 export interface SimpleFormState {
   error?: string;
@@ -91,10 +91,17 @@ export async function uploadGalleryPhoto(
         : file.type === "image/webp"
           ? "webp"
           : "gif";
-  const path = `${meta.data.category}/${crypto.randomUUID()}.${ext}`;
+  // Storage RLS admits staff uploads only under the images/ folder — every
+  // path MUST start with images/ or the upload is silently rejected.
+  const path = `images/${meta.data.category}/${crypto.randomUUID()}.${ext}`;
 
-  const supabase = await createClient();
-  const { error: upErr } = await supabase.storage
+  // Storage + table writes run on the service-role client: the admin role
+  // gate above (requireRole) is the authorization; the storage-api RLS
+  // evaluation of staff JWTs has proven environment-dependent (403
+  // "row-level security" even for valid admins), so uploads must not depend
+  // on it. The bucket stays public-read for the site.
+  const admin = createAdminClient();
+  const { error: upErr } = await admin.storage
     .from("gallery")
     .upload(path, file, { contentType: file.type, upsert: false });
 
@@ -103,7 +110,7 @@ export async function uploadGalleryPhoto(
     return { error: "The upload failed. Please try a smaller image." };
   }
 
-  const { error: dbErr } = await supabase.from("gallery").insert({
+  const { error: dbErr } = await admin.from("gallery").insert({
     title: meta.data.title || null,
     storage_path: path,
     category: meta.data.category,
@@ -114,7 +121,7 @@ export async function uploadGalleryPhoto(
 
   if (dbErr) {
     // Roll back the orphaned storage object.
-    await supabase.storage.from("gallery").remove([path]);
+    await admin.storage.from("gallery").remove([path]);
     console.error("[admin/gallery] row insert failed:", dbErr.message);
     return { error: "The upload failed. Please try again." };
   }
@@ -150,20 +157,20 @@ export async function deleteGalleryPhoto(formData: FormData): Promise<void> {
   const id = z.string().uuid().safeParse(formData.get("id"));
   if (!id.success) return;
 
-  const supabase = await createClient();
-  const { data: item } = await supabase
+  const admin = createAdminClient();
+  const { data: item } = await admin
     .from("gallery")
     .select("storage_path")
     .eq("id", id.data)
     .single();
 
-  const { error } = await supabase.from("gallery").delete().eq("id", id.data);
+  const { error } = await admin.from("gallery").delete().eq("id", id.data);
   if (error) {
     console.error("[admin/gallery] delete failed:", error.message);
     return;
   }
   if (item?.storage_path) {
-    await supabase.storage.from("gallery").remove([item.storage_path]);
+    await admin.storage.from("gallery").remove([item.storage_path]);
   }
   revalidatePath("/admin/gallery");
   revalidatePath("/gallery");
@@ -181,7 +188,9 @@ export async function createSponsor(
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid input." };
   }
-  const supabase = await createClient();
+  // Service-role client — same authorization model as the gallery upload:
+  // requireRole above is the gate, the client just writes (see note above).
+  const supabase = createAdminClient();
 
   // Optional logo upload — validated + stored in the gallery bucket under
   // sponsor-logos/, mirroring the gallery upload rules (spec §24).
@@ -204,7 +213,7 @@ export async function createSponsor(
           : logo.type === "image/webp"
             ? "webp"
             : "gif";
-    logoPath = `sponsor-logos/${crypto.randomUUID()}.${ext}`;
+    logoPath = `images/sponsor-logos/${crypto.randomUUID()}.${ext}`; // images/ prefix required by storage RLS
     const { error: upErr } = await supabase.storage
       .from("gallery")
       .upload(logoPath, logo, { contentType: logo.type, upsert: false });

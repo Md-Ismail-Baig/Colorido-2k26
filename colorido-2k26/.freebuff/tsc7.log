@@ -1,0 +1,5 @@
+npm notice run colorido-2k26@0.1.0 npx
+npm notice run tsc --noEmit
+src/app/admin/gallery/actions.ts(7,10): error TS2300: Duplicate identifier 'createAdminClient'.
+src/app/admin/gallery/actions.ts(16,10): error TS2300: Duplicate identifier 'createAdminClient'.
+src/app/admin/gallery/actions.ts(125,11): error TS2304: Cannot find name 'supabase'.

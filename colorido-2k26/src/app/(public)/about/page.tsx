@@ -12,7 +12,7 @@ export default function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-light-gold">
             About the Fest
           </p>
-          <h1 className="mt-3 font-heading text-4xl font-black sm:text-6xl">
+          <h1 className="mt-3 font-heading text-3xl font-black sm:text-4xl">
             What is <span className="gold-gradient-text">COLORIDO</span>?
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-slate-200">
